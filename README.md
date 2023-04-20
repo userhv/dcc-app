@@ -11,3 +11,4 @@ Esse projeto irá conduzir ao desenvolvimento de software especialmente atrelado
 Aqui descreveremos o roteiro de cada passo do desenvolvimento até que o produto final seja alcançado.
 
 * [Requisitos](docs/requisitos.md)
+* [Modelagem](docs/modelagem.md)

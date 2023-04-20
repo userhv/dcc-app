@@ -70,4 +70,14 @@ Para essa história temos o seguinte caso de uso
 
 Assim, conseguimos traçar qual será o fluxo de execução ao ser impplementada essa funcionalidade no sistema, com isso podemos previamente estruturar como será a lógica para implementar tal feature.
 
-Com isso, temos o primeiro passo para a construção do sistema, satisfazendo a nossa pergunta no início dessa seção.
+## Tecnologias
+
+Dependendo do andamento do projeto, nessa fase também podemos definir quais tecnologias serão usadas já que temos conhecimento de quais funcionalidades temos no sistema. Sendo assim, para o desenvolvimento utilizaremos.
+
+* [react-native](https://reactnative.dev/)
+* [realm](https://realm.io/)
+* [firebase](https://firebase.google.com/?hl=pt-br)
+
+### Resumo
+
+Com isso, temos o primeiro passo para a construção do sistema, satisfazendo a nossa pergunta no início dessa seção, na próxima sessão iniciaremos a concepção da estrutura do sistema utilizando o conhecimento prévio sobre quais funcionalidades estarão presentes.
