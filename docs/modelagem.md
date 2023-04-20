@@ -36,4 +36,8 @@ Apesar de ainda não começarmos de fato com a sprint, já temos ciência de alg
 
 ### O Mediator
 
-Como podemos ver, a estrutura do sistema acima utiliza uma técnica de padrão de projeto chamada [Mediator](https://refactoring.guru/pt-br/design-patterns/mediator), pois como teremos dados providos da API e do SERVIDOR, precisamos ter uma classe que centraliza essas informações, isto é, que consegue realizar as requisições para o ponto de acesso correto sem que o APP precise ter isso armazenado.
+Como podemos ver, a estrutura do sistema acima utiliza uma técnica de padrão de projeto chamada [Mediator](https://refactoring.guru/pt-br/design-patterns/mediator). Ela centraliza as chamadas de forma que os outros componentes do sistema não precisam se interagir, assim, todos tem conhecimento desse **Mediador** que por sua vez redireciona as chamadas para os pontos específicos da aplicação.
+
+Nesse projeto, esse tipo de padrão é interessante pois como teremos dois pontos de acesso para consumir os dados, API ou SERVIDOR, centralizar a distribuição das requisições em um único componente garante que as outras partes do sistema não precisam armazenar se os dados requisitados são da api ou do servidor, assim esses componentes se tornam independentes tendo vínculo apenas com o Mediador, além disso, tornamos a estrutura do código mais clara e objetiva.
+
+
