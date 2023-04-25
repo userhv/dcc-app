@@ -1,21 +1,20 @@
-import {  MD3LightTheme as DefaultTheme } from 'react-native-paper';
+import {  MD3LightTheme as DefaultTheme, configureFonts } from 'react-native-paper';
+import { fontConfig } from './fontConfig';
 
 export const theme = {
 	...DefaultTheme,
-	// fonts: fontConfig,
-	// fonts: configureFonts({ config: fontConfig }),
-
+	fonts: configureFonts({ config: fontConfig }),
 	colors: {
-		primary: '#007E7A',
+		primary: '#c90019',
 		onPrimary: '#FFFFFF',
-		primaryContainer: '#9DE4D6',
-		onPrimaryContainer: '#034944',
+		primaryContainer: '#0668a8',
+		onPrimaryContainer: '#650000',
 		primaryOnHover: 'rgba(0, 126, 122, 0.1)',
 
-		secondary: '#ECB11F',
-		onSecondary: '#034944',
+		secondary: '#a7a9ac',
+		onSecondary: '#650000',
 		secondaryContainer: '#a7a9ac', //altera a cor da elipse da barra de navegação
-		onSecondaryContainer: '#034944',
+		onSecondaryContainer: '#650000',
 		secondaryOnHover: 'rgba(236, 177, 31, 0.2)',
 
 		error: '#B30501',
@@ -26,10 +25,6 @@ export const theme = {
 		background: '#FFFFFF',
 		onBackground: '#404040',
 		buttonOnHover: '#006B68',
-
-		// acredito que não funcione, para o gradiente funcionar tem-se usado o componnete <LinearGradient> que vem da lib  import LinearGradient from 'react-native-linear-gradient';
-		primaryGradient: 'linear-gradient(180deg, #0ABB98 0%, #08AE92 45.83%, #06A28B 69.27%, #007E7A 100%);',
-		secondaryGradient: 'linear-gradient(180deg, #034944 0%, #007E7A 100%)',
 
 		greenBackground: 'rgba(3, 73, 68, 0.85)',
 		lightHover: 'rgba(255, 255, 255, 0.1)',
@@ -54,14 +49,14 @@ export const theme = {
 		cinza98: '#F7FBF9',
 
 		//primarias
-		aquaVale: '#0ABB98',
-		amareloVale: '#ECB11F',
-		cerejaVale: '#C0305E',
-		laranjaVale: '#E37222',
-		azulVale: '#3CB5E5',
-		cinzaEscuro: '#555555',
+		vermelhoEscuro: '#650000',
+		vermelhoVivo: '#c90019',
+		azul: '#0668a8',
+		cinza: '#a7a9ac',
+		cinzaIconeNavegacao: '#313130',
+		cinzaClaro: '#dfe1e3',
+		azulClaro: '#4c85aa',
 		branco: '#FFFFFF',
-		verdeVale: '#007E7A',
 
 		//secundarias
 		verdeEscuro: '#034944',
@@ -70,15 +65,7 @@ export const theme = {
 		amareloClaro: '#FFDD99',
 		cerejaEscuro: '#991310',
 		cerejaClaro: '#E191C5',
-		// cinzaClaro: '#E6E7E8',
 		cinzaMedio: '#BCBEC0',
-
-		vermelhoEscuro: '#650000',
-		vermelhoVivo: '#c90019',
-		azul: '#0668a8',
-		cinza: '#a7a9ac',
-		cinzaClaro: '#dfe1e3',
-		azulClaro: '#4c85aa',
 
 		elevation: {
 			level0: 'transparent',

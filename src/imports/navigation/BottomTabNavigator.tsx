@@ -8,6 +8,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
 import { IBottomTabParamList, IHomeParamList } from '../typings/NavigationTypings';
+import { bottomTabNavigatorStyle } from './BottomTabNavigatorStyle';
 
 interface INavigatorProps {
 	user: any;
@@ -24,12 +25,12 @@ const BottomTab = createMaterialBottomTabNavigator<IBottomTabParamList>();
 
 export const BottomTabNavigator = (appProps: IAppProps) => {
 	return (
-		<BottomTab.Navigator initialRouteName="Home" barStyle={{backgroundColor: theme.colors.cinzaClaro}} >
+		<BottomTab.Navigator initialRouteName="Home" barStyle={bottomTabNavigatorStyle.style} screenOptions={{tabBarLabel: 'bold'}}>
 			<BottomTab.Screen
 				name="HomeScreen"
 				options={{
 					tabBarLabel: 'Home',
-					tabBarIcon: ({ focused }) => <Icon name="home" size={25} color={focused ? 'black' : 'black'} />,
+					tabBarIcon: ({ focused }) => <Icon name="home" size={25} color={focused ? theme.colors.cinza10 : theme.colors.cinzaIconeNavegacao} />,
 				}}>
 				{(props) => <HomeNavigator {...props} {...appProps} />}
 			</BottomTab.Screen>
