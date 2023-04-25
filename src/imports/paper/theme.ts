@@ -13,7 +13,7 @@ export const theme = {
 
 		secondary: '#a7a9ac',
 		onSecondary: '#650000',
-		secondaryContainer: '#a7a9ac', //altera a cor da elipse da barra de navegação
+		secondaryContainer: 'rgba(6, 104, 168,0.3)', //altera a cor da elipse da barra de navegação
 		onSecondaryContainer: '#650000',
 		secondaryOnHover: 'rgba(236, 177, 31, 0.2)',
 
@@ -53,10 +53,11 @@ export const theme = {
 		vermelhoVivo: '#c90019',
 		azul: '#0668a8',
 		cinza: '#a7a9ac',
-		cinzaIconeNavegacao: '#313130',
+		cinzaComOpacidade: '#rgba(49, 49, 48,0.7)',
 		cinzaClaro: '#dfe1e3',
 		azulClaro: '#4c85aa',
 		branco: '#FFFFFF',
+		azulComOpacidade: 'rgba(6, 104, 168,0.3)',
 
 		//secundarias
 		verdeEscuro: '#034944',
