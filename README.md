@@ -12,3 +12,7 @@ Aqui descreveremos o roteiro de cada passo do desenvolvimento até que o produto
 
 * [Requisitos](docs/requisitos.md)
 * [Modelagem](docs/modelagem.md)
+
+    **Inicio do desenvolvimento**
+
+* [Sprint 0](docs/sprint_0.md)
