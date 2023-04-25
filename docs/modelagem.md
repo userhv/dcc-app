@@ -38,6 +38,18 @@ Apesar de ainda não começarmos de fato com a sprint, já temos ciência de alg
 
 Como podemos ver, a estrutura do sistema acima utiliza uma técnica de padrão de projeto chamada [Mediator](https://refactoring.guru/pt-br/design-patterns/mediator). Ela centraliza as chamadas de forma que os outros componentes do sistema não precisam se interagir, assim, todos tem conhecimento desse **Mediador** que por sua vez redireciona as chamadas para os pontos específicos da aplicação.
 
-Nesse projeto, esse tipo de padrão é interessante pois como teremos dois pontos de acesso para consumir os dados, API ou SERVIDOR, centralizar a distribuição das requisições em um único componente garante que as outras partes do sistema não precisam armazenar se os dados requisitados são da api ou do servidor, assim esses componentes se tornam independentes tendo vínculo apenas com o Mediador, além disso, tornamos a estrutura do código mais clara e objetiva.
+Nesse projeto, esse tipo de padrão é interessante pois como teremos dois pontos de acesso para consumir os dados, API ou SERVIDOR. Sendo assim, centralizar a distribuição das requisições em um único componente garante que as outras partes do sistema não precisam armazenar se os dados requisitados são da api ou do servidor, assim esses componentes se tornam independentes tendo vínculo apenas com o Mediador, além disso, tornamos a estrutura do código mais clara e objetiva.
 
+### API e Servidor
+
+Nesse ponto é bom enfatizar a diferença entre ambos. Para esse sistema teremos dois tipos de coleta de dados:
+
+* **Api**: consumiremos os dados, como por exemplo o feed de notícias,  através de um ponto de acesso em XML. Nesse caso os dados são provientes somente dessa fonte, não precisando ser estruturados.
+
+* **Servidor**: outro ponto de consumo de dados será por meio do servidor, nesse caso, alguns dados serão armazenados no banco de dados local ou remoto e utilizaremos a comunicação com esse servidor para requisitar os dados necessários, assim podemos estruturá-los e apresentá-los aos usuários no sistema.
+
+
+### Próximos passos...
+
+A partir de agora daremos inicio as sprints de desenvolvimento do projeto.
 
