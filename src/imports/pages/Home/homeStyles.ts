@@ -4,7 +4,8 @@ import { theme } from '../../paper/theme';
 export const homeStyle = StyleSheet.create({
 	container: {
 		flex: 1,
-		flexDirection: 'column'
+		flexDirection: 'column',
+		backgroundColor: theme.colors.branco,
 	},
 	sincronizando: {
 		height: '100%',

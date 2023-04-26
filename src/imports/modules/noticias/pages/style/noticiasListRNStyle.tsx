@@ -21,13 +21,13 @@ export const noticiasListRNStyle = StyleSheet.create({
     width: '90%',
   },
 
-
   descricao: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     width: '90%',
   },
+  
   divisor: {
     backgroundColor: theme.colors.cinzaMedio
   },

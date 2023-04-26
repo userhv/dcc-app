@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import { ScrollView, View} from 'react-native';
-import {Button, Divider, FAB, Text} from 'react-native-paper';
+import { Divider, Text} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
@@ -13,7 +13,7 @@ import { EnumMediator } from '../../../mediator/EnumMediator';
 import { mediator } from '../../../mediator/mediator';
 
 interface INoticiasList {
-  navigation: NativeStackNavigationProp<any>;
+  navigation?: NativeStackNavigationProp<any>;
 }
 
 export const NoticiasList = (props: INoticiasList) => {
@@ -47,12 +47,11 @@ export const NoticiasList = (props: INoticiasList) => {
       <Divider style={noticiasListRNStyle.divisor}/>
       <ScrollView style={{flex: 1}}>
         {noticias &&
-          noticias.map((e, i) => (
+          noticias.map((noticia, i) => (
             <CardNoticias
               key={i}
-              noticia={e}
-              navigation={navigation}
-              url={e.links[0].url}
+              noticia={noticia}
+              url={noticia.links[0].url}
             />
           ))}
       </ScrollView>

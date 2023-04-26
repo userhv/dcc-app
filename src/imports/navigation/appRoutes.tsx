@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Route } from '@react-navigation/native';
 import Modules from '../modules/index';
-import { NoticiasContainer } from '../modules/noticias/pages/noticiasContainerRN';
+import { NoticiasContainer } from '../modules/noticias/pages/noticiasContainer';
 import { IUserProfile } from '../modules/userProfile/userProfileSch';
 
 interface IAppProps {

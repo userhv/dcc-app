@@ -6,8 +6,6 @@ export const cardNoticiasStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
-		margin: 10,
-		borderRadius: 5
 	},
 	titulo: {
 		fontSize: 17, 
@@ -29,5 +27,8 @@ export const cardNoticiasStyle = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-around',
 		backgroundColor: 'white'
-	}
+	},
+	divisor: {
+		backgroundColor: theme.colors.cinzaMedio
+	  },
 });

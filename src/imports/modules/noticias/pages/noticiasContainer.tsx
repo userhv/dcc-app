@@ -1,5 +1,5 @@
-import { NoticiasDetail } from "./noticiasDetailRN";
-import { NoticiasList } from "./noticiasListRN";
+import { NoticiasDetail } from "./noticiasDetail";
+import { NoticiasList } from "./noticiasList";
 
 
 export const NoticiasContainer = (props: any) => {

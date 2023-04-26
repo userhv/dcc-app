@@ -1,6 +1,6 @@
 import React from 'react';
 import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
-import { NoticiasContainer } from '../pages/noticiasContainerRN';
+import { NoticiasContainer } from '../pages/noticiasContainer';
 
 export const noticiasRouterList = [
 	{
