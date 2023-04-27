@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, TouchableWithoutFeedback, View} from 'react-native';
+import {Image, Share, TouchableWithoutFeedback, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
@@ -8,8 +8,6 @@ import { useContext, useEffect, useState } from 'react';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
-
-
 import { INoticias } from '../sch/noticiasSch';
 
 interface ICardNoticias {
@@ -40,6 +38,16 @@ export const CardNoticias = (props: ICardNoticias) => {
     noticiaEstaSalva();
 
   }, [noticia]);
+
+  const compartilharNoticia = async () => {
+    try {
+      await Share.share({
+        message: url
+      });
+    } catch (error) {
+        console.warn(`Erro ao compartilhar a notícia: ${error}`)
+    }
+  }
 
   const salvarOuRemoverNoticia = async () => {
     if(noticiaSalva){
@@ -91,7 +99,7 @@ export const CardNoticias = (props: ICardNoticias) => {
               iconColor={theme.colors.azul}
               style={cardNoticiasStyle.botoes}
               size={25}
-              onPress={() => {}}
+              onPress={async() => await compartilharNoticia()}
             />
           </Card.Actions>
         </Card>
