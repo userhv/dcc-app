@@ -1,5 +1,9 @@
 import { baseOfflineSch } from '../../../../bd/baseOfflineSch';
 
 export const noticiasRealmSch = {
-	...baseOfflineSch
+	...baseOfflineSch,
+	url: {
+		type: 'string',
+		indexed: true
+	},
 };

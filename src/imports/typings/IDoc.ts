@@ -5,6 +5,5 @@ export interface IDoc {
 	updatedby?: string | null;
 	createdby?: string | null;
 	lastupdate?: Date;
-	sincronizadoEm?: Date | null;
 	idAparelho?: string | null;
 }

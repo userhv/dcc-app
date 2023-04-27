@@ -1,4 +1,5 @@
-import shortid from 'shortid';
+import 'react-native-get-random-values'
+import { nanoid } from 'nanoid';
 import Realm, { UpdateMode } from 'realm';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ErrorOffline } from './errorBaseOffline';
@@ -80,7 +81,7 @@ export class BaseOffline<Doc extends IDoc> {
 	};
 
 	private _prepareDataForRealmInsertion = async (docObj: Doc) => {
-		docObj._id = docObj._id ?? shortid.generate();
+		docObj._id = docObj._id ?? nanoid();
 		const docObjJSONString = JSON.stringify(docObj);
 		const { _id, data, ...remainingFields } = this.schema.properties;
 		const baseObj = { _id: docObj._id!, data: docObjJSONString };
@@ -107,10 +108,10 @@ export class BaseOffline<Doc extends IDoc> {
 	};
 
 	private _addLogInformation = async (docObj: Doc, type: string) => {
-		const userId = await this._userIdAsyncStorage();
-		const updateInfo = { lastupdate: new Date(), updatedby: userId };
+		// const userId = await this._userIdAsyncStorage();
+		const updateInfo = { lastupdate: new Date(), updatedby: 'admin' };
 		if (type === 'insert') {
-			const insertLogs = { createdby: userId, createdat: new Date(), idAparelho: getIdAparelho() };
+			const insertLogs = { createdby: 'admin', createdat: new Date(), idAparelho: getIdAparelho() };
 			return { ...docObj, ...insertLogs, ...updateInfo };
 		} else {
 			return { ...docObj, ...updateInfo };

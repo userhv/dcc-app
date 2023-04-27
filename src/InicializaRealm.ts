@@ -4,17 +4,16 @@ import { noticiasOff as noticias } from './imports/modules/noticias/api/noticias
 import { requestRealm } from './imports/libs/requestRealm';
 
 const realmSchemas = [
-
 	noticias.getSchema()
 ];
 
-const realmSchemaNames = [ 'example'];
+const realmSchemaNames = [ 'noticias'];
 
 export const inicializaRealmGlobal = async () => {
 	const realm = await Realm.open({
 		schema: realmSchemas,
-		deleteRealmIfMigrationNeeded: true
-		// schemaVersion: 2
+		deleteRealmIfMigrationNeeded: true,
+		schemaVersion: 1
 	});
 	globalThis.realm = realm;
 };
