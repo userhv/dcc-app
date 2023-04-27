@@ -6,6 +6,7 @@ export const cardNoticiasStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
+		margin: 1
 	},
 	titulo: {
 		fontSize: 17, 
@@ -20,13 +21,28 @@ export const cardNoticiasStyle = StyleSheet.create({
 		borderColor: 'transparent',
 		backgroundColor: 'transparent'
 	},
+
+	boxImagemUrl: {
+		alignItems: 'flex-start',
+		width: '70%',
+		flexDirection: 'row',
+
+	},
+
+	textoUrl: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		alignSelf: 'center',
+		width: '80%',
+		paddingLeft: 2,
+		color: theme.colors.cinza50
+	},
+
 	imagem: {
 		width: 40, 
 		height: 40,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-around',
-		backgroundColor: 'white'
+		borderRadius: 10,
+		backgroundColor: 'transparent'
 	},
 	divisor: {
 		backgroundColor: theme.colors.cinzaMedio
