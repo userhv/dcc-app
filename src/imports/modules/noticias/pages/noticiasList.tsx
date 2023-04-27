@@ -45,8 +45,8 @@ export const NoticiasList = (props: INoticiasList) => {
           size={25}
           style={noticiasListRNStyle.icone}
           color={theme.colors.azul}
-          onPress={() => {}}
-        />
+          onPress={() => 	navigation?.navigate('noticiasRoute', {
+            screen: 'NoticiasSalvas',})}/>
       </View>
       <Divider style={noticiasListRNStyle.divisor} />
 

@@ -9,6 +9,7 @@ class NoticiasOff extends BaseOffline<INoticias> {
 		super('noticiasOff', noticiasSch, noticiasRealmSch);
 		this.insereNoticia = this.insereNoticia.bind(this);
 		this.removeNoticia = this.removeNoticia.bind(this);
+		this.retornaNoticiasSalvas = this.retornaNoticiasSalvas.bind(this);
 	}
 
 	insereNoticia = async (noticia: rssParser.FeedItem) => {
@@ -19,6 +20,10 @@ class NoticiasOff extends BaseOffline<INoticias> {
 	removeNoticia = async (noticia: INoticias | undefined) => {
 		if(noticia)
 			await noticiasOff.remove(noticia);
+	}
+
+	retornaNoticiasSalvas = async () => {
+		return await noticiasOff.getCollection();
 	}
 }
 
