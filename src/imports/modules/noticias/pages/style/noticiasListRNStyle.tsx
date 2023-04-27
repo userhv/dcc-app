@@ -14,11 +14,11 @@ export const noticiasListRNStyle = StyleSheet.create({
     backgroundColor: theme.colors.branco,
   },
 
-  icon: {
+  icone: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '90%',
+    width: '100%',
   },
 
   descricao: {

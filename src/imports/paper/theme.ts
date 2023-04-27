@@ -58,6 +58,8 @@ export const theme = {
 		azulClaro: '#4c85aa',
 		branco: '#FFFFFF',
 		azulComOpacidade: 'rgba(6, 104, 168,0.3)',
+		cinzaEscuro: '#555555',
+		quasePreto: '#303030',
 
 		//secundarias
 		verdeEscuro: '#034944',

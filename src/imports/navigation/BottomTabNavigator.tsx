@@ -29,7 +29,7 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 			<BottomTab.Screen
 				name="HomeScreen"
 				options={{
-					tabBarLabel: 'Home',
+					tabBarLabel: 'Início',
 					tabBarIcon: ({ focused }) => <Icon name="home" size={24} color={focused ? theme.colors.azul : theme.colors.cinzaComOpacidade} />,
 				}}>
 				{(props) => <HomeNavigator {...props} {...appProps} />}

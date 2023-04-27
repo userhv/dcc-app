@@ -34,7 +34,7 @@ export const noticiasRouterList = [
 export const noticiasMenuItemList = [
 	{
 		navigatorName: 'noticiasRoute',
-		name: 'Noticias',
+		name: 'Notícias',
 		icon: bottomTabNavigatorIcon('newspaper')
 	}
 ];

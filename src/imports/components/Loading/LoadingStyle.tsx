@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const loadingStyle  = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: 'transparent',
 		alignItems: 'center',
 		justifyContent: 'center',
+		height: '100%'
 	},
 });

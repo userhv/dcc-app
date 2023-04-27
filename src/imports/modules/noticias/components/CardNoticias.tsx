@@ -1,23 +1,39 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Linking, TouchableWithoutFeedback} from 'react-native';
+import {TouchableWithoutFeedback, View} from 'react-native';
 import {Card, Divider, IconButton} from 'react-native-paper';
 import {cardNoticiasStyle} from './CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
+import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { useContext } from 'react';
+import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { htmlDecode } from '../../../libs/htmlDecode';
 
 interface ICardNoticias {
   noticia: {[key: string]: any};
   url: string;
+  navigation?: NativeStackNavigationProp<any>;
 }
 
 export const CardNoticias = (props: ICardNoticias) => {
-  const {noticia, url} = props;
+  const {noticia, url, navigation} = props;
+  const { showModal } = useContext(
+    GeneralComponentsContext
+    ) as IGeneralComponentsContext;
+    
+  const abreWebViewNoticia = () => {
+		showModal({
+			renderedComponent: (_props: any) => (
+				<WebViewRN url={url} handleClose={_props.onDismiss}/>
+			)
+		});
+    
+  }
 
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => Linking.openURL(url)} testID='url'>
+      <TouchableWithoutFeedback testID='url' onPress={() => {abreWebViewNoticia()}}>
         <Card style={cardNoticiasStyle.container} mode="contained">
           <Card.Title
-            
             title={noticia.title}
             titleVariant="titleMedium"
             titleStyle={cardNoticiasStyle.titulo}
