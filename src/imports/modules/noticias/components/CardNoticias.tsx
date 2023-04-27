@@ -6,7 +6,6 @@ import {theme} from '../../../paper/theme';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { useContext } from 'react';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { htmlDecode } from '../../../../img/';
 
 interface ICardNoticias {
   noticia: {[key: string]: any};
