@@ -9,6 +9,7 @@ import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
 import { IBottomTabParamList, IHomeParamList } from '../typings/NavigationTypings';
 import { bottomTabNavigatorStyle } from './BottomTabNavigatorStyle';
+import { varianteSemOutline } from '../libs/removerVarianteOutline';
 
 interface INavigatorProps {
 	user: any;
@@ -24,13 +25,16 @@ interface IAppProps {
 const BottomTab = createMaterialBottomTabNavigator<IBottomTabParamList>();
 
 export const BottomTabNavigator = (appProps: IAppProps) => {
+	const iconeHome = 'home-outline';
+	const variante = varianteSemOutline(iconeHome);
 	return (
 		<BottomTab.Navigator initialRouteName="Home" barStyle={bottomTabNavigatorStyle.style} screenOptions={{tabBarLabel: 'bold'}}>
 			<BottomTab.Screen
 				name="HomeScreen"
 				options={{
 					tabBarLabel: 'Início',
-					tabBarIcon: ({ focused }) => <Icon name="home" size={24} color={focused ? theme.colors.azul : theme.colors.cinzaComOpacidade} />,
+					tabBarIcon: ({ focused }) => <Icon name={focused ? variante : iconeHome} 
+						size={24} color={focused ? theme.colors.azul : theme.colors.cinzaComOpacidade} />,
 				}}>
 				{(props) => <HomeNavigator {...props} {...appProps} />}
 			</BottomTab.Screen>
@@ -43,7 +47,7 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 						component={getModuleNavigator(menuData.navigatorName)}
 						options={{
 							tabBarLabel: menuData.name,
-							tabBarIcon: menuData.icon ?? bottomTabNavigatorIcon('folder'),
+							tabBarIcon: menuData.icon ?? bottomTabNavigatorIcon('folder-outline'),
 						}}
 					/>
 

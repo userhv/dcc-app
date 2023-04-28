@@ -44,7 +44,7 @@ export const noticiasMenuItemList = [
 	{
 		navigatorName: 'noticiasRoute',
 		name: 'Notícias',
-		icon: bottomTabNavigatorIcon('newspaper')
+		icon: bottomTabNavigatorIcon('newspaper-variant-outline')
 	}
 ];
 

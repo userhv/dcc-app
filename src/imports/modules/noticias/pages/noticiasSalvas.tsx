@@ -1,7 +1,6 @@
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StatusBar, View} from 'react-native';
 import {Divider, Text} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {theme} from '../../../paper/theme';
 import {noticiasSalvasRNStyle} from './style/noticiasSalvasStyle';
 import { INoticias } from '../sch/noticiasSch';
@@ -9,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface INoticiasSalvas {
     navigation?: NativeStackNavigationProp<any>;
@@ -32,9 +32,10 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
 
   return (
     <View style={noticiasSalvasRNStyle.container}>
+      <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
       <View style={noticiasSalvasRNStyle.containerTop}>
       <Icon
-          name="arrow-back"
+          name="arrow-left"
           size={25}
           style={noticiasSalvasRNStyle.icone}
           color={theme.colors.azul}
@@ -45,7 +46,6 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
         </View>
 
       </View>
-      <Divider style={noticiasSalvasRNStyle.divisor} />
       {noticias.length > 0 ? (
         <ScrollView style={{flex: 1}}>
           {noticias &&
@@ -61,7 +61,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
       ) : (
         <View style={noticiasSalvasRNStyle.boxIconeVazio}> 
             <Icon 
-                name='collections-bookmark'
+                name='bookmark-off-outline'
                 size={150}
                 color={theme.colors.vermelhoVivo}
             />

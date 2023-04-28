@@ -88,7 +88,7 @@ export const CardNoticias = (props: ICardNoticias) => {
               <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium'> {url} </Text>
             </View>
             <IconButton
-              icon={noticiaSalva ? 'bookmark' :'bookmark-outline'}
+              icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
               iconColor={theme.colors.azul}
               style={cardNoticiasStyle.botoes}
               size={25}
