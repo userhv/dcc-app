@@ -52,9 +52,6 @@ export const HomeHeader = (props: IHomeHeader) => {
 						</TouchableWithoutFeedback>
 					}
 					contentStyle={{ backgroundColor: theme.colors.branco }}>
-					<Menu.Item title={"Helio"} titleStyle={homeHeaderStyle.usuario} />
-
-					<Menu.Item title={"Teste"} titleStyle={homeHeaderStyle.matricula} />
 					<Divider />
 					<Menu.Item
 						leadingIcon="key-outline"

@@ -17,7 +17,7 @@ export const WebViewRN = (props: IWebViewRN) => {
   
   return (
     <View style={webViewRNStyle.containerComponente}>
-      <StatusBar backgroundColor={theme.colors.cinzaEscuro}/>
+      <StatusBar backgroundColor={theme.colors.cinzaEscuro} barStyle={'light-content'}/>
       <View style={webViewRNStyle.containerSuperior}>
         <View style={webViewRNStyle.containerBotaoFechar}>
           <IconButton 
