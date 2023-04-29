@@ -43,8 +43,6 @@ export const cardNoticiasStyle = StyleSheet.create({
 		width: 'auto',
 		backgroundColor: 'transparent',
 		margin: 10,
-		// borderRadius: 1,
-		
 	},
 
 	imagem: {
