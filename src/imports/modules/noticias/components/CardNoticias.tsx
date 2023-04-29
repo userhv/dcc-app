@@ -72,6 +72,10 @@ export const CardNoticias = (props: ICardNoticias) => {
     <>
       <TouchableWithoutFeedback testID='url' onPress={() => {abreWebViewNoticia()}}>
         <Card style={cardNoticiasStyle.container} mode="contained">
+          {noticia.media[0].url ? (
+            <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
+          ): null
+          }
           <Card.Title
             title={noticia.title}
             titleVariant="titleMedium"

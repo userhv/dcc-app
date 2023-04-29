@@ -13,7 +13,12 @@ class NoticiasOff extends BaseOffline<INoticias> {
 	}
 
 	insereNoticia = async (noticia: rssParser.FeedItem) => {
-		const obj = { description: noticia.description, url: noticia.links[0].url, title: noticia.title};
+		const obj = { 
+			description: noticia.description, 
+			url: noticia.links[0].url, 
+			title: noticia.title,
+			media: noticia.media
+		};
 		await noticiasOff.insert(obj);
 	}
 

@@ -7,7 +7,6 @@ const getChannelTitle = (node) => utils.getElementTextContent(node, 'title');
 
 const getChannelLinks = (node) => {
   const links = utils.getChildElements(node, 'link');
-
   return links.map((link) => ({
     url: link.textContent,
     rel: link.getAttribute('rel'),
@@ -73,6 +72,7 @@ const getItemTitle = (node) => utils.getElementTextContent(node, 'title');
 
 const getItemLinks = (node) => {
   const links = utils.getChildElements(node, 'link');
+  // console.log("oiii", links[0])
 
   return links.map((link) => ({
     url: link.textContent,
@@ -98,6 +98,14 @@ const getItemAuthors = (node) => {
   }));
 };
 
+const getMediaContent = (node) => {
+  const contents = utils.getChildElements(node, 'media:content');
+  return contents.map((content) => ({
+    type: content.getAttribute('type'),
+    url: content.getAttribute('url')
+  }));
+}
+
 const getItemCategories = (node) => {
   let categories = utils.getElementTextContentArray(node, 'category');
 
@@ -118,7 +126,6 @@ const getItemPublished = (node) =>
 
 const getItemEnclosures = (node) => {
   const enclosures = utils.getChildElements(node, 'enclosure');
-
   return enclosures.map((enclosure) => ({
     url: enclosure.getAttribute('url'),
     length: enclosure.getAttribute('length'),
@@ -152,7 +159,6 @@ const mapChannelFields = (document) => {
 
 const mapItems = (document) => {
   const itemNodes = utils.getElements(document, 'item');
-
   return itemNodes.map((item) => ({
     title: getItemTitle(item),
     links: getItemLinks(item),
@@ -163,6 +169,7 @@ const mapItems = (document) => {
     categories: getItemCategories(item),
     published: getItemPublished(item),
     enclosures: getItemEnclosures(item),
+    media: getMediaContent(item),
     itunes: itunesParser.parseItem(item),
   }));
 };

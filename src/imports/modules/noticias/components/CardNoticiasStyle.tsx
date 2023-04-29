@@ -6,7 +6,8 @@ export const cardNoticiasStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
-		margin: 1
+		margin: 1,
+		height: 'auto'
 	},
 	titulo: {
 		fontSize: 17, 
@@ -36,6 +37,14 @@ export const cardNoticiasStyle = StyleSheet.create({
 		width: '80%',
 		paddingLeft: 2,
 		color: theme.colors.cinza50
+	},
+
+	imagemCover: {
+		width: 'auto',
+		backgroundColor: 'transparent',
+		margin: 10,
+		// borderRadius: 1,
+		
 	},
 
 	imagem: {

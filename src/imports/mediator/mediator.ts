@@ -10,7 +10,7 @@ class  Mediator {
      selecionaRequesicao =  async (key: string) => {
         switch (key) {
             case EnumMediator.NOTICIAS:
-                return await rssApi('https://dcc.ufmg.br/feed/rss');
+                return await rssApi('https://dcc.ufmg.br/feed');
             default:
                 break;
         }
