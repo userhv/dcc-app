@@ -76,7 +76,6 @@ Dependendo do andamento do projeto, nessa fase também podemos definir quais tec
 
 * [react-native](https://reactnative.dev/)
 * [realm](https://realm.io/)
-* [firebase](https://firebase.google.com/?hl=pt-br)
 
 ### Resumo
 
