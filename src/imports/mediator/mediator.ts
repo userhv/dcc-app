@@ -3,11 +3,11 @@ import { rssApi } from '../../api/rssApi';
 
 class  Mediator {
     constructor(){
-        this.selecionaRequesicao = this.selecionaRequesicao.bind(this);
+        this.selecionaRequisicao = this.selecionaRequisicao.bind(this);
 
     }
 
-     selecionaRequesicao =  async (key: string) => {
+    selecionaRequisicao =  async (key: string) => {
         switch (key) {
             case EnumMediator.NOTICIAS:
                 return await rssApi('https://dcc.ufmg.br/feed');

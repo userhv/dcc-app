@@ -19,11 +19,11 @@ export const App = () => {
   
   return (
     <PaperProvider theme={theme}>
-    <GeneralComponents>
-      <>
-      <AppNavigation user={null}/>
-      </>
-    </GeneralComponents>
+      <GeneralComponents>
+        <>
+        <AppNavigation user={null}/>
+        </>
+      </GeneralComponents>
   </PaperProvider>
 
   );

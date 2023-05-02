@@ -23,7 +23,7 @@ export const NoticiasList = (props: INoticiasList) => {
 
   const rssNoticias = async () => {
     const data: rssParser.FeedItem[] | undefined =
-      await mediator.selecionaRequesicao(EnumMediator.NOTICIAS);
+      await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
     data && setNoticias(data);
   };
 
