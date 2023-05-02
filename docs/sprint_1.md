@@ -28,7 +28,7 @@ Para essa primeira etapa, a modelagem do sistema em específico ficou determinad
 
 Além disso, estamos utilizando uma visualização com **WebView** o que garante que o usuário se mantenha no aplicativo para consumir os conteúdos presentes no mesmo.
 
-## O react-native-parser-rss e a dependência
+## O react-native-rss-parser e a dependência
 
 Um problema que enfrentamos nessa primeira sprint foi que o pacote que utilizamos para realizar o parser de tipos **Atom** e **RSS** tinha sido descontinuado, com isso durante o desenvolvimento detectamos que uma de suas dependências (xmldom) possuia uma vulnerabilidade crítica na versão que estava sendo usado, sendo assim criamos um fork desse pacote e alteramos, atualizando a versão da suas dependências e adicionando uma funcionalidade de coletar o **media:content** um atributo utilizado para coletar imagens do tipo jpeg que são providas pela API de notícias. 
 
