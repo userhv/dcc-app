@@ -91,6 +91,11 @@ def reactNativeArchitectures() {
 }
 
 android {
+
+    buildFeatures{
+        viewBinding=true
+    }
+
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -113,6 +118,15 @@ android {
         }
     }
     signingConfigs {
+        release {
+            if (project.hasProperty('DCC_STORE_FILE')) {
+                storeFile file(DCC_STORE_FILE)
+                storePassword DCC_STORE_PASSWORD
+                keyAlias DCC_KEY_ALIAS
+                keyPassword DCC_KEY_PASSWORD
+            }
+        }
+
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
