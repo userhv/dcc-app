@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {ScrollView, StatusBar, View} from 'react-native';
-import {Divider, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
@@ -36,7 +36,7 @@ export const NoticiasList = (props: INoticiasList) => {
 
   return (
     <View style={noticiasListRNStyle.container}>
-      <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
+      <StatusBar barStyle={'dark-content'}/>
       <View style={noticiasListRNStyle.containerTop}>
         <View style={noticiasListRNStyle.descricao}>
           <Text variant="headlineSmall"> Últimas notícias do DCC</Text>

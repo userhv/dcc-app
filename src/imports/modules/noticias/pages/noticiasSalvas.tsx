@@ -1,5 +1,5 @@
 import {ScrollView, StatusBar, View} from 'react-native';
-import {Divider, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
 import {theme} from '../../../paper/theme';
 import {noticiasSalvasRNStyle} from './style/noticiasSalvasStyle';
