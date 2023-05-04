@@ -1,5 +1,6 @@
 const robotoRegular = 'Roboto-Regular';
-const robotoMedium = 'Roboto-Medium'
+const robotoMedium = 'Roboto-Medium';
+const robotoBold = 'Roboto-Bold';
 const titilliumWebSemibold = 'TitilliumWeb-SemiBold';
 
 const variants = {
@@ -77,6 +78,7 @@ const variants = {
 		lineHeight: 19,
 		letterSpacing: 0.005
 	},
+
 	labelMedium: {
 		fontFamily: robotoMedium,
 		fontStyle: 'normal',

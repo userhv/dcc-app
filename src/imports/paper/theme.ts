@@ -55,11 +55,14 @@ export const theme = {
 		cinza: '#a7a9ac',
 		cinzaComOpacidade: '#rgba(49, 49, 48,0.7)',
 		cinzaClaro: '#dfe1e3',
+		barraNavegacao: 'rgba(6, 104, 168,0.1)',
 		azulClaro: '#4c85aa',
 		branco: '#FFFFFF',
 		azulComOpacidade: 'rgba(6, 104, 168,0.3)',
+		azulOpacoMenuOportunidades: 'rgba(6, 104, 168,0.2)',
 		cinzaEscuro: '#555555',
-		quasePreto: '#303030',
+		quasePreto: '#2f2f2f',
+		azulOpacoSelecionado: 'rgba(6, 104, 168,0.1)',
 
 		//secundarias
 		verdeEscuro: '#034944',
@@ -73,10 +76,11 @@ export const theme = {
 		elevation: {
 			level0: 'transparent',
 			level1: '#f1faf1',
-			level2: '#eaf7ea',
+			level2: '#edf1ff',  //cor da bottom bar
 			level3: '#e6f4e4',
 			level4: '#e3f3e2',
 			level5: '#dff1de'
 		},
 	}
+ 
 };

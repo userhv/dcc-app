@@ -7,5 +7,5 @@ export const bottomTabNavigatorIcon = (name: string) => {
 	const variante = varianteSemOutline(name);
 
 	return ({ focused }: { focused: boolean }) => <Icon name={focused ? variante : name} 
-			size={24} color={focused ? theme.colors.azul : theme.colors.cinzaComOpacidade} />;
+			size={24} color={focused ? theme.colors.azul : theme.colors.quasePreto} />;
 };

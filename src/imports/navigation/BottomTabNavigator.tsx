@@ -8,7 +8,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
 import { IBottomTabParamList, IHomeParamList } from '../typings/NavigationTypings';
-import { bottomTabNavigatorStyle } from './BottomTabNavigatorStyle';
 import { varianteSemOutline } from '../libs/removerVarianteOutline';
 
 interface INavigatorProps {
@@ -28,13 +27,13 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 	const iconeHome = 'home-outline';
 	const variante = varianteSemOutline(iconeHome);
 	return (
-		<BottomTab.Navigator initialRouteName="Home" barStyle={bottomTabNavigatorStyle.style} screenOptions={{tabBarLabel: 'bold'}}>
+		<BottomTab.Navigator initialRouteName="Home" screenOptions={{tabBarLabel: 'bold'}} >
 			<BottomTab.Screen
 				name="HomeScreen"
 				options={{
 					tabBarLabel: 'Início',
 					tabBarIcon: ({ focused }) => <Icon name={focused ? variante : iconeHome} 
-						size={24} color={focused ? theme.colors.azul : theme.colors.cinzaComOpacidade} />,
+						size={24} color={focused ? theme.colors.azul : theme.colors.quasePreto} />,
 				}}>
 				{(props) => <HomeNavigator {...props} {...appProps} />}
 			</BottomTab.Screen>
