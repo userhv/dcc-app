@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {ScrollView, StatusBar, View} from 'react-native';
-import {Divider, Text} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
