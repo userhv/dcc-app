@@ -36,7 +36,7 @@ export const NoticiasList = (props: INoticiasList) => {
 
   return (
     <View style={noticiasListRNStyle.container}>
-      <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
+      <StatusBar barStyle={'dark-content'}/>
       <View style={noticiasListRNStyle.containerTop}>
         <View style={noticiasListRNStyle.descricao}>
           <Text variant="headlineSmall"> Últimas notícias do DCC</Text>
