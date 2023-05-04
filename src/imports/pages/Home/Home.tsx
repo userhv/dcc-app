@@ -3,6 +3,7 @@ import React  from 'react';
 import { View} from 'react-native';
 import {homeStyle} from './homeStyles';
 import { HomeHeader } from './HomeHeader/HomeHeader';
+import { Divider } from 'react-native-paper';
 
 
 export const Home = (props: any) => {
@@ -11,10 +12,8 @@ export const Home = (props: any) => {
   return (
     <View style={homeStyle.container}>
       <HomeHeader user={user} />
-      <View style={homeStyle.listContainer}>
-        <View style={{flex: 1, marginTop: 24}}>
-          {/* <ExampleContainer {...props} /> */}
-        </View>
+      <Divider style={homeStyle.divisor}/>
+      <View style={homeStyle.blocoInterno}>
       </View>
     </View>
   );
