@@ -22,9 +22,7 @@ export const CardNoticias = (props: ICardNoticias) => {
   const [noticiaSalva, setNoticiaSalva] = useState<boolean>(false);
   const [noticiaParaSerTratada, setNoticiaParaSerTratada] = useState<INoticias | undefined>(undefined);
 
-  const { showModal } = useContext(
-    GeneralComponentsContext
-    ) as IGeneralComponentsContext;
+  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
       
   useEffect(() => {
     const noticiaEstaSalva = async () => {
@@ -72,7 +70,7 @@ export const CardNoticias = (props: ICardNoticias) => {
     <>
       <TouchableWithoutFeedback testID='url' onPress={() => {abreWebViewNoticia()}}>
         <Card style={cardNoticiasStyle.container} mode="contained">
-          {noticia.media[0].url ? (
+          {noticia.media[0] ? (
             <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
           ): null
           }

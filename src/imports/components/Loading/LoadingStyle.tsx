@@ -5,6 +5,6 @@ export const loadingStyle  = StyleSheet.create({
 		backgroundColor: 'transparent',
 		alignItems: 'center',
 		justifyContent: 'center',
-		height: '100%'
+		flex: 1
 	},
 });

@@ -5,22 +5,6 @@ import { NoticiasSalvas } from '../pages/noticiasSalvas';
 
 export const noticiasRouterList = [
 	{
-		navigatorName: 'noticiasRoute',
-		title: 'Detalhes da Noticia',
-		name: 'NoticiasDetail',
-		path: 'noticias/:screenState/:id',
-		component: NoticiasContainer,
-		isProtected: true
-	},
-	{
-		navigatorName: 'noticiasRoute',
-		title: 'Novo Exemplo',
-		name: 'NoticiasCreate',
-		path: 'noticias/:screenState',
-		component: NoticiasContainer,
-		isProtected: true
-	},
-	{
 		isInitialRoute: true,
 		navigatorName: 'noticiasRoute',
 		title: 'Lista de Noticias',

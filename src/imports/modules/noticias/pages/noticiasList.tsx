@@ -62,7 +62,7 @@ export const NoticiasList = (props: INoticiasList) => {
             ))}
         </ScrollView>
       ) : (
-        <Loading />
+          <Loading />
       )}
     </View>
   );
