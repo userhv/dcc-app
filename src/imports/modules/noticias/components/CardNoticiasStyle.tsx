@@ -24,8 +24,7 @@ export const cardNoticiasStyle = StyleSheet.create({
 	},
 
 	boxImagemUrl: {
-		alignItems: 'flex-start',
-		width: 260,
+		alignItems: 'center',
 		flexDirection: 'row',
 
 	},

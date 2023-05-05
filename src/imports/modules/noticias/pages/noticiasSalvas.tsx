@@ -37,7 +37,6 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
       <Icon
           name="arrow-left"
           size={25}
-          style={noticiasSalvasRNStyle.icone}
           color={theme.colors.azul}
           onPress={() => navigation?.goBack()}
         />

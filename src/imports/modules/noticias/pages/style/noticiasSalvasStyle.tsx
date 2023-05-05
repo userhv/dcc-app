@@ -4,32 +4,23 @@ import {theme} from '../../../../paper/theme';
 export const noticiasSalvasRNStyle = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 1,
   },
 
   containerTop: {
-    width: 'auto',
-    height: 'auto',
-    paddingTop: 10,
-    paddingBottom: 10,
+    padding: 10,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: theme.colors.branco,
     
   },
 
-  icone: {
+  descricao: {
+    flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
     width: 'auto',
-    paddingLeft: 7
-  },
-
-  descricao: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 350,
   },
 
   boxIconeVazio: {

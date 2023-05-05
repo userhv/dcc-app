@@ -8,27 +8,20 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   containerTop: {
-    width: 'auto',
-    height: 'auto',
     paddingTop: 10,
     paddingBottom: 10,
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: theme.colors.branco,
   },
 
   icone: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 'auto',
+    paddingRight: 15
   },
 
   descricao: {
+    flex:1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 350,
+    justifyContent: 'space-around',
   },
   
   divisor: {
