@@ -36,3 +36,20 @@ Um problema que enfrentamos nessa primeira sprint foi que o pacote que utilizamo
 
 Com isso, basicamente agora temos o poder de controlar o parser dos arquivos da forma que for necessária para o projeto, se livrando de um vínculo com algum pacote externo que futuramente possa ficar obsoleto por falta de atualização dos mantenedores.
 
+## Acessibilidade
+
+Após finalizado toda a implementação, adicionamos suporte a acessibilidade nos componentes, assim os leitores de tela das plataformas ao qual o aplicativo estará presente poderá guiar o usuário com deficiência para tomar as melhores decisões.
+
+## Os testes
+
+Outro ponto importante foi o conjunto de testes. Testar componentes no react-native é extremamente complexo, pois caso um componente pra ser renderizado utilize outros componentes, esses precisam estar como **mocks** somente assim, é possível realizar os testes necessários.
+
+Os conjuntos de testes para esse aplicativo estarão presentes durante o longo do projeto, note que é uma boa prática da Engenharia de Software produzir um SUT juntamente com o desenvolvimento das features. 
+
+Nessa primeira etapa, utilizamos apenas testes de unidade e testes de componentes, porém como já citado anteriormente, ao longo do desenvolvimento mais testes são adicionados para manter a estabilidade do sistema.
+
+### Os testes manuais
+
+A maior parte do projeto é composto por testes automatizados como é de recomendado pelas boas práticas da engenharia de software, porém, em alguns casos testes manuais são mais efetivos. 
+
+Por exemplo, quando criamos um componente no qual possui um card com um botão, o botão de compartilhar a notícia por exemplo, o ajuste de tamanho e espaçamento para com os outros elementos da tela é feito por um teste visual, já que não faria sentido criar um teste automatizado para tentar verificar esse ponto, pois seria um esforço muito grande e desnecessário, sendo assim, além do conjunto de testes automatizados, **testes manuais** como verificação de posição, espaçamento, tamanho, formato, cor foram feitos durante essa primeira sprint e serão feitos durante todo o projeto, já que assim temos um ganho maior.
