@@ -11,7 +11,7 @@ export const webViewRNStyle = StyleSheet.create({
   },
   
   containerSuperior: {
-    height: '6%', 
+    height: 'auto', 
     backgroundColor: theme.colors.cinzaEscuro,
     flexDirection: 'row',
     zIndex: 1
@@ -23,10 +23,10 @@ export const webViewRNStyle = StyleSheet.create({
   },
 
   containerTitulo: {
-    width: '100%',
+    width: 360,
     flexDirection: 'row',
     alignItems: 'center',
-    height: '100%',
+    height: 'auto',
     flexShrink: 1
   },
   
