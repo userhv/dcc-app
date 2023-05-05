@@ -40,7 +40,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
           color={theme.colors.azul}
           onPress={() => navigation?.goBack()}
         />
-        <View style={noticiasSalvasRNStyle.descricao}>
+        <View style={noticiasSalvasRNStyle.descricao} accessible={true}>
           <Text variant="headlineSmall"> Suas notícias salvas</Text>
         </View>
 
@@ -58,7 +58,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
             ))}
         </ScrollView>
       ) : (
-        <View style={noticiasSalvasRNStyle.boxIconeVazio}> 
+        <View style={noticiasSalvasRNStyle.boxIconeVazio} accessible={true}> 
             <Icon 
                 name='bookmark-off-outline'
                 size={150}

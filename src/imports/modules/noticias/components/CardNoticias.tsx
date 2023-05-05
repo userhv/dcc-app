@@ -69,7 +69,7 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   return (
     <>
-      <TouchableWithoutFeedback testID='url' onPress={() => {abreWebViewNoticia()}}>
+      <TouchableWithoutFeedback testID='url' onPress={() => {abreWebViewNoticia()}} accessible={true} accessibilityLabel='Toque para ler a notícia'>
         <Card style={cardNoticiasStyle.container} mode="contained">
           {noticia.media[0] ? (
             <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
@@ -95,6 +95,9 @@ export const CardNoticias = (props: ICardNoticias) => {
               </View>
             <View style={cardNoticiasStyle.boxBotoes}>
               <IconButton
+                accessible={true}
+                accessibilityLabel='Toque uma vez para salvar a notícia, toque duas vezes para remover a notícia salva'
+                accessibilityRole='button'
                 icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
                 iconColor={theme.colors.azul}
                 style={cardNoticiasStyle.botoes}
@@ -102,6 +105,9 @@ export const CardNoticias = (props: ICardNoticias) => {
                 onPress={async() => await salvarOuRemoverNoticia()}
                 />
               <IconButton
+                accessible={true}
+                accessibilityLabel='Toque para compartilhar a notícia'
+                accessibilityRole='button'
                 icon={'share-variant-outline'}
                 iconColor={theme.colors.azul}
                 style={cardNoticiasStyle.botoes}

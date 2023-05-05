@@ -36,12 +36,15 @@ export const NoticiasList = (props: INoticiasList) => {
 
   return (
     <View style={noticiasListRNStyle.container}>
-      <StatusBar backgroundColor={theme.colors.branco}  barStyle={'dark-content'}/>
+      <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
       <View style={noticiasListRNStyle.containerTop}>
-        <View style={noticiasListRNStyle.descricao}>
+        <View style={noticiasListRNStyle.descricao} accessible={true}>
           <Text variant="headlineSmall"> Últimas notícias do DCC</Text>
         </View>
         <Icon
+          accessible={true}
+          accessibilityLabel='Suas notícias salvas'
+          accessibilityRole='button'
           name="bookmark-multiple"
           size={25}
           style={noticiasListRNStyle.icone}
