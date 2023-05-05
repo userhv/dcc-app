@@ -86,10 +86,13 @@ export const CardNoticias = (props: ICardNoticias) => {
             subtitleNumberOfLines={4}
           />
           <Card.Actions>
-            <View style={cardNoticiasStyle.boxImagemUrl}>
-              <Image source={require('../../../../img/icone_dcc.png')} style={cardNoticiasStyle.imagem} />
-              <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium'> {url} </Text>
-            </View>
+            <View style={cardNoticiasStyle.boxActions}>
+              <View style={cardNoticiasStyle.boxImagemUrl}>
+                <Image source={require('../../../../img/icone_dcc.png')} style={cardNoticiasStyle.imagem} />
+                <View style={{flexShrink: 1}}>
+                  <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
+                  </View>
+              </View>
             <View style={cardNoticiasStyle.boxBotoes}>
               <IconButton
                 icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
@@ -97,14 +100,15 @@ export const CardNoticias = (props: ICardNoticias) => {
                 style={cardNoticiasStyle.botoes}
                 size={25}
                 onPress={async() => await salvarOuRemoverNoticia()}
-              />
+                />
               <IconButton
                 icon={'share-variant-outline'}
                 iconColor={theme.colors.azul}
                 style={cardNoticiasStyle.botoes}
                 size={25}
                 onPress={async() => await compartilharNoticia()}
-              />
+                />
+            </View>
             </View>
           </Card.Actions>
         </Card>
