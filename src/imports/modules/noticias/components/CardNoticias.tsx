@@ -9,6 +9,7 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../co
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
+import { cardOportunidadesStyle } from '../../oportunidades/components/CardOportunidadesStyle';
 
 interface ICardNoticias {
   noticia: rssParser.FeedItem;
@@ -89,20 +90,22 @@ export const CardNoticias = (props: ICardNoticias) => {
               <Image source={require('../../../../img/icone_dcc.png')} style={cardNoticiasStyle.imagem} />
               <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium'> {url} </Text>
             </View>
-            <IconButton
-              icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
-              iconColor={theme.colors.azul}
-              style={cardNoticiasStyle.botoes}
-              size={25}
-              onPress={async() => await salvarOuRemoverNoticia()}
-            />
-            <IconButton
-              icon={'share-variant-outline'}
-              iconColor={theme.colors.azul}
-              style={cardNoticiasStyle.botoes}
-              size={25}
-              onPress={async() => await compartilharNoticia()}
-            />
+            <View style={cardNoticiasStyle.boxBotoes}>
+              <IconButton
+                icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
+                iconColor={theme.colors.azul}
+                style={cardNoticiasStyle.botoes}
+                size={25}
+                onPress={async() => await salvarOuRemoverNoticia()}
+              />
+              <IconButton
+                icon={'share-variant-outline'}
+                iconColor={theme.colors.azul}
+                style={cardNoticiasStyle.botoes}
+                size={25}
+                onPress={async() => await compartilharNoticia()}
+              />
+            </View>
           </Card.Actions>
         </Card>
       </TouchableWithoutFeedback>

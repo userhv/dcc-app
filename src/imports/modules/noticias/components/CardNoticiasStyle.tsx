@@ -24,8 +24,10 @@ export const cardNoticiasStyle = StyleSheet.create({
 	},
 
 	boxImagemUrl: {
+		flex:1,
 		alignItems: 'center',
 		flexDirection: 'row',
+		flexShrink: 1,
 
 	},
 
@@ -33,9 +35,15 @@ export const cardNoticiasStyle = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		alignSelf: 'center',
-		width: 220,
+		// width: 'auto',
 		paddingLeft: 2,
 		color: theme.colors.cinza50
+	},
+
+	boxBotoes: {
+		flexDirection: 'row',
+		paddingLeft: 3,
+		paddingRight: 3
 	},
 
 	imagemCover: {
