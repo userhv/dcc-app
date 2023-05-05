@@ -7,8 +7,10 @@ export const noticiasSalvasRNStyle = StyleSheet.create({
   },
 
   containerTop: {
-    width: '100%',
-    height: '8%',
+    width: 'auto',
+    height: 'auto',
+    paddingTop: 10,
+    paddingBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.colors.branco,
@@ -27,20 +29,22 @@ export const noticiasSalvasRNStyle = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '85%',
+    width: 350,
   },
 
   boxIconeVazio: {
+    flex:1,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    height: '100%',
+    width: 'auto',
+    height: 'auto',
   },
 
   texto: {
     flexWrap: 'wrap',
-    width: '90%',
+    width: 'auto',
+    padding: 10,
     textAlign: 'center'
   },
   

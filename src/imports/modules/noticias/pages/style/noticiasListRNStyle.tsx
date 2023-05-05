@@ -8,8 +8,10 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   containerTop: {
-    width: '100%',
-    height: '8%',
+    width: 'auto',
+    height: 'auto',
+    paddingTop: 10,
+    paddingBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.colors.branco,
@@ -26,7 +28,7 @@ export const noticiasListRNStyle = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '90%',
+    width: 350,
   },
   
   divisor: {
