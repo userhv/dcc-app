@@ -23,27 +23,28 @@ export const cardNoticiasStyle = StyleSheet.create({
 		backgroundColor: 'transparent'
 	},
 
+	boxActions: {
+		flexDirection: 'row',
+	},
+
 	boxImagemUrl: {
 		flex:1,
 		alignItems: 'center',
 		flexDirection: 'row',
-		flexShrink: 1,
-
 	},
 
+
 	textoUrl: {
-		alignItems: 'center',
-		justifyContent: 'center',
-		alignSelf: 'center',
-		// width: 'auto',
 		paddingLeft: 2,
+		paddingRight: 2,
+		overflow: 'hidden',
 		color: theme.colors.cinza50
 	},
 
 	boxBotoes: {
 		flexDirection: 'row',
-		paddingLeft: 3,
-		paddingRight: 3
+		marginLeft: 3,
+		marginRight: 3,
 	},
 
 	imagemCover: {
@@ -55,7 +56,6 @@ export const cardNoticiasStyle = StyleSheet.create({
 	imagem: {
 		width: 40, 
 		height: 40,
-		borderRadius: 10,
 		backgroundColor: 'transparent'
 	},
 	divisor: {
