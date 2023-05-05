@@ -20,7 +20,10 @@ export const WebViewRN = (props: IWebViewRN) => {
       <StatusBar backgroundColor={theme.colors.cinzaEscuro} barStyle={'light-content'}/>
       <View style={webViewRNStyle.containerSuperior}>
         <View style={webViewRNStyle.containerBotaoFechar}>
-          <IconButton 
+          <IconButton
+            accessible={true}
+            accessibilityLabel='Toque para fechar a página'
+            accessibilityRole='button' 
             icon='close'
             iconColor={theme.colors.branco}
             size={24}
