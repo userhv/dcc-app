@@ -65,8 +65,8 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={eventos}
               navigation={navigation}
               url={eventos[0].links[0].url}
-              cor={theme.colors.vermelhoVivo}
-              texto='Eventos'
+              cor={theme.colors.laranja}
+              texto='Eventos do seu interesse'
               />
           ): null}
           {estagios.length > 0 ? (
@@ -76,7 +76,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={estagios}
               navigation={navigation}
               url={estagios[0].links[0].url}
-              cor={theme.colors.marrom}
+              cor={theme.colors.roxo}
               texto='Oportunidades de estágio'
               />
           ): null}
@@ -87,7 +87,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={ics}
               navigation={navigation}
               url={ics[0].links[0].url}
-              cor={theme.colors.azul}
+              cor={theme.colors.marrom}
               texto='Iniciações Científicas'
               />
           ): null}
@@ -98,7 +98,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={palestras}
               navigation={navigation}
               url={palestras[0].links[0].url}
-              cor={theme.colors.verdeClaro}
+              cor={theme.colors.verde}
               texto='Palestras'
               />           
           ): null}

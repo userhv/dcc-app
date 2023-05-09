@@ -63,7 +63,7 @@ export const OportunidadesDetail = (props: IOportunidadesDetail) => {
 		 {oportunidade?.content ? (
 		     <ScrollView style={noticiasDetailRNStyle.scrollView} showsVerticalScrollIndicator={false}>
 					<RenderHTML contentWidth={width} source={{ html: oportunidade?.content }} baseStyle={noticiasDetailRNStyle.baseRender}/>
-					<View style={noticiasDetailRNStyle.botaoInscrever}>
+					{/* <View style={noticiasDetailRNStyle.botaoInscrever}>
 						<Button
 							icon='check-bold'
 							mode='contained'
@@ -71,7 +71,7 @@ export const OportunidadesDetail = (props: IOportunidadesDetail) => {
 							onPress={() => {}}>
 							Quero me inscrever
 						</Button>
-					</View>
+					</View> */}
     		</ScrollView>
 		 ): null}
 	  </View>
