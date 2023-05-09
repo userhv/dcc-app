@@ -1,4 +1,5 @@
 import noticias from './noticias/config'
+import oportunidades from './oportunidades/config'
 
 class Modules {
 	modulesRouterList: (any | null)[] = [null];
@@ -7,11 +8,13 @@ class Modules {
 		// Create modules router list
 		this.modulesRouterList = [
 			...noticias.noticiasRouterList,
+			...oportunidades.oportunidadesRouterList,
 		];
 
 		// Create modules App Menu Item list
 		this.modulesAppMenuItemList = [
 			...noticias.noticiasMenuItemList,
+			...oportunidades.oportunidadesMenuItemList,
 		];
 	}
 

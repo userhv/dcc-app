@@ -20,6 +20,7 @@ export const rssApi = async (url: string) => {
      items.forEach((item)=> {
             item.title = htmlDecode(item.title);
             item.description = htmlDecode(item.description);
+            item.content = htmlDecode(item.content)
     })
 
     return items;

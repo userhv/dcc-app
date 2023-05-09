@@ -1,3 +1,8 @@
 export enum EnumMediator  {
-	NOTICIAS = 'noticias'
+	NOTICIAS = 'noticias',
+	OPORTUNIDADES = 'oportunidades',
+	EVENTOS = 'eventos',
+	PALESTRAS = 'palestras',
+	IC = 'ics',
+	ESTAGIOS = 'estagios',
 };

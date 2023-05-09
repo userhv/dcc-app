@@ -19,7 +19,7 @@ export const webViewRNStyle = StyleSheet.create({
 
   containerBotaoFechar: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   containerTitulo: {
@@ -36,8 +36,8 @@ export const webViewRNStyle = StyleSheet.create({
   },
 
   botaoFechar: {
-    alignItems: 'center', 
     justifyContent: 'center',
+    margin: 10,
   },
 
     container: {
