@@ -9,6 +9,7 @@ import { oportunidadesListRNStyle } from '../pages/style/oportunidadesListRNStyl
 
 interface ICardOportunidades {
   oportunidade: rssParser.FeedItem;
+  oportunidades: rssParser.FeedItem[];
   url: string;
   texto: string;
   cor: string;
@@ -16,7 +17,7 @@ interface ICardOportunidades {
 }
 
 export const CardOportunidades = (props: ICardOportunidades) => {
-  const {oportunidade, url, navigation, texto, cor} = props;
+  const {oportunidade, url, navigation, texto, cor, oportunidades} = props;
   const idOportunidade = oportunidade.id.substring(oportunidade.id.indexOf('=') + 1);
 
 

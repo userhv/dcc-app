@@ -62,19 +62,21 @@ export const OportunidadesList = (props: IOportunidadesList) => {
             <CardOportunidades
               key={nanoid()}
               oportunidade={eventos[0]}
+              oportunidades={eventos}
               navigation={navigation}
               url={eventos[0].links[0].url}
               cor={theme.colors.vermelhoVivo}
-              texto='Os próximos eventos'
+              texto='Eventos'
               />
           ): null}
           {estagios.length > 0 ? (
             <CardOportunidades
               key={nanoid()}
               oportunidade={estagios[0]}
+              oportunidades={estagios}
               navigation={navigation}
               url={estagios[0].links[0].url}
-              cor={theme.colors.azulClaro}
+              cor={theme.colors.marrom}
               texto='Oportunidades de estágio'
               />
           ): null}
@@ -82,9 +84,10 @@ export const OportunidadesList = (props: IOportunidadesList) => {
             <CardOportunidades
               key={nanoid()}
               oportunidade={ics[0]}
+              oportunidades={ics}
               navigation={navigation}
               url={ics[0].links[0].url}
-              cor={theme.colors.marrom}
+              cor={theme.colors.azul}
               texto='Iniciações Científicas'
               />
           ): null}
@@ -92,10 +95,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
             <CardOportunidades
               key={nanoid()}
               oportunidade={palestras[0]}
+              oportunidades={palestras}
               navigation={navigation}
               url={palestras[0].links[0].url}
               cor={theme.colors.verdeClaro}
-              texto='Próximas palestras'
+              texto='Palestras'
               />           
           ): null}
         </ScrollView>
