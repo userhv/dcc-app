@@ -2,6 +2,7 @@ import React from 'react';
 import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { OportunidadesContainer } from '../pages/oportunidadesContainer';
 import { OportunidadesSalvas } from '../pages/oportunidadesSalvas';
+import { OportunidadeEvento } from '../pages/subpages/OportundadeEvento';
 
 export const oportunidadesRouterList = [
 	{
@@ -27,6 +28,14 @@ export const oportunidadesRouterList = [
 		name: 'OportunidadesSalvas',
 		path: 'oportunidades/save',
 		component: OportunidadesSalvas,
+		isProtected: true
+	},
+	{
+		navigatorName: 'oportunidadesRoute',
+		title: 'Oportunidade Evento',
+		name: 'OportunidadesEvento',
+		path: 'oportunidades/eventos',
+		component: OportunidadesContainer,
 		isProtected: true
 	},
 

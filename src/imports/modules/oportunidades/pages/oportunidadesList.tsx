@@ -1,10 +1,9 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {ScrollView, StatusBar, View} from 'react-native';
-import {Button, Chip, Divider, IconButton, Text} from 'react-native-paper';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
+import {Animated, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import {Text} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {theme} from '../../../paper/theme';
 import {EnumMediator} from '../../../mediator/EnumMediator';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as rssParser from 'react-native-rss-parser';
 import {oportunidadesListRNStyle} from './style/oportunidadesListRNStyle';
 import { useFocusEffect } from '@react-navigation/native';
@@ -12,6 +11,9 @@ import { mediator } from '../../../mediator/mediator';
 import { Loading } from '../../../components/Loading/Loading';
 import { CardOportunidades } from '../components/CardOportunidades';
 import { nanoid } from 'nanoid';
+import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { OportunidadeEvento } from './subpages/OportundadeEvento';
+import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
 
 interface IOportunidadesList {
   navigation?: NativeStackNavigationProp<any>;
@@ -20,11 +22,13 @@ interface IOportunidadesList {
 export const OportunidadesList = (props: IOportunidadesList) => {
   const {navigation} = props;
 
+  const offset = useRef(new Animated.Value(0)).current;
 
   const [eventos, setEventos] = useState<rssParser.FeedItem[]>([]);
   const [estagios, setEstagios] = useState<rssParser.FeedItem[]>([]);
   const [ics, setIcs] = useState<rssParser.FeedItem[]>([]);
   const [palestras, setPalestras] = useState<rssParser.FeedItem[]>([]);
+
 
   useFocusEffect(
     useCallback(() => {
@@ -32,7 +36,6 @@ export const OportunidadesList = (props: IOportunidadesList) => {
       _rsssNoticias();
     }, []),
   );
-
 
   const rssOportunidades = async () => {
     const dataEstagios: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.OPORTUNIDADES);
@@ -47,17 +50,13 @@ export const OportunidadesList = (props: IOportunidadesList) => {
 
 
   return (
-    <View style={oportunidadesListRNStyle.container}>
-      <StatusBar
-        backgroundColor={theme.colors.branco}
-        barStyle={'dark-content'}
-      />
-      <View style={oportunidadesListRNStyle.containerTop}>
-        <View style={oportunidadesListRNStyle.descricao}>
-          <Text variant="headlineSmall"> Painel de oportunidades </Text>
-        </View>
-      </View>
-        <ScrollView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1}}>
+      <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Painel de Oportunidades"} disableIcon/>
+        <ScrollView style={{flex: 1}} 
+                   onScroll={Animated.event(
+                    [{ nativeEvent: { contentOffset: { y: offset } } }],
+                    { useNativeDriver: false }
+                  )} scrollEventThrottle={16}>
           {eventos.length > 0 ? (
             <CardOportunidades
               key={nanoid()}
@@ -66,6 +65,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={eventos[0].links[0].url}
               cor={theme.colors.laranja}
+              onPress={() => {
+                navigation?.navigate('oportunidadesRoute', {
+                  screen: 'OportunidadesEvento',
+                  params: { screenState: 'view', type: EnumMediator.EVENTOS }})
+              }}
               texto='Eventos do seu interesse'
               />
           ): null}
@@ -77,6 +81,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={estagios[0].links[0].url}
               cor={theme.colors.roxo}
+              onPress={() => {}}
               texto='Oportunidades de estágio'
               />
           ): null}
@@ -88,6 +93,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={ics[0].links[0].url}
               cor={theme.colors.marrom}
+              onPress={() => {}}
               texto='Iniciações Científicas'
               />
           ): null}
@@ -99,10 +105,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={palestras[0].links[0].url}
               cor={theme.colors.verde}
+              onPress={() => {}}
               texto='Palestras'
               />           
           ): null}
         </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };

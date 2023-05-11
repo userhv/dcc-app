@@ -60,6 +60,7 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   const abreWebViewNoticia = () => {
 		showModal({
+      isFullScreen: true,
 			renderedComponent: (_props: any) => (
 				<WebViewRN url={url} handleClose={_props.onDismiss}/>
 			)

@@ -3,18 +3,13 @@ import { theme } from "../../paper/theme";
 
 export const webViewRNStyle = StyleSheet.create({
   containerComponente: {
-    margin: 0,
-    padding: 0,
-    height: '100%',
-    width: '100%',
-    backgroundColor: theme.colors.branco
+    flex: 1,
   },
   
   containerSuperior: {
-    height: 'auto', 
     backgroundColor: theme.colors.cinzaEscuro,
     flexDirection: 'row',
-    zIndex: 1
+    paddingTop: 10
   },
 
   containerBotaoFechar: {
