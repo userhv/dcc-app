@@ -41,7 +41,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
 
   return (
     <>
-        <Card style={cardOportunidadesStyle.container} mode="elevated" testID='url' elevation={1}
+        <Card style={cardOportunidadesStyle.container} mode='contained' testID='url'
                     onPress={ async () => { 
                       await insereOportunidadeRealm(oportunidade);
                       navigation?.navigate('oportunidadesRoute', {
