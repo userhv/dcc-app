@@ -10,7 +10,6 @@ export const OportunidadesContainer = (props: any) => {
 
 	const {screenState, id, type} = route?.params ?? {screenState: null, id: null, type: null}; // obter via param de navegação
 	
-	console.log(route?.params)
 	if (!!screenState && validState[screenState as string] && !type) {
 		return <OportunidadesDetail {...props} screenState={screenState} id={id} />;
 	}
