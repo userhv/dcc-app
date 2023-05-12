@@ -10,7 +10,7 @@ interface IAnimatedHeader {
   animatedValue: Animated.Value;
   navigation?: NativeStackNavigationProp<any>;
   disableIcon?: boolean;
-  renderIcon?: any
+  renderIcon?: any;
 }
 
 export const AnimatedHeader = (props: IAnimatedHeader) => {

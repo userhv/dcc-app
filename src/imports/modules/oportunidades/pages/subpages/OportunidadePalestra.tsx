@@ -8,29 +8,29 @@ import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { AnimatedHeader } from '../../../../components/AnimatedHeader/AnimatedHeader';
 
-interface IOportunidadeEvento {
+interface IOportunidadePalestra {
     screenState: string;
     navigation?: NativeStackNavigationProp<any>;
 }
 
-export const OportunidadeEvento = (props: IOportunidadeEvento) => {
-    const [eventos, setEventos] = useState<rssParser.FeedItem[]>([]);
+export const OportunidadePalestra = (props: IOportunidadePalestra) => {
+    const [palestras, setPalestras] = useState<rssParser.FeedItem[]>([]);
     const {screenState, navigation} = props;
-    const mensagemTitulo = "Eventos para você";
+    const mensagemTitulo = "Palestras";
     
 
     const offset = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-        const _retornaEventos= async () => retornaEventos();
-        _retornaEventos();
+        const _retornaPalestras = async () => retornaPalestras();
+        _retornaPalestras();
     },[])
 
-    const retornaEventos = async () => {
-        const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
-        if(dataEventos){
-            dataEventos.shift();
-            setEventos(dataEventos);
+    const retornaPalestras = async () => {
+        const dataPalestra: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
+        if(dataPalestra){
+            dataPalestra.shift();
+            setPalestras(dataPalestra);
         }
     }
 
@@ -38,19 +38,19 @@ export const OportunidadeEvento = (props: IOportunidadeEvento) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={mensagemTitulo}/>
-      {eventos.length > 0 ? (
+      {palestras.length > 0 ? (
           <ScrollView style={{flex: 1}}          
            onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: offset } } }],
             { useNativeDriver: false }
           )} scrollEventThrottle={16}>
-          {eventos &&
-            eventos.map((evento, i) => (
+          {palestras &&
+            palestras.map((palestra, i) => (
               <CardOportunidades
                 key={i}
-                oportunidade={evento}
+                oportunidade={palestra}
                 navigation={navigation}
-                url={evento.links[0].url}
+                url={palestra.links[0].url}
               />
             ))}
         </ScrollView>

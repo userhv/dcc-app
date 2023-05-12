@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {ScrollView, StatusBar, View} from 'react-native';
-import {Text} from 'react-native-paper';
+import {IconButton, Text} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
@@ -41,16 +41,16 @@ export const NoticiasList = (props: INoticiasList) => {
         <View style={noticiasListRNStyle.descricao} accessible={true}>
           <Text variant="headlineSmall"> Últimas notícias do DCC</Text>
         </View>
-        <Icon
-          accessible={true}
-          accessibilityLabel='Suas notícias salvas'
-          accessibilityRole='button'
-          name="bookmark-multiple"
-          size={25}
-          style={noticiasListRNStyle.icone}
-          color={theme.colors.azul}
-          onPress={() => 	navigation?.navigate('noticiasRoute', {
-            screen: 'NoticiasSalvas',})}/>
+        <View style={noticiasListRNStyle.icone}>
+          <IconButton
+            accessible={true}
+            accessibilityLabel='Suas notícias salvas'
+            accessibilityRole='button'
+            icon="bookmark-multiple"
+            iconColor={theme.colors.azul}
+            onPress={() => 	navigation?.navigate('noticiasRoute', {
+              screen: 'NoticiasSalvas',})}/>
+          </View>
       </View>
       {noticias.length > 0 ? (
         <ScrollView style={{flex: 1}}>

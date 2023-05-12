@@ -9,19 +9,21 @@ export const noticiasListRNStyle = StyleSheet.create({
 
   containerTop: {
     paddingTop: 10,
-    paddingBottom: 10,
     flexDirection: 'row',
     backgroundColor: theme.colors.branco,
   },
 
   icone: {
-    paddingRight: 15
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10
   },
 
   descricao: {
     flex:1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent:  'center',
+    alignItems: 'center'
   },
   
   divisor: {

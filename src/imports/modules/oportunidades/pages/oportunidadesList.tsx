@@ -67,7 +67,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               cor={theme.colors.laranja}
               onPress={() => {
                 navigation?.navigate('oportunidadesRoute', {
-                  screen: 'OportunidadesEvento',
+                  screen: 'OportunidadesEventos',
                   params: { screenState: 'view', type: EnumMediator.EVENTOS }})
               }}
               texto='Eventos do seu interesse'
@@ -105,7 +105,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={palestras[0].links[0].url}
               cor={theme.colors.verde}
-              onPress={() => {}}
+              onPress={() => {
+                navigation?.navigate('oportunidadesRoute', {
+                  screen: 'OportunidadesPalestras',
+                  params: { screenState: 'view', type: EnumMediator.PALESTRAS }})
+              }}
               texto='Palestras'
               />           
           ): null}

@@ -2,6 +2,7 @@ import { EnumMediator } from "../../../mediator/EnumMediator";
 import { OportunidadesDetail } from "./oportunidadesDetail";
 import { OportunidadesList } from "./oportunidadesList";
 import { OportunidadeEvento } from "./subpages/OportundadeEvento";
+import { OportunidadePalestra } from "./subpages/OportunidadePalestra";
 
 export const OportunidadesContainer = (props: any) => {
 	const {route} = props;
@@ -15,6 +16,9 @@ export const OportunidadesContainer = (props: any) => {
 	}
 	else if(!!screenState && type === EnumMediator.EVENTOS && validState[screenState as string] ){
 		return <OportunidadeEvento {...props} screenState={screenState}/>
+	}
+	else if(!!screenState && type === EnumMediator.PALESTRAS && validState[screenState as string] ){
+		return <OportunidadePalestra {...props} screenState={screenState}/>
 	}
 
 	return <OportunidadesList {...props} />;

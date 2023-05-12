@@ -1,14 +1,15 @@
-import {ScrollView, StatusBar, View} from 'react-native';
+import {Animated, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
 import {theme} from '../../../paper/theme';
 import {noticiasSalvasRNStyle} from './style/noticiasSalvasStyle';
 import { INoticias } from '../sch/noticiasSch';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
 
 interface INoticiasSalvas {
     navigation?: NativeStackNavigationProp<any>;
@@ -19,6 +20,8 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     const { navigation } = props;
 
     const [noticias, setNoticias] = useState<INoticias[]>([]);
+
+    const offset = useRef(new Animated.Value(0)).current;
 
 
     useEffect(() => {
@@ -31,22 +34,14 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     },[])
 
   return (
-    <View style={noticiasSalvasRNStyle.container}>
-      <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
-      <View style={noticiasSalvasRNStyle.containerTop}>
-      <Icon
-          name="arrow-left"
-          size={25}
-          color={theme.colors.azul}
-          onPress={() => navigation?.goBack()}
-        />
-        <View style={noticiasSalvasRNStyle.descricao} accessible={true}>
-          <Text variant="headlineSmall"> Suas notícias salvas</Text>
-        </View>
-
-      </View>
+    <SafeAreaView style={{flex: 1}}>
+      <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Suas notícias salvas"}/>
       {noticias.length > 0 ? (
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}  
+            onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: offset } } }],
+          { useNativeDriver: false }
+        )} scrollEventThrottle={16}>
           {noticias &&
             noticias.map((noticia, i) => (
               <CardNoticias
@@ -70,6 +65,6 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
         </View>
 
       )}
-    </View>
+    </SafeAreaView>
   );
 };
