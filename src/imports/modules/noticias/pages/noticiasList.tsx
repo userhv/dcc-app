@@ -33,7 +33,6 @@ export const NoticiasList = (props: INoticiasList) => {
 
 
   const rssNoticias = async () => {
-    const filtro:any[]= [];
     const data: rssParser.FeedItem[] | undefined =
       await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
     data && setNoticias(data);
