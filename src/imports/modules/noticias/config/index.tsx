@@ -1,7 +1,6 @@
 import React from 'react';
 import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { NoticiasContainer } from '../pages/noticiasContainer';
-import { NoticiasSalvas } from '../pages/noticiasSalvas';
 
 export const noticiasRouterList = [
 	{
@@ -13,15 +12,6 @@ export const noticiasRouterList = [
 		component: NoticiasContainer,
 		isProtected: true
 	},
-	{
-		navigatorName: 'noticiasRoute',
-		title: 'Notícias Salvas',
-		name: 'NoticiasSalvas',
-		path: 'noticias/save',
-		component: NoticiasSalvas,
-		isProtected: true
-	},
-
 ];
 
 export const noticiasMenuItemList = [

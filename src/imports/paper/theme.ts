@@ -68,7 +68,7 @@ export const theme = {
 		verdeEscuro: '#034944',
 		verde: '#22851e',
 		aquaClaro: '#9DE4D6',
-		azulEscuro: '#2626D1',
+		azulEscuro: '#202096',
 		amareloClaro: '#FFDD99',
 		cerejaEscuro: '#991310',
 		marrom: '#7e511d',

@@ -36,7 +36,7 @@
     "react-native-select-dropdown": "^3.3.2",
     "react-native-vector-icons": "^9.2.0",
     "react-native-webview": "^12.0.2",
-    "realm": "^11.8.0"
+    "realm": "^11.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
