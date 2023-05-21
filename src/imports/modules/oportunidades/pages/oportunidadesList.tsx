@@ -50,9 +50,9 @@ export const OportunidadesList = (props: IOportunidadesList) => {
 
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={oportunidadesListRNStyle.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Painel de Oportunidades"} disableIcon/>
-        <ScrollView style={{flex: 1}} 
+        <ScrollView contentContainerStyle={{flexGrow: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
@@ -93,7 +93,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={ics[0].links[0].url}
               cor={theme.colors.marrom}
-              onPress={() => {}}
+              onPress={() => {
+                navigation?.navigate('oportunidadesRoute', {
+                  screen: 'OportunidadesIcs',
+                  params: { screenState: 'view', type: EnumMediator.IC }})
+              }}
               texto='Iniciações Científicas'
               />
           ): null}

@@ -14,11 +14,12 @@ interface ICardOportunidades {
   texto?: string;
   cor?: string;
   navigation?: NativeStackNavigationProp<any>;
+  removerDivider?: boolean;
   onPress?: () => void;
 }
 
 export const CardOportunidades = (props: ICardOportunidades) => {
-  const {oportunidade, url, navigation, texto, cor, oportunidades, onPress} = props;
+  const {oportunidade, url, navigation, texto, cor, oportunidades, onPress, removerDivider} = props;
   const idOportunidade = oportunidade.id.substring(oportunidade.id.indexOf('=') + 1);
 
 
@@ -53,12 +54,12 @@ export const CardOportunidades = (props: ICardOportunidades) => {
           {texto ? (
             <View style={oportunidadesListRNStyle.boxHeader}>
               <Text variant='titleLarge' style={{color: cor ?? undefined}}> {texto} </Text>
-              <IconButton icon='arrow-right-circle' size={30} 
+              <IconButton icon='chevron-right-circle' size={30} 
                   iconColor={cor}
                   onPress={onPress}/>
           </View>
           ): null}
-        {oportunidade.media[0] ? (
+        {oportunidade.media && oportunidade.media[0] ? (
             <Card.Cover source={{uri: oportunidade.media[0].url}} style={cardOportunidadesStyle.imagemCover} resizeMode='center'/>
           ): null
           }
@@ -92,7 +93,9 @@ export const CardOportunidades = (props: ICardOportunidades) => {
             </View>
           </Card.Actions>
         </Card>
-      <Divider style={cardOportunidadesStyle.divisor} />
+        {!removerDivider ? (
+          <Divider style={cardOportunidadesStyle.divisor} />
+        ): null}
     </>
   );
 };

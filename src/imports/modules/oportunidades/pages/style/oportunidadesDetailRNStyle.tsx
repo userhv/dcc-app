@@ -4,7 +4,8 @@ import { theme } from '../../../../paper/theme';
 export const noticiasDetailRNStyle = StyleSheet.create({
 	container: {
 		flex: 1,
-		margin: 1
+		margin: 1,
+		backgroundColor: theme.colors.branco
 	  },
 
 	  containerTop: {

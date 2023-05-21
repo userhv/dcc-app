@@ -7,6 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { AnimatedHeader } from '../../../../components/AnimatedHeader/AnimatedHeader';
+import { oportunidadesListRNStyle } from '../style/oportunidadesListRNStyle';
 
 interface IOportunidadePalestra {
     screenState: string;
@@ -36,7 +37,7 @@ export const OportunidadePalestra = (props: IOportunidadePalestra) => {
 
     
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={oportunidadesListRNStyle.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={mensagemTitulo}/>
       {palestras.length > 0 ? (
           <ScrollView style={{flex: 1}}          

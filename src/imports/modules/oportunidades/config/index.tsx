@@ -46,6 +46,14 @@ export const oportunidadesRouterList = [
 		component: OportunidadesContainer,
 		isProtected: true
 	},
+	{
+		navigatorName: 'oportunidadesRoute',
+		title: 'Oportunidade ICS',
+		name: 'OportunidadesIcs',
+		path: 'oportunidades/ics',
+		component: OportunidadesContainer,
+		isProtected: true
+	},
 
 ];
 
