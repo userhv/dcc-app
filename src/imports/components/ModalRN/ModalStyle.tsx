@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
-import { theme } from "../../paper/theme";
+import {StyleSheet} from 'react-native';
+import {theme} from '../../paper/theme';
 
 export const modalStyle = StyleSheet.create({
-	container: {
-        backgroundColor: theme.colors.branco,
-        padding: 20,
-        margin: 20,
-        borderRadius: 20
-	},
+  container: {
+    backgroundColor: theme.colors.branco,
+    padding: 20,
+    margin: 20,
+    borderRadius: 20,
+  },
 });

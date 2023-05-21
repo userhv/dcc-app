@@ -9,7 +9,6 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../co
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
-import { cardOportunidadesStyle } from '../../oportunidades/components/CardOportunidadesStyle';
 
 interface ICardNoticias {
   noticia: rssParser.FeedItem;
@@ -60,6 +59,7 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   const abreWebViewNoticia = () => {
 		showModal({
+      isFullScreen: true,
 			renderedComponent: (_props: any) => (
 				<WebViewRN url={url} handleClose={_props.onDismiss}/>
 			)

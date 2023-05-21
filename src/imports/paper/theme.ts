@@ -66,11 +66,15 @@ export const theme = {
 
 		//secundarias
 		verdeEscuro: '#034944',
+		verde: '#22851e',
 		aquaClaro: '#9DE4D6',
-		azulEscuro: '#2626D1',
+		azulEscuro: '#202096',
 		amareloClaro: '#FFDD99',
 		cerejaEscuro: '#991310',
-		cerejaClaro: '#E191C5',
+		marrom: '#7e511d',
+		roxo: '#70076b',
+		laranja: '#d86a10',
+		amarelo: '#a1981a',
 		cinzaMedio: '#BCBEC0',
 
 		elevation: {

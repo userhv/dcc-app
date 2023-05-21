@@ -4,7 +4,7 @@ import { noticiasOff as noticias } from './imports/modules/noticias/api/noticias
 import { requestRealm } from './imports/libs/requestRealm';
 
 const realmSchemas = [
-	noticias.getSchema()
+	noticias.getSchema(),
 ];
 
 const realmSchemaNames = [ 'noticias'];
