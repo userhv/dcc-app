@@ -64,24 +64,5 @@ export const noticiasListRNStyle = StyleSheet.create({
     flex: 1, 
     paddingTop: 150, 
     alignItems: 'center',
-  },
-
-  boxFiltros: {
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    padding: 10,
-    flexDirection: 'column',
-    width: 'auto',
-  },
-  dropdownButton: {
-    borderRadius: 10,
-    backgroundColor: theme.colors.azulComOpacidade,
-  },
-  dropdown:{
-    borderRadius: 10,
-    backgroundColor: theme.colors.azul,
-    position: 'absolute'
   }
-  
-
 });
