@@ -9,7 +9,6 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../co
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
-import { cardOportunidadesStyle } from '../../oportunidades/components/CardOportunidadesStyle';
 
 interface ICardNoticias {
   noticia: rssParser.FeedItem;

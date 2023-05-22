@@ -95,7 +95,6 @@ export const NoticiasList = (props: INoticiasList) => {
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
-
       {noticias.length > 0 && isUltimasNoticias ? (
           noticias.map((noticia, i) => (
             <CardNoticias

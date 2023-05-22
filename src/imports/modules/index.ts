@@ -23,7 +23,7 @@ class Modules {
 	 * registrados na pasta modules
 	 * @returns {Array}
 	 */
-	getListOfRouterModules = (navigatorName) => {
+	getListOfRouterModules = (navigatorName: string): Array<any> => {
 		return navigatorName
 			? this.modulesRouterList.filter((r) => r.navigatorName === navigatorName)
 			: this.modulesRouterList;
@@ -34,7 +34,7 @@ class Modules {
 	 * retistrados na pasta modules
 	 * @returns {Array}
 	 */
-	getAppMenuItemList = () => {
+	getAppMenuItemList = (): Array<any> => {
 		return this.modulesAppMenuItemList;
 	};
 }
