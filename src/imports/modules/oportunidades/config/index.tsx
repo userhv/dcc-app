@@ -54,6 +54,14 @@ export const oportunidadesRouterList = [
 		component: OportunidadesContainer,
 		isProtected: true
 	},
+	{
+		navigatorName: 'oportunidadesRoute',
+		title: 'Oportunidade Estagios',
+		name: 'OportunidadesEstagios',
+		path: 'oportunidades/estagios',
+		component: OportunidadesContainer,
+		isProtected: true
+	},
 
 ];
 

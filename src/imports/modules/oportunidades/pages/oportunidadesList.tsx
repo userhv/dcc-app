@@ -48,11 +48,10 @@ export const OportunidadesList = (props: IOportunidadesList) => {
     dataPalestras && setPalestras(dataPalestras);
   };
 
-
   return (
     <SafeAreaView style={oportunidadesListRNStyle.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Painel de Oportunidades"} disableIcon/>
-        <ScrollView contentContainerStyle={{flexGrow: 1}} 
+        <ScrollView style={{flex: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
@@ -81,7 +80,11 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               navigation={navigation}
               url={estagios[0].links[0].url}
               cor={theme.colors.roxo}
-              onPress={() => {}}
+              onPress={() => {
+                navigation?.navigate('oportunidadesRoute', {
+                  screen: 'OportunidadesEstagios',
+                  params: { screenState: 'view', type: EnumMediator.ESTAGIOS }})
+              }}
               texto='Oportunidades de estágio'
               />
           ): null}

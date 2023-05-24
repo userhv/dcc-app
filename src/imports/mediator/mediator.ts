@@ -18,6 +18,8 @@ class  Mediator {
                 return await rssApi('https://dcc.ufmg.br/category/palestra/feed/');
             case EnumMediator.IC:
                 return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=iniciacao-cientifica&feed=atom');
+            case EnumMediator.ESTAGIOS:
+                return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=estagio&feed=atom');
             default:
                 break;
         }

@@ -10,11 +10,10 @@ export const animatedHeaderStyle = StyleSheet.create({
     flexShrink: 1,
   },
   texto: {
-    color: theme.colors.branco,
     overflow: 'hidden',
     flexWrap: 'nowrap',
+    flex: 1,
     justifyContent: 'flex-end', 
-    flex: 1, 
     alignItems: 'baseline',
     padding: 10
   },

@@ -11,64 +11,65 @@ import {oportunidadesListRNStyle} from '../style/oportunidadesListRNStyle';
 import {Chip, Text} from 'react-native-paper';
 import {theme} from '../../../../paper/theme';
 
-interface IOportunidadeIC {
+interface IOportunidadeEstagio{
   screenState: string;
   navigation?: NativeStackNavigationProp<any>;
 }
 
-export const OportunidadeIC = (props: IOportunidadeIC) => {
-  const [icsAtivas, setIcsAtivas] = useState<rssParser.FeedItem[]>([]);
-  const [ics, setIcs] = useState<rssParser.FeedItem[]>([]);
-  const [icsConcluidas, setIcsConcluidas] = useState<rssParser.FeedItem[]>([]);
+export const OportunidadeEstagio = (props: IOportunidadeEstagio) => {
+  const [estagiosAtivos, setEstagiosAtivos] = useState<rssParser.FeedItem[]>([]);
+  const [estagios, setEstagios] = useState<rssParser.FeedItem[]>([]);
+  const [estagiosConcluidos, setEstagiosConcluidos] = useState<rssParser.FeedItem[]>([]);
   const {screenState, navigation} = props;
-  const mensagemTitulo = 'Iniciações Científicas';
-  const [isIcsAtivas, setIsIcsAtivas] = useState<boolean>(true);
-  const [isIcsConcluidas, setIsIcsConcluidas] = useState<boolean>(false);
+  const mensagemTitulo = 'Estágios';
+
+  const [isEstagioAtivo, setIsEstagioAtivo] = useState<boolean>(true);
+  const [isEstagiosConcluidos, setIsEstagioConcluidos] = useState<boolean>(false);
 
   const offset = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    const _retornaIcs = async () => await retornaIcs();
-    _retornaIcs();
+    const _retornaEstagios = async () => await retornaEstagios();
+    _retornaEstagios();
   }, []);
 
   useEffect(() => {
-    const _retornaIcs = async () => {
-      await retornaIcsConcluidas();
-      await retornaIcsAtivas();
+    const _retornaEstagios = async () => {
+      await retornaEstagiosConcluidos();
+      await retornaEstagiosAtivos();
     };
-    _retornaIcs();
-  }, [ics]);
+    _retornaEstagios();
+  }, [estagios]);
 
-  const renderizaIcsAtivas = async () => {
-    setIsIcsAtivas(true);
-    setIsIcsConcluidas(false);
+  const renderizaEstagiosAtivos = async () => {
+    setIsEstagioAtivo(true);
+    setIsEstagioConcluidos(false);
     // if(noticias.length == 0) await rssNoticias();
   };
 
-  const renderizaIcsConcluidas = async () => {
-    setIsIcsAtivas(false);
-    setIsIcsConcluidas(true);
+  const renderizaEstagiosConcluidas = async () => {
+    setIsEstagioAtivo(false);
+    setIsEstagioConcluidos(true);
   };
 
-  const retornaIcsConcluidas = async () => {
-    const icsConcluidas = ics?.filter(ic =>
-      ic.categories.find(o => o?.name === 'Concluído'),
+  const retornaEstagiosConcluidos = async () => {
+    const estagiosConcluidos = estagios?.filter(estagio =>
+      estagio.categories.find(o => o?.name === 'Concluído'),
     );
-    icsConcluidas && setIcsConcluidas(icsConcluidas);
+    estagiosConcluidos && setEstagiosConcluidos(estagiosConcluidos);
   };
 
-  const retornaIcsAtivas = async () => {
-    const icsAtivas = ics?.filter(ic =>
+  const retornaEstagiosAtivos = async () => {
+    const estagiosAtivos = estagios?.filter(ic =>
       ic.categories.find(o => o?.name === 'Ativo'),
     );
-    icsAtivas && setIcsAtivas(icsAtivas);
+    estagiosAtivos && setEstagiosAtivos(estagiosAtivos);
   };
 
-  const retornaIcs = async () => {
-    const dataICs: rssParser.FeedItem[] | undefined =
-      await mediator.selecionaRequisicao(EnumMediator.IC);
-    dataICs && setIcs(dataICs);
+  const retornaEstagios = async () => {
+    const dataEstagios: rssParser.FeedItem[] | undefined =
+      await mediator.selecionaRequisicao(EnumMediator.ESTAGIOS);
+      dataEstagios && setEstagios(dataEstagios);
   };
 
   return (
@@ -78,39 +79,39 @@ export const OportunidadeIC = (props: IOportunidadeIC) => {
         navigation={navigation}
         mensagemTitulo={mensagemTitulo}
       />
-      <View style={oportunidadesListRNStyle.boxChip}>
+      <View style={{...oportunidadesListRNStyle.boxChip, justifyContent: 'flex-start'}}>
         <Chip
-          onPress={async () => await renderizaIcsAtivas()}
+          onPress={async () => await renderizaEstagiosAtivos()}
           icon={() => null}
-          selected={isIcsAtivas}
+          selected={isEstagioAtivo}
           style={{
             ...oportunidadesListRNStyle.chipStyle,
-            backgroundColor: isIcsAtivas
+            backgroundColor: isEstagioAtivo
               ? theme.colors.azul
               : theme.colors.azulOpacoSelecionado,
-            borderColor: isIcsAtivas
+            borderColor: isEstagioAtivo
               ? theme.colors.azulEscuro
               : theme.colors.azul,
           }}
-          selectedColor={isIcsAtivas ? theme.colors.branco : theme.colors.azul}>
+          selectedColor={isEstagioAtivo ? theme.colors.branco : theme.colors.azul}>
           {' '}
           Ativas{' '}
         </Chip>
         <Chip
-          onPress={async () => await renderizaIcsConcluidas()}
+          onPress={async () => await renderizaEstagiosConcluidas()}
           icon={() => null}
-          selected={isIcsConcluidas}
+          selected={isEstagiosConcluidos}
           style={{
             ...oportunidadesListRNStyle.chipStyle,
-            backgroundColor: isIcsConcluidas
+            backgroundColor: isEstagiosConcluidos
               ? theme.colors.azul
               : theme.colors.azulOpacoSelecionado,
-            borderColor: isIcsConcluidas
+            borderColor: isEstagiosConcluidos
               ? theme.colors.azulEscuro
               : theme.colors.azul,
           }}
           selectedColor={
-            isIcsConcluidas ? theme.colors.branco : theme.colors.azul
+            isEstagiosConcluidos ? theme.colors.branco : theme.colors.azul
           }>
           {' '}
           Concluídas
@@ -123,8 +124,8 @@ export const OportunidadeIC = (props: IOportunidadeIC) => {
           {useNativeDriver: false},
         )}
         scrollEventThrottle={16}>
-        {icsAtivas.length > 0 && isIcsAtivas ? (
-          icsAtivas.map((ic, i) => (
+        {estagiosAtivos.length > 0 && estagiosAtivos ? (
+          estagiosAtivos.map((ic, i) => (
             <CardOportunidades
               key={i}
               oportunidade={ic}
@@ -132,8 +133,8 @@ export const OportunidadeIC = (props: IOportunidadeIC) => {
               url={ic.links[0].url}
             />
           ))
-        ) : isIcsConcluidas ? (
-          icsConcluidas.map((ic, i) => (
+        ) : estagiosConcluidos ? (
+          estagiosConcluidos.map((ic, i) => (
             <CardOportunidades
               key={i}
               oportunidade={ic}
