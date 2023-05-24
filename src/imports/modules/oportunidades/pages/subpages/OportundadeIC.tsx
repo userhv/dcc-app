@@ -93,8 +93,7 @@ export const OportunidadeIC = (props: IOportunidadeIC) => {
               : theme.colors.azul,
           }}
           selectedColor={isIcsAtivas ? theme.colors.branco : theme.colors.azul}>
-          {' '}
-          Ativas{' '}
+          Ativas
         </Chip>
         <Chip
           onPress={async () => await renderizaIcsConcluidas()}
@@ -112,7 +111,6 @@ export const OportunidadeIC = (props: IOportunidadeIC) => {
           selectedColor={
             isIcsConcluidas ? theme.colors.branco : theme.colors.azul
           }>
-          {' '}
           Concluídas
         </Chip>
       </View>

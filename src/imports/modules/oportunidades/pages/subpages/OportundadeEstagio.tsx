@@ -22,7 +22,6 @@ export const OportunidadeEstagio = (props: IOportunidadeEstagio) => {
   const [estagiosConcluidos, setEstagiosConcluidos] = useState<rssParser.FeedItem[]>([]);
   const {screenState, navigation} = props;
   const mensagemTitulo = 'Estágios';
-
   const [isEstagioAtivo, setIsEstagioAtivo] = useState<boolean>(true);
   const [isEstagiosConcluidos, setIsEstagioConcluidos] = useState<boolean>(false);
 
@@ -94,8 +93,7 @@ export const OportunidadeEstagio = (props: IOportunidadeEstagio) => {
               : theme.colors.azul,
           }}
           selectedColor={isEstagioAtivo ? theme.colors.branco : theme.colors.azul}>
-          {' '}
-          Ativas{' '}
+          Ativos
         </Chip>
         <Chip
           onPress={async () => await renderizaEstagiosConcluidas()}
@@ -113,8 +111,7 @@ export const OportunidadeEstagio = (props: IOportunidadeEstagio) => {
           selectedColor={
             isEstagiosConcluidos ? theme.colors.branco : theme.colors.azul
           }>
-          {' '}
-          Concluídas
+          Concluídos
         </Chip>
       </View>
       <ScrollView
@@ -125,21 +122,21 @@ export const OportunidadeEstagio = (props: IOportunidadeEstagio) => {
         )}
         scrollEventThrottle={16}>
         {estagiosAtivos.length > 0 && estagiosAtivos ? (
-          estagiosAtivos.map((ic, i) => (
+          estagiosAtivos.map((estagio, i) => (
             <CardOportunidades
               key={i}
-              oportunidade={ic}
+              oportunidade={estagio}
               navigation={navigation}
-              url={ic.links[0].url}
+              url={estagio.links[0].url}
             />
           ))
         ) : estagiosConcluidos ? (
-          estagiosConcluidos.map((ic, i) => (
+          estagiosConcluidos.map((estagio, i) => (
             <CardOportunidades
               key={i}
-              oportunidade={ic}
+              oportunidade={estagio}
               navigation={navigation}
-              url={ic.links[0].url}
+              url={estagio.links[0].url}
             />
           ))
         ) : (
