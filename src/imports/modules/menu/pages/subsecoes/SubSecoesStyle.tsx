@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../paper/theme';
 
-export const noticiasSalvasStyle = StyleSheet.create({
+export const subSecoesStyle = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
