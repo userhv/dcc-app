@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, TouchableWithoutFeedback, View} from 'react-native';
+import {Image, Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './CardNoticiasStyle';
 import {theme} from '../../../paper/theme';

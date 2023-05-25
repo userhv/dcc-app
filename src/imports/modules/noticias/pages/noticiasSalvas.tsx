@@ -9,7 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { noticiasSalvasRNStyle } from './style/noticiasSalvasStyle';
+import { noticiasSalvasStyle } from './style/noticiasSalvasStyle';
 
 interface INoticiasSalvas {
     navigation?: NativeStackNavigationProp<any>;
@@ -32,16 +32,16 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     },[])
 
   return (
-    <View style={noticiasSalvasRNStyle.container}>
+    <View style={noticiasSalvasStyle.container}>
       <StatusBar backgroundColor={theme.colors.branco} barStyle={'dark-content'}/>
-      <View style={noticiasSalvasRNStyle.containerTop}>
+      <View style={noticiasSalvasStyle.containerTop}>
       <Icon
           name="arrow-left"
           size={25}
           color={theme.colors.azul}
           onPress={() => navigation?.goBack()}
         />
-        <View style={noticiasSalvasRNStyle.descricao} accessible={true}>
+        <View style={noticiasSalvasStyle.descricao} accessible={true}>
           <Text variant="headlineSmall"> Suas notícias salvas</Text>
         </View>
 
@@ -59,13 +59,13 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
             ))}
         </ScrollView>
       ) : (
-        <View style={noticiasSalvasRNStyle.boxIconeVazio} accessible={true}> 
+        <View style={noticiasSalvasStyle.boxIconeVazio} accessible={true}> 
             <Icon 
                 name='bookmark-off-outline'
                 size={150}
                 color={theme.colors.vermelhoVivo}
             />
-            <Text style={noticiasSalvasRNStyle.texto} variant='headlineSmall'> 
+            <Text style={noticiasSalvasStyle.texto} variant='headlineSmall'> 
                     Você não tem nenhuma notícia salva.
             </Text>
         </View>
