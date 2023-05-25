@@ -1,3 +1,5 @@
 export enum EnumMediator  {
-	NOTICIAS = 'noticias'
+	NOTICIAS = 'noticias',
+	EVENTOS = 'eventos',
+	PALESTRAS = 'palestras',
 };
