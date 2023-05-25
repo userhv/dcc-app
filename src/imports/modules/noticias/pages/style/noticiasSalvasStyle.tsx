@@ -5,6 +5,7 @@ export const noticiasSalvasStyle = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
+    backgroundColor: theme.colors.branco,
   },
 
   containerTop: {
