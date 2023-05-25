@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
-import {Chip, Divider} from 'react-native-paper';
+import {Button, Chip, Divider, IconButton} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
@@ -61,6 +61,14 @@ export const NoticiasList = (props: INoticiasList) => {
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
         <View style={noticiasListRNStyle.boxLinhaChip}>
           <ScrollView horizontal style={{margin: 5}} showsHorizontalScrollIndicator={false}>
+          <Icon
+                name="bookmark-multiple"          
+                size={28}
+                style={noticiasListRNStyle.icone}
+                color={theme.colors.azul}
+                onPress={() => 	navigation?.navigate('noticiasRoute', {
+                  screen: 'NoticiasSalvas',})}/>
+              <View style={noticiasListRNStyle.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}
                     selected
@@ -84,17 +92,6 @@ export const NoticiasList = (props: INoticiasList) => {
                   selectedColor={isPalestras ? theme.colors.branco : theme.colors.azul}> 
                   Palestras
               </Chip>
-              <View style={noticiasListRNStyle.divisor}/>
-              <Icon
-                  accessible={true}
-                  accessibilityLabel='Suas notícias salvas'
-                  accessibilityRole='button'
-                  name="bookmark-multiple"
-                  size={30}
-                  style={noticiasListRNStyle.icone}
-                  color={theme.colors.azul}
-                  onPress={() => 	navigation?.navigate('noticiasRoute', {
-                    screen: 'NoticiasSalvas',})}/>
           </ScrollView>
         </View>
         <ScrollView style={{ flex: 1}} 
