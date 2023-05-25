@@ -14,23 +14,23 @@ export const noticiasListRNStyle = StyleSheet.create({
     backgroundColor: theme.colors.branco,
   },
 
-  boxChip: {
-    flexDirection: 'row', 
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    margin: 10,
+  boxLinhaChip: {
+    margin: 5,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
   },
 
   chipStyle: {
     marginRight: 10,
     justifyContent: 'flex-start',
     borderWidth:1,
+    borderColor: theme.colors.azul
   },
 
   icone: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 10
+    flex: 1
   },
 
   descricao: {
@@ -41,7 +41,9 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
   
   divisor: {
-    backgroundColor: theme.colors.cinzaMedio
+    backgroundColor: theme.colors.cinza40,
+    width: 1, 
+    marginRight: 6,
   },
 
   boxIconeVazio: {
@@ -64,24 +66,5 @@ export const noticiasListRNStyle = StyleSheet.create({
     flex: 1, 
     paddingTop: 150, 
     alignItems: 'center',
-  },
-
-  boxFiltros: {
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    padding: 10,
-    flexDirection: 'column',
-    width: 'auto',
-  },
-  dropdownButton: {
-    borderRadius: 10,
-    backgroundColor: theme.colors.azulComOpacidade,
-  },
-  dropdown:{
-    borderRadius: 10,
-    backgroundColor: theme.colors.azul,
-    position: 'absolute'
   }
-  
-
 });
