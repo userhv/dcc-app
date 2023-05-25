@@ -8,12 +8,10 @@ export const noticiasSalvasStyle = StyleSheet.create({
   },
 
   containerTop: {
-    padding: 10,
+    margin: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.colors.branco,
-    
   },
 
   descricao: {

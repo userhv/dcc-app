@@ -15,23 +15,21 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   chipStyle: {
-    marginRight: 10,
+    marginLeft: 10,
     justifyContent: 'flex-start',
     borderWidth:1,
     borderColor: theme.colors.azul
   },
 
   icone: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
+    marginLeft: 5
   },
 
   
   divisor: {
     backgroundColor: theme.colors.cinza40,
     width: 1, 
-    marginRight: 6,
+    marginLeft: 10,
   },
 
   loading: {
