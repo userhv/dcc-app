@@ -11,7 +11,6 @@ export const subSecoesStyle = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.colors.branco,
     
   },
