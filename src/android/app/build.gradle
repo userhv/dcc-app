@@ -91,6 +91,7 @@ def reactNativeArchitectures() {
 }
 
 android {
+
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -101,7 +102,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.alpha.3"
+        versionName "1.0.alpha.5"
     }
 
     splits {
@@ -113,6 +114,15 @@ android {
         }
     }
     signingConfigs {
+        release {
+            if (project.hasProperty('DCC_STORE_FILE')) {
+                storeFile file(DCC_STORE_FILE)
+                storePassword DCC_STORE_PASSWORD
+                keyAlias DCC_KEY_ALIAS
+                keyPassword DCC_KEY_PASSWORD
+            }
+        }
+
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
