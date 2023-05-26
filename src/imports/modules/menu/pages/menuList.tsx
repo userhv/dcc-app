@@ -23,8 +23,11 @@ export const MenuList = (props: IMenuList) => {
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
 
-    <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de vagas.  ' icone='frequently-asked-questions'/>
-    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do do app, termos de uso e política de privacidade." icone='information'
+    <CardSecao titulo="Professores" descricao='Professores ativos no departamento.' 
+              icone='google-classroom'      
+              onPress={() => 	navigation?.navigate('menuRoute', {
+                screen: 'professores',})}/>
+    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do do app, termos de uso e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {
         screen: 'sobre',})}/>
     

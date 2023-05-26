@@ -2,6 +2,7 @@ import React from 'react';
 import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { MenuContainer } from '../pages/menuContainer';
 import { Sobre } from '../pages/subsecoes/Sobre';
+import {  Professores } from '../pages/subsecoes/Professores';
 
 
 export const menuRouterList = [
@@ -20,6 +21,14 @@ export const menuRouterList = [
 		name: 'sobre',
 		path: 'sobre',
 		component: Sobre,
+		isProtected: true
+	},
+		{
+		navigatorName: 'menuRoute',
+		title: 'Professores',
+		name: 'professores',
+		path: 'professores',
+		component: Professores,
 		isProtected: true
 	},
 ];

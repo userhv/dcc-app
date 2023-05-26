@@ -39,4 +39,11 @@ export const subSecoesStyle = StyleSheet.create({
     backgroundColor: theme.colors.cinzaMedio
   },
 
+  barraPesquisa: {
+    backgroundColor: theme.colors.azulOpacoMenuOportunidades,
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 10
+  }
+
 });

@@ -27,7 +27,4 @@ export const cardSecaoInternoStyle = StyleSheet.create({
 		flexDirection: 'column', 
 		flex: 1,
 	}
-
-
-
 });
