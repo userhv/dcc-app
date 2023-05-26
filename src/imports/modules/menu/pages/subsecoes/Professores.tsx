@@ -89,6 +89,9 @@ export const Professores = (props: IProfessores) => {
         renderItem={({item}) => <CardProfessores  key={nanoid()} professor={item} />}
         keyExtractor={(item) => item.title}
         initialNumToRender={5}
+        removeClippedSubviews
+        maxToRenderPerBatch={20}
+        updateCellsBatchingPeriod={25}
       />
       }
     </View>
