@@ -45,11 +45,8 @@ export const Contatos = (props: IContatos) => {
     <View style={subSecoesStyle.container}>
       <HeaderBar navigation={navigation} titulo='Fale conosco'/>
       <View style={contatosStyle.boxAlerta}>
-        <View>
-            <Icon name='alert-circle-outline' color={theme.colors.vermelhoVivo} size={30}/>
-        </View>
         <View style={contatosStyle.descricao}>
-            <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo, paddingLeft: 5}} numberOfLines={3}> 
+            <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo, paddingLeft: 5}} numberOfLines={4}> 
             Ao enviar, você será redirecionado para seu provedor padrão de email. </Text>
         </View>
       </View>
