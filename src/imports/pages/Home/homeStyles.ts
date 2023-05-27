@@ -15,5 +15,5 @@ export const homeStyle = StyleSheet.create({
 	blocoInterno: {
 		width: '100%',
 		height: '100%',
-	}
+	},
 });

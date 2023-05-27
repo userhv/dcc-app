@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../paper/theme';
 
-export const menuListRNStyle = StyleSheet.create({
+export const menuListStyle = StyleSheet.create({
   container: {
     flex: 1,
     margin: 1,

@@ -2,7 +2,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {TouchableNativeFeedback, View} from 'react-native';
 import {Card} from 'react-native-paper';
 
-import { cardSecaoInternoStyle } from './CardSecaoInternoStyle';
+import { cardSecaoInternoStyle } from './style/CardSecaoInternoStyle';
 import { theme } from '../../../paper/theme';
 
 interface ICardSecaoInterno {

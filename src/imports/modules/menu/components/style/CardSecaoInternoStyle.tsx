@@ -1,14 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
+import { theme } from '../../../../paper/theme';
 
-export const cardSecaoStyle = StyleSheet.create({
+export const cardSecaoInternoStyle = StyleSheet.create({
 	container: {
-		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		borderRadius: 0,
 		margin: 1,
-		paddingBottom: 10
 	},
 	titulo: {
 		fontSize: 17, 
@@ -21,22 +19,12 @@ export const cardSecaoStyle = StyleSheet.create({
 		justifyContent: 'center', 
 		paddingTop: 10
 	},
-	botoes: {
-		marginLeft: 15,
-	},
 	boxPrincipal: {
 		flexDirection: 'row',
 		justifyContent: 'space-around'
-	},
-	boxBotao:{
-		flexDirection: 'column', 
-		justifyContent: 'center',
 	},
 	boxDescricao: {
 		flexDirection: 'column', 
 		flex: 1,
 	}
-
-
-
 });

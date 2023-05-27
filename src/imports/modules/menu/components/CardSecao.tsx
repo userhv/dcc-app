@@ -1,7 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Image, Share, TouchableNativeFeedback, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
-import { cardSecaoStyle } from './CardSecaoStyle';
+import { cardSecaoStyle } from './style/CardSecaoStyle';
 import { theme } from '../../../paper/theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 

@@ -1,7 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Image, Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
-import {cardNoticiasStyle} from './CardNoticiasStyle';
+import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { useContext, useEffect, useState } from 'react';
