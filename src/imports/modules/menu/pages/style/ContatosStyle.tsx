@@ -19,7 +19,7 @@ export const contatosStyle = StyleSheet.create({
         margin: 10, 
         borderRadius: 10,
         flexDirection: 'row',
-        // flexWrap: 'wrap'
+        flexWrap: 'wrap'
     },
     descricao: {
         flexDirection:  'row',
