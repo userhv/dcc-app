@@ -5,15 +5,12 @@ export const homeHeaderStyle = StyleSheet.create({
 	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'center',
 		marginTop: 16,
 		background: theme.colors.branco,
 	},
 
 	viewImagem: {
-		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
+		flexDirection: 'row',
 	},
 
 	imagem: {
