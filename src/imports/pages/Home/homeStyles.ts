@@ -15,5 +15,15 @@ export const homeStyle = StyleSheet.create({
 	blocoInterno: {
 		width: '100%',
 		height: '100%',
+	},
+	form:{
+		paddingTop: 10,
+		paddingLeft: 10,
+		paddingRight: 10,
+		flex: 1,
+	},
+	labelForm: {
+		paddingTop: 10,
+		paddingBottom: 10
 	}
 });
