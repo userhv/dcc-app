@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
-import {Button, Chip, Divider, IconButton} from 'react-native-paper';
+import {Chip} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
@@ -60,7 +60,7 @@ export const NoticiasList = (props: INoticiasList) => {
     <SafeAreaView style={noticiasListRNStyle.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
         <View style={noticiasListRNStyle.boxLinhaChip}>
-          <ScrollView horizontal style={{margin: 5}} showsHorizontalScrollIndicator={false}>
+          <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
           <Icon
                 name="bookmark-multiple"          
                 size={28}

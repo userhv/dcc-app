@@ -1,16 +1,12 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, TouchableNativeFeedback, View} from 'react-native';
+import { Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
-import { cardSecaoStyle } from './CardSecaoStyle';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { memo, useContext, useEffect, useState } from 'react';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
-import { cardNoticiasStyle } from '../../noticias/components/CardNoticiasStyle';
-import { nanoid } from 'nanoid';
-import { ScrollView } from 'react-native-gesture-handler';
-import { cardProfessoresStyle } from './CardProfessoresStyle';
+import { cardProfessoresStyle } from './style/CardProfessoresStyle';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
@@ -38,7 +34,7 @@ const CardProfessores = (props: ICardProfessores) => {
   const compartilharPerfilProfessor = async () => {
     try {
       await Share.share({
-        message: professor.media[0].url
+        message: professor.links[0].url
       });
     } catch (error) {
         console.warn(`Erro ao compartilhar a notícia: ${error}`)
@@ -57,7 +53,7 @@ useEffect(() => {
 
     return (
         <>
-      <Card style={cardProfessoresStyle.container} mode="contained" testID='url' 
+      <Card style={cardProfessoresStyle.container} mode='contained'
                 onPress={() => {abreWebViewProfessor()}}>
         <Card.Title
           title={professor.title}
@@ -98,4 +94,9 @@ useEffect(() => {
     );
 };
 
-export default memo(CardProfessores);
+const arePropsEqual = (prevProps: ICardProfessores, nextProps: ICardProfessores) => {
+  return prevProps.professor.title === nextProps.professor.title; 
+}
+
+
+export default memo(CardProfessores, arePropsEqual);

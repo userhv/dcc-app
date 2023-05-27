@@ -5,21 +5,7 @@ export const subSecoesStyle = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-  },
-
-  containerTop: {
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
     backgroundColor: theme.colors.branco,
-    
-  },
-
-  descricao: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginLeft: 20,
   },
 
   boxIconeVazio: {
@@ -41,9 +27,28 @@ export const subSecoesStyle = StyleSheet.create({
 
   barraPesquisa: {
     backgroundColor: theme.colors.azulOpacoMenuOportunidades,
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 10
-  }
+  },
+  loading: {
+    justifyContent: 'center', 
+    flex: 1, 
+    alignItems: 'center',
+  },
+  boxLinhaChip: {
+    marginTop: 5,
+    marginBottom: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  },
+  chipStyle: {
+    marginLeft: 10,
+    justifyContent: 'flex-start',
+    borderWidth:1,
+    borderColor: theme.colors.azul
+  },
 
 });

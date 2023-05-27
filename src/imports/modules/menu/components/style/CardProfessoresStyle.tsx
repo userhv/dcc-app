@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
+import { theme } from '../../../../paper/theme';
 
 export const cardProfessoresStyle = StyleSheet.create({
 	container: {
@@ -7,7 +7,6 @@ export const cardProfessoresStyle = StyleSheet.create({
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		margin: 1,
-		height: 'auto'
 	},
 	titulo: {
 		fontSize: 17, 
@@ -52,4 +51,15 @@ export const cardProfessoresStyle = StyleSheet.create({
     divisor: {
 		backgroundColor: theme.colors.cinzaMedio
 	  },
+    imagemCover: {
+		width: 'auto',
+		backgroundColor: 'transparent',
+		margin: 10,
+	},
+
+	imagem: {
+		width: 40, 
+		height: 40,
+		backgroundColor: 'transparent'
+	},
 })

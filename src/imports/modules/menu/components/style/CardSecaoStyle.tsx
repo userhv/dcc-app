@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
+import { theme } from '../../../../paper/theme';
 
 export const cardSecaoStyle = StyleSheet.create({
 	container: {
@@ -19,7 +19,7 @@ export const cardSecaoStyle = StyleSheet.create({
 	subtitulo: {
 		fontSize: 14, 
 		justifyContent: 'center', 
-		paddingTop: 10
+		paddingTop: 5
 	},
 	botoes: {
 		marginLeft: 15,

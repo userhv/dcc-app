@@ -9,7 +9,10 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
   
   boxLinhaChip: {
-    margin: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
     flexDirection: 'row',
     alignItems: 'flex-start'
   },

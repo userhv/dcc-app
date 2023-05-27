@@ -23,8 +23,8 @@ export const MenuList = (props: IMenuList) => {
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
 
-    <CardSecao titulo="Professores" descricao='Professores ativos no departamento.' 
-              icone='google-classroom'      
+    <CardSecao titulo="Professores do DCC" descricao='Veja os professores ativos no departamento.' 
+              icone='account-group-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
                 screen: 'professores',})}/>
     <CardSecao titulo='Sobre o aplicativo' descricao="Versão do do app, termos de uso e política de privacidade." icone='information-outline'
