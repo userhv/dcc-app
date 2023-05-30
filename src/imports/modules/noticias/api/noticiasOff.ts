@@ -19,16 +19,16 @@ class NoticiasOff extends BaseOffline<INoticias> {
 			title: noticia.title,
 			media: noticia.media
 		};
-		await noticiasOff.insert(obj);
+		await this.insert(obj);
 	}
 
 	removeNoticia = async (noticia: INoticias | undefined) => {
 		if(noticia)
-			await noticiasOff.remove(noticia);
+			await this.remove(noticia);
 	}
 
 	retornaNoticiasSalvas = async () => {
-		return await noticiasOff.getCollection();
+		return await this.getCollection();
 	}
 }
 

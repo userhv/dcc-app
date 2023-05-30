@@ -11,6 +11,7 @@ import { nanoid } from 'nanoid';
 import { Loading } from '../../../../components/Loading/Loading';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -18,15 +19,20 @@ interface IProfessores {
 
 export const Professores = (props: IProfessores) => {
     
-    const { navigation } = props;
+    const { navigation} = props;
 
     const [professores, setProfessores] = useState<rssParser.FeedItem[]>([]);
     const [todosProfessores, setTodosProfessores] = useState<rssParser.FeedItem[]>([]);
-
     const [queryProfessores, setQueryProfessores] = useState<string>('');
 
     useEffect(() => {
-      const _retornaTodosProfessores = async () => await retornaTodosProfessores()
+      const _retornaTodosProfessores = async () => {
+        const _todosProfessores = await retornaTodosProfessores();
+        ordenaProfessores(_todosProfessores);
+        setTodosProfessores(_todosProfessores);
+        setProfessores(_todosProfessores);
+      }
+
       _retornaTodosProfessores();
     }, [])
 
@@ -38,6 +44,14 @@ export const Professores = (props: IProfessores) => {
       setQueryProfessores(query)
     }
 
+    const ordenaProfessores = (professoresArray: rssParser.FeedItem[]) => {
+      professoresArray.sort((a,b) => { 
+        const primeiro_prof = a.title.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+        const segundo_prof = b.title.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+        return primeiro_prof < segundo_prof ? -1 : primeiro_prof > segundo_prof ? 1 : 0;
+      })
+    }
+
     const retornaTodosProfessores = async () => {
       let data: rssParser.FeedItem[] | undefined = [];
       let arrayProfessores: rssParser.FeedItem[] | undefined = [];
@@ -46,13 +60,7 @@ export const Professores = (props: IProfessores) => {
         if(data?.length === 0) break;
         else if(data) arrayProfessores.push(...data)
       }
-      arrayProfessores.sort((a,b) => { 
-        const primeiro_prof = a.title.normalize("NFD").replace(/\p{Diacritic}/gu, "");
-        const segundo_prof = b.title.normalize("NFD").replace(/\p{Diacritic}/gu, "");
-        return primeiro_prof < segundo_prof ? -1 : primeiro_prof > segundo_prof ? 1 : 0;
-      })
-      setTodosProfessores(arrayProfessores);
-      setProfessores(arrayProfessores);
+      return arrayProfessores;
     }
 
     const encontraProfessor = () => {
@@ -78,16 +86,19 @@ export const Professores = (props: IProfessores) => {
         selectionColor={theme.colors.preto}
         />
       {professores.length > 0 ? (
-        professores && 
-        <FlatList 
-          data={professores}
-          renderItem={({item}) => <CardProfessores  key={nanoid()} professor={item} />}
-          keyExtractor={(item) => item.title}
-          initialNumToRender={5}
-          removeClippedSubviews
-          maxToRenderPerBatch={20}
-          updateCellsBatchingPeriod={25}
-        />
+        <ScrollView style={{flex: 1}}>
+          {professores &&
+            professores.map((professor, i) => (
+            <CardProfessores  key={i} professor={professor} />
+            ))}
+        </ScrollView>
+        // <FlatList 
+        //   data={professores}
+        //   renderItem={({item}) => <CardProfessores  key={nanoid()} professor={item} />}
+        //   keyExtractor={(item) => item.title}
+        //   initialNumToRender={5}
+        //   removeClippedSubviews
+        // />
       ): (
         <View style={subSecoesStyle.loading}>
           <Loading />

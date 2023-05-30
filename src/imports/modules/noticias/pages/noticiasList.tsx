@@ -19,7 +19,10 @@ interface INoticiasList {
 export const NoticiasList = (props: INoticiasList) => {
   const {navigation} = props;
 
+  const [dados, setDados] = useState<rssParser.FeedItem[]>([]);
   const [noticias, setNoticias] = useState<rssParser.FeedItem[]>([]);
+  const [eventos, setEventos] = useState<rssParser.FeedItem[]>([]);
+  const [palestras, setPalestras] = useState<rssParser.FeedItem[]>([]);
   const [isNoticias, setIsNoticias] = useState<boolean>(true);
   const [isEventos, setIsEventos] = useState<boolean>(false);
   const [isPalestras, setIsPalestras] = useState<boolean>(false);
@@ -27,13 +30,21 @@ export const NoticiasList = (props: INoticiasList) => {
   const offset = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    const _rsssNoticias = async () => await renderizaNoticias();;
+    const _renderizaTodosDados = async () => {
+      const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
+      dataNoticias && setNoticias(dataNoticias);
+      const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
+      dataEventos && setEventos(dataEventos);
+      const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
+      dataPalestras && setPalestras(dataPalestras);
+    }
+    const _rsssNoticias = async () => await renderizaNoticias();
+    _renderizaTodosDados();
     _rsssNoticias();
   },[])
 
   const renderizaNoticias = async () => {
-    const data: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
-    data && setNoticias(data);
+    setDados(noticias);
     setIsNoticias(true);
     setIsEventos(false);
     setIsPalestras(false);
@@ -41,16 +52,14 @@ export const NoticiasList = (props: INoticiasList) => {
   }
 
   const renderizaEventos = async () => {
-    const data: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
-    data && setNoticias(data);
+    setDados(eventos);
     setIsNoticias(false);
     setIsEventos(true);
     setIsPalestras(false);
   }
 
   const renderizaPalestras = async () => {
-    const data: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
-    data && setNoticias(data);
+    setDados(palestras)
     setIsNoticias(false);
     setIsEventos(false);
     setIsPalestras(true);
@@ -99,8 +108,8 @@ export const NoticiasList = (props: INoticiasList) => {
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
-      {noticias.length > 0 ? (
-          noticias.map((noticia, i) => (
+      {dados.length > 0 ? (
+          dados.map((noticia, i) => (
             <CardNoticias
               key={i}
               noticia={noticia}
