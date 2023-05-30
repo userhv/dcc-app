@@ -17,10 +17,7 @@ export const HomeHeader = (props: IHomeHeader) => {
 	return (
 		<View style={[homeHeaderStyle.container]}>
 			<View style={homeHeaderStyle.viewImagem}>
-				<View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', paddingLeft: 10}}>
-					<Text variant='titleSmall' style={{color: theme.colors.azul}}> Preview</Text>
-				</View>
-				<View style={{ justifyContent: 'space-between', flex: 1, flexDirection: 'row', paddingLeft: 85}}>
+				<View style={{ justifyContent: 'center'}}>
 					<Image source={require('../../../../img/icone_dcc.png')} style={homeHeaderStyle.imagem}/>
 				</View>
 			</View>
