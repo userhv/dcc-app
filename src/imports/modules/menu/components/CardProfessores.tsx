@@ -7,28 +7,35 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../co
 import { memo, useContext, useEffect, useState } from 'react';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { cardProfessoresStyle } from './style/CardProfessoresStyle';
+import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Linking } from 'react-native';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
     navigation?: NativeStackNavigationProp<any>;
 }
 
-
 const CardProfessores = (props: ICardProfessores) => {
 
-    const { navigation, professor } = props;
+  const { navigation, professor } = props;
 
-    const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
+  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
-    const [areas, setAreas] = useState<string[]>([]);
+  const [areas, setAreas] = useState<string[]>([]);
 
-    const abreWebViewProfessor = () => {
-		showModal({
-      isFullScreen: true,
-			renderedComponent: (_props: any) => (
-				<WebViewRN url={professor.links[0].url} handleClose={_props.onDismiss}/>
-			)
-		});
+  const abreWebViewProfessor = () => {
+  showModal({
+    isFullScreen: true,
+    renderedComponent: (_props: any) => (
+      <WebViewRN url={professor.links[0].url} handleClose={_props.onDismiss}/>
+    )
+    });
+  }
+
+  const enviarEmail = () => {
+    let url = `mailto:dcc.ufmg@gmail.com`;
+    return Linking.openURL(url);
   }
 
   const compartilharPerfilProfessor = async () => {
@@ -52,40 +59,53 @@ useEffect(() => {
 },[professor])
 
     return (
-        <>
-      <Card style={cardProfessoresStyle.container} mode='contained'
-                onPress={() => {abreWebViewProfessor()}}>
+      <>
+      <Card style={cardProfessoresStyle.container} mode='contained' onPress={() => abreWebViewProfessor()}>
         <Card.Title
           title={professor.title}
-          titleVariant="titleMedium"
+          titleVariant="headlineSmall"
           titleStyle={cardProfessoresStyle.titulo}
           subtitle={professor.description}
           subtitleStyle={cardProfessoresStyle.subtitulo}
           subtitleVariant="bodyMedium"
-          titleNumberOfLines={4}
+          titleNumberOfLines={3}
           subtitleNumberOfLines={4}
         />
-        {areas.length > 0 ? (
-            <View style={cardProfessoresStyle.containerArea}>
-                {areas.map((area, i) => (
-                <View style={cardProfessoresStyle.chipArea} key={i}>
-                        <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium'> {area} </Text>
-                </View>
-                ))}
+          <View style={{flexDirection: 'row', marginBottom: 10}}>
+            <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              {areas.length > 0 ? (
+                  <View style={cardProfessoresStyle.containerArea}>
+                      <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
+                      <View style={cardProfessoresStyle.boxArea}>
+                        {areas.map((area, i) => (
+                          <View style={cardProfessoresStyle.chipArea} key={i}>
+                                <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium'> {area} </Text>
+                          </View>
+                        ))}
+                      </View>
+                  </View>
+              ): null}
             </View>
-        ): null}
+          </View>
         <Card.Actions>
           <View style={cardProfessoresStyle.boxActions}>
-            <IconButton
-              accessible={true}
-              accessibilityLabel='Toque para compartilhar a notícia'
-              accessibilityRole='button'
-              icon={'share-variant-outline'}
-              iconColor={theme.colors.azul}
-              style={cardProfessoresStyle.botoes}
-              size={25}
-              onPress={async() => await compartilharPerfilProfessor()}
-              />
+            <View style={cardProfessoresStyle.boxIconeEmail}> 
+              <Icon name='email-outline' color={theme.colors.azul} size={25} style={cardProfessoresStyle.iconeEmail}/>
+              <Text numberOfLines={2} style={{color: theme.colors.cinza20}} onPress={() => enviarEmail()}> email@dcc.ufmg.com </Text>
+            </View>
+            <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
+              <IconButton
+                accessible={true}
+                accessibilityLabel='Toque para compartilhar a notícia'
+                accessibilityRole='button'
+                icon='share-variant-outline'
+                iconColor={theme.colors.azul}
+                style={cardProfessoresStyle.botoes}
+                size={25}
+                onPress={async() => await compartilharPerfilProfessor()}
+                />
+            </View>
           </View>
         </Card.Actions>
       </Card>
@@ -95,7 +115,7 @@ useEffect(() => {
 };
 
 const arePropsEqual = (prevProps: ICardProfessores, nextProps: ICardProfessores) => {
-  return prevProps.professor.title === nextProps.professor.title; 
+  return prevProps.professor.title !== nextProps.professor.title; 
 }
 
 

@@ -3,9 +3,6 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { homeHeaderStyle } from './HomeHeaderStyle';
 import { IAsyncStorageUser} from '../../../context/UserContext';
-import { Text } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { theme } from '../../../paper/theme';
 
 interface IHomeHeader {
 	user?: IAsyncStorageUser;

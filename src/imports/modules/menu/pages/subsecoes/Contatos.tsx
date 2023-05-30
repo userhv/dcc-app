@@ -1,7 +1,5 @@
 import {View} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { CardSecaoInterno } from '../../components/CardSecaoInterno';
-import { getVersion } from 'react-native-device-info';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import { TextInput, Text, Button } from 'react-native-paper';
@@ -10,7 +8,6 @@ import { theme } from '../../../../paper/theme';
 import { useState } from 'react';
 import { Linking } from 'react-native';
 import qs from 'qs';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface IContatos {
     navigation: NativeStackNavigationProp<any>;
@@ -23,25 +20,19 @@ export const Contatos = (props: IContatos) => {
     const [text, setText] = useState("");
 
     const enviarEmail = async () => {
-
       let url = `mailto:dcc.ufmg@gmail.com`;
-  
       const query = qs.stringify({
         subject: "Feedback do aplicativo",
         body: text,
-    });
-  
-    
+      });
+
       if (query.length) {
         url += `?${query}`;
       }
-  
-    return Linking.openURL(url);
-  
+      return Linking.openURL(url);
     }
 
   return (
-    
     <View style={subSecoesStyle.container}>
       <HeaderBar navigation={navigation} titulo='Fale conosco'/>
       <View style={contatosStyle.boxAlerta}>

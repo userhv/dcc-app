@@ -9,7 +9,6 @@ export const cardProfessoresStyle = StyleSheet.create({
 		margin: 1,
 	},
 	titulo: {
-		fontSize: 17, 
 		justifyContent: 'center', 
 		paddingTop: 10, 
 		color: theme.colors.cinza10,
@@ -20,9 +19,9 @@ export const cardProfessoresStyle = StyleSheet.create({
 		paddingTop: 10
 	},
     boxArea: {
-        flexDirection: 'column', 
-        paddingLeft: 10
-    },
+		flexDirection: 'row', 
+		flexWrap: 'wrap'
+	},
     containerArea: {
         flexDirection: 'row', 
         flexWrap: 'wrap',
@@ -33,16 +32,15 @@ export const cardProfessoresStyle = StyleSheet.create({
         borderWidth: 1, 
         margin: 5,
         borderRadius: 4,
-        backgroundColor: theme.colors.azulOpacoMenuOportunidades
-    },
-    textoArea: {
-        color: theme.colors.cinza10
+        backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     },
     textoChip: {
-        color: theme.colors.azul
+        color: theme.colors.azul,
+		margin: 1
     },
     boxActions: {
 		flexDirection: 'row',
+		flex: 1
 	},
     botoes: {
 		borderColor: 'transparent',
@@ -52,14 +50,25 @@ export const cardProfessoresStyle = StyleSheet.create({
 		backgroundColor: theme.colors.cinzaMedio
 	  },
     imagemCover: {
-		width: 'auto',
+		width: 100,
+		height: 100,
 		backgroundColor: 'transparent',
-		margin: 10,
+		marginLeft: 10,
+		borderRadius: 10
 	},
-
-	imagem: {
-		width: 40, 
-		height: 40,
-		backgroundColor: 'transparent'
+	iconeEmail: {
+		marginRight: 3, 
+		justifyContent: 'center', 
+		alignItems: 'center'
+	},
+	boxBotaoCompartilhar: {
+		alignItems: 'flex-end', 
+		flex: 1, 
+		justifyContent: 'center'
+	},
+	boxIconeEmail: { 
+		flexDirection: 'row', 
+		justifyContent: 'center', 
+		alignItems: 'center'
 	},
 })
