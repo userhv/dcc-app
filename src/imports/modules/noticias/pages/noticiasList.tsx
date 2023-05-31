@@ -38,10 +38,14 @@ export const NoticiasList = (props: INoticiasList) => {
       const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
       dataPalestras && setPalestras(dataPalestras);
     }
-    const _rsssNoticias = async () => await renderizaNoticias();
     _renderizaTodosDados();
-    _rsssNoticias();
   },[])
+
+  useEffect(() => {
+    const _rsssNoticias = async () => await renderizaNoticias();
+    _rsssNoticias();
+  },[noticias])
+
 
   const renderizaNoticias = async () => {
     setDados(noticias);
@@ -70,13 +74,15 @@ export const NoticiasList = (props: INoticiasList) => {
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
         <View style={noticiasListRNStyle.boxLinhaChip}>
           <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
-          <Icon
-                name="bookmark-multiple"          
-                size={28}
-                style={noticiasListRNStyle.icone}
-                color={theme.colors.azul}
-                onPress={() => 	navigation?.navigate('noticiasRoute', {
-                  screen: 'NoticiasSalvas',})}/>
+            <View style={noticiasListRNStyle.boxIcone}>
+              <Icon
+                    name="bookmark-multiple-outline"          
+                    size={25}
+                    style={noticiasListRNStyle.icone}
+                    color={theme.colors.azul}
+                    onPress={() => 	navigation?.navigate('noticiasRoute', {
+                      screen: 'NoticiasSalvas',})}/>
+            </View>
               <View style={noticiasListRNStyle.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}

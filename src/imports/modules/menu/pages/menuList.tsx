@@ -42,7 +42,7 @@ export const MenuList = (props: IMenuList) => {
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
 
-    <CardSecao titulo="Professores do DCC" descricao='Veja os professores ativos no departamento.' 
+    <CardSecao titulo="Professores" descricao='Veja os professores ativos e voluntários do departamento.' 
               icone='account-group-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
                 screen: 'professores'})}/>
@@ -54,11 +54,11 @@ export const MenuList = (props: IMenuList) => {
 <CardSecao titulo="Fale conosco" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='message-question-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'contatos',})}/>              
+                screen: 'contatos'})}/>              
 
-    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do do app, termos de uso e política de privacidade." icone='information-outline'
+    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, termos de uso e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {
-        screen: 'sobre',})}/>
+        screen: 'sobre'})}/>
     
     </ScrollView>
   </SafeAreaView>

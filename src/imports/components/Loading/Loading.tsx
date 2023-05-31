@@ -6,7 +6,7 @@ export const Loading = (props: any) => {
   return (
     <View style={loadingStyle.container}>
       <ActivityIndicator animating size={'large'} {...props} 
-        color={theme.colors.vermelhoVivo}/>
+        color={theme.colors.cinza10}/>
     </View>
   );
 };

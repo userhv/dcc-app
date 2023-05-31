@@ -25,9 +25,17 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   icone: {
-    marginLeft: 5
+    margin: 3
   },
 
+  boxIcone: {
+    backgroundColor: theme.colors.azulOpacoSelecionado, 
+    borderColor: theme.colors.azul,
+    borderWidth: 1,
+    justifyContent: 'center', 
+    borderRadius: 8,
+    marginLeft: 5
+  },
   
   divisor: {
     backgroundColor: theme.colors.cinza40,

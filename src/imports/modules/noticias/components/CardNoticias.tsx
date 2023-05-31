@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, View} from 'react-native';
+import {Image, Share, TouchableNativeFeedback, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
@@ -69,55 +69,57 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   return (
     <>
-      <Card style={cardNoticiasStyle.container} mode="contained" testID='url' onPress={() => {abreWebViewNoticia()}} accessible={true} accessibilityLabel='Toque para ler a notícia'>
-        {noticia.media[0] ? (
-          <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
-        ): null
-        }
-        <Card.Title
-          title={noticia.title}
-          titleVariant="titleMedium"
-          titleStyle={cardNoticiasStyle.titulo}
-          subtitle={noticia.description}
-          subtitleStyle={cardNoticiasStyle.subtitulo}
-          subtitleVariant="bodyMedium"
-          titleNumberOfLines={4}
-          subtitleNumberOfLines={4}
-        />
-        <Card.Actions>
-          <View style={cardNoticiasStyle.boxActions}>
-            <View style={cardNoticiasStyle.boxImagemUrl}>
-              <Image source={require('../../../../img/icone_dcc.png')} style={cardNoticiasStyle.imagem} />
-              <View style={{flexShrink: 1}}>
-                <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
-                </View>
+      <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)} onPress={() => {abreWebViewNoticia()}}>
+        <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
+          {noticia.media[0] ? (
+            <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
+          ): null
+          }
+          <Card.Title
+            title={noticia.title}
+            titleVariant="titleMedium"
+            titleStyle={cardNoticiasStyle.titulo}
+            subtitle={noticia.description}
+            subtitleStyle={cardNoticiasStyle.subtitulo}
+            subtitleVariant="bodyMedium"
+            titleNumberOfLines={4}
+            subtitleNumberOfLines={4}
+          />
+          <Card.Actions>
+            <View style={cardNoticiasStyle.boxActions}>
+              <View style={cardNoticiasStyle.boxImagemUrl}>
+                <Image source={require('../../../../img/icone_dcc.png')} style={cardNoticiasStyle.imagem} />
+                <View style={{flexShrink: 1}}>
+                  <Text style={cardNoticiasStyle.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
+                  </View>
+              </View>
+            <View style={cardNoticiasStyle.boxBotoes}>
+              <IconButton
+                accessible={true}
+                accessibilityLabel='Toque uma vez para salvar a notícia, toque duas vezes para remover a notícia salva'
+                accessibilityRole='button'
+                icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
+                iconColor={theme.colors.azul}
+                style={cardNoticiasStyle.botoes}
+                size={25}
+                onPress={async() => await salvarOuRemoverNoticia()}
+                />
+              <IconButton
+                accessible={true}
+                accessibilityLabel='Toque para compartilhar a notícia'
+                accessibilityRole='button'
+                icon={'share-variant-outline'}
+                iconColor={theme.colors.azul}
+                style={cardNoticiasStyle.botoes}
+                size={25}
+                onPress={async() => await compartilharNoticia()}
+                />
             </View>
-          <View style={cardNoticiasStyle.boxBotoes}>
-            <IconButton
-              accessible={true}
-              accessibilityLabel='Toque uma vez para salvar a notícia, toque duas vezes para remover a notícia salva'
-              accessibilityRole='button'
-              icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
-              iconColor={theme.colors.azul}
-              style={cardNoticiasStyle.botoes}
-              size={25}
-              onPress={async() => await salvarOuRemoverNoticia()}
-              />
-            <IconButton
-              accessible={true}
-              accessibilityLabel='Toque para compartilhar a notícia'
-              accessibilityRole='button'
-              icon={'share-variant-outline'}
-              iconColor={theme.colors.azul}
-              style={cardNoticiasStyle.botoes}
-              size={25}
-              onPress={async() => await compartilharNoticia()}
-              />
-          </View>
-          </View>
-        </Card.Actions>
-      </Card>
-    <Divider style={cardNoticiasStyle.divisor} />
+            </View>
+          </Card.Actions>
+        </Card>
+      </TouchableNativeFeedback>
+      <Divider style={cardNoticiasStyle.divisor} />
     </>
   );
 };
