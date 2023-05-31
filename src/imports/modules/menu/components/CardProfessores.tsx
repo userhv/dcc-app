@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Share, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import { Share, TouchableNativeFeedback, View} from 'react-native';
+import {Button, Card, Divider, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
@@ -60,56 +60,63 @@ useEffect(() => {
 
     return (
       <>
-      <Card style={cardProfessoresStyle.container} mode='contained' onPress={() => abreWebViewProfessor()}>
-        <Card.Title
-          title={professor.title}
-          titleVariant="headlineSmall"
-          titleStyle={cardProfessoresStyle.titulo}
-          subtitle={professor.description}
-          subtitleStyle={cardProfessoresStyle.subtitulo}
-          subtitleVariant="bodyMedium"
-          titleNumberOfLines={3}
-          subtitleNumberOfLines={4}
-        />
-          <View style={{flexDirection: 'row', marginBottom: 10}}>
-            <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              {areas.length > 0 ? (
-                  <View style={cardProfessoresStyle.containerArea}>
-                      <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
-                      <View style={cardProfessoresStyle.boxArea}>
-                        {areas.map((area, i) => (
-                          <View style={cardProfessoresStyle.chipArea} key={i}>
-                                <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium'> {area} </Text>
-                          </View>
-                        ))}
-                      </View>
-                  </View>
-              ): null}
+        <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)} onPress={() => abreWebViewProfessor()}>
+        <Card style={cardProfessoresStyle.container} mode='contained'>
+          <Card.Title
+            title={professor.title}
+            titleVariant="headlineSmall"
+            titleStyle={cardProfessoresStyle.titulo}
+            subtitle={professor.description}
+            subtitleStyle={cardProfessoresStyle.subtitulo}
+            subtitleVariant="bodyMedium"
+            titleNumberOfLines={3}
+            subtitleNumberOfLines={4}
+          />
+            <View style={{flexDirection: 'row', marginBottom: 10}}>
+              <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                {areas.length > 0 ? (
+                    <View style={cardProfessoresStyle.containerArea}>
+                        <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
+                        <View style={cardProfessoresStyle.boxArea}>
+                          {areas.map((area, i) => (
+                            <View style={cardProfessoresStyle.chipArea} key={i}>
+                                  <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium'> {area} </Text>
+                            </View>
+                          ))}
+                        </View>
+                    </View>
+                ): null}
+              </View>
             </View>
-          </View>
-        <Card.Actions>
-          <View style={cardProfessoresStyle.boxActions}>
-            <View style={cardProfessoresStyle.boxIconeEmail}> 
-              <Icon name='email-outline' color={theme.colors.azul} size={25} style={cardProfessoresStyle.iconeEmail}/>
-              <Text numberOfLines={2} style={{color: theme.colors.cinza20}} onPress={() => enviarEmail()}> email@dcc.ufmg.com </Text>
+          <Card.Actions>
+            <View style={cardProfessoresStyle.boxActions}>
+              <View style={cardProfessoresStyle.boxIconeEmail}> 
+                <Button 
+                  mode='contained'
+                  icon='email-outline'
+                  buttonColor={theme.colors.azul}
+                  onPress={() => enviarEmail()}>
+                    Entrar em contato
+                </Button>
+              </View>
+              <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
+                <IconButton
+                  accessible={true}
+                  accessibilityLabel='Toque para compartilhar a notícia'
+                  accessibilityRole='button'
+                  icon='share-variant-outline'
+                  iconColor={theme.colors.azul}
+                  style={cardProfessoresStyle.botoes}
+                  size={25}
+                  onPress={async() => await compartilharPerfilProfessor()}
+                  />
+              </View>
             </View>
-            <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
-              <IconButton
-                accessible={true}
-                accessibilityLabel='Toque para compartilhar a notícia'
-                accessibilityRole='button'
-                icon='share-variant-outline'
-                iconColor={theme.colors.azul}
-                style={cardProfessoresStyle.botoes}
-                size={25}
-                onPress={async() => await compartilharPerfilProfessor()}
-                />
-            </View>
-          </View>
-        </Card.Actions>
-      </Card>
-    <Divider style={cardProfessoresStyle.divisor} />
+          </Card.Actions>
+        </Card>
+      </TouchableNativeFeedback>
+      <Divider style={cardProfessoresStyle.divisor} />
     </>
     );
 };

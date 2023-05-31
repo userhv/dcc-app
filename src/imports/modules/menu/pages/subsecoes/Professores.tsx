@@ -75,30 +75,29 @@ export const Professores = (props: IProfessores) => {
     <View style={subSecoesStyle.container}>
       <HeaderBar navigation={navigation} titulo='Professores'/>
       <Searchbar
-        placeholder="Pesquise pelo professor"
+        placeholder="Pesquise o nome do docente"
         onChangeText={onChangeSearch}
         value={queryProfessores}
         style={subSecoesStyle.barraPesquisa}
         iconColor={theme.colors.azul}
         onIconPress={encontraProfessor}
         onClearIconPress={(e) => retornaProfessores()}
-        inputStyle={{textDecorationLine: 'none'}}
+        inputStyle={{textDecorationLine: 'none', overflow: 'hidden'}}
         selectionColor={theme.colors.preto}
         />
       {professores.length > 0 ? (
-        <ScrollView style={{flex: 1}}>
-          {professores &&
-            professores.map((professor, i) => (
-            <CardProfessores  key={i} professor={professor} />
-            ))}
-        </ScrollView>
-        // <FlatList 
-        //   data={professores}
-        //   renderItem={({item}) => <CardProfessores  key={nanoid()} professor={item} />}
-        //   keyExtractor={(item) => item.title}
-        //   initialNumToRender={5}
-        //   removeClippedSubviews
-        // />
+        // <ScrollView style={{flex: 1}}>
+        //   {professores.map((professor, i) => (
+        //     <CardProfessores  key={i} professor={professor} />
+        //     ))}
+        // </ScrollView>
+        <FlatList 
+          data={professores}
+          renderItem={({item}) => <CardProfessores  key={item.title} professor={item} />}
+          keyExtractor={(item) => item.title}
+          initialNumToRender={8}
+          removeClippedSubviews
+        />
       ): (
         <View style={subSecoesStyle.loading}>
           <Loading />

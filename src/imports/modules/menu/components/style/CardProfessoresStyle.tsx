@@ -23,7 +23,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		flexWrap: 'wrap'
 	},
     containerArea: {
-        flexDirection: 'row', 
+        flexDirection: 'column', 
         flexWrap: 'wrap',
         paddingLeft: 10,
     },
@@ -55,11 +55,6 @@ export const cardProfessoresStyle = StyleSheet.create({
 		backgroundColor: 'transparent',
 		marginLeft: 10,
 		borderRadius: 10
-	},
-	iconeEmail: {
-		marginRight: 3, 
-		justifyContent: 'center', 
-		alignItems: 'center'
 	},
 	boxBotaoCompartilhar: {
 		alignItems: 'flex-end', 
