@@ -7,7 +7,8 @@ export const cardNoticiasStyle = StyleSheet.create({
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		margin: 1,
-		height: 'auto'
+		height: 'auto',
+		borderRadius: 0
 	},
 	titulo: {
 		fontSize: 17, 

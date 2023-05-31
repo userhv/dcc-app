@@ -7,6 +7,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		margin: 1,
+		borderRadius: 0
 	},
 	titulo: {
 		justifyContent: 'center', 
