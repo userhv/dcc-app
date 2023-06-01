@@ -35,7 +35,13 @@ export const webViewRNStyle = StyleSheet.create({
     margin: 10,
   },
 
-    container: {
-      flex: 1,  
-    },
+  container: {
+    flex: 1,  
+  },
+
+  loading: {
+    justifyContent: 'center', 
+    flex: 1, 
+    alignItems: 'center',
+  }
   });

@@ -7,15 +7,12 @@ export const noticiasListRNStyle = StyleSheet.create({
     margin: 1,
     backgroundColor: theme.colors.branco,
   },
-
-  containerTop: {
-    paddingTop: 10,
-    flexDirection: 'row',
-    backgroundColor: theme.colors.branco,
-  },
-
+  
   boxLinhaChip: {
-    margin: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
     flexDirection: 'row',
     alignItems: 'flex-start'
   },
@@ -28,35 +25,22 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   icone: {
-    marginLeft: 5
+    margin: 3
   },
 
-  descricao: {
-    flex:1,
-    flexDirection: 'row',
-    justifyContent:  'center',
-    alignItems: 'center'
+  boxIcone: {
+    backgroundColor: theme.colors.azulOpacoSelecionado, 
+    borderColor: theme.colors.azul,
+    borderWidth: 1,
+    justifyContent: 'center', 
+    borderRadius: 8,
+    marginLeft: 5
   },
   
   divisor: {
     backgroundColor: theme.colors.cinza40,
     width: 1, 
     marginLeft: 10,
-  },
-
-  boxIconeVazio: {
-    flex:1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 150, 
-  },
-
-  texto: {
-    flexWrap: 'wrap',
-    width: 'auto',
-    padding: 10,
-    textAlign: 'center'
   },
 
   loading: {

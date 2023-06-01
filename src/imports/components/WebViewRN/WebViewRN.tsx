@@ -4,6 +4,7 @@ import {webViewRNStyle} from './WebiewRNStyle';
 import { IconButton, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
 import React, { useState } from 'react';
+import { Loading } from '../Loading/Loading';
 
 interface IWebViewRN {
   url: string;
@@ -37,10 +38,10 @@ export const WebViewRN = (props: IWebViewRN) => {
           </View>
       </View>
       <View style={{height, width}}>
-        <WebView source={{uri: url}} style={webViewRNStyle.container}   
-                  onNavigationStateChange={(e) => {
+      <WebView source={{uri: url}} style={webViewRNStyle.container}   
+              onNavigationStateChange={(e) => {
                     setUrlWebView(e.url)
-                }}/>
+        }}/>
       </View>
     </View>
   );

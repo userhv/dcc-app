@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
+import { theme } from '../../../../paper/theme';
 
 export const cardNoticiasStyle = StyleSheet.create({
 	container: {
@@ -7,7 +7,8 @@ export const cardNoticiasStyle = StyleSheet.create({
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		margin: 1,
-		height: 'auto'
+		height: 'auto',
+		borderRadius: 0
 	},
 	titulo: {
 		fontSize: 17, 
@@ -56,7 +57,8 @@ export const cardNoticiasStyle = StyleSheet.create({
 	imagem: {
 		width: 40, 
 		height: 40,
-		backgroundColor: 'transparent'
+		backgroundColor: 'transparent',
+		borderRadius: 20
 	},
 	divisor: {
 		backgroundColor: theme.colors.cinzaMedio
