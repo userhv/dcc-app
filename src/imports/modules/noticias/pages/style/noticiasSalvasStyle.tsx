@@ -1,26 +1,11 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../paper/theme';
 
-export const noticiasSalvasRNStyle = StyleSheet.create({
+export const noticiasSalvasStyle = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-  },
-
-  containerTop: {
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: theme.colors.branco,
-    
-  },
-
-  descricao: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginLeft: 20,
   },
 
   boxIconeVazio: {

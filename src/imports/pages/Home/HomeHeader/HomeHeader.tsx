@@ -5,7 +5,7 @@ import { homeHeaderStyle } from './HomeHeaderStyle';
 import { IAsyncStorageUser} from '../../../context/UserContext';
 
 interface IHomeHeader {
-	user: IAsyncStorageUser;
+	user?: IAsyncStorageUser;
 }
 
 export const HomeHeader = (props: IHomeHeader) => {
@@ -14,7 +14,9 @@ export const HomeHeader = (props: IHomeHeader) => {
 	return (
 		<View style={[homeHeaderStyle.container]}>
 			<View style={homeHeaderStyle.viewImagem}>
-				<Image source={require('../../../../img/icone_dcc.png')} style={homeHeaderStyle.imagem}/>
+				<View style={{ justifyContent: 'center'}}>
+					<Image source={require('../../../../img/icone_dcc.png')} style={homeHeaderStyle.imagem}/>
+				</View>
 			</View>
 		</View>
 	);

@@ -1,4 +1,5 @@
 import noticias from './noticias/config'
+import menu from './menu/config'
 
 class Modules {
 	modulesRouterList: (any | null)[] = [null];
@@ -7,11 +8,13 @@ class Modules {
 		// Create modules router list
 		this.modulesRouterList = [
 			...noticias.noticiasRouterList,
+			...menu.menuRouterList
 		];
 
 		// Create modules App Menu Item list
 		this.modulesAppMenuItemList = [
 			...noticias.noticiasMenuItemList,
+			...menu.menuMenuItemList,
 		];
 	}
 
