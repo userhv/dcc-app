@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Share, TouchableNativeFeedback, View} from 'react-native';
+import { Share, TouchableHighlight, View} from 'react-native';
 import {Button, Card, Divider, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
@@ -8,7 +8,6 @@ import { memo, useContext, useEffect, useState } from 'react';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { cardProfessoresStyle } from './style/CardProfessoresStyle';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Linking } from 'react-native';
 
 interface ICardProfessores {
@@ -60,7 +59,7 @@ useEffect(() => {
 
     return (
       <>
-        <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)} onPress={() => abreWebViewProfessor()}>
+        <TouchableHighlight   onPress={() => abreWebViewProfessor()} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
         <Card style={cardProfessoresStyle.container} mode='contained'>
           <Card.Title
             title={professor.title}
@@ -115,7 +114,7 @@ useEffect(() => {
             </View>
           </Card.Actions>
         </Card>
-      </TouchableNativeFeedback>
+      </TouchableHighlight>
       <Divider style={cardProfessoresStyle.divisor} />
     </>
     );

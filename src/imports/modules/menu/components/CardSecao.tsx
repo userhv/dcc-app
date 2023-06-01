@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, TouchableNativeFeedback, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import { TouchableHighlight, View} from 'react-native';
+import {Card} from 'react-native-paper';
 import { cardSecaoStyle } from './style/CardSecaoStyle';
 import { theme } from '../../../paper/theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -19,7 +19,7 @@ export const CardSecao = (props: ICardSecao) => {
 
 
     return (
-        <TouchableNativeFeedback onPress={onPress} background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)}>
+        <TouchableHighlight onPress={onPress} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
             <Card style={cardSecaoStyle.container} mode="contained" >
                 <View style={cardSecaoStyle.boxPrincipal}>
                     <View style={cardSecaoStyle.boxBotao}>
@@ -45,6 +45,6 @@ export const CardSecao = (props: ICardSecao) => {
                     </View>
                 </View>
             </Card>
-        </TouchableNativeFeedback>
+        </TouchableHighlight>
     );
 };

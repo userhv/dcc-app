@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, TouchableNativeFeedback, View} from 'react-native';
+import {Image, Share, TouchableHighlight, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
@@ -69,7 +69,7 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   return (
     <>
-      <TouchableNativeFeedback  background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)} onPress={() => {abreWebViewNoticia()}}>
+      <TouchableHighlight  underlayColor={theme.colors.cinza98}  activeOpacity={0.8} onPress={() => {abreWebViewNoticia()}}>
         <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
           {noticia.media[0] ? (
             <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
@@ -118,7 +118,7 @@ export const CardNoticias = (props: ICardNoticias) => {
             </View>
           </Card.Actions>
         </Card>
-      </TouchableNativeFeedback>
+      </TouchableHighlight>
       <Divider style={cardNoticiasStyle.divisor} />
     </>
   );

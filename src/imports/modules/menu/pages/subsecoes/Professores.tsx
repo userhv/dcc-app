@@ -75,7 +75,7 @@ export const Professores = (props: IProfessores) => {
     <View style={subSecoesStyle.container}>
       <HeaderBar navigation={navigation} titulo='Professores'/>
       <Searchbar
-        placeholder="Pesquise o nome do docente"
+        placeholder="Pesquise pelo nome..."
         onChangeText={onChangeSearch}
         value={queryProfessores}
         style={subSecoesStyle.barraPesquisa}
@@ -86,11 +86,6 @@ export const Professores = (props: IProfessores) => {
         selectionColor={theme.colors.preto}
         />
       {professores.length > 0 ? (
-        // <ScrollView style={{flex: 1}}>
-        //   {professores.map((professor, i) => (
-        //     <CardProfessores  key={i} professor={professor} />
-        //     ))}
-        // </ScrollView>
         <FlatList 
           data={professores}
           renderItem={({item}) => <CardProfessores  key={item.title} professor={item} />}

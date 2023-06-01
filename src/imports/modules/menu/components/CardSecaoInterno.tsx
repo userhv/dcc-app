@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {TouchableNativeFeedback, View} from 'react-native';
+import {TouchableHighlight, View} from 'react-native';
 import {Card} from 'react-native-paper';
 
 import { cardSecaoInternoStyle } from './style/CardSecaoInternoStyle';
@@ -16,10 +16,9 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
 
     const { navigation, titulo, descricao, onPress } = props;
 
-
     return (
-        <TouchableNativeFeedback onPress={onPress} background={TouchableNativeFeedback.Ripple(theme.colors.azulComOpacidade, false)}>
-            <Card style={cardSecaoInternoStyle.container} mode="contained" onPress={onPress} >
+        <TouchableHighlight onPress={onPress} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
+            <Card style={cardSecaoInternoStyle.container} mode="contained">
                 <View style={cardSecaoInternoStyle.boxPrincipal}>
                     <View style={cardSecaoInternoStyle.boxDescricao}>
                         <Card.Title
@@ -35,6 +34,6 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
                     </View>
                 </View>
             </Card>
-        </TouchableNativeFeedback>
+        </TouchableHighlight>
     );
 };

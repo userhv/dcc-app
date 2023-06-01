@@ -18,7 +18,7 @@ export const Home = (props: any) => {
       <Divider style={homeStyle.divisor}/>
       <View style={homeStyle.blocoInterno}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: theme.colors.azulOpacoMenuOportunidades, padding: 5 }}>
-					<Text variant='titleSmall' style={{color: theme.colors.azul}}> - PREVIEW -</Text>
+					<Text variant='titleSmall' style={{color: theme.colors.azul}}> PREVIEW </Text>
 				</View>
       </View>
     </View>
