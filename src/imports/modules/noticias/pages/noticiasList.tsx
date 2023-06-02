@@ -26,6 +26,7 @@ export const NoticiasList = (props: INoticiasList) => {
   const [isNoticias, setIsNoticias] = useState<boolean>(true);
   const [isEventos, setIsEventos] = useState<boolean>(false);
   const [isPalestras, setIsPalestras] = useState<boolean>(false);
+  const [rolagem, setRolagem] = useState<boolean>(true);
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -107,19 +108,23 @@ export const NoticiasList = (props: INoticiasList) => {
                   selectedColor={isPalestras ? theme.colors.branco : theme.colors.azul}> 
                   Palestras
               </Chip>
+              <View style={{marginLeft: 10}}/>
           </ScrollView>
         </View>
         <ScrollView style={{ flex: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
-                  )} scrollEventThrottle={16}>
+                  )} scrollEventThrottle={16}
+                  onMomentumScrollBegin={() => setRolagem(false)}
+                  onMomentumScrollEnd={() => setRolagem(true)}>
       {dados.length > 0 ? (
           dados.map((noticia, i) => (
             <CardNoticias
               key={i}
               noticia={noticia}
               navigation={navigation}
+              rolagem={rolagem}
               url={noticia.links[0].url}
             />
           ))

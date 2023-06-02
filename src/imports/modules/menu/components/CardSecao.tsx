@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { TouchableHighlight, View} from 'react-native';
+import { Pressable, View} from 'react-native';
 import {Card} from 'react-native-paper';
 import { cardSecaoStyle } from './style/CardSecaoStyle';
 import { theme } from '../../../paper/theme';
@@ -9,17 +9,20 @@ interface ICardSecao {
     titulo: string;
     descricao: string;
     icone: string;
+    rolagem: boolean;
     onPress?: () => void;
     navigation?: NativeStackNavigationProp<any>;
 }
 
 export const CardSecao = (props: ICardSecao) => {
 
-    const { navigation, titulo, descricao, icone, onPress } = props;
+    const { navigation, titulo, descricao, icone, onPress, rolagem } = props;
 
 
     return (
-        <TouchableHighlight onPress={onPress} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
+        <Pressable onPress={onPress} 
+            disabled={!rolagem}
+            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
             <Card style={cardSecaoStyle.container} mode="contained" >
                 <View style={cardSecaoStyle.boxPrincipal}>
                     <View style={cardSecaoStyle.boxBotao}>
@@ -35,9 +38,7 @@ export const CardSecao = (props: ICardSecao) => {
                         <Card.Title
                             title={titulo}
                             titleVariant="titleMedium"
-                            titleStyle={cardSecaoStyle.titulo}
                             subtitle={descricao}
-                            subtitleStyle={cardSecaoStyle.subtitulo}
                             subtitleVariant="bodyMedium"
                             titleNumberOfLines={2}
                             subtitleNumberOfLines={2}
@@ -45,6 +46,6 @@ export const CardSecao = (props: ICardSecao) => {
                     </View>
                 </View>
             </Card>
-        </TouchableHighlight>
+        </Pressable>
     );
 };

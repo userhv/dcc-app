@@ -27,13 +27,13 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 	const iconeHome = 'home-outline';
 	const variante = varianteSemOutline(iconeHome);
 	return (
-		<BottomTab.Navigator initialRouteName="Home"  activeColor={theme.colors.cinza30} inactiveColor={theme.colors.cinza50}>
+		<BottomTab.Navigator initialRouteName="Home"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
 			<BottomTab.Screen
 				name="HomeScreen"
 				options={{
 					tabBarLabel: "Início",
 					tabBarIcon: ({ focused }) => <Icon name={focused ? variante : iconeHome} 
-						size={24} color={focused ? theme.colors.azul : theme.colors.cinza50} />,
+						size={24} color={focused ? theme.colors.preto : theme.colors.cinza50} />,
 				}}>
 				{(props) => <HomeNavigator {...props} {...appProps} />}
 			</BottomTab.Screen>

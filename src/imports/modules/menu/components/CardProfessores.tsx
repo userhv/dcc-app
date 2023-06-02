@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Share, TouchableHighlight, View} from 'react-native';
+import { Pressable, Share, View} from 'react-native';
 import {Button, Card, Divider, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
@@ -59,14 +59,13 @@ useEffect(() => {
 
     return (
       <>
-        <TouchableHighlight   onPress={() => abreWebViewProfessor()} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
-        <Card style={cardProfessoresStyle.container} mode='contained'>
+        <Pressable onPress={abreWebViewProfessor} 
+            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
+        <Card style={cardProfessoresStyle.container} mode='contained'  >
           <Card.Title
             title={professor.title}
             titleVariant="headlineSmall"
-            titleStyle={cardProfessoresStyle.titulo}
             subtitle={professor.description}
-            subtitleStyle={cardProfessoresStyle.subtitulo}
             subtitleVariant="bodyMedium"
             titleNumberOfLines={3}
             subtitleNumberOfLines={4}
@@ -114,8 +113,8 @@ useEffect(() => {
             </View>
           </Card.Actions>
         </Card>
-      </TouchableHighlight>
       <Divider style={cardProfessoresStyle.divisor} />
+      </Pressable>
     </>
     );
 };

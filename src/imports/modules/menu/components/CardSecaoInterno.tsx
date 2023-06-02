@@ -1,32 +1,32 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {TouchableHighlight, View} from 'react-native';
+import {Pressable, View} from 'react-native';
 import {Card} from 'react-native-paper';
-
 import { cardSecaoInternoStyle } from './style/CardSecaoInternoStyle';
 import { theme } from '../../../paper/theme';
 
 interface ICardSecaoInterno {
     titulo: string;
     descricao?: string;
+    rolagem?: boolean;
     onPress?: () => void;
     navigation?: NativeStackNavigationProp<any>;
 }
 
 export const CardSecaoInterno = (props: ICardSecaoInterno) => {
 
-    const { navigation, titulo, descricao, onPress } = props;
+    const { navigation, titulo, descricao, onPress, rolagem } = props;
 
     return (
-        <TouchableHighlight onPress={onPress} underlayColor={theme.colors.cinza98}  activeOpacity={0.8}>
+        <Pressable onPress={onPress} 
+            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
+            disabled={rolagem !== undefined ? !rolagem : false}>
             <Card style={cardSecaoInternoStyle.container} mode="contained">
                 <View style={cardSecaoInternoStyle.boxPrincipal}>
                     <View style={cardSecaoInternoStyle.boxDescricao}>
                         <Card.Title
                             title={titulo}
-                            titleVariant="titleMedium"
-                            titleStyle={cardSecaoInternoStyle.titulo}
+                            titleVariant="titleSmall"
                             subtitle={descricao ?? ""}
-                            subtitleStyle={cardSecaoInternoStyle.subtitulo}
                             subtitleVariant="bodyMedium"
                             titleNumberOfLines={2}
                             subtitleNumberOfLines={2}
@@ -34,6 +34,6 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
                     </View>
                 </View>
             </Card>
-        </TouchableHighlight>
+        </Pressable>
     );
 };
