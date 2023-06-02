@@ -1,6 +1,8 @@
 package com.dcc
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -9,10 +11,15 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate
 
 
 class MainActivity : ReactActivity() {
-
+    private var keep = true
+    private val delay = 1250
     override fun onCreate(savedInstanceState: Bundle?) {
-        var splashScreen = installSplashScreen()
+        val splashScreen = installSplashScreen()
         super.onCreate(null)
+        splashScreen.setKeepOnScreenCondition { keep }
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ keep = false }, delay.toLong())
+
     }
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
