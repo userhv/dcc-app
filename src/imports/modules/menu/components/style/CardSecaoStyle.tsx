@@ -4,29 +4,16 @@ import { theme } from '../../../../paper/theme';
 export const cardSecaoStyle = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
 		borderRadius: 0,
-		margin: 1,
-		paddingBottom: 10
-	},
-	titulo: {
-		fontSize: 17, 
-		justifyContent: 'center', 
-		paddingTop: 10, 
-		color: theme.colors.cinza10
-	},
-	subtitulo: {
-		fontSize: 14, 
-		justifyContent: 'center', 
-		paddingTop: 5
 	},
 	botoes: {
 		marginLeft: 15,
 	},
 	boxPrincipal: {
 		flexDirection: 'row',
-		justifyContent: 'space-around'
+		marginBottom: 5,
+		marginTop: 5,
 	},
 	boxBotao:{
 		flexDirection: 'column', 
@@ -35,8 +22,6 @@ export const cardSecaoStyle = StyleSheet.create({
 	boxDescricao: {
 		flexDirection: 'column', 
 		flex: 1,
+		
 	}
-
-
-
 });

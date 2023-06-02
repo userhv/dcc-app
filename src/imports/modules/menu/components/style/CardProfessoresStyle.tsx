@@ -6,18 +6,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
-		margin: 1,
 		borderRadius: 0
-	},
-	titulo: {
-		justifyContent: 'center', 
-		paddingTop: 10, 
-		color: theme.colors.cinza10,
-	},
-	subtitulo: {
-		fontSize: 14, 
-		justifyContent: 'center', 
-		paddingTop: 10
 	},
     boxArea: {
 		flexDirection: 'row', 

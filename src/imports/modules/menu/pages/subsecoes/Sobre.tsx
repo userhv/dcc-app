@@ -13,15 +13,12 @@ export const Sobre = (props: ISobre) => {
 
     const { navigation } = props;
 
-
   return (
-    
     <View style={subSecoesStyle.container}>
       <HeaderBar navigation={navigation} titulo='Sobre o aplicativo'/>
         <CardSecaoInterno titulo='Termos de uso' onPress={() => {}}/>
         <CardSecaoInterno titulo='Política de privacidade'onPress={() => {}}/>
         <CardSecaoInterno titulo='Versão do aplicativo' descricao={getVersion()} onPress={() => {}}/>
-
     </View>
   );
 };

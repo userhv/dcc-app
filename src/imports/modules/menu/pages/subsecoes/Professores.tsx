@@ -7,11 +7,9 @@ import { theme } from '../../../../paper/theme';
 import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import CardProfessores  from '../../components/CardProfessores';
-import { nanoid } from 'nanoid';
 import { Loading } from '../../../../components/Loading/Loading';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
-import { ScrollView } from 'react-native-gesture-handler';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -24,6 +22,7 @@ export const Professores = (props: IProfessores) => {
     const [professores, setProfessores] = useState<rssParser.FeedItem[]>([]);
     const [todosProfessores, setTodosProfessores] = useState<rssParser.FeedItem[]>([]);
     const [queryProfessores, setQueryProfessores] = useState<string>('');
+
 
     useEffect(() => {
       const _retornaTodosProfessores = async () => {
@@ -88,10 +87,10 @@ export const Professores = (props: IProfessores) => {
       {professores.length > 0 ? (
         <FlatList 
           data={professores}
-          renderItem={({item}) => <CardProfessores  key={item.title} professor={item} />}
+          renderItem={({item}) => <CardProfessores  key={item.title} professor={item}/>}
           keyExtractor={(item) => item.title}
-          initialNumToRender={8}
           removeClippedSubviews
+          initialNumToRender={8}
         />
       ): (
         <View style={subSecoesStyle.loading}>

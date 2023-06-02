@@ -4,15 +4,12 @@ import {theme} from '../../../../paper/theme';
 export const noticiasListRNStyle = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 1,
     backgroundColor: theme.colors.branco,
   },
   
   boxLinhaChip: {
     marginTop: 5,
     marginBottom: 5,
-    paddingLeft: 5,
-    paddingRight: 5,
     flexDirection: 'row',
     alignItems: 'flex-start'
   },
@@ -34,7 +31,7 @@ export const noticiasListRNStyle = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center', 
     borderRadius: 8,
-    marginLeft: 5
+    marginLeft: 10
   },
   
   divisor: {

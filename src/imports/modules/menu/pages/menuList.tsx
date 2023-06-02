@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState} from 'react';
+import React, { useContext, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
@@ -6,9 +6,6 @@ import { menuListStyle } from './style/menuListStyle';
 import { CardSecao } from '../components/CardSecao';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
-import * as rssParser from 'react-native-rss-parser';
-import { mediator } from '../../../mediator/mediator';
-import { EnumMediator } from '../../../mediator/EnumMediator';
 
 interface IMenuList {
   navigation?: NativeStackNavigationProp<any>;
@@ -17,7 +14,7 @@ interface IMenuList {
 export const MenuList = (props: IMenuList) => {
   const {navigation } = props;
 
- 
+  const [rolagem, setRolagem] = useState<boolean>(true);
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -32,7 +29,6 @@ export const MenuList = (props: IMenuList) => {
 		});
   }
 
-
   return (
     <SafeAreaView style={menuListStyle.container}>
     <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={'Mais opções'} disableIcon/>
@@ -40,25 +36,31 @@ export const MenuList = (props: IMenuList) => {
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
-                  )} scrollEventThrottle={16}>
+                  )} scrollEventThrottle={16}
+                  onMomentumScrollBegin={() => setRolagem(false)}
+                  onMomentumScrollEnd={() => setRolagem(true)}>
 
     <CardSecao titulo="Professores" descricao='Veja os professores ativos e voluntários do departamento.' 
               icone='account-group-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'professores'})}/>
+                screen: 'professores'})}
+                rolagem={rolagem}/>
 
     <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
               icone='account-question-outline'      
-              onPress={() => 	abreWebViewFaq()}/>
+              onPress={() => 	abreWebViewFaq()}
+              rolagem={rolagem}/>
 
-<CardSecao titulo="Fale conosco" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
+    <CardSecao titulo="Fale conosco" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='message-question-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'contatos'})}/>              
+                screen: 'contatos'})}
+                rolagem={rolagem}/>              
 
     <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, termos de uso e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {
-        screen: 'sobre'})}/>
+        screen: 'sobre'})}
+        rolagem={rolagem}/>
     
     </ScrollView>
   </SafeAreaView>

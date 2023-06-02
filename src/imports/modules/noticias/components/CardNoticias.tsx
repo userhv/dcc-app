@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, TouchableHighlight, View} from 'react-native';
+import {Image, Pressable, Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
@@ -13,11 +13,12 @@ import { INoticias } from '../sch/noticiasSch';
 interface ICardNoticias {
   noticia: rssParser.FeedItem;
   url: string;
+  rolagem: boolean;
   navigation?: NativeStackNavigationProp<any>;
 }
 
 export const CardNoticias = (props: ICardNoticias) => {
-  const {noticia, url, navigation} = props;
+  const {noticia, url, navigation, rolagem} = props;
 
   const [noticiaSalva, setNoticiaSalva] = useState<boolean>(false);
   const [noticiaParaSerTratada, setNoticiaParaSerTratada] = useState<INoticias | undefined>(undefined);
@@ -69,7 +70,9 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   return (
     <>
-      <TouchableHighlight  underlayColor={theme.colors.cinza98}  activeOpacity={0.8} onPress={() => {abreWebViewNoticia()}}>
+        <Pressable onPress={abreWebViewNoticia} 
+            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
+            disabled={!rolagem}>
         <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
           {noticia.media[0] ? (
             <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
@@ -78,7 +81,6 @@ export const CardNoticias = (props: ICardNoticias) => {
           <Card.Title
             title={noticia.title}
             titleVariant="titleMedium"
-            titleStyle={cardNoticiasStyle.titulo}
             subtitle={noticia.description}
             subtitleStyle={cardNoticiasStyle.subtitulo}
             subtitleVariant="bodyMedium"
@@ -118,7 +120,7 @@ export const CardNoticias = (props: ICardNoticias) => {
             </View>
           </Card.Actions>
         </Card>
-      </TouchableHighlight>
+      </Pressable>
       <Divider style={cardNoticiasStyle.divisor} />
     </>
   );

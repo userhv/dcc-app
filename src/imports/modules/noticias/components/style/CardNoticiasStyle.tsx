@@ -6,18 +6,10 @@ export const cardNoticiasStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
-		margin: 1,
-		height: 'auto',
 		borderRadius: 0
 	},
-	titulo: {
-		fontSize: 17, 
-		justifyContent: 'center', 
-		paddingTop: 10, 
-		color: theme.colors.cinza10
-	},
 	subtitulo: {
-		fontSize: 14, justifyContent: 'center', paddingTop: 10
+		 paddingTop: 10
 	},
 	botoes: {
 		borderColor: 'transparent',
