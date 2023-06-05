@@ -70,7 +70,7 @@ useEffect(() => {
             titleNumberOfLines={3}
             subtitleNumberOfLines={4}
           />
-            <View style={{flexDirection: 'row', marginBottom: 10}}>
+            <View style={{flexDirection: 'row', marginBottom: 5}}>
               <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
               <View style={{flex: 1, flexDirection: 'column'}}>
                 {areas.length > 0 ? (

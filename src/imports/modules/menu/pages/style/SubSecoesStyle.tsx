@@ -29,13 +29,15 @@ export const subSecoesStyle = StyleSheet.create({
     backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     marginLeft: 10,
     marginRight: 10,
-    marginBottom: 10
+    marginBottom: 5
   },
+
   loading: {
     justifyContent: 'center', 
     flex: 1, 
     alignItems: 'center',
   },
+
   boxLinhaChip: {
     marginTop: 5,
     marginBottom: 5,
@@ -44,6 +46,7 @@ export const subSecoesStyle = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start'
   },
+  
   chipStyle: {
     marginLeft: 10,
     justifyContent: 'flex-start',
