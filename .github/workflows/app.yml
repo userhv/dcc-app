@@ -16,9 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Node
+      - name: Configurando node
         uses: actions/setup-node@v2
-      - name: Install Dependencies
+      - name: Instalando dependências
         run: npm install
       - name: Run Tests
         run: npm test
@@ -29,7 +29,7 @@ jobs:
         path: ~/.gradle/wrapper
         key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-    - name: Cache Gradle Dependencies
+    - name: Cache Gradle Dependencias
       uses: actions/cache@v2
       with:
         path: ~/.gradle/caches
@@ -37,9 +37,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-caches-
 
-    - name: Make Gradlew Executable
+    - name: Executando gradlew
       run: cd android && chmod +x ./gradlew
 
-    - name: Build Android App Bundle
+    - name: Build App Android
       run: |
         cd android && ./gradlew bundleRelease --no-daemon
