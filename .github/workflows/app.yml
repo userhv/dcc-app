@@ -2,12 +2,15 @@ name: DCC App CI
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: 
+      - develop
   pull_request:
-    branches: [ "develop" ]
+    branches:
+      - develop
 
 jobs:
   job-app-test:
+
     runs-on: ubuntu-latest
     name: DCC App Preview
     defaults:
