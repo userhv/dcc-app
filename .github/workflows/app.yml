@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Configurando node
+      - name: Configurando ambiente node
         uses: actions/setup-node@v2
         with:
           node-version: 18.x
