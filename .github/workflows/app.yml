@@ -2,7 +2,7 @@ name: DCC App CI
 
 on:
   push:
-    branches: dcc-app-36
+    branches: develop
   pull_request:
     branches: develop
 
