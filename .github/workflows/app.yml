@@ -2,9 +2,9 @@ name: DCC App CI
 
 on:
   push:
-    branches: ["dcc-app-36"]
+    branches: dcc-app-36
   pull_request:
-    branches: ["develop"]
+    branches: develop
 
 jobs:
   job-app-test:
