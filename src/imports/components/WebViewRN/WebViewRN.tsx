@@ -4,7 +4,6 @@ import {webViewRNStyle} from './WebiewRNStyle';
 import { IconButton, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
 import React, { useState } from 'react';
-import { Loading } from '../Loading/Loading';
 
 interface IWebViewRN {
   url: string;

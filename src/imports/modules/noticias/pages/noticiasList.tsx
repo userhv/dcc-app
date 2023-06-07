@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
 import {Chip} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -11,6 +11,7 @@ import {Loading} from '../../../components/Loading/Loading';
 import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
+import { useFocusEffect } from '@react-navigation/native';
 
 interface INoticiasList {
   navigation?: NativeStackNavigationProp<any>;
@@ -30,17 +31,19 @@ export const NoticiasList = (props: INoticiasList) => {
 
   const offset = useRef(new Animated.Value(0)).current;
 
-  useEffect(() => {
-    const _renderizaTodosDados = async () => {
-      const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
-      dataNoticias && setNoticias(dataNoticias);
-      const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
-      dataEventos && setEventos(dataEventos);
-      const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
-      dataPalestras && setPalestras(dataPalestras);
-    }
-    _renderizaTodosDados();
-  },[])
+  useFocusEffect(
+    useCallback(() => {
+      const _renderizaTodosDados = async () => {
+        const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
+        dataNoticias && setNoticias(dataNoticias);
+        const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
+        dataEventos && setEventos(dataEventos);
+        const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
+        dataPalestras && setPalestras(dataPalestras);
+      }
+      _renderizaTodosDados();
+    }, []),
+  );
 
   useEffect(() => {
     const _rsssNoticias = async () => await renderizaNoticias();
