@@ -50,7 +50,6 @@ export const NoticiasList = (props: INoticiasList) => {
     _rsssNoticias();
   },[noticias])
 
-
   const renderizaNoticias = async () => {
     setDados(noticias);
     setIsNoticias(true);
