@@ -96,9 +96,9 @@ android {
 
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.dcc"
+    namespace "com.dcc.android"
     defaultConfig {
-        applicationId "com.dcc"
+        applicationId "com.dcc.android"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
@@ -165,7 +165,6 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
     implementation "androidx.core:core-splashscreen:1.0.1"
-
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
