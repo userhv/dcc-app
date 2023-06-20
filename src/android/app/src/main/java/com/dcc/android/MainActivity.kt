@@ -1,4 +1,4 @@
-package com.dcc
+package com.dcc.android
 
 import android.os.Bundle
 import android.os.Handler

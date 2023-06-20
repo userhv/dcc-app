@@ -1,4 +1,4 @@
-package com.dcc
+package com.dcc.android
 
 import android.app.Application
 import com.facebook.react.PackageList
