@@ -44,7 +44,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		height: 100,
 		backgroundColor: 'transparent',
 		marginLeft: 10,
-		borderRadius: 10
+		borderRadius: 8
 	},
 	boxBotaoCompartilhar: {
 		alignItems: 'flex-end', 
@@ -53,7 +53,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 	},
 	boxIconeEmail: { 
 		flexDirection: 'row', 
-		justifyContent: 'center', 
+		flex: 1,
 		alignItems: 'center'
 	},
 })
