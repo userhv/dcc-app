@@ -14,7 +14,7 @@ export const App = () => {
 			// await deletarBancoInteiroAgressivamente();
 		};
 		inicializaRealm();
-
+    
 	}, []);
   
   return (
