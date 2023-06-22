@@ -90,13 +90,13 @@ useEffect(() => {
           <Card.Actions>
             <View style={cardProfessoresStyle.boxActions}>
               <View style={cardProfessoresStyle.boxIconeEmail}> 
-                <Button 
+                {/* <Button 
                   mode='contained'
                   icon='email-outline'
                   buttonColor={theme.colors.azul}
                   onPress={() => enviarEmail()}>
                     Entrar em contato
-                </Button>
+                </Button> */}
               </View>
               <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
                 <IconButton
