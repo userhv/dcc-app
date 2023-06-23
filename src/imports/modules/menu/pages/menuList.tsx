@@ -40,13 +40,13 @@ export const MenuList = (props: IMenuList) => {
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
 
-    <CardSecao titulo="Professores" descricao='Veja os professores ativos e voluntários do departamento.' 
+    <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
               icone='account-group-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
                 screen: 'professores'})}
                 rolagem={rolagem}/>
 
-    <CardSecao titulo="Laboratórios" descricao='Veja todos os laboratórios disponíveis no departamento.' 
+    <CardSecao titulo="Laboratórios" descricao='Explore todos os laboratórios ativos.' 
                   icone='book-search-outline'      
                   onPress={() => 	abrirWebView('https://dcc.ufmg.br/nossos-laboratorios/')}
                   rolagem={rolagem}/>

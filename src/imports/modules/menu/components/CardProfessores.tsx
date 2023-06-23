@@ -95,7 +95,7 @@ useEffect(() => {
                   icon='email-outline'
                   buttonColor={theme.colors.azul}
                   onPress={() => enviarEmail()}>
-                    Entrar em contato
+                    Contato
                 </Button> */}
               </View>
               <View style={cardProfessoresStyle.boxBotaoCompartilhar}>

@@ -31,7 +31,7 @@ export const theme = {
 		surface: '#FFFFFF',
 		onSurface: '#404040',
 		surfaceVariant: '#DAE5E3',
-		onSurfaceVariant: '#303030',
+		onSurfaceVariant: '#0668a8',
 		outline: '#6F7978',
 
 		//cinzas
