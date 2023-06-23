@@ -20,11 +20,11 @@ export const MenuList = (props: IMenuList) => {
 
   const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
-  const abreWebViewFaq = () => {
+  const abrirWebView = (url: string) => {
 		showModal({
       isFullScreen: true,
 			renderedComponent: (_props: any) => (
-				<WebViewRN url={'https://dcc.ufmg.br/perguntas-frequentes/'} handleClose={_props.onDismiss}/>
+				<WebViewRN url={url} handleClose={_props.onDismiss}/>
 			)
 		});
   }
@@ -40,22 +40,32 @@ export const MenuList = (props: IMenuList) => {
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
 
-    <CardSecao titulo="Professores" descricao='Veja os professores ativos e voluntários do departamento.' 
+    <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
               icone='account-group-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
                 screen: 'professores'})}
                 rolagem={rolagem}/>
 
+    <CardSecao titulo="Laboratórios" descricao='Explore todos os laboratórios ativos.' 
+                  icone='book-search-outline'      
+                  onPress={() => 	abrirWebView('https://dcc.ufmg.br/nossos-laboratorios/')}
+                  rolagem={rolagem}/>
+
     <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
               icone='account-question-outline'      
-              onPress={() => 	abreWebViewFaq()}
+              onPress={() => 	abrirWebView('https://dcc.ufmg.br/perguntas-frequentes/')}
               rolagem={rolagem}/>
 
-    <CardSecao titulo="Fale conosco" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
+    <CardSecao titulo="Fale conosco" descricao='Contato do departamento, colegiados, pós-graduação, especialização ou graduação.' 
+                      icone='contacts-outline'      
+                      onPress={() => 	abrirWebView('https://dcc.ufmg.br/contatos/')}
+                        rolagem={rolagem}/>    
+
+    <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='message-question-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
                 screen: 'contatos'})}
-                rolagem={rolagem}/>              
+                rolagem={rolagem}/>       
 
     <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, termos de uso e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {

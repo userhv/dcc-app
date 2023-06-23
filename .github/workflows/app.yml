@@ -11,7 +11,7 @@ on:
 jobs:
   job-app-test:
     runs-on: ubuntu-latest
-    name: DCC App Preview
+    name: DCC App CI
     defaults:
       run:
         working-directory: ./src

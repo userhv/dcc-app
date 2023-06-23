@@ -61,15 +61,15 @@ useEffect(() => {
       <>
         <Pressable onPress={abreWebViewProfessor} 
             style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
-        <Card style={cardProfessoresStyle.container} mode='contained'  >
-          <Card.Title
-            title={professor.title}
-            titleVariant="headlineSmall"
-            subtitle={professor.description}
-            subtitleVariant="bodyMedium"
-            titleNumberOfLines={3}
-            subtitleNumberOfLines={4}
-          />
+        <Card style={cardProfessoresStyle.container} mode='contained'>
+            <Card.Title
+              title={professor.title}
+              titleVariant="headlineSmall"
+              subtitle={professor.description}
+              subtitleVariant="bodyMedium"
+              titleNumberOfLines={3}
+              subtitleNumberOfLines={4}
+            />
             <View style={{flexDirection: 'row', marginBottom: 5}}>
               <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
               <View style={{flex: 1, flexDirection: 'column'}}>
@@ -90,13 +90,13 @@ useEffect(() => {
           <Card.Actions>
             <View style={cardProfessoresStyle.boxActions}>
               <View style={cardProfessoresStyle.boxIconeEmail}> 
-                <Button 
+                {/* <Button 
                   mode='contained'
                   icon='email-outline'
                   buttonColor={theme.colors.azul}
                   onPress={() => enviarEmail()}>
-                    Entrar em contato
-                </Button>
+                    Contato
+                </Button> */}
               </View>
               <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
                 <IconButton
@@ -113,7 +113,7 @@ useEffect(() => {
             </View>
           </Card.Actions>
         </Card>
-      <Divider style={cardProfessoresStyle.divisor} />
+        <Divider style={cardProfessoresStyle.divisor} />
       </Pressable>
     </>
     );
