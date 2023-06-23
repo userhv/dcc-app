@@ -6,7 +6,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-between',
 		backgroundColor: theme.colors.branco,
-		borderRadius: 0
+		borderRadius: 0,
 	},
     boxArea: {
 		flexDirection: 'row', 
@@ -22,6 +22,7 @@ export const cardProfessoresStyle = StyleSheet.create({
         borderWidth: 1, 
         margin: 5,
         borderRadius: 4,
+		padding: 2,
         backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     },
     textoChip: {
@@ -37,7 +38,7 @@ export const cardProfessoresStyle = StyleSheet.create({
 		backgroundColor: 'transparent'
 	},
     divisor: {
-		backgroundColor: theme.colors.cinzaMedio
+		backgroundColor: theme.colors.cinzaMedio,
 	  },
     imagemCover: {
 		width: 100,
