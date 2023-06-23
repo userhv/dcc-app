@@ -56,8 +56,6 @@ export const Professores = (props: IProfessores) => {
       setAreas(Array.from(areasEncontradas));
     }
 
-    const [checked, setChecked] = useState(false);
-
     const ordenaProfessores = (professoresArray: rssParser.FeedItem[]) => {
       professoresArray.sort((a,b) => { 
         const primeiro_prof = a.title.normalize("NFD").replace(/\p{Diacritic}/gu, "");
