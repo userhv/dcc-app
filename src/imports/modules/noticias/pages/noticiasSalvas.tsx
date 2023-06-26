@@ -20,6 +20,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     const { navigation } = props;
 
     const [noticias, setNoticias] = useState<INoticias[]>([]);
+    const [rolagem, setRolagem] = useState<boolean>(true);
 
 
     useEffect(() => {
@@ -35,13 +36,16 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     <View style={noticiasSalvasStyle.container}>
       <HeaderBar navigation={navigation} titulo='Suas notícias salvas' />
       {noticias.length > 0 ? (
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}
+              onMomentumScrollBegin={() => setRolagem(false)}
+              onMomentumScrollEnd={() => setRolagem(true)}>
           {noticias &&
             noticias.map((noticia, i) => (
               <CardNoticias
                 key={i}
                 noticia={noticia as unknown as rssParser.FeedItem}
                 navigation={navigation}
+                rolagem={rolagem}
                 url={noticia.url}
               />
             ))}

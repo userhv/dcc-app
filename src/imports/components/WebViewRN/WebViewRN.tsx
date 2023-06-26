@@ -4,14 +4,15 @@ import {webViewRNStyle} from './WebiewRNStyle';
 import { IconButton, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
 import React, { useState } from 'react';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 interface IWebViewRN {
   url: string;
-  handleClose: () => void;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const WebViewRN = (props: IWebViewRN) => {
-  const {url, handleClose} = props;
+  const {url, navigation} = props;
   const {width, height} = Dimensions.get('window');
   const [urlWebView, setUrlWebView] = useState<string>("");
   
@@ -28,7 +29,7 @@ export const WebViewRN = (props: IWebViewRN) => {
             iconColor={theme.colors.branco}
             size={24}
             style={webViewRNStyle.botaoFechar}
-            onPress={handleClose}
+            onPress={navigation.goBack}
           />
           </View>
           <View style={webViewRNStyle.containerTitulo}>

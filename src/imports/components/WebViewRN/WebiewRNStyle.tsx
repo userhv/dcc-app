@@ -9,7 +9,7 @@ export const webViewRNStyle = StyleSheet.create({
   containerSuperior: {
     backgroundColor: theme.colors.cinzaEscuro,
     flexDirection: 'row',
-    paddingTop: 10
+    paddingTop: 5
   },
 
   containerBotaoFechar: {
@@ -32,7 +32,6 @@ export const webViewRNStyle = StyleSheet.create({
 
   botaoFechar: {
     justifyContent: 'center',
-    margin: 10,
   },
 
   container: {

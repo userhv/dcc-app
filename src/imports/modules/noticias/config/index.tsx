@@ -21,6 +21,14 @@ export const noticiasRouterList = [
 		component: NoticiasSalvas,
 		isProtected: true
 	},
+	{
+		navigatorName: 'noticiasRoute',
+		title: 'WebView Noticias',
+		name: 'WebViewNoticias',
+		path: 'noticias/visualizar',
+		component: NoticiasContainer,
+		isProtected: true
+	},
 ];
 
 export const noticiasMenuItemList = [
