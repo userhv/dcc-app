@@ -73,7 +73,7 @@ export const MenuList = (props: IMenuList) => {
                 screen: 'contatos'})}
                 rolagem={rolagem}/>       
 
-    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, termos de uso e política de privacidade." icone='information-outline'
+    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {
         screen: 'sobre'})}
         rolagem={rolagem}/>
