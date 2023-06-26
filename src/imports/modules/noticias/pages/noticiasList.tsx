@@ -79,19 +79,19 @@ export const NoticiasList = (props: INoticiasList) => {
           <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
             <View style={noticiasListRNStyle.boxIcone}>
               <Icon
-                    name="bookmark-multiple-outline"          
-                    size={25}
-                    style={noticiasListRNStyle.icone}
-                    color={theme.colors.azul}
-                    onPress={() => 	navigation?.navigate('noticiasRoute', {
-                      screen: 'NoticiasSalvas',})}/>
+                  name="bookmark-multiple-outline"          
+                  size={25}
+                  style={noticiasListRNStyle.icone}
+                  color={theme.colors.azul}
+                  onPress={() => 	navigation?.navigate('noticiasRoute', {
+                    screen: 'NoticiasSalvas',})}/>
             </View>
               <View style={noticiasListRNStyle.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}
                     selected
                     style={{...noticiasListRNStyle.chipStyle, 
-                        backgroundColor: isNoticias ? theme.colors.azul : theme.colors.azulOpacoSelecionado}} 
+                        backgroundColor: isNoticias ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
                     selectedColor={isNoticias ? theme.colors.branco : theme.colors.azul}> 
                     Últimas notícias
               </Chip>
@@ -99,14 +99,14 @@ export const NoticiasList = (props: INoticiasList) => {
                     icon={() => null}
                     selected
                     style={{...noticiasListRNStyle.chipStyle, 
-                      backgroundColor: isEventos ? theme.colors.azul : theme.colors.azulOpacoSelecionado}} 
+                      backgroundColor: isEventos ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
                   selectedColor={isEventos ? theme.colors.branco : theme.colors.azul}> 
                   Eventos
                 </Chip>
               <Chip onPress={async() => await renderizaPalestras()} 
                   icon={() => null}
                   style={{...noticiasListRNStyle.chipStyle, 
-                      backgroundColor: isPalestras ? theme.colors.azul : theme.colors.azulOpacoSelecionado}} 
+                      backgroundColor: isPalestras ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
                   selectedColor={isPalestras ? theme.colors.branco : theme.colors.azul}> 
                   Palestras
               </Chip>

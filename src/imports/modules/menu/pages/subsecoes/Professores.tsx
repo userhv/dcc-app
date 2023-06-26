@@ -91,7 +91,7 @@ export const Professores = (props: IProfessores) => {
     }
     const abreWModalAreas = () => {
       showModal({
-        isFullScreen: true,
+        // isFullScreen: true,
         renderedComponent: (_props: any) => (
           <ModalAreas handleClose={_props.onDismiss} areas={areas} setArea={setArea}/>
         )
@@ -160,7 +160,7 @@ export const Professores = (props: IProfessores) => {
         <FlatList 
           ref={listRef}
           data={professores}
-          renderItem={({item}) => <CardProfessores key={item.title} professor={item}/>}
+          renderItem={({item}) => <CardProfessores key={item.title} professor={item} navigation={navigation}/>}
           keyExtractor={(item) => item.title}
           removeClippedSubviews
           initialNumToRender={8}

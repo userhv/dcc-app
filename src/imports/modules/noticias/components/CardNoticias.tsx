@@ -3,9 +3,7 @@ import {Image, Pressable, Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
-import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
-import { useContext, useEffect, useState } from 'react';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { useEffect, useState } from 'react';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
@@ -22,8 +20,6 @@ export const CardNoticias = (props: ICardNoticias) => {
 
   const [noticiaSalva, setNoticiaSalva] = useState<boolean>(false);
   const [noticiaParaSerTratada, setNoticiaParaSerTratada] = useState<INoticias | undefined>(undefined);
-
-  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
       
   useEffect(() => {
     const noticiaEstaSalva = async () => {
@@ -58,24 +54,16 @@ export const CardNoticias = (props: ICardNoticias) => {
     }
   }
 
-  const abreWebViewNoticia = () => {
-		showModal({
-      isFullScreen: true,
-			renderedComponent: (_props: any) => (
-				<WebViewRN url={url} handleClose={_props.onDismiss}/>
-			)
-		});
-    
-  }
-
   return (
     <>
-        <Pressable onPress={abreWebViewNoticia} 
+        <Pressable onPress={() => 	navigation?.navigate('noticiasRoute', {
+                    screen: 'WebViewNoticias',
+                    params: {url: url}  })} 
             style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
             disabled={!rolagem}>
         <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
           {noticia.media[0] ? (
-            <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover} resizeMode='center'/>
+            <Card.Cover source={{uri: noticia.media[0].url}} style={cardNoticiasStyle.imagemCover}/>
           ): null
           }
           <Card.Title

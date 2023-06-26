@@ -5,7 +5,6 @@ import { Sobre } from '../pages/subsecoes/Sobre';
 import {  Professores } from '../pages/subsecoes/Professores';
 import { Contatos } from '../pages/subsecoes/Contatos';
 
-
 export const menuRouterList = [
 	{
 		isInitialRoute: true,
@@ -40,6 +39,15 @@ export const menuRouterList = [
 		component: Contatos,
 		isProtected: true
 	},
+	{
+		navigatorName: 'menuRoute',
+		title: 'WebView Menu',
+		name: 'WebViewMenu',
+		path: 'menu/visualizar',
+		component: MenuContainer,
+		isProtected: true
+
+	}
 ];
 
 export const menuMenuItemList = [
