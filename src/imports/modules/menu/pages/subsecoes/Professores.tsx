@@ -1,5 +1,5 @@
-import {Button, FlatList, Modal, View} from 'react-native';
-import {Divider, FAB, IconButton, PaperProvider, Portal, Searchbar, Text} from 'react-native-paper';
+import { FlatList, View} from 'react-native';
+import {Divider, FAB, Searchbar, Text} from 'react-native-paper';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as rssParser from 'react-native-rss-parser';
@@ -13,7 +13,6 @@ import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
 import { ModalAreas } from '../../components/ModalAreas';
-import SelectDropdown from 'react-native-select-dropdown';
 import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
 
 interface IProfessores {
@@ -91,7 +90,6 @@ export const Professores = (props: IProfessores) => {
     }
     const abreWModalAreas = () => {
       showModal({
-        // isFullScreen: true,
         renderedComponent: (_props: any) => (
           <ModalAreas handleClose={_props.onDismiss} areas={areas} setArea={setArea}/>
         )
