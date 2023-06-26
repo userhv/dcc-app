@@ -1,11 +1,9 @@
-import React, { useContext, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
 import { menuListStyle } from './style/menuListStyle';
 import { CardSecao } from '../components/CardSecao';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 
 interface IMenuList {
   navigation?: NativeStackNavigationProp<any>;
@@ -17,17 +15,6 @@ export const MenuList = (props: IMenuList) => {
   const [rolagem, setRolagem] = useState<boolean>(true);
 
   const offset = useRef(new Animated.Value(0)).current;
-
-  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
-
-  // const abrirWebView = (url: string) => {
-	// 	showModal({
-  //     isFullScreen: true,
-	// 		renderedComponent: (_props: any) => (
-	// 			<WebViewRN url={url} handleClose={_props.onDismiss}/>
-	// 		)
-	// 	});
-  // }
 
   return (
     <SafeAreaView style={menuListStyle.container}>
