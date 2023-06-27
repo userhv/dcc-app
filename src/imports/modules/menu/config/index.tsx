@@ -34,19 +34,10 @@ export const menuRouterList = [
 	{
 		navigatorName: 'menuRoute',
 		title: 'Fale Conosco',
-		name: 'contatos',
-		path: 'contatos',
+		name: 'feedback',
+		path: 'feedback',
 		component: Contatos,
 		isProtected: true
-	},
-	{
-		navigatorName: 'menuRoute',
-		title: 'WebView Menu',
-		name: 'WebViewMenu',
-		path: 'menu/visualizar',
-		component: MenuContainer,
-		isProtected: true
-
 	}
 ];
 

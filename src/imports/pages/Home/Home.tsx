@@ -1,5 +1,5 @@
 //@ts-ignore
-import React  from 'react';
+import React from 'react';
 import { Linking, StatusBar, View} from 'react-native';
 import {homeStyle} from './homeStyles';
 import { HomeHeader } from './HomeHeader/HomeHeader';
@@ -31,21 +31,40 @@ export const Home = (props: any) => {
         visible={visible}
         elevation={0}
         style={{backgroundColor: theme.colors.vermelhoVivoOpaco, margin: 10, borderRadius: 10}}
-        actions={[{
+        actions={[
+          {
+            label: 'Depois', 
+            onPress: () => setVisible(false)
+          },
+          {
             label: 'Atualizar',
             onPress: async () => {
               await abrirPlayStore();
               setVisible(false)},
-            buttonColor: theme.colors.vermelhoVivo,
-            textColor: theme.colors.branco,
-            mode: 'contained',
-            icon: 'update'
-        }
+          },
         ]}>
         <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo, paddingLeft: 5}} numberOfLines={4}> 
             Uma nova versão do aplicativo está disponível.
           </Text>
       </Banner>
+      <View style={{backgroundColor: theme.colors.azulOpacoMenuOportunidades, margin: 10, borderRadius: 10, padding: 10}}>
+        <Text variant='bodyMedium' style={{textAlign: 'auto'}}>
+          {`  
+          Notas da versão: 1.0.0-preview.10.1:
+                  
+            - Ajuste de UI no WebView
+            - Adição do patch notes na tela de início [Marco Túlio]
+            - Ajustes nas imagens das notícias [Pâmela]
+            - Melhorias de desempenho
+            - Adição do ícone de retornar ao topo da lista na tela de notícias [Wallace]
+                      
+
+            Mantenha o aplicativo atualizado.
+            Envie seu feedback para dcc.ufmg@gmail.com ou indo até a aba Menu > Feedback`
+          }
+        </Text>
+      </View>
+
       </View>
     </View>
   );

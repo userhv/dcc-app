@@ -9,7 +9,7 @@ export const webViewRNStyle = StyleSheet.create({
   containerSuperior: {
     backgroundColor: theme.colors.cinzaEscuro,
     flexDirection: 'row',
-    paddingTop: 5
+    paddingTop: 10
   },
 
   containerBotaoFechar: {

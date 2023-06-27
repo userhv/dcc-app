@@ -16,6 +16,8 @@ class  Mediator {
                 return await rssApi('https://dcc.ufmg.br/category/palestra/feed/');
             case EnumMediator.PROFESSORES:
                 return await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`)
+            case EnumMediator.DESTAQUE:
+                return await rssApi('https://dcc.ufmg.br/category/destaque/feed')
             default:
                 break;
         }

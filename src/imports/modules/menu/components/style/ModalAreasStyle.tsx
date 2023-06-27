@@ -4,8 +4,6 @@ import {theme} from '../../../../paper/theme';
 export const modalAreasStyle = StyleSheet.create({
   container: {
     paddingBottom: 10,
-    width: '100%',
-    height: '100%',
     flexDirection: 'column',
   },
 
@@ -22,6 +20,8 @@ export const modalAreasStyle = StyleSheet.create({
     backgroundColor: theme.colors.branco,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    flex:1, 
+    flexDirection: 'column'
   },
 
   boxDescricao: {
