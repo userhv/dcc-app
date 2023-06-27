@@ -3,14 +3,16 @@ import { Pressable, Share, View} from 'react-native';
 import {Button, Card, Divider, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
-import { memo, useEffect, useState } from 'react';
+import { memo, useContext, useEffect, useState } from 'react';
 import { cardProfessoresStyle } from './style/CardProfessoresStyle';
 import React from 'react';
 import { Linking } from 'react-native';
+import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
-    navigation?: NativeStackNavigationProp<any>;
+    navigation: NativeStackNavigationProp<any>;
 }
 
 const CardProfessores = (props: ICardProfessores) => {
@@ -18,6 +20,8 @@ const CardProfessores = (props: ICardProfessores) => {
   const { navigation, professor } = props;
 
   const [areas, setAreas] = useState<string[]>([]);
+
+  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
   const enviarEmail = () => {
     let url = `mailto:dcc.ufmg@gmail.com`;
@@ -34,6 +38,15 @@ const CardProfessores = (props: ICardProfessores) => {
     }
   }
 
+  const abreWebViewProfessor = () => {
+    showModal({
+      isFullScreen: true,
+      renderedComponent: (_props: any) => (
+        <WebViewRN url={professor.links[0].url} handleClose={_props.onDismiss} navigation={navigation}/>
+      )
+      });
+    }
+
 useEffect(() => {
     let areas: string[] = [];
     professor.categories.forEach((area, i) => {
@@ -46,9 +59,7 @@ useEffect(() => {
 
     return (
       <>
-        <Pressable  onPress={() => 	navigation?.navigate('menuRoute', {
-                    screen: 'WebViewMenu',
-                    params: {url: professor.links[0].url}})}
+        <Pressable  onPress={abreWebViewProfessor} 
             style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
         <Card style={cardProfessoresStyle.container} mode='contained'>
             <Card.Title

@@ -14,7 +14,7 @@ import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeade
 import { useFocusEffect } from '@react-navigation/native';
 
 interface INoticiasList {
-  navigation?: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const NoticiasList = (props: INoticiasList) => {

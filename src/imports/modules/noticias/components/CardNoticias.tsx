@@ -3,16 +3,18 @@ import {Image, Pressable, Share, View} from 'react-native';
 import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
+import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 
 interface ICardNoticias {
   noticia: rssParser.FeedItem;
   url: string;
   rolagem: boolean;
-  navigation?: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any> | null;
 }
 
 export const CardNoticias = (props: ICardNoticias) => {
@@ -21,6 +23,10 @@ export const CardNoticias = (props: ICardNoticias) => {
   const [noticiaSalva, setNoticiaSalva] = useState<boolean>(false);
   const [noticiaParaSerTratada, setNoticiaParaSerTratada] = useState<INoticias | undefined>(undefined);
       
+
+  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
+
+  
   useEffect(() => {
     const noticiaEstaSalva = async () => {
       const data = await noticiasOff.find("url == $0", url);
@@ -54,11 +60,19 @@ export const CardNoticias = (props: ICardNoticias) => {
     }
   }
 
+  const abreWebViewNoticia = () => {
+		showModal({
+      isFullScreen: true,
+			renderedComponent: (_props: any) => (
+				<WebViewRN url={url} handleClose={_props.onDismiss} navigation={navigation ?? null}/>
+			)
+		});
+
+  }
+
   return (
     <>
-        <Pressable onPress={() => 	navigation?.navigate('noticiasRoute', {
-                    screen: 'WebViewNoticias',
-                    params: {url: url}  })} 
+        <Pressable onPress={() => 	abreWebViewNoticia()} 
             style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
             disabled={!rolagem}>
         <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
