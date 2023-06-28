@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'react-native';
+import {Platform, ScrollView, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
 import {theme} from '../../../paper/theme';
@@ -10,6 +10,7 @@ import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { noticiasSalvasStyle } from './style/noticiasSalvasStyle';
 import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
+import { styleIOS } from '../../../paper/stylesIOS';
 
 interface INoticiasSalvas {
     navigation: NativeStackNavigationProp<any>;
@@ -32,8 +33,10 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
 
     },[])
 
+  const style = Platform.OS === 'ios' ? styleIOS : null;
+
   return (
-    <View style={noticiasSalvasStyle.container}>
+    <View style={{...noticiasSalvasStyle.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Suas notícias salvas' />
       {noticias.length > 0 ? (
         <ScrollView style={{flex: 1}}

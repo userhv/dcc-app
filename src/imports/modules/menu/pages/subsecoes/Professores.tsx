@@ -1,4 +1,4 @@
-import { FlatList, View} from 'react-native';
+import { FlatList, Platform, View} from 'react-native';
 import {Divider, FAB, Searchbar, Text} from 'react-native-paper';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
 import { ModalAreas } from '../../components/ModalAreas';
 import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
+import { styleIOS } from '../../../../paper/stylesIOS';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -123,8 +124,10 @@ export const Professores = (props: IProfessores) => {
       setProfessores(todosProfessores);
     }
 
+  const style = Platform.OS === 'ios' ? {...styleIOS, paddingBottom: 0} : null;
+  
   return (    
-    <View style={subSecoesStyle.container}>
+    <View style={{...subSecoesStyle.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Professores'/>
       <Searchbar
         placeholder="Pesquise pelo nome"

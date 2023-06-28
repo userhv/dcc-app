@@ -1,10 +1,11 @@
 //@ts-ignore
 import React from 'react';
-import { Linking, StatusBar, View} from 'react-native';
+import { Linking, Platform, StatusBar, View} from 'react-native';
 import {homeStyle} from './homeStyles';
 import { HomeHeader } from './HomeHeader/HomeHeader';
 import { Banner, Divider, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
+import { styleIOS } from '../../paper/stylesIOS';
 
 
 export const Home = (props: any) => {
@@ -12,14 +13,19 @@ export const Home = (props: any) => {
 
   const [visible, setVisible] = React.useState(false);
 
-  const abrirPlayStore = async () => {
-    const url = 'https://play.google.com/store/apps/details?id=com.dcc.android';
+
+  const abrirLoja = async () => {
+    const url = Platform.OS === 'android' ? 
+        'https://play.google.com/store/apps/details?id=com.dcc.android' :
+        Platform.OS === `ios` ? 'https://store.apple.com': '';
     const suportado = await Linking.canOpenURL(url);
     if(suportado) return Linking.openURL(url);
   }
 
+  const style = Platform.OS === 'ios' ? styleIOS : null;
+
   return (
-    <View style={homeStyle.container}>
+    <View style={{...homeStyle.container, ...style}}>
       <StatusBar backgroundColor={theme.colors.branco}  barStyle={'dark-content'}/>
       <HomeHeader  />
       <Divider style={homeStyle.divisor}/>
@@ -39,7 +45,7 @@ export const Home = (props: any) => {
           {
             label: 'Atualizar',
             onPress: async () => {
-              await abrirPlayStore();
+              await abrirLoja();
               setVisible(false)},
           },
         ]}>

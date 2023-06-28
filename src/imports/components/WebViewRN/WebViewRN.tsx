@@ -1,10 +1,11 @@
-import {Dimensions, StatusBar, View} from 'react-native';
+import {Dimensions, Platform, StatusBar, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {webViewRNStyle} from './WebiewRNStyle';
 import { IconButton, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
 import React, { useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { styleIOS } from '../../paper/stylesIOS';
 
 interface IWebViewRN {
   url: string;
@@ -16,9 +17,11 @@ export const WebViewRN = (props: IWebViewRN) => {
   const {url, navigation, handleClose} = props;
   const {width, height} = Dimensions.get('window');
   const [urlWebView, setUrlWebView] = useState<string>("");
+
+const style = Platform.OS === 'ios' ? {...styleIOS, backgroundColor: theme.colors.cinzaEscuro} : null;
   
   return (
-    <View style={webViewRNStyle.containerComponente}>
+    <View style={{...webViewRNStyle.containerComponente, ...style}}>
       <StatusBar backgroundColor={theme.colors.cinzaEscuro} barStyle={'light-content'}/>
       <View style={webViewRNStyle.containerSuperior}>
         <View style={webViewRNStyle.containerBotaoFechar}>
