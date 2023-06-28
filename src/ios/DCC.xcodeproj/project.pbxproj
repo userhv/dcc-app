@@ -26,7 +26,7 @@
 		620F3DB4532248F4B238202A /* TitilliumWeb-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AFB37CB69C24ACDA0CCA6C7 /* TitilliumWeb-BoldItalic.ttf */; };
 		67F25C4C2A4CB24500CDFB6E /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67F25C4B2A4CB24500CDFB6E /* MaterialIcons.ttf */; };
 		67F25C4E2A4CB27D00CDFB6E /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67F25C4D2A4CB27D00CDFB6E /* MaterialCommunityIcons.ttf */; };
-		67F25C502A4CC98500CDFB6E /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F25C4F2A4CC98500CDFB6E /* 180.png */; };
+		67F25C522A4CCC9D00CDFB6E /* DCC-ICONE.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F25C512A4CCC9D00CDFB6E /* DCC-ICONE.png */; };
 		7699B88040F8A987B510C191 /* libPods-DCC-DCCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DCC-DCCTests.a */; };
 		7C3B64C5174742BB93D4ABC4 /* TitilliumWeb-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE9A59EF767245C791A7631A /* TitilliumWeb-Italic.ttf */; };
 		7D928AFF81FB406EA475ADA2 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5724C47DFA154BEAA63CFD46 /* Roboto-ThinItalic.ttf */; };
@@ -78,7 +78,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-DCC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DCC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F25C4B2A4CB24500CDFB6E /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		67F25C4D2A4CB27D00CDFB6E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		67F25C4F2A4CC98500CDFB6E /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180.png; path = DCC/Images.xcassets/AppIcon.appiconset/180.png; sourceTree = "<group>"; };
+		67F25C512A4CCC9D00CDFB6E /* DCC-ICONE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DCC-ICONE.png"; path = "../../../../Downloads/DCC-ICONE.png"; sourceTree = "<group>"; };
 		6AFB37CB69C24ACDA0CCA6C7 /* TitilliumWeb-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-BoldItalic.ttf"; path = "../assets/fonts/TitilliumWeb-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6FEE991118344323BA76878E /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../assets/fonts/OFL.txt; sourceTree = "<group>"; };
 		76950BA064BF48E0BAD15DE0 /* TitilliumWeb-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "TitilliumWeb-ExtraLightItalic.ttf"; path = "../assets/fonts/TitilliumWeb-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				67F25C4F2A4CC98500CDFB6E /* 180.png */,
+				67F25C512A4CCC9D00CDFB6E /* DCC-ICONE.png */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -354,10 +354,10 @@
 				886B62B6C78C4AA0A9C26A7D /* Roboto-Medium.ttf in Resources */,
 				0DE870D011584D759BC41468 /* Roboto-MediumItalic.ttf in Resources */,
 				BE6952E0EF554B1799E13F99 /* Roboto-Regular.ttf in Resources */,
+				67F25C522A4CCC9D00CDFB6E /* DCC-ICONE.png in Resources */,
 				67F25C4E2A4CB27D00CDFB6E /* MaterialCommunityIcons.ttf in Resources */,
 				F3600819E4774646AE8ED484 /* Roboto-Thin.ttf in Resources */,
 				7D928AFF81FB406EA475ADA2 /* Roboto-ThinItalic.ttf in Resources */,
-				67F25C502A4CC98500CDFB6E /* 180.png in Resources */,
 				E54768082AC34F808EE19B3C /* TitilliumWeb-Black.ttf in Resources */,
 				61F6D61FD7094F1A980DB855 /* TitilliumWeb-Bold.ttf in Resources */,
 				620F3DB4532248F4B238202A /* TitilliumWeb-BoldItalic.ttf in Resources */,
