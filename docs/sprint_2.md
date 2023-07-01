@@ -24,4 +24,4 @@ Além disso, propomos também o suporte a [Snapshot testing](https://circleci.co
 
 ## Próximos passos
 
-Para as próximas sprints, e seguindo nosso [backlog do produto](https://github.com/users/userhv/projects/3), iniciaremos a implementação de mais testes seguindo os moldes do proposto acima, além disso, esperamos melhorar as seções presentes na tela **MAIS**, além de analisar a viabilidade de iniciar a implementação da tela de oportunidades.
+Para as próximas sprints, e seguindo nosso [backlog do produto](https://github.com/users/userhv/projects/3), iniciaremos a implementação do workflow github, esperamos melhorar as seções presentes na tela **MAIS**, além de analisar a viabilidade de iniciar a implementação da tela de oportunidades.
