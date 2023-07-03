@@ -16,12 +16,11 @@ export const ModalAreas = (props: IModalAreas) => {
     const {width, height} = Dimensions.get('window');
 
     return (
-        <View style={modalAreasStyle.container}>
-            <StatusBar hidden/>
+        <View style={{...modalAreasStyle.container, height: height}}>
             <GestureHandlerRootView onTouchStart={handleClose}>
-                <View style={{backgroundColor: 'transparent', height: height/2}}/>
+                <View style={{backgroundColor: 'transparent', height: height/2 }}/>
             </GestureHandlerRootView>
-            <View style={{...modalAreasStyle.boxAreas,  height: height/2 }}>
+            <View style={{...modalAreasStyle.boxAreas,  height: height/2}}>
                 <View style={modalAreasStyle.containerTopo}>
                     <Text variant='titleSmall' numberOfLines={2}> Selecione a área de interesse</Text>
                 </View>

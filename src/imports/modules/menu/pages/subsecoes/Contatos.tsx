@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {Platform, View} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Linking } from 'react-native';
 import qs from 'qs';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
+import { styleIOS } from '../../../../paper/stylesIOS';
 
 interface IContatos {
     navigation: NativeStackNavigationProp<any>;
@@ -33,8 +34,10 @@ export const Contatos = (props: IContatos) => {
       return Linking.openURL(url);
     }
 
+  const style = Platform.OS === 'ios' ? styleIOS : null;
+
   return (
-    <View style={subSecoesStyle.container}>
+    <View style={{...subSecoesStyle.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Fale conosco'/>
       <GestureHandlerRootView style={{flex: 1}}>
         <ScrollView>

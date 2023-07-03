@@ -68,7 +68,7 @@ Para essa história temos o seguinte caso de uso
     2. Acessa a aba de notícias
     3. Desliza a tela para visualizar os cards com as notícias
 
-Assim, conseguimos traçar qual será o fluxo de execução ao ser impplementada essa funcionalidade no sistema, com isso podemos previamente estruturar como será a lógica para implementar tal feature.
+Assim, conseguimos traçar qual será o fluxo de execução ao ser implementada essa funcionalidade no sistema, com isso podemos previamente estruturar como será a lógica para desenvolver tal feature.
 
 ## Tecnologias
 

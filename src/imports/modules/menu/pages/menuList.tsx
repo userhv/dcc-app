@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
@@ -8,7 +8,7 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../co
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 
 interface IMenuList {
-  navigation?: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const MenuList = (props: IMenuList) => {
@@ -20,14 +20,14 @@ export const MenuList = (props: IMenuList) => {
 
   const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
-  // const abrirWebView = (url: string) => {
-	// 	showModal({
-  //     isFullScreen: true,
-	// 		renderedComponent: (_props: any) => (
-	// 			<WebViewRN url={url} handleClose={_props.onDismiss}/>
-	// 		)
-	// 	});
-  // }
+  const abrirWebView = (url: string) => {
+		showModal({
+      isFullScreen: true,
+			renderedComponent: (_props: any) => (
+				<WebViewRN url={url} handleClose={_props.onDismiss} navigation={navigation}/>
+			)
+		});
+  }
 
   return (
     <SafeAreaView style={menuListStyle.container}>
@@ -48,32 +48,26 @@ export const MenuList = (props: IMenuList) => {
 
     <CardSecao titulo="Laboratórios" descricao='Explore todos os laboratórios ativos.' 
                   icone='book-search-outline'      
-                  onPress={() => 	navigation?.navigate('menuRoute', {
-                    screen: 'WebViewMenu',
-                    params: {url: 'https://dcc.ufmg.br/nossos-laboratorios/'}})}
+                  onPress={() => 	abrirWebView('https://dcc.ufmg.br/nossos-laboratorios/')}
                   rolagem={rolagem}/>
 
     <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
               icone='account-question-outline'   
-              onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'WebViewMenu',
-                params: {url: 'https://dcc.ufmg.br/perguntas-frequentes/'}})}   
+              onPress={() => 	abrirWebView('https://dcc.ufmg.br/perguntas-frequentes/')}  
               rolagem={rolagem}/>
 
     <CardSecao titulo="Fale conosco" descricao='Contato do departamento, colegiados, pós-graduação, especialização ou graduação.' 
                       icone='contacts-outline'     
-                      onPress={() => 	navigation?.navigate('menuRoute', {
-                        screen: 'WebViewMenu',
-                        params: {url: 'https://dcc.ufmg.br/contatos/'}})}   
+                      onPress={() => 	abrirWebView('https://dcc.ufmg.br/contatos/')}  
                         rolagem={rolagem}/>    
 
     <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='message-question-outline'      
               onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'contatos'})}
+                screen: 'feedback'})}
                 rolagem={rolagem}/>       
 
-    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, termos de uso e política de privacidade." icone='information-outline'
+    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app e política de privacidade." icone='information-outline'
       onPress={() => 	navigation?.navigate('menuRoute', {
         screen: 'sobre'})}
         rolagem={rolagem}/>

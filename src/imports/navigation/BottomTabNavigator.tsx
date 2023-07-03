@@ -29,15 +29,13 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 	return (
 		<BottomTab.Navigator initialRouteName="Home"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
 			<BottomTab.Screen
-				name="HomeScreen"
+				name="Home"
 				options={{
 					tabBarLabel: "Início",
 					tabBarIcon: ({ focused }) => <Icon name={focused ? variante : iconeHome} 
 						size={24} color={focused ? theme.colors.preto : theme.colors.cinza50} />,
-				}}>
-				{(props) => <HomeNavigator {...props} {...appProps} />}
-			</BottomTab.Screen>
-
+				}}
+				component={Home}/>
 			{Modules.getAppMenuItemList().map((menuData) => {
 				return (
 					<BottomTab.Screen
@@ -59,17 +57,6 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createNativeStackNavigator<IHomeParamList>();
-
-const HomeNavigator = (navigatorProps: INavigatorProps) => {
-	return (
-		<HomeStack.Navigator screenOptions={{ headerShown: false}} >
-			<HomeStack.Screen name="Home" options={{ title: 'Seja bem vindo!' }}>
-				{(props) => <Home {...props} {...navigatorProps} />}
-			</HomeStack.Screen>
-		</HomeStack.Navigator>
-	);
-};
 
 const getModuleNavigator = (navigatorName: string) => {
 	const { Navigator, Screen } = createNativeStackNavigator();
