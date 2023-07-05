@@ -3,7 +3,6 @@ export enum TiposDisciplinas {
     TCC = 'TCC',
     TSI = 'TSI',
     TECC = 'TECC',
-    TEI = 'Top. Esp. em Informática II'
 }
 
 type ITiposDisciplinas = {
@@ -15,5 +14,4 @@ export const rolesDisciplinas: ITiposDisciplinas = {
 	[TiposDisciplinas.TCC]: 'Tópicos em Ciência da Computação',
 	[TiposDisciplinas.TSI]: 'Tópicos em Sistemas de Informação',
 	[TiposDisciplinas.TECC]: 'Tópicos Especiais em Ciência da Computação',
-    [TiposDisciplinas.TEI]: 'Top. Esp. em Informática II'
 };

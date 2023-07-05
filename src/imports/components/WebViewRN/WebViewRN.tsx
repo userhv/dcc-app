@@ -22,8 +22,8 @@ export const WebViewRN = (props: IWebViewRN) => {
   const style = Platform.OS === 'ios' ? {paddingTop: 100, backgroundColor: theme.colors.cinzaEscuro} : webViewRNStyle.container;
   
   return (
-    <SafeAreaView>
-      <View style={{...style}}>
+    <SafeAreaView style={{...style}}>
+      <View >
         <StatusBar backgroundColor={theme.colors.cinzaEscuro} barStyle={'light-content'}/>
         <View style={webViewRNStyle.containerSuperior}>
           <View style={webViewRNStyle.containerBotaoFechar}>

@@ -1,5 +1,5 @@
 import { FlatList, Platform, View} from 'react-native';
-import {Divider, FAB, Searchbar, Text} from 'react-native-paper';
+import {Divider, FAB, IconButton, Searchbar, Text} from 'react-native-paper';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as rssParser from 'react-native-rss-parser';
@@ -11,7 +11,7 @@ import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
-import { ModalAreas } from '../../components/ModalVersao';
+import { ModalAreas } from '../../components/ModalAreas';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import CardProfessores from '../../components/CardProfessores';
 import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
@@ -28,7 +28,8 @@ export const Professores = (props: IProfessores) => {
     const [todosProfessores, setTodosProfessores] = useState<rssParser.FeedItem[]>([]);
     const [queryProfessores, setQueryProfessores] = useState<string>('');
     const [areas, setAreas] = useState<string[]>([]);
-    const [area, setArea] = useState<string>("");
+    const [area, setArea] = useState<string>("a");
+    const [exibirBusca, setExibirBusca] = useState<boolean>(false);
 
     const listRef = useRef<any>(null);
     const [conteudoVerticalOffset, setConteudoVerticalOffset] = useState(0);
@@ -117,7 +118,7 @@ export const Professores = (props: IProfessores) => {
     }
 
     const encontraProfessor = () => {
-      const professoresPesquisa = todosProfessores.filter((professor)=> professor.title.toLowerCase().includes(queryProfessores.toLowerCase()));
+      const professoresPesquisa = todosProfessores.filter((professor)=> professor.title.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(queryProfessores.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")));
       setProfessores(professoresPesquisa);
     }
     const retornaProfessores = () => {
@@ -128,32 +129,36 @@ export const Professores = (props: IProfessores) => {
   
   return (    
     <View style={{...subSecoesStyle.container, ...style}}>
-      <HeaderBar navigation={navigation} titulo='Professores'/>
-      <Searchbar
-        placeholder="Pesquise pelo nome"
-        onChangeText={onChangeSearch}
-        value={queryProfessores}
-        style={subSecoesStyle.barraPesquisa}
-        iconColor={theme.colors.azul}
-        onIconPress={() => encontraProfessor()}
-        onClearIconPress={(e) => retornaProfessores()}
-        inputStyle={{textDecorationLine: 'none', overflow: 'hidden'}}
-        selectionColor={theme.colors.preto}
-        traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={theme.colors.azul}/> : null}
-        onTraileringIconPress={(e) => abreWModalAreas()}
-        traileringIconColor={theme.colors.azul}
-        />
+      <HeaderBar navigation={navigation} titulo='Professores' ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
+      {exibirBusca ? (
+        <Searchbar
+          placeholder="Pesquise pelo nome"
+          onChangeText={onChangeSearch}
+          value={queryProfessores}
+          style={subSecoesStyle.barraPesquisa}
+          iconColor={theme.colors.azul}
+          onIconPress={() => encontraProfessor()}
+          onClearIconPress={(e) => retornaProfessores()}
+          inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: theme.colors.preto}}
+          selectionColor={theme.colors.preto}
+          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={theme.colors.azul}/> : null}
+          onTraileringIconPress={(e) => abreWModalAreas()}
+          traileringIconColor={theme.colors.azul}
+          />
+      ): null}
         {area !== "" ? (
           <>
-            <View style={{...cardProfessoresStyle.boxArea, paddingLeft: 10, alignItems: 'center', marginTop: 5, marginBottom: 5}}>
+            <View style={{...cardProfessoresStyle.boxArea, ...cardProfessoresStyle.boxFiltro}}>
+              <View style={cardProfessoresStyle.filtro}>
                 <Text variant='labelMedium'> Filtrado por:</Text>
                 <View style={{...cardProfessoresStyle.chipArea, flexDirection: 'row', alignItems: 'center'}}>
                       <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
-                      <Icon name='close' size={15} onPress={()=> setArea("")} color={theme.colors.azul}/>
                 </View>
+              </View>
+                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}}/>
             </View>
             <Divider style={{...subSecoesStyle.divisor, marginBottom: 5}}/>
-              </>
+          </>
         ): null}
 
       {professores.length > 0 ? (

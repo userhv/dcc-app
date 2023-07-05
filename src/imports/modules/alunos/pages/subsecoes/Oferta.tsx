@@ -1,18 +1,19 @@
 import { FlatList, Platform, View} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
-import { FAB, Searchbar } from 'react-native-paper';
+import { FAB, Searchbar, Text } from 'react-native-paper';
 import { theme } from '../../../../paper/theme';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import { ITabelaDisciplinas } from '../../../../mediator/mediator';
-import WebView from 'react-native-webview';
 import { CardDisciplina } from '../../components/CardDisciplina';
 import { Loading } from '../../../../components/Loading/Loading';
 import { ofertaStyles } from '../style/OfertaStyles';
 import { disciplinasUnicas } from '../../api/utils';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 
 interface IDisciplinas {
     ofertas: ITabelaDisciplinas[];
@@ -27,6 +28,7 @@ export const Oferta = (props: IDisciplinas) => {
     const [disciplinas, setDisciplinas] = useState<ITabelaDisciplinas[]>([]);
     const [disciplinasUnicasOrdenadas, setDisciplinasUnicasOrdenadas] = useState<string[]>([]);
     const [queryDisciplinas, setQueryDisciplinas] = useState<string>('');
+    const [exibirBusca, setExibirBusca] = useState<boolean>(false);
 
     const listRef = useRef<any>(null);
     const [conteudoVerticalOffset, setConteudoVerticalOffset] = useState(0);
@@ -48,7 +50,9 @@ export const Oferta = (props: IDisciplinas) => {
     }, [queryDisciplinas])
 
     const encontraDisciplina = () => {
-      const disciplinasPesquisa = ofertas.filter((d)=> d.disciplina.toLowerCase().includes(queryDisciplinas.toLowerCase()));
+      const disciplinasPesquisa = ofertas.filter((d)=> 
+          d.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+          .includes(queryDisciplinas.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")));
       defineOfertasParaConsulta(disciplinasPesquisa);
     }
 
@@ -64,22 +68,41 @@ export const Oferta = (props: IDisciplinas) => {
     const retornaOfertasIniciais = () => {
       defineOfertasParaConsulta(ofertas);
     }
-  const style = Platform.OS === 'ios' ? styleIOS : null;
+
+    const encontraCodigoDisciplina = (item:string) => {
+      const codigoDisciplina = ofertas.filter((d)=> d.disciplina?.toLowerCase() === item.toLowerCase());
+      return codigoDisciplina[0].codigo ?? codigoDisciplina[0].cod;
+    }  
+
+    const abreWebViewSalas = () => {
+      showModal({
+        isFullScreen: true,
+        renderedComponent: (_props: any) => (
+          <WebViewRN url={'https://www.icex.ufmg.br/icex_novo/minha-salas/'} handleClose={_props.onDismiss} navigation={navigation}/>
+        )
+        });
+      }
+
+    const style = Platform.OS === 'ios' ? styleIOS : null;
 
   return (
     <View style={{...ofertaStyles.container, ...style}}>
-      <HeaderBar navigation={navigation} titulo={titulo ?? " - "}/>
-        <Searchbar
-          placeholder="Pesquise pelo nome"
-          onChangeText={onChangeSearch}
-          value={queryDisciplinas}
-          style={ofertaStyles.barraPesquisa}
-          iconColor={theme.colors.azul}
-          onIconPress={() => encontraDisciplina()}
-          onClearIconPress={(e) => retornaOfertasIniciais()}
-          inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: theme.colors.preto}}
-          selectionColor={theme.colors.preto}
-          />
+      <HeaderBar navigation={navigation} titulo={titulo ?? " - "} ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
+        {exibirBusca ? (
+          <>
+            <Searchbar
+              placeholder="Pesquise pela disciplina"
+              onChangeText={onChangeSearch}
+              value={queryDisciplinas}
+              style={ofertaStyles.barraPesquisa}
+              iconColor={theme.colors.azul}
+              onIconPress={() => encontraDisciplina()}
+              onClearIconPress={(e) => retornaOfertasIniciais()}
+              inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: theme.colors.preto}}
+              selectionColor={theme.colors.preto}
+              />     
+          </>
+        ): null}
         {disciplinasUnicasOrdenadas.length > 0 ? (
           <>
               <GestureHandlerRootView style={{flex: 1}}>
@@ -91,9 +114,10 @@ export const Oferta = (props: IDisciplinas) => {
                   data={disciplinasUnicasOrdenadas}
                   renderItem={({item}) =>
                       <CardDisciplina
-                          disciplinas={disciplinas.filter((disciplina) => disciplina.disciplina.toLowerCase() === item.toLowerCase())}
+                          disciplinas={disciplinas.filter((disciplina) => disciplina.disciplina?.toLowerCase() === item.toLowerCase())}
                           navigation={navigation} 
                           nomeDisciplina={item} 
+                          codigoDisciplina={encontraCodigoDisciplina(item)}
                           />}
                   keyExtractor={(item) => item}
                   removeClippedSubviews
@@ -111,6 +135,15 @@ export const Oferta = (props: IDisciplinas) => {
                   listRef.current &&  listRef.current.scrollToOffset({ offset: 0, animated: true });
                 }}/> 
             )}
+
+            <FAB 
+                icon='exit-to-app'
+                size='small'
+                label='Encontre as salas'
+                mode='flat'
+                color={theme.colors.branco}
+                style={ofertaStyles.fabEncontraSalas} 
+                onPress={() => abreWebViewSalas()}/> 
             </>
         ) :
           <Loading />

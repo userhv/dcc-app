@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Text, IconButton } from 'react-native-paper';
 import { theme } from '../../../paper/theme';
@@ -11,6 +11,7 @@ interface IModalVersao {
 
 export const ModalVersao = (props: IModalVersao) => {
     const { handleClose } = props;
+
     return (
         <View style={modalVersaoStyle.container}>
             <View style={modalVersaoStyle.boxTitulo}>
@@ -18,18 +19,14 @@ export const ModalVersao = (props: IModalVersao) => {
                 <IconButton icon='close' onPress={handleClose} iconColor={theme.colors.azul} size={25}/>
             </View>
             <View style={modalVersaoStyle.boxTexto}>
-                <Text variant='bodyMedium' style={{textAlign: 'auto', padding: 10}}>
-{ `     
-        - Ajuste de UI no WebView
-        - Adição do patch notes na tela de início [Marco Túlio]
-        - Ajustes nas imagens das notícias [Pâmela]
-        - Melhorias de desempenho
-        - Adição do ícone de retornar ao topo da lista na tela de notícias [Wallace]
-                ` }    
-                </Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Remoção da guia "Inicio" [Marco Tulio]</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição da guia "Para o aluno"</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição da tela de oferta de disciplinas</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Icone para visualizar a barra de busca nas telas de professor e oferta de disciplinas</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - As telas de laboratorio, professores agora estão na guia "Para o aluno"</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do icone de limpar filtros na tela de professores</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Nova tela de notas da versão na guia "Menu"</Text>
             </View>
         </View>
-
-
     )
 }

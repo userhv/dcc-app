@@ -11,9 +11,18 @@ export const modalVersaoStyle = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+
   },
-  texto: {paddingTop: 10, paddingLeft: 10},
+  texto: {
+    paddingTop: 10, 
+    paddingLeft: 10
+  },
   boxTexto:{
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 20,
+    textAlign: 'auto',
+    flexWrap: 'nowrap'
   }
 });

@@ -4,22 +4,20 @@ import * as rssParser from 'react-native-rss-parser';
 import { DOMParser } from '@xmldom/xmldom'
 
 export interface ITabelaDisciplinas {
-    codigo: string;
-    disciplina: string;
-    horario: string;
+    codigo?: string;
+    cod?: string;
+    disciplina?: string;
+    horario?: string;
     professor?: string;
+    prof?: string;
+    docente?: string;
     sala?: string;
     turma?: string;
 }
 
-enum Semestre {
-    PRIMEIRO = '1º Semestre',
-    SEGUNDO = '2º Semestre'
-}
-
 export interface ISemestres {
-    primeiroSemestre:rssParser.FeedItem[];
-    segundoSemestre: rssParser.FeedItem[];
+    anoAtual:rssParser.FeedItem[];
+    anoAnterior: rssParser.FeedItem[];
 }
 
 class  Mediator {
@@ -50,16 +48,19 @@ class  Mediator {
     }
 
     tratamentoDados = (ofertasGerais: rssParser.FeedItem[]) => {
-        const anoAtual = new Date().getFullYear().toString();
+        const anoAtualData = new Date().getFullYear();
+        const anotAnterior = anoAtualData - 1;
         const ofertaDisciplinasDisplay = 'Oferta de disciplinas'.toLowerCase();        
-        const ofertasGeraisAtual = ofertasGerais.filter((oferta)=> oferta.title.toLowerCase().includes(anoAtual.toLowerCase()) && oferta.title.toLowerCase().includes(ofertaDisciplinasDisplay))
-        const primeiroSemestre = ofertasGeraisAtual.filter((oferta) => oferta.title.toLowerCase().includes(Semestre.PRIMEIRO.toLowerCase()));
-        const segundoSemestre = ofertasGeraisAtual.filter((oferta) => oferta.title.toLowerCase().includes(Semestre.SEGUNDO.toLowerCase()));
-        return {primeiroSemestre, segundoSemestre}
+        const ofertasGeraisAtual = ofertasGerais.filter((oferta)=> (oferta.title.toLowerCase().includes(anoAtualData.toString().toLowerCase()) 
+            || oferta.title.toLowerCase().includes(anotAnterior.toString().toLowerCase()))  && oferta.title.toLowerCase().includes(ofertaDisciplinasDisplay))
+        const anoAtual = ofertasGeraisAtual.filter((oferta) => oferta.title.toLowerCase().includes(anoAtualData.toString().toLowerCase()));
+        const anoAnterior = ofertasGeraisAtual.filter((oferta) => oferta.title.toLowerCase().includes(anotAnterior.toString().toLowerCase()));
+        return {anoAtual, anoAnterior}
     }
 
     converteTabelaGeral = (items: rssParser.FeedItem): ITabelaDisciplinas[] => {
-        const data =  items.content && items.content.split("<figure class=\"wp-block-table\">").pop().slice(0, -10);
+        let data =  items.content && items.content.split("<table>").pop().slice(0, -10);
+        data = "<table>" + data;
         const parsed  = new DOMParser().parseFromString(data, 'text/html').getElementsByTagName('tr');
         let childHeader = parsed[0].firstChild;
         const arrHeader: any[] = [];
@@ -72,11 +73,16 @@ class  Mediator {
         for(let i = 1; i < parsed.length; i++){
         let childBody = parsed[i].firstChild;
         const arrBody = [];
-            while(childBody) {
+        while(childBody) {
             arrBody.push(childBody.textContent)
             childBody = childBody?.nextSibling;
+        }
+        let obj: {[key:string]: any} = {}
+        if(arrBody.length === arrHeader.length){
+            for(let i = 0; i < arrHeader.length; i++){
+                obj[arrHeader[i]] = arrBody[i];
             }
-            let obj: {[key:string]: any} = {}
+        }else if(arrBody.length === arrHeader.length + 1){
             for(let i = 0; i < arrHeader.length; i++){
                 if(arrHeader[i] === 'horario'){
                     obj[arrHeader[i]] = `${arrBody[i]} - ${arrBody[i+1]}`
@@ -84,9 +90,9 @@ class  Mediator {
                     obj[arrHeader[i]] = arrBody[i+1];
                 }else
                     obj[arrHeader[i]] = arrBody[i];
-            
             }
-            objParsed.push(obj as ITabelaDisciplinas);
+        }
+        objParsed.push(obj as ITabelaDisciplinas);
         }
         return objParsed;
      }

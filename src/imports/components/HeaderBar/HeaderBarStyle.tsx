@@ -4,18 +4,23 @@ import { theme } from '../../paper/theme';
 export const headerBarStyle = StyleSheet.create({
   containerTop: {
     paddingTop: 10,
-    paddingBottom: 10,
     flexDirection: 'row',
     backgroundColor: theme.colors.branco,    
   },
 
-  descricao: {
+  boxDescricao: {
     flexDirection:  'row',
     alignItems: 'center',
     flexGrow: 1,
-    overflow: 'hidden',
     flex: 1
   },
 
+  titulo: {
+    flex: 1,
+  },
+
+  icone:{
+    alignItems: 'center',
+  }
 
 });

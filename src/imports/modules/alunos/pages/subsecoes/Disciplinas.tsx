@@ -20,15 +20,15 @@ interface IDisciplinas {
 export const Disciplinas = (props: IDisciplinas) => {
 
     const { navigation } = props;
-    const [primeiroSemestre, setPrimeiroSemestre] = useState<rssParser.FeedItem[] | undefined>(undefined);
-    const [segundoSemestre, setSegundoSemestre] = useState<rssParser.FeedItem[] | undefined>(undefined);
+    const [anoAtual, setAnoAtual] = useState<rssParser.FeedItem[] | undefined>(undefined);
+    const [anoAnterior, setAnoAnterior] = useState<rssParser.FeedItem[] | undefined>(undefined);
     
     useFocusEffect(
       useCallback(() => {
         const _renderizaTodosDados = async () => {
-          const {primeiroSemestre, segundoSemestre} = await mediator.selecionaRequisicao(EnumMediator.DISCIPLINAS) as ISemestres;
-          setPrimeiroSemestre(primeiroSemestre);
-          setSegundoSemestre(segundoSemestre);
+          const {anoAtual, anoAnterior} = await mediator.selecionaRequisicao(EnumMediator.DISCIPLINAS) as ISemestres;
+          setAnoAtual(anoAtual);
+          setAnoAnterior(anoAnterior);
         }
         _renderizaTodosDados();
       }, []),
@@ -41,27 +41,32 @@ export const Disciplinas = (props: IDisciplinas) => {
     <View style={{...subSecoesStyle.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Ofertas de disciplinas'/>
 
-      {primeiroSemestre || segundoSemestre ? (
+      {anoAtual || anoAnterior ? (
           <GestureHandlerRootView style={{flex: 1}}>
             <ScrollView>
-              {segundoSemestre ? (
-                segundoSemestre.length > 0 || segundoSemestre.length > 0 ? (
-                <ViewOfertasDisciplinas
-                  key={nanoid()}
-                  titulo={segundoSemestre[0].title ?? segundoSemestre[0].title}
-                  ofertas={segundoSemestre}
-                  navigation={navigation}
-                />
+              {anoAtual ? (
+                anoAtual.length > 0 || anoAtual.length > 0 ? (
+                  anoAtual.map((disciplinaAtual) => (
+                    <ViewOfertasDisciplinas
+                      key={nanoid()}
+                      titulo={disciplinaAtual.title ?? disciplinaAtual.title}
+                      oferta={disciplinaAtual}
+                      navigation={navigation}
+                    />
+                  ))
                 ) : null
               ) : null}
-              {primeiroSemestre ? (
-                primeiroSemestre.length > 0 || primeiroSemestre.length > 0 ? (
-                <ViewOfertasDisciplinas
-                  key={nanoid()}
-                  titulo={primeiroSemestre[0].title ?? primeiroSemestre[0].title}
-                  ofertas={primeiroSemestre}
-                  navigation={navigation}
-                />
+              {anoAnterior ? (
+                anoAnterior.length > 0 || anoAnterior.length > 0 ? (
+                  anoAnterior.map((disciplinaAnoAnterior) => (
+                    <ViewOfertasDisciplinas
+                      key={nanoid()}
+                      titulo={disciplinaAnoAnterior.title ?? disciplinaAnoAnterior.title}
+                      oferta={disciplinaAnoAnterior}
+                      navigation={navigation}
+                    />
+
+                  ))
                 ) : null
               ) : null}
           </ScrollView>

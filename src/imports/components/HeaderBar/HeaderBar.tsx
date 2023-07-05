@@ -7,10 +7,12 @@ import { headerBarStyle } from "./HeaderBarStyle";
 interface IHeaderBar {
     titulo: string;
     navigation: NativeStackNavigationProp<any>;
+    ativarBusca?: boolean;
+    onPressBusca?: () => void;
 }
 
 export const HeaderBar = (props: IHeaderBar) => {
-    const { titulo, navigation } = props;
+    const { titulo, navigation, ativarBusca, onPressBusca } = props;
 
     return (
         <>
@@ -24,8 +26,15 @@ export const HeaderBar = (props: IHeaderBar) => {
                 onPress={() => navigation?.goBack()}
               />
           </View>
-          <View style={headerBarStyle.descricao} accessible={true}>
-            <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"> {titulo}</Text>
+          <View style={headerBarStyle.boxDescricao} accessible={true}>
+            <View style={headerBarStyle.titulo}>
+              <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"> {titulo}</Text>
+            </View>
+          {ativarBusca ? (
+            <View style={headerBarStyle.icone}>
+              <IconButton icon='magnify' size={25} onPress={onPressBusca} style={{marginRight: 10}}/>
+            </View>
+          ) : null}
           </View>
         </View>
         </>
