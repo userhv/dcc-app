@@ -62,7 +62,7 @@ export const Contatos = (props: IContatos) => {
                   activeOutlineColor={theme.colors.azul}
                   numberOfLines={10}
                   textColor={theme.colors.preto}
-                  contentStyle={{borderRadius: 8, padding: 5}}
+                  contentStyle={{borderRadius: 8, padding: 5, minHeight: Platform.OS === `ios`? 250 : null}}
               />
               <View style={{paddingTop: 10,flexDirection: 'row', justifyContent: 'flex-end'}}>
                 <Button

@@ -1,6 +1,5 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-
 const insets = useSafeAreaInsets();
 export const styleIOS = {
     paddingTop: insets.top,

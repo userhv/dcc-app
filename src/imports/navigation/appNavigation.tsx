@@ -16,9 +16,9 @@ export const AppNavigation = (props: IAppNavigation) => {
 	const { user } = props;
 	return (
 		<SafeAreaProvider>
-		<NavigationContainer key={'NavigatorDefault'} theme={LightTheme} >
-			<NavigatorDefault user={user}  />
-		</NavigationContainer>
+			<NavigationContainer key={'NavigatorDefault'} theme={LightTheme} >
+				<NavigatorDefault user={user}  />
+			</NavigationContainer>
 		</SafeAreaProvider>
 	);
 };
