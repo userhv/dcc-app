@@ -6,15 +6,15 @@ import * as rssParser from 'react-native-rss-parser';
 import { theme } from '../../../../paper/theme';
 import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
-import CardProfessores  from '../../components/CardProfessores';
 import { Loading } from '../../../../components/Loading/Loading';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
-import { ModalAreas } from '../../components/ModalAreas';
-import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
+import { ModalAreas } from '../../components/ModalVersao';
 import { styleIOS } from '../../../../paper/stylesIOS';
+import CardProfessores from '../../components/CardProfessores';
+import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -109,7 +109,7 @@ export const Professores = (props: IProfessores) => {
       let data: rssParser.FeedItem[] | undefined = [];
       let arrayProfessores: rssParser.FeedItem[] | undefined = [];
       for(let i = 1; ;i++){
-        data = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES, i);
+        data = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES, i) as rssParser.FeedItem[];
         if(data?.length === 0) break;
         else if(data) arrayProfessores.push(...data)
       }

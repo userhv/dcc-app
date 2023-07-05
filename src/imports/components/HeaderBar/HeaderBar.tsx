@@ -25,7 +25,7 @@ export const HeaderBar = (props: IHeaderBar) => {
               />
           </View>
           <View style={headerBarStyle.descricao} accessible={true}>
-            <Text variant="headlineSmall"> {titulo}</Text>
+            <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"> {titulo}</Text>
           </View>
         </View>
         </>

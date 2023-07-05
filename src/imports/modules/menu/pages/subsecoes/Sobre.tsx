@@ -8,6 +8,7 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../..
 import { useContext } from 'react';
 import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 import { styleIOS } from '../../../../paper/stylesIOS';
+import { ModalVersao } from '../../../alunos/components/ModalVersao';
 
 interface ISobre {
     navigation: NativeStackNavigationProp<any>;
@@ -17,7 +18,7 @@ export const Sobre = (props: ISobre) => {
 
     const { navigation } = props;
 
-    const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
+    const { showModal, showSnackBar, showDialog } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
     const abreWebViewPrivacidade = () => {
       showModal({
@@ -28,6 +29,17 @@ export const Sobre = (props: ISobre) => {
       });
     }
     
+
+    const abreModalNotasVersao = () => {
+      showModal({
+        renderedComponent: (_props: any) => (
+          <ModalVersao handleClose={_props.onDismiss}
+          {...{ showSnackBar, showDialog }}
+          />
+        )
+      });
+    }
+
     const abrirLoja = async () => {
       const url = Platform.OS === 'android' ? 
         'https://play.google.com/store/apps/details?id=com.dcc.android' : 
@@ -43,6 +55,8 @@ export const Sobre = (props: ISobre) => {
       <HeaderBar navigation={navigation} titulo='Sobre o aplicativo'/>
         <CardSecaoInterno titulo='Política de privacidade'
                           onPress={() => abreWebViewPrivacidade()}/>
+        <CardSecaoInterno titulo='Notas da versão'
+                          onPress={() => abreModalNotasVersao()}/>
         <CardSecaoInterno titulo='Versão do aplicativo' descricao={getVersion()} 
                           onPress={async () => abrirLoja()}/>
     </View>

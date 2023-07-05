@@ -7,11 +7,11 @@ import { CardSecao } from '../components/CardSecao';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 
-interface IMenuList {
+interface IAlunosList {
   navigation: NativeStackNavigationProp<any>;
 }
 
-export const MenuList = (props: IMenuList) => {
+export const AlunosList = (props: IAlunosList) => {
   const {navigation } = props;
 
   const [rolagem, setRolagem] = useState<boolean>(true);
@@ -31,7 +31,7 @@ export const MenuList = (props: IMenuList) => {
 
   return (
     <SafeAreaView style={menuListStyle.container}>
-    <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={'Mais opções'} disableIcon/>
+    <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={'Espaço do aluno'} disableIcon/>
     <ScrollView style={{ flex: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
@@ -39,28 +39,23 @@ export const MenuList = (props: IMenuList) => {
                   )} scrollEventThrottle={16}
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
-
-    <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
-              icone='account-question-outline'   
-              onPress={() => 	abrirWebView('https://dcc.ufmg.br/perguntas-frequentes/')}  
-              rolagem={rolagem}/>
-
-    <CardSecao titulo="Fale conosco" descricao='Contato do departamento, colegiados, pós-graduação, especialização ou graduação.' 
-                      icone='contacts-outline'     
-                      onPress={() => 	abrirWebView('https://dcc.ufmg.br/contatos/')}  
-                        rolagem={rolagem}/>    
-
-    <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
-              icone='message-question-outline'      
-              onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'feedback'})}
-                rolagem={rolagem}/>       
-
-    <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, notas da versão e política de privacidade." icone='information-outline'
-      onPress={() => 	navigation?.navigate('menuRoute', {
-        screen: 'sobre'})}
-        rolagem={rolagem}/>
     
+    <CardSecao titulo="Ofertas de disciplinas" descricao='Veja todas as informações das disciplinas ofertadas no semestre.' 
+              icone='cast-education'      
+              onPress={() => 	navigation?.navigate('alunosRoute', {
+                screen: 'disciplinas'})}
+                rolagem={rolagem}/>
+
+    <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
+              icone='account-group-outline'      
+              onPress={() => 	navigation?.navigate('alunosRoute', {
+                screen: 'professores'})}
+                rolagem={rolagem}/>
+
+    <CardSecao titulo="Laboratórios" descricao='Explore todos os laboratórios ativos.' 
+                      icone='book-search-outline'      
+                      onPress={() => 	abrirWebView('https://dcc.ufmg.br/nossos-laboratorios/')}
+                      rolagem={rolagem}/>        
     </ScrollView>
   </SafeAreaView>
   )

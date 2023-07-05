@@ -11,7 +11,10 @@ export const headerBarStyle = StyleSheet.create({
 
   descricao: {
     flexDirection:  'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexGrow: 1,
+    overflow: 'hidden',
+    flex: 1
   },
 
 

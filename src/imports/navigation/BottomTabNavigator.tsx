@@ -1,8 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import Modules from '../modules/index';
-import { Home } from '../pages/Home/Home';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
@@ -20,15 +18,7 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 	const iconeHome = 'home-outline';
 	const variante = varianteSemOutline(iconeHome);
 	return (
-		<BottomTab.Navigator initialRouteName="Home"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
-			<BottomTab.Screen
-				name="Home"
-				options={{
-					tabBarLabel: "Início",
-					tabBarIcon: ({ focused }) => <Icon name={focused ? variante : iconeHome} 
-						size={24} color={focused ? theme.colors.preto : theme.colors.cinza50} />,
-				}}
-				component={Home}/>
+		<BottomTab.Navigator initialRouteName="Noticias"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
 			{Modules.getAppMenuItemList().map((menuData) => {
 				return (
 					<BottomTab.Screen
