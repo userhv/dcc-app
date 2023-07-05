@@ -44,7 +44,7 @@ Nesse projeto, esse tipo de padrão é interessante pois como teremos dois ponto
 
 Nesse ponto é bom enfatizar a diferença entre ambos. Para esse sistema teremos dois tipos de coleta de dados:
 
-* **Api**: consumiremos os dados, como por exemplo o feed de notícias,  através de um ponto de acesso em XML. Nesse caso os dados são provientes somente dessa fonte, não precisando ser estruturados.
+* **Api**: consumiremos os dados, como por exemplo o feed de notícias,  através de um ponto de acesso em XML. Nesse caso os dados são dispostos somente dessa fonte, não precisando ser estruturados.
 
 * **Servidor**: outro ponto de consumo de dados será por meio do servidor, nesse caso, alguns dados serão armazenados no banco de dados local ou remoto e utilizaremos a comunicação com esse servidor para requisitar os dados necessários, assim podemos estruturá-los e apresentá-los aos usuários no sistema.
 

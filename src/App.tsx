@@ -6,6 +6,7 @@ import { GeneralComponents } from './imports/components/GeneralComponents/Genera
 import { deletarBancoInteiro, deletarBancoInteiroAgressivamente, inicializaRealmGlobal } from './InicializaRealm';
 
 export const App = () => {
+
   
   useEffect(() => {
 		const inicializaRealm = async () => {
@@ -20,7 +21,7 @@ export const App = () => {
   return (
     <PaperProvider theme={theme}>
       <GeneralComponents>
-        <>
+      <>
         <AppNavigation user={null}/>
         </>
       </GeneralComponents>

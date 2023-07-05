@@ -1,20 +1,13 @@
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import Modules from '../modules/index';
 import { Home } from '../pages/Home/Home';
-import { Route } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
-import { IBottomTabParamList, IHomeParamList } from '../typings/NavigationTypings';
+import { IBottomTabParamList } from '../typings/NavigationTypings';
 import { varianteSemOutline } from '../libs/removerVarianteOutline';
-
-interface INavigatorProps {
-	user: any;
-	route: Route<any>;
-	navigation: NativeStackNavigationProp<any>;
-}
 
 interface IAppProps {
 	user: any;
