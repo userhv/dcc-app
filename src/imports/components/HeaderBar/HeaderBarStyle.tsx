@@ -3,8 +3,9 @@ import { theme } from '../../paper/theme';
 
 export const headerBarStyle = StyleSheet.create({
   containerTop: {
-    paddingTop: 10,
+    paddingTop: 5,
     flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: theme.colors.branco,    
   },
 

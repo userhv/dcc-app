@@ -1,7 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, View} from 'react-native';
 import {Card} from 'react-native-paper';
-import { cardSecaoStyle } from './style/CardSecaoStyle';
+import { cardSecaoStyle } from './CardSecaoStyle';
 import { theme } from '../../../paper/theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 

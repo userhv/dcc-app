@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../../paper/theme';
+import { theme } from '../../../paper/theme';
 
 export const cardSecaoInternoStyle = StyleSheet.create({
 	container: {

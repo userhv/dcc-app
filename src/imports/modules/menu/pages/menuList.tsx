@@ -3,7 +3,7 @@ import {Animated, SafeAreaView, ScrollView} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
 import { menuListStyle } from './style/menuListStyle';
-import { CardSecao } from '../components/CardSecao';
+import { CardSecao } from '../../../components/Secao/SecaoExterna/CardSecao';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 

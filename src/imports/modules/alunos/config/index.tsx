@@ -3,7 +3,6 @@ import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIc
 import { AlunoContainer } from '../pages/alunoContainer';
 import {  Professores } from '../pages/subsecoes/Professores';
 import { Disciplinas } from '../pages/subsecoes/Disciplinas';
-import { Oferta } from '../pages/subsecoes/Oferta';
 
 export const alunosRouterList = [
 	{

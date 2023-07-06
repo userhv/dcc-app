@@ -22,8 +22,6 @@ export const cardDisciplinaStyle = StyleSheet.create({
     marginTop: 5,
   },
   boxDetalhes: {
-    paddingRight: 10,
-    paddingLeft: 10,
     paddingBottom: 10,
     flexDirection: 'column',
   },
@@ -42,6 +40,8 @@ export const cardDisciplinaStyle = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
     borderRadius: 16,
     padding: 10,
   },

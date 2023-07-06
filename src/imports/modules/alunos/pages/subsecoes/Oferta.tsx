@@ -33,8 +33,6 @@ export const Oferta = (props: IDisciplinas) => {
     const listRef = useRef<any>(null);
     const [conteudoVerticalOffset, setConteudoVerticalOffset] = useState(0);
     const LIMITE_MAXIMO_SCROLL = 1000;
-
-    const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
     
     useEffect(() => {
         const _renderizaTodosDados = () => {
@@ -73,15 +71,6 @@ export const Oferta = (props: IDisciplinas) => {
       const codigoDisciplina = ofertas.filter((d)=> d.disciplina?.toLowerCase() === item.toLowerCase());
       return codigoDisciplina[0].codigo ?? codigoDisciplina[0].cod;
     }  
-
-    const abreWebViewSalas = () => {
-      showModal({
-        isFullScreen: true,
-        renderedComponent: (_props: any) => (
-          <WebViewRN url={'https://www.icex.ufmg.br/icex_novo/minha-salas/'} handleClose={_props.onDismiss} navigation={navigation}/>
-        )
-        });
-      }
 
     const style = Platform.OS === 'ios' ? styleIOS : null;
 
@@ -135,15 +124,6 @@ export const Oferta = (props: IDisciplinas) => {
                   listRef.current &&  listRef.current.scrollToOffset({ offset: 0, animated: true });
                 }}/> 
             )}
-
-            <FAB 
-                icon='exit-to-app'
-                size='small'
-                label='Encontre as salas'
-                mode='flat'
-                color={theme.colors.branco}
-                style={ofertaStyles.fabEncontraSalas} 
-                onPress={() => abreWebViewSalas()}/> 
             </>
         ) :
           <Loading />

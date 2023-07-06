@@ -1,6 +1,6 @@
 import {Linking, Platform, View} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { CardSecaoInterno } from '../../components/CardSecaoInterno';
+import { CardSecaoInterno } from '../../../../components/Secao/SecaoInterna/CardSecaoInterno';
 import { getVersion } from 'react-native-device-info';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';

@@ -26,6 +26,7 @@ export const ModalVersao = (props: IModalVersao) => {
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - As telas de laboratorio, professores agora estão na guia "Para o aluno"</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do icone de limpar filtros na tela de professores</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Nova tela de notas da versão na guia "Menu"</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do botão de compartilhar na webView</Text>
             </View>
         </View>
     )

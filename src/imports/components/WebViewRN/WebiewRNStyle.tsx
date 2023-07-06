@@ -7,24 +7,30 @@ export const webViewRNStyle = StyleSheet.create({
   },
   
   containerSuperior: {
-    backgroundColor: theme.colors.cinzaEscuro,
+    backgroundColor: theme.colors.quasePreto,
     flexDirection: 'row',
-    paddingTop: 10
+    paddingTop: 10,
   },
 
   containerBotaoFechar: {
     alignItems: 'center',
-    justifyContent: 'center',
   },
 
   containerTitulo: {
-    width: 360,
     flexDirection: 'row',
     alignItems: 'center',
-    height: 'auto',
-    flexShrink: 1
+    position: 'relative',
+    maxWidth: 320,
+    flex: 1,
+    flexShrink: 1,
   },
-  
+  containerCompartilhar: {
+    justifyContent: 'flex-end', 
+    flexDirection: 'row',
+    position: 'relative',
+    alignItems: 'center',
+  },
+
   texto: {
     color: theme.colors.branco,
     flexShrink: 1,

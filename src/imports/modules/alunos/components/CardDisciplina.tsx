@@ -1,11 +1,14 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, View} from 'react-native';
 import {Divider, IconButton, Text} from 'react-native-paper';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { cardDisciplinaStyle } from './style/CardDisciplinaStyle';
 import React from 'react';
 import { ITabelaDisciplinas } from '../../../mediator/mediator';
 import { theme } from '../../../paper/theme';
+import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
+import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { Alerta } from '../../../components/Alerta/Alerta';
 
 interface ICardDisciplina {
     disciplinas: ITabelaDisciplinas[];
@@ -30,10 +33,21 @@ export const CardDisciplina = (props: ICardDisciplina) => {
       return '-'
   }
 
+  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
+
+  const abreWebViewSalas = () => {
+    showModal({
+      isFullScreen: true,
+      renderedComponent: (_props: any) => (
+        <WebViewRN url={'https://www.icex.ufmg.br/icex_novo/minha-salas/'} handleClose={_props.onDismiss} navigation={navigation}/>
+      )
+      });
+    }
+
   return (
       <>
       <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)}
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]} >
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]} >
         <View style={cardDisciplinaStyle.container}>
           <View style={cardDisciplinaStyle.boxPrincipal}>
               <View style={cardDisciplinaStyle.boxTopo}>
@@ -47,6 +61,12 @@ export const CardDisciplina = (props: ICardDisciplina) => {
               <View style={cardDisciplinaStyle.boxDetalhes}>
                 {abrirDetalhes? (
                   <>
+                  <Alerta  detalhes={
+                      <Text onPress={abreWebViewSalas} variant='labelLarge' style={{color: theme.colors.vermelhoVivo}}>
+                        A sala pode não estar atualizada. Clique aqui para versão mais recente.</Text> 
+                  }
+                  icone='launch'
+                  />
                   {disciplinas.map((disciplina, i) => (
                       <View style={cardDisciplinaStyle.detalhes} key={i}> 
                           <Text variant='bodyMedium' style={cardDisciplinaStyle.textoDetalhes}> Turma: {disciplina.turma ?? '-'} </Text>
