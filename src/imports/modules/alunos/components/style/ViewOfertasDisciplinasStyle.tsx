@@ -15,7 +15,7 @@ export const viewOfertasDisciplinasStyle = StyleSheet.create({
   },
   boxTexto: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     flex: 1,
     margin: 10
@@ -32,7 +32,7 @@ export const viewOfertasDisciplinasStyle = StyleSheet.create({
     flex: 1,
     margin: 5,
     borderRadius: 8,
-    padding: 10,
+    padding: 15,
   },
   textoDetalhes: {
     color: theme.colors.branco, 

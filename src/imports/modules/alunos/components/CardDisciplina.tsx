@@ -56,7 +56,7 @@ export const CardDisciplina = (props: ICardDisciplina) => {
                   <Text style={cardDisciplinaStyle.textoCodigo} variant='bodyMedium'> {codigoDisciplina ?? '-'} </Text>
                 </View>
                   <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
-                    size={25} iconColor={theme.colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
+                    size={28} iconColor={theme.colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
               </View>
               <View style={cardDisciplinaStyle.boxDetalhes}>
                 {abrirDetalhes? (
