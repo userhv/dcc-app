@@ -54,12 +54,4 @@ export const subSecoesStyle = StyleSheet.create({
     borderColor: theme.colors.azul
   },
 
-  modal:{
-    textAlign: 'auto', 
-    backgroundColor: theme.colors.preto,
-    flex: 1,
-    height:  150,
-    width: '100%'
-  }
-
 });

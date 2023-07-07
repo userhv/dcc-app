@@ -73,7 +73,7 @@ export const CardNoticias = (props: ICardNoticias) => {
   return (
     <>
         <Pressable onPress={() => 	abreWebViewNoticia()} 
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}
             disabled={!rolagem}>
         <Card style={cardNoticiasStyle.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
           {noticia.media[0] ? (

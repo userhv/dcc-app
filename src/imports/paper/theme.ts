@@ -63,13 +63,13 @@ export const theme = {
 		cinzaEscuro: '#555555',
 		quasePreto: '#2f2f2f',
 		azulOpacoSelecionado: 'rgba(6, 104, 168,0.1)',
-		vermelhoVivoOpaco: 'rgba(201, 0, 25, 0.2)',
+		vermelhoVivoOpaco: 'rgba(201, 0, 25, 0.1)',
 
 		//secundarias
 		verdeEscuro: '#034944',
 		verde: '#22851e',
 		aquaClaro: '#9DE4D6',
-		azulEscuro: '#202096',
+		azulEscuro: '#1c1c7a',
 		amareloClaro: '#FFDD99',
 		cerejaEscuro: '#991310',
 		marrom: '#7e511d',

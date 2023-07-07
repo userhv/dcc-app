@@ -10,6 +10,7 @@ import { Linking } from 'react-native';
 import qs from 'qs';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 import { styleIOS } from '../../../../paper/stylesIOS';
+import { Alerta } from '../../../../components/Alerta/Alerta';
 
 interface IContatos {
     navigation: NativeStackNavigationProp<any>;
@@ -41,22 +42,23 @@ export const Contatos = (props: IContatos) => {
       <HeaderBar navigation={navigation} titulo='Fale conosco'/>
       <GestureHandlerRootView style={{flex: 1}}>
         <ScrollView>
-          <View style={contatosStyle.boxAlerta}>
-            <View style={contatosStyle.descricao}>
-                <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo, paddingLeft: 5}} numberOfLines={4}> 
-                Ao enviar, você será redirecionado para o seu provedor de email padrão. </Text>
-            </View>
-          </View>
+          <Alerta detalhes={
+              <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo}} numberOfLines={4}> 
+              Ao enviar, você será redirecionado para o seu provedor de email padrão. </Text>
+          } />
             <View style={contatosStyle.form}>
                 <View style={contatosStyle.labelForm}>
                   <Text variant='labelLarge'> Escreva o seu feedback  </Text>
                 </View>
               <TextInput
+                  accessible={true}
+                  accessibilityLabel='Digite o feedback'
+                  accessibilityRole='text'
                   value={text}
                   onChangeText={text => setText(text)}
                   multiline
                   mode='outlined'
-                  selectionColor={theme.colors.azul}
+                  selectionColor={theme.colors.preto}
                   underlineColor="transparent"
                   activeUnderlineColor="transparent"
                   activeOutlineColor={theme.colors.azul}
@@ -66,10 +68,13 @@ export const Contatos = (props: IContatos) => {
               />
               <View style={{paddingTop: 10,flexDirection: 'row', justifyContent: 'flex-end'}}>
                 <Button
+                  accessible={true}
+                  accessibilityLabel='Toque para enviar o feedback'
+                  accessibilityRole='button'
                   mode='contained'
                   icon='send'
                   disabled={text === ""}
-                  style={{backgroundColor: text== "" ? theme.colors.cinza90: theme.colors.azul}}
+                  style={{backgroundColor: text== "" ? theme.colors.cinza90: theme.colors.azul, width: 120}}
                   onPress={async() => await enviarEmail()}>
                   Enviar
                 </Button>

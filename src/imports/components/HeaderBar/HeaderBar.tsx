@@ -7,10 +7,12 @@ import { headerBarStyle } from "./HeaderBarStyle";
 interface IHeaderBar {
     titulo: string;
     navigation: NativeStackNavigationProp<any>;
+    ativarBusca?: boolean;
+    onPressBusca?: () => void;
 }
 
 export const HeaderBar = (props: IHeaderBar) => {
-    const { titulo, navigation } = props;
+    const { titulo, navigation, ativarBusca, onPressBusca } = props;
 
     return (
         <>
@@ -18,14 +20,29 @@ export const HeaderBar = (props: IHeaderBar) => {
         <View style={headerBarStyle.containerTop}>
           <View>
             <IconButton
+                accessible={true}
+                accessibilityLabel='Toque para voltar a página'
+                accessibilityRole='button' 
                 icon="arrow-left"
-                size={25}
+                size={28}
                 iconColor={theme.colors.azul}
                 onPress={() => navigation?.goBack()}
               />
           </View>
-          <View style={headerBarStyle.descricao} accessible={true}>
-            <Text variant="headlineSmall"> {titulo}</Text>
+          <View style={headerBarStyle.boxDescricao} accessible={true}>
+            <View style={headerBarStyle.titulo}>
+              <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"> {titulo}</Text>
+            </View>
+          {ativarBusca ? (
+            <View style={headerBarStyle.icone}>
+              <IconButton icon='magnify' size={28} onPress={onPressBusca} 
+                  style={{marginRight: 10}}
+                  iconColor={theme.colors.azul}
+                  accessible={true}
+                  accessibilityLabel='Toque para compartilhar o link'
+                  accessibilityRole='button' />
+            </View>
+          ) : null}
           </View>
         </View>
         </>

@@ -3,16 +3,25 @@ import { theme } from '../../paper/theme';
 
 export const headerBarStyle = StyleSheet.create({
   containerTop: {
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 5,
     flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: theme.colors.branco,    
   },
 
-  descricao: {
+  boxDescricao: {
     flexDirection:  'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexGrow: 1,
+    flex: 1,
   },
 
+  titulo: {
+    flex: 1,
+  },
+
+  icone:{
+    alignItems: 'center',
+  }
 
 });

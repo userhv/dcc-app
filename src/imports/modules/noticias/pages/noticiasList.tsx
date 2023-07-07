@@ -34,11 +34,11 @@ export const NoticiasList = (props: INoticiasList) => {
   useFocusEffect(
     useCallback(() => {
       const _renderizaTodosDados = async () => {
-        const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
+        const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS) as rssParser.FeedItem[];
         dataNoticias && setNoticias(dataNoticias);
-        const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
+        const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS) as rssParser.FeedItem[];
         dataEventos && setEventos(dataEventos);
-        const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
+        const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS) as rssParser.FeedItem[];
         dataPalestras && setPalestras(dataPalestras);
       }
       _renderizaTodosDados();

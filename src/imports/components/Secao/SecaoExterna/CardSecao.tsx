@@ -1,7 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, View} from 'react-native';
 import {Card} from 'react-native-paper';
-import { cardSecaoStyle } from './style/CardSecaoStyle';
+import { cardSecaoStyle } from './CardSecaoStyle';
 import { theme } from '../../../paper/theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -22,7 +22,7 @@ export const CardSecao = (props: ICardSecao) => {
     return (
         <Pressable onPress={onPress} 
             disabled={!rolagem}
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}>
             <Card style={cardSecaoStyle.container} mode="contained" >
                 <View style={cardSecaoStyle.boxPrincipal}>
                     <View style={cardSecaoStyle.boxBotao}>

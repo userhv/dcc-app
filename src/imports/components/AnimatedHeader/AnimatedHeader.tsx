@@ -37,7 +37,7 @@ export const AnimatedHeader = (props: IAnimatedHeader) => {
             },
           ]}>
 
-        <StatusBar backgroundColor={theme.colors.branco}/>
+        <StatusBar backgroundColor={theme.colors.branco} barStyle='dark-content' />
         <View>
           {!disableIcon ? (
             <IconButton

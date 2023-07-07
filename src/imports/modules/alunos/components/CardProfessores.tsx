@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, Share, View} from 'react-native';
-import {Button, Card, Divider, IconButton, Text} from 'react-native-paper';
+import {Card, Divider, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { memo, useContext, useEffect, useState } from 'react';
@@ -106,7 +106,7 @@ useEffect(() => {
                   icon='share-variant-outline'
                   iconColor={theme.colors.azul}
                   style={cardProfessoresStyle.botoes}
-                  size={25}
+                  size={28}
                   onPress={async() => await compartilharPerfilProfessor()}
                   />
               </View>
