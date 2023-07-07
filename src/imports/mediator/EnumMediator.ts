@@ -3,5 +3,6 @@ export enum EnumMediator  {
 	EVENTOS = 'eventos',
 	PALESTRAS = 'palestras',
 	PROFESSORES = 'professores',
-	DESTAQUE = 'destaque'
+	DESTAQUE = 'destaque',
+	DISCIPLINAS = 'disciplinas',
 };

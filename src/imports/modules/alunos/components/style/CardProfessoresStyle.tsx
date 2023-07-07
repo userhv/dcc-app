@@ -33,6 +33,17 @@ export const cardProfessoresStyle = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
   },
+  boxFiltro: {
+    paddingLeft: 10,
+    alignItems: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+    justifyContent: 'space-between',
+  },
+  filtro: {
+    flexDirection: 'column',
+    flexWrap: 'wrap'
+  },
   botoes: {
     borderColor: 'transparent',
     backgroundColor: 'transparent',

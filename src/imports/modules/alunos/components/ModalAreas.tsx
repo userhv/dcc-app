@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dimensions, FlatList, StatusBar, View } from 'react-native';
+import { Dimensions, FlatList, View } from 'react-native';
 import { Text, Divider, List } from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import { modalAreasStyle } from './style/ModalAreasStyle';

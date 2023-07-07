@@ -17,17 +17,8 @@ export const AppNavigation = (props: IAppNavigation) => {
 	return (
 		<SafeAreaProvider>
 			<NavigationContainer key={'NavigatorDefault'} theme={LightTheme} >
-				<NavigatorDefault user={user}  />
+				<BottomTabNavigator user={user}/>
 			</NavigationContainer>
 		</SafeAreaProvider>
 	);
 };
-
-// A root stack navigator is often used for displaying modals on top of all other content
-// Read more here: https://reactnavigation.org/docs/modal
-
-const NavigatorDefault = (props: any) => {
-	return (
-	<BottomTabNavigator {...props} />);
-};
-
