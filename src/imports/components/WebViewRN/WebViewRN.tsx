@@ -9,8 +9,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface IWebViewRN {
   url: string;
-  navigation: NativeStackNavigationProp<any> | null;
-  handleClose: () => void;
+  navigation?: NativeStackNavigationProp<any> | null;
+  handleClose?: () => void;
 }
 
 export const WebViewRN = (props: IWebViewRN) => {
@@ -44,7 +44,7 @@ export const WebViewRN = (props: IWebViewRN) => {
                 accessibilityRole='button' 
                 icon='close'
                 iconColor={theme.colors.branco}
-                size={24}
+                size={28}
                 style={webViewRNStyle.botaoFechar}
                 onPress={handleClose}
               />
@@ -54,7 +54,7 @@ export const WebViewRN = (props: IWebViewRN) => {
               </View>
               <View style={webViewRNStyle.containerCompartilhar}>
                 <IconButton icon='share-variant-outline' iconColor={theme.colors.branco} 
-                        size={24} onPress={compartilharNoticia} accessibilityLabel='Compartilhe o link'
+                        size={28} onPress={compartilharNoticia} accessibilityLabel='Compartilhe o link' accessible={true}
                         accessibilityRole='button'  />
                 </View>
           </View>

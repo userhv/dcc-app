@@ -2,7 +2,6 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ScrollView, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import { viewOfertasDisciplinasStyle } from './style/ViewOfertasDisciplinasStyle';
-import { useState } from 'react';
 import * as rssParser from 'react-native-rss-parser';
 import { TiposDisciplinas, rolesDisciplinas } from '../config/EnumDisciplinas';
 import { mediator } from '../../../mediator/mediator';
@@ -25,19 +24,19 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
         if(rolesDisciplinas[key] === rolesDisciplinas[TiposDisciplinas.GERAL]){
             filtro = data.filter((disciplina)=> {
                 return(
-                    !disciplina.disciplina?.toLowerCase().includes(rolesDisciplinas[TiposDisciplinas.TCC].toLowerCase()) &&
+                    !disciplina.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(rolesDisciplinas[TiposDisciplinas.TCC].toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) &&
                     !disciplina.disciplina?.toLowerCase().includes(TiposDisciplinas.TCC.toLowerCase()) &&
-                    !disciplina.disciplina?.toLowerCase().includes(rolesDisciplinas[TiposDisciplinas.TSI].toLowerCase()) &&
+                    !disciplina.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(rolesDisciplinas[TiposDisciplinas.TSI].toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) &&
                     !disciplina.disciplina?.toLowerCase().includes(TiposDisciplinas.TSI.toLowerCase()) &&
-                    !disciplina.disciplina?.toLowerCase().includes(rolesDisciplinas[TiposDisciplinas.TECC].toLowerCase()) &&
+                    !disciplina.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(rolesDisciplinas[TiposDisciplinas.TECC].toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) &&
                     !disciplina.disciplina?.toLowerCase().includes(TiposDisciplinas.TECC.toLowerCase())
                 )
             })
         }else{
             filtro = data.filter((disciplina) => {
                 return (
-                    disciplina.disciplina?.toLowerCase().includes(key.toLowerCase()) || 
-                    disciplina.disciplina?.toLowerCase().includes(rolesDisciplinas[key].toLowerCase())
+                    disciplina.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(key.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")) || 
+                    disciplina.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").includes(rolesDisciplinas[key].toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
                 )
             })
         }

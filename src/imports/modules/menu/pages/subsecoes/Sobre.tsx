@@ -8,7 +8,7 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../..
 import { useContext } from 'react';
 import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 import { styleIOS } from '../../../../paper/stylesIOS';
-import { ModalVersao } from '../../../alunos/components/ModalVersao';
+import { ModalVersao } from '../../components/ModalVersao';
 
 interface ISobre {
     navigation: NativeStackNavigationProp<any>;

@@ -20,8 +20,11 @@ export const HeaderBar = (props: IHeaderBar) => {
         <View style={headerBarStyle.containerTop}>
           <View>
             <IconButton
+                accessible={true}
+                accessibilityLabel='Toque para voltar a página'
+                accessibilityRole='button' 
                 icon="arrow-left"
-                size={25}
+                size={28}
                 iconColor={theme.colors.azul}
                 onPress={() => navigation?.goBack()}
               />
@@ -32,7 +35,12 @@ export const HeaderBar = (props: IHeaderBar) => {
             </View>
           {ativarBusca ? (
             <View style={headerBarStyle.icone}>
-              <IconButton icon='magnify' size={25} onPress={onPressBusca} style={{marginRight: 10}}/>
+              <IconButton icon='magnify' size={28} onPress={onPressBusca} 
+                  style={{marginRight: 10}}
+                  iconColor={theme.colors.azul}
+                  accessible={true}
+                  accessibilityLabel='Toque para compartilhar o link'
+                  accessibilityRole='button' />
             </View>
           ) : null}
           </View>

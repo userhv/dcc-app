@@ -5,18 +5,16 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
 import { theme } from '../paper/theme';
 import { IBottomTabParamList } from '../typings/NavigationTypings';
-import { varianteSemOutline } from '../libs/removerVarianteOutline';
 
 interface IAppProps {
 	user: any;
 }
 
-
 const BottomTab = createMaterialBottomTabNavigator<IBottomTabParamList>();
 
 export const BottomTabNavigator = (appProps: IAppProps) => {
-	const iconeHome = 'home-outline';
-	const variante = varianteSemOutline(iconeHome);
+	const { user } = appProps;
+
 	return (
 		<BottomTab.Navigator initialRouteName="Noticias"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
 			{Modules.getAppMenuItemList().map((menuData) => {

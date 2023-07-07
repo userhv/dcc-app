@@ -22,7 +22,7 @@ export const CardSecao = (props: ICardSecao) => {
     return (
         <Pressable onPress={onPress} 
             disabled={!rolagem}
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}>
             <Card style={cardSecaoStyle.container} mode="contained" >
                 <View style={cardSecaoStyle.boxPrincipal}>
                     <View style={cardSecaoStyle.boxBotao}>

@@ -51,11 +51,14 @@ export const Contatos = (props: IContatos) => {
                   <Text variant='labelLarge'> Escreva o seu feedback  </Text>
                 </View>
               <TextInput
+                  accessible={true}
+                  accessibilityLabel='Digite o feedback'
+                  accessibilityRole='text'
                   value={text}
                   onChangeText={text => setText(text)}
                   multiline
                   mode='outlined'
-                  selectionColor={theme.colors.azul}
+                  selectionColor={theme.colors.preto}
                   underlineColor="transparent"
                   activeUnderlineColor="transparent"
                   activeOutlineColor={theme.colors.azul}
@@ -65,10 +68,13 @@ export const Contatos = (props: IContatos) => {
               />
               <View style={{paddingTop: 10,flexDirection: 'row', justifyContent: 'flex-end'}}>
                 <Button
+                  accessible={true}
+                  accessibilityLabel='Toque para enviar o feedback'
+                  accessibilityRole='button'
                   mode='contained'
                   icon='send'
                   disabled={text === ""}
-                  style={{backgroundColor: text== "" ? theme.colors.cinza90: theme.colors.azul}}
+                  style={{backgroundColor: text== "" ? theme.colors.cinza90: theme.colors.azul, width: 120}}
                   onPress={async() => await enviarEmail()}>
                   Enviar
                 </Button>

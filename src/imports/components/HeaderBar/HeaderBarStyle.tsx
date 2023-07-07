@@ -13,7 +13,7 @@ export const headerBarStyle = StyleSheet.create({
     flexDirection:  'row',
     alignItems: 'center',
     flexGrow: 1,
-    flex: 1
+    flex: 1,
   },
 
   titulo: {

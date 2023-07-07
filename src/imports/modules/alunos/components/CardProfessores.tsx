@@ -106,7 +106,7 @@ useEffect(() => {
                   icon='share-variant-outline'
                   iconColor={theme.colors.azul}
                   style={cardProfessoresStyle.botoes}
-                  size={25}
+                  size={28}
                   onPress={async() => await compartilharPerfilProfessor()}
                   />
               </View>

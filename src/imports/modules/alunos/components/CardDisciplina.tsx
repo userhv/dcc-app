@@ -63,7 +63,7 @@ export const CardDisciplina = (props: ICardDisciplina) => {
                   <>
                   <Alerta  detalhes={
                       <Text onPress={abreWebViewSalas} variant='labelLarge' style={{color: theme.colors.vermelhoVivo}}>
-                        A sala pode não estar atualizada. Clique aqui para versão mais recente.</Text> 
+                        A sala pode não estar atualizada. Consulte aqui a versão mais recente.</Text> 
                   }
                   icone='launch'
                   />

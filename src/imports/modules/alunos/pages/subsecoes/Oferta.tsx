@@ -1,19 +1,16 @@
 import { FlatList, Platform, View} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
-import { FAB, Searchbar, Text } from 'react-native-paper';
+import { FAB, Searchbar } from 'react-native-paper';
 import { theme } from '../../../../paper/theme';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { GestureHandlerRootView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {useEffect, useRef, useState } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import { ITabelaDisciplinas } from '../../../../mediator/mediator';
 import { CardDisciplina } from '../../components/CardDisciplina';
 import { Loading } from '../../../../components/Loading/Loading';
 import { ofertaStyles } from '../style/OfertaStyles';
 import { disciplinasUnicas } from '../../api/utils';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 
 interface IDisciplinas {
     ofertas: ITabelaDisciplinas[];

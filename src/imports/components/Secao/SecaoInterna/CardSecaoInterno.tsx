@@ -18,7 +18,7 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
 
     return (
         <Pressable onPress={onPress} 
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}
             disabled={rolagem !== undefined ? !rolagem : false}>
             <Card style={cardSecaoInternoStyle.container} mode="contained">
                 <View style={cardSecaoInternoStyle.boxPrincipal}>
