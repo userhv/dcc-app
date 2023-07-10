@@ -155,7 +155,7 @@ export const Professores = (props: IProfessores) => {
                       <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
                 </View>
               </View>
-                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}}/>
+                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28}/>
             </View>
             <Divider style={{...subSecoesStyle.divisor, marginBottom: 5}}/>
           </>
