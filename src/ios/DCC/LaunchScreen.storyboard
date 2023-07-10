@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DCC-ICONE" translatesAutoresizingMaskIntoConstraints="NO" id="XfN-uN-zAn">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DCC-ICONE" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-kw-eON">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="XfN-uN-zAn" secondAttribute="bottom" constant="270" id="55D-ds-Z0m"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="XfN-uN-zAn" secondAttribute="trailing" constant="68" id="Yrj-QS-9k3"/>
-                            <constraint firstItem="XfN-uN-zAn" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="269" id="dlB-BQ-3qB"/>
-                            <constraint firstItem="XfN-uN-zAn" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="67" id="eRt-CR-vkT"/>
+                            <constraint firstItem="rwp-kw-eON" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="67" id="HVY-P5-CGi"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="rwp-kw-eON" secondAttribute="bottom" constant="270" id="M0K-jn-59d"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="rwp-kw-eON" secondAttribute="trailing" constant="68" id="c6C-hY-cdT"/>
+                            <constraint firstItem="rwp-kw-eON" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="269" id="wRz-wr-NZH"/>
                         </constraints>
                     </view>
                 </viewController>
