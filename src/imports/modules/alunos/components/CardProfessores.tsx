@@ -60,7 +60,7 @@ useEffect(() => {
     return (
       <>
         <Pressable  onPress={abreWebViewProfessor} 
-            style={({ pressed }) => [pressed ? { opacity: 0.8, backgroundColor: theme.colors.azul } : {},]}>
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}>
         <Card style={cardProfessoresStyle.container} mode='contained'>
             <Card.Title
               title={professor.title}
