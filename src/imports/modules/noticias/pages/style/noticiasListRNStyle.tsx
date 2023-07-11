@@ -39,11 +39,4 @@ export const noticiasListRNStyle = StyleSheet.create({
     width: 1, 
     marginLeft: 10,
   },
-
-  loading: {
-    justifyContent: 'center', 
-    flex: 1, 
-    paddingTop: 150, 
-    alignItems: 'center',
-  }
 });

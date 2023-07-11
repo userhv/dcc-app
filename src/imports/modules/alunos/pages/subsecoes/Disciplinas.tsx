@@ -45,8 +45,7 @@ export const Disciplinas = (props: IDisciplinas) => {
       {anoAtual || anoAnterior ? (
           <GestureHandlerRootView style={{flex: 1}}>
             <ScrollView>
-              {anoAtual ? (
-                anoAtual.length > 0 || anoAtual.length > 0 ? (
+              {anoAtual && anoAtual.length > 0 ? (
                   anoAtual.map((disciplinaAtual) => (
                     <ViewOfertasDisciplinas
                       key={nanoid()}
@@ -55,11 +54,9 @@ export const Disciplinas = (props: IDisciplinas) => {
                       navigation={navigation}
                     />
                   ))
-                ) : null
               ) : null}
               <Divider style={{...subSecoesStyle.divisor, marginBottom: 10, marginTop: 10}}/>
-              {anoAnterior ? (
-                anoAnterior.length > 0 || anoAnterior.length > 0 ? (
+              {anoAnterior && anoAnterior.length > 0  ? (
                   anoAnterior.map((disciplinaAnoAnterior) => (
                     <ViewOfertasDisciplinas
                       key={nanoid()}
@@ -69,7 +66,6 @@ export const Disciplinas = (props: IDisciplinas) => {
                     />
 
                   ))
-                ) : null
               ) : null}
           </ScrollView>
         </GestureHandlerRootView>
