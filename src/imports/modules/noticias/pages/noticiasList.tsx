@@ -131,9 +131,7 @@ export const NoticiasList = (props: INoticiasList) => {
             />
           ))
       ) :
-      <View style={noticiasListRNStyle.loading}>
-        <Loading />
-      </View>
+        <Loading style={{paddingTop: 150}}/>
       }
     </ScrollView>
     </SafeAreaView>
