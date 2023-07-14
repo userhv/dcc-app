@@ -52,7 +52,5 @@ export const cardNoticiasStyle = StyleSheet.create({
 		backgroundColor: 'transparent',
 		borderRadius: 20
 	},
-	divisor: {
-		backgroundColor: theme.colors.cinzaMedio
-	  },
+
 });

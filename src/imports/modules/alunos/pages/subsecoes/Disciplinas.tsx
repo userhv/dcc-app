@@ -12,7 +12,7 @@ import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { Loading } from '../../../../components/Loading/Loading';
 import { ViewOfertasDisciplinas } from '../../components/ViewOfertasDisciplinas';
 import { nanoid } from 'nanoid';
-import { Divider } from 'react-native-paper';
+import { Divisor } from '../../../../components/Divisor/Divisor';
 
 interface IDisciplinas {
     navigation: NativeStackNavigationProp<any>;
@@ -55,7 +55,7 @@ export const Disciplinas = (props: IDisciplinas) => {
                     />
                   ))
               ) : null}
-              <Divider style={{...subSecoesStyle.divisor, marginBottom: 10, marginTop: 10}}/>
+              <Divisor style={{marginBottom: 10, marginTop: 10}}/>
               {anoAnterior && anoAnterior.length > 0  ? (
                   anoAnterior.map((disciplinaAnoAnterior) => (
                     <ViewOfertasDisciplinas

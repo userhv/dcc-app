@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Pressable, ScrollView, View} from 'react-native';
-import {IconButton, Text} from 'react-native-paper';
+import {Button, IconButton, Text} from 'react-native-paper';
 import { viewOfertasDisciplinasStyle } from './style/ViewOfertasDisciplinasStyle';
 import * as rssParser from 'react-native-rss-parser';
 import { TiposDisciplinas, rolesDisciplinas } from '../config/EnumDisciplinas';
@@ -64,16 +64,17 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                     <ScrollView style={{flex: 1}}>
                         {oferta  && abrirDetalhes ? (
                                 Object.keys(rolesDisciplinas).map((key, i) => (
-                                <View style={viewOfertasDisciplinasStyle.viewDetalhes} key={i}>
-                                    <Text style={viewOfertasDisciplinasStyle.textoDetalhes} numberOfLines={2} onPress={() => 
+                                    <Button key={i} onPress={() => 
                                         navigation?.navigate('alunosRoute', {
                                             screen: 'disciplinasSemestre',
                                             params: {
                                                 ofertas: filtraDados(key),
                                                 titulo: rolesDisciplinas[key]
                                             }
-                                        })}> {rolesDisciplinas[key]} </Text>
-                                </View>
+                                        })} mode='contained' style={viewOfertasDisciplinasStyle.viewDetalhes} 
+                                             textColor={theme.colors.branco} labelStyle={{fontSize: 14}} buttonColor={theme.colors.azul}>
+                                        {rolesDisciplinas[key]}
+                                     </Button>
                                 ))
                             ) : null}
                         </ScrollView>

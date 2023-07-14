@@ -30,8 +30,5 @@ export const modalAreasStyle = StyleSheet.create({
   },
   iconeFechar: {
     justifyContent: 'center',
-  },
-  divisor: {
-    backgroundColor: theme.colors.cinzaMedio,
-  },
+  }
 });

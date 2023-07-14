@@ -48,9 +48,6 @@ export const cardProfessoresStyle = StyleSheet.create({
     borderColor: 'transparent',
     backgroundColor: 'transparent',
   },
-  divisor: {
-    backgroundColor: theme.colors.cinzaMedio,
-  },
   imagemCover: {
     width: 100,
     height: 100,

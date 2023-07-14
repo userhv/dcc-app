@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Image, Pressable, Share, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import {Card, IconButton, Text} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import {theme} from '../../../paper/theme';
 import { useContext, useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardNoticias {
   noticia: rssParser.FeedItem;
@@ -123,7 +124,7 @@ export const CardNoticias = (props: ICardNoticias) => {
           </Card.Actions>
         </Card>
       </Pressable>
-      <Divider style={cardNoticiasStyle.divisor} />
+      <Divisor/>
     </>
   );
 };

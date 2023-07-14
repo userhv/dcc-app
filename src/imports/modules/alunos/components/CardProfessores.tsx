@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, Share, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import {Card, IconButton, Text} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { memo, useContext, useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import React from 'react';
 import { Linking } from 'react-native';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
@@ -113,7 +114,7 @@ useEffect(() => {
             </View>
           </Card.Actions>
         </Card>
-        <Divider style={cardProfessoresStyle.divisor} />
+        <Divisor/>
       </Pressable>
     </>
     );

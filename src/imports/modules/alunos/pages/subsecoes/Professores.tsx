@@ -1,5 +1,5 @@
 import { FlatList, Platform, View} from 'react-native';
-import {Divider, FAB, IconButton, Searchbar, Text} from 'react-native-paper';
+import { FAB, IconButton, Searchbar, Text} from 'react-native-paper';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as rssParser from 'react-native-rss-parser';
@@ -15,6 +15,7 @@ import { ModalAreas } from '../../components/ModalAreas';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import CardProfessores from '../../components/CardProfessores';
 import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
+import { Divisor } from '../../../../components/Divisor/Divisor';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -157,7 +158,7 @@ export const Professores = (props: IProfessores) => {
               </View>
                 <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28}/>
             </View>
-            <Divider style={{...subSecoesStyle.divisor, marginBottom: 5}}/>
+            <Divisor style={{marginBottom: 5}} />
           </>
         ): null}
 

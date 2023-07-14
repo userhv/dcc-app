@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, View} from 'react-native';
-import {Divider, IconButton, Text} from 'react-native-paper';
+import { IconButton, Text} from 'react-native-paper';
 import { useContext, useState } from 'react';
 import { cardDisciplinaStyle } from './style/CardDisciplinaStyle';
 import React from 'react';
@@ -9,6 +9,7 @@ import { theme } from '../../../paper/theme';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { Alerta } from '../../../components/Alerta/Alerta';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardDisciplina {
     disciplinas: ITabelaDisciplinas[];
@@ -80,7 +81,7 @@ export const CardDisciplina = (props: ICardDisciplina) => {
               </View>
           </View>
       </View>
-      <Divider style={cardDisciplinaStyle.divisor}/>
+      <Divisor />
       </Pressable>
     </> 
     );

@@ -3,9 +3,10 @@ import React from 'react';
 import { Linking, Platform, StatusBar, View} from 'react-native';
 import {homeStyle} from './homeStyles';
 import { HomeHeader } from './HomeHeader/HomeHeader';
-import { Banner, Divider, Text } from 'react-native-paper';
+import { Banner, Text } from 'react-native-paper';
 import { theme } from '../../paper/theme';
 import { styleIOS } from '../../paper/stylesIOS';
+import { Divisor } from '../../components/Divisor/Divisor';
 
 
 export const Home = (props: any) => {
@@ -28,7 +29,7 @@ export const Home = (props: any) => {
     <View style={{...homeStyle.container, ...style}}>
       <StatusBar backgroundColor={theme.colors.branco}  barStyle={'dark-content'}/>
       <HomeHeader  />
-      <Divider style={homeStyle.divisor}/>
+      <Divisor/>
       <View style={homeStyle.blocoInterno}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: theme.colors.azulOpacoMenuOportunidades, padding: 5 }}>
 					<Text variant='titleSmall' style={{color: theme.colors.azul}}> PREVIEW </Text>

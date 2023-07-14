@@ -27,15 +27,8 @@ export const viewOfertasDisciplinasStyle = StyleSheet.create({
     flexDirection: 'column'
   },
   viewDetalhes: {
-    backgroundColor: theme.colors.azul,
     flexDirection: 'column',
     flex: 1,
     margin: 5,
-    borderRadius: 8,
-    padding: 15,
-  },
-  textoDetalhes: {
-    color: theme.colors.branco, 
-    textAlign: 'center'
   }
 });

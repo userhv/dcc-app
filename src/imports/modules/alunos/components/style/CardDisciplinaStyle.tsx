@@ -45,7 +45,4 @@ export const cardDisciplinaStyle = StyleSheet.create({
     borderRadius: 16,
     padding: 10,
   },
-  divisor: {
-    backgroundColor: theme.colors.cinzaMedio,
-  },
 });

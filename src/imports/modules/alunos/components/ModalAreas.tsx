@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Dimensions, FlatList, View } from 'react-native';
-import { Text, Divider, List } from 'react-native-paper';
+import { Text, List } from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import { modalAreasStyle } from './style/ModalAreasStyle';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface IModalAreas {
     handleClose: () => void;
@@ -24,7 +25,7 @@ export const ModalAreas = (props: IModalAreas) => {
                 <View style={modalAreasStyle.containerTopo}>
                     <Text variant='titleSmall' numberOfLines={2}> Selecione a área de interesse</Text>
                 </View>
-                <Divider style={modalAreasStyle.divisor} />
+                <Divisor/>
                 <View style={{flex: 1}}>
                     <FlatList 
                         data={areas} 
@@ -36,7 +37,7 @@ export const ModalAreas = (props: IModalAreas) => {
                                 }} 
                                     title={item}
                                     rippleColor={theme.colors.azulOpacoMenuOportunidades}/>
-                                <Divider style={modalAreasStyle.divisor} />
+                                <Divisor/>
                             </>
                         }
                         keyExtractor={(item) => item}
