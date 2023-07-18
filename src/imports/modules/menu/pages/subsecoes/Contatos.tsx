@@ -1,10 +1,9 @@
-import {Platform, View} from 'react-native';
+import {Platform, View, useColorScheme} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
-import { TextInput, Text, Button } from 'react-native-paper';
+import { TextInput, Text, Button, useTheme } from 'react-native-paper';
 import { contatosStyle } from '../style/ContatosStyle';
-import { theme } from '../../../../paper/theme';
 import { useState } from 'react';
 import { Linking } from 'react-native';
 import qs from 'qs';
@@ -19,6 +18,12 @@ interface IContatos {
 export const Contatos = (props: IContatos) => {
 
     const { navigation } = props;
+    
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const stylesSubSecao = subSecoesStyle(colors);
+    const styles = contatosStyle(colors);
+    const colorScheme = useColorScheme();
 
     const [text, setText] = useState("");
 
@@ -38,17 +43,17 @@ export const Contatos = (props: IContatos) => {
   const style = Platform.OS === 'ios' ? styleIOS : null;
 
   return (
-    <View style={{...subSecoesStyle.container, ...style}}>
+    <View style={{...stylesSubSecao.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Fale conosco'/>
       <GestureHandlerRootView style={{flex: 1}}>
         <ScrollView>
           <Alerta detalhes={
-              <Text variant='labelLarge' style={{color: theme.colors.vermelhoVivo}} numberOfLines={4}> 
+              <Text variant='labelLarge' style={{color: colors.vermelhoVivo}} numberOfLines={4}> 
               Ao enviar, você será redirecionado para o seu provedor de email padrão. </Text>
           } />
-            <View style={contatosStyle.form}>
-                <View style={contatosStyle.labelForm}>
-                  <Text variant='labelLarge'> Escreva o seu feedback  </Text>
+            <View style={styles.form}>
+                <View style={styles.labelForm}>
+                  <Text variant='labelLarge' style={{color: colorScheme === 'dark' ? colors.cinza90: null}}> Escreva o seu feedback  </Text>
                 </View>
               <TextInput
                   accessible={true}
@@ -58,12 +63,12 @@ export const Contatos = (props: IContatos) => {
                   onChangeText={text => setText(text)}
                   multiline
                   mode='outlined'
-                  selectionColor={theme.colors.preto}
+                  selectionColor={colorScheme === 'dark' ? colors.branco: colors.preto}
                   underlineColor="transparent"
                   activeUnderlineColor="transparent"
-                  activeOutlineColor={theme.colors.azul}
+                  activeOutlineColor={colors.accent}
                   numberOfLines={10}
-                  textColor={theme.colors.preto}
+                  textColor={colorScheme === 'dark' ? colors.branco: colors.preto}
                   contentStyle={{borderRadius: 8, padding: 5, minHeight: Platform.OS === `ios`? 250 : null}}
               />
               <View style={{paddingTop: 10,flexDirection: 'row', justifyContent: 'flex-end'}}>
@@ -74,7 +79,7 @@ export const Contatos = (props: IContatos) => {
                   mode='contained'
                   icon='send'
                   disabled={text === ""}
-                  style={{backgroundColor: text== "" ? theme.colors.cinza90: theme.colors.azul, width: 120}}
+                  style={{backgroundColor: text== "" ? colors.cinza90: colors.accent, width: 120}}
                   onPress={async() => await enviarEmail()}>
                   Enviar
                 </Button>

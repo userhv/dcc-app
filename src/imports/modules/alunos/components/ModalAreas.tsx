@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Dimensions, FlatList, View } from 'react-native';
-import { Text, List } from 'react-native-paper';
-import { theme } from '../../../paper/theme';
+import { Dimensions, FlatList, View, useColorScheme } from 'react-native';
+import { Text, List, useTheme } from 'react-native-paper';
 import { modalAreasStyle } from './style/ModalAreasStyle';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Divisor } from '../../../components/Divisor/Divisor';
@@ -15,15 +14,20 @@ interface IModalAreas {
 export const ModalAreas = (props: IModalAreas) => {
     const { handleClose, areas, setArea } = props;
     const {width, height} = Dimensions.get('window');
+    
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = modalAreasStyle(colors);
+    const colorScheme = useColorScheme();
 
     return (
-        <View style={{...modalAreasStyle.container, height: height}}>
+        <View style={{...styles.container, height: height}}>
             <GestureHandlerRootView onTouchStart={handleClose}>
                 <View style={{backgroundColor: 'transparent', height: height/2 }}/>
             </GestureHandlerRootView>
-            <View style={{...modalAreasStyle.boxAreas,  height: height/2}}>
-                <View style={modalAreasStyle.containerTopo}>
-                    <Text variant='titleSmall' numberOfLines={2}> Selecione a área de interesse</Text>
+            <View style={{...styles.boxAreas,  height: height/2}}>
+                <View style={styles.containerTopo}>
+                    <Text variant='titleSmall' numberOfLines={2} style={{color: colorScheme === 'dark' ? colors.cinza90 : null}}> Selecione a área de interesse</Text>
                 </View>
                 <Divisor/>
                 <View style={{flex: 1}}>
@@ -36,7 +40,8 @@ export const ModalAreas = (props: IModalAreas) => {
                                     handleClose();
                                 }} 
                                     title={item}
-                                    rippleColor={theme.colors.azulOpacoMenuOportunidades}/>
+                                    titleStyle={{color: colorScheme === 'dark' ? colors.cinza80 : null}}
+                                    rippleColor={colorScheme === 'dark' ? colors.accentOpacoDark: colors.accentOpaco}/>
                                 <Divisor/>
                             </>
                         }

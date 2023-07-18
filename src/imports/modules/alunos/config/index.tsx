@@ -1,5 +1,4 @@
 import React from 'react';
-import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { AlunoContainer } from '../pages/alunoContainer';
 import {  Professores } from '../pages/subsecoes/Professores';
 import { Disciplinas } from '../pages/subsecoes/Disciplinas';
@@ -44,7 +43,7 @@ export const alunosMenuItemList = [
 	{
 		navigatorName: 'alunosRoute',
 		name: 'Para o aluno',
-		icon: bottomTabNavigatorIcon('book-education-outline')
+		icon: 'book-education-outline'
 	}
 ];
 

@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../paper/theme';
 
-export const divisorStyle = StyleSheet.create({
+export const divisorStyle = (colors:any) => StyleSheet.create({
     divisor: {
-        backgroundColor: theme.colors.cinzaMedio
+        backgroundColor: colors.cinzaMedio
       },
 });

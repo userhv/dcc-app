@@ -1,11 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const cardProfessoresStyle = StyleSheet.create({
+export const cardProfessoresStyle = (colors:any) =>  StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
     borderRadius: 0,
   },
   boxArea: {
@@ -18,15 +17,13 @@ export const cardProfessoresStyle = StyleSheet.create({
     paddingLeft: 10,
   },
   chipArea: {
-    borderColor: theme.colors.azul,
+    borderColor: colors.accent,
     borderWidth: 1,
     margin: 5,
     borderRadius: 4,
-    padding: 2,
-    backgroundColor: theme.colors.azulOpacoMenuOportunidades,
+    padding: 2
   },
   textoChip: {
-    color: theme.colors.azul,
     margin: 1,
   },
   boxActions: {

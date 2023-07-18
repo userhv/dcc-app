@@ -1,8 +1,7 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Pressable, View} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Pressable, View, useColorScheme} from 'react-native';
+import {Card, useTheme} from 'react-native-paper';
 import { cardSecaoInternoStyle } from './CardSecaoInternoStyle';
-import { theme } from '../../../paper/theme';
 
 interface ICardSecaoInterno {
     titulo: string;
@@ -16,18 +15,26 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
 
     const { navigation, titulo, descricao, onPress, rolagem } = props;
 
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = cardSecaoInternoStyle(colors);
+
+    const colorScheme = useColorScheme();
+
     return (
         <Pressable onPress={onPress} 
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}
             disabled={rolagem !== undefined ? !rolagem : false}>
-            <Card style={cardSecaoInternoStyle.container} mode="contained">
-                <View style={cardSecaoInternoStyle.boxPrincipal}>
-                    <View style={cardSecaoInternoStyle.boxDescricao}>
+            <Card style={styles.container} mode="contained">
+                <View style={styles.boxPrincipal}>
+                    <View style={styles.boxDescricao}>
                         <Card.Title
                             title={titulo}
                             titleVariant="titleSmall"
+                            titleStyle={{color: colorScheme === 'dark' ? colors.cinza90: colors.cinza20}}
                             subtitle={descricao ?? ""}
                             subtitleVariant="bodyMedium"
+                            subtitleStyle={{color: colorScheme === 'dark' ? colors.cinza80: colors.cinza30}}
                             titleNumberOfLines={2}
                             subtitleNumberOfLines={2}
                         />

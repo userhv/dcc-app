@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const cardDisciplinaStyle = StyleSheet.create({
+export const cardDisciplinaStyle = (colors:any) => StyleSheet.create({
   container: {
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
   boxPrincipal: {
     flexDirection: 'column',
@@ -26,7 +25,7 @@ export const cardDisciplinaStyle = StyleSheet.create({
     flexDirection: 'column',
   },
   viewDetalhes: {
-    backgroundColor: theme.colors.azul,
+    backgroundColor: colors.azul,
     flexDirection: 'column',
     flex: 1,
     margin: 5,
@@ -38,7 +37,6 @@ export const cardDisciplinaStyle = StyleSheet.create({
   },
   detalhes: {
     flexDirection: 'column',
-    backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     marginBottom: 5,
     marginLeft: 10,
     marginRight: 10,

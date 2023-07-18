@@ -1,10 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const viewOfertasDisciplinasStyle = StyleSheet.create({
+export const viewOfertasDisciplinasStyle = (colors:any) => StyleSheet.create({
   container: {
     justifyContent: 'space-between',
-    backgroundColor: theme.colors.azulOpacoMenuOportunidades,
     borderRadius: 8,
     margin: 5,
   },

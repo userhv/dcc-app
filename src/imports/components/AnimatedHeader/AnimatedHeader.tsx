@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { Animated, StatusBar, View } from 'react-native';
-import { theme } from '../../paper/theme';
-import {  IconButton, Text } from 'react-native-paper';
+import { Animated, StatusBar, View, useColorScheme } from 'react-native';
+import {  IconButton, Text, useTheme } from 'react-native-paper';
 import { animatedHeaderStyle } from './AnimatedHeaderStyle';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NetInfoContext } from '../../context/NetInfoContext';
@@ -18,16 +17,20 @@ interface IAnimatedHeader {
 export const AnimatedHeader = (props: IAnimatedHeader) => {
 
   const { animatedValue, navigation, mensagemTitulo, disableIcon } = props;
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = animatedHeaderStyle(colors);
+  const colorScheme = useColorScheme();
 
-      const Header_Maximum_Height = 130;
-      const Header_Minimum_Height = 50;
+  const Header_Maximum_Height = 130;
+  const Header_Minimum_Height = 50;
 
-      const animateHeaderHeight =
-      animatedValue.interpolate({
-          inputRange: [0, Header_Maximum_Height],
-          outputRange: [Header_Maximum_Height, Header_Minimum_Height],
-          extrapolate: 'clamp',
-        });
+  const animateHeaderHeight =
+  animatedValue.interpolate({
+      inputRange: [0, Header_Maximum_Height],
+      outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+      extrapolate: 'clamp',
+    });
 
     const temConexao = useContext(NetInfoContext);
 
@@ -36,14 +39,14 @@ export const AnimatedHeader = (props: IAnimatedHeader) => {
           <BoxConexaoInternet temConexao={temConexao} />
           <Animated.View
               style={[
-                animatedHeaderStyle.header,
+                styles.header,
                 {
                   height: animateHeaderHeight,
-                  backgroundColor: theme.colors.branco,
+                  backgroundColor: colors.background,
                 },
               ]}>
 
-            <StatusBar backgroundColor={theme.colors.branco} barStyle='dark-content' />
+            <StatusBar backgroundColor={colors.background} barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'} />
             <View>
               {!disableIcon ? (
                 <IconButton
@@ -51,14 +54,14 @@ export const AnimatedHeader = (props: IAnimatedHeader) => {
                   accessibilityLabel='Toque para voltar a página'
                   accessibilityRole='button' 
                   icon='arrow-left'
-                  iconColor={theme.colors.azul}
+                  iconColor={colors.azul}
                   size={24}
                   onPress={navigation?.goBack}
                 />
               ): null}
               </View>
-              <View style={animatedHeaderStyle.texto}>
-                <Text variant='headlineMedium' numberOfLines={1}> {mensagemTitulo} </Text>
+              <View style={styles.texto}>
+                <Text variant='headlineMedium' numberOfLines={1} style={{color: colorScheme === 'dark' ? colors.branco : colors.preto}}> {mensagemTitulo} </Text>
               </View>
             </Animated.View>
           </>

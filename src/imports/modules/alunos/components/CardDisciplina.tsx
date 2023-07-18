@@ -1,11 +1,10 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Pressable, View} from 'react-native';
-import { IconButton, Text} from 'react-native-paper';
+import { Pressable, View, useColorScheme} from 'react-native';
+import { IconButton, Text, useTheme} from 'react-native-paper';
 import { useContext, useState } from 'react';
 import { cardDisciplinaStyle } from './style/CardDisciplinaStyle';
 import React from 'react';
 import { ITabelaDisciplinas } from '../../../mediator/mediator';
-import { theme } from '../../../paper/theme';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { Alerta } from '../../../components/Alerta/Alerta';
@@ -22,6 +21,12 @@ export const CardDisciplina = (props: ICardDisciplina) => {
 
   const { navigation, disciplinas, nomeDisciplina, codigoDisciplina } = props;
   const [abrirDetalhes, setAbrirDetalhes] = useState<boolean>(false);
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = cardDisciplinaStyle(colors);
+
+  const colorScheme = useColorScheme();
 
   const professor = (disciplina: ITabelaDisciplinas) => {
     if(disciplina.professor)
@@ -48,32 +53,32 @@ export const CardDisciplina = (props: ICardDisciplina) => {
   return (
       <>
       <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)}
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]} >
-        <View style={cardDisciplinaStyle.container}>
-          <View style={cardDisciplinaStyle.boxPrincipal}>
-              <View style={cardDisciplinaStyle.boxTopo}>
-                <View style={cardDisciplinaStyle.boxTitulo}>
-                  <Text variant='titleSmall' numberOfLines={3}> {nomeDisciplina.toUpperCase()} </Text>
-                  <Text style={cardDisciplinaStyle.textoCodigo} variant='bodyMedium'> {codigoDisciplina ?? '-'} </Text>
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]} >
+        <View style={styles.container}>
+          <View style={styles.boxPrincipal}>
+              <View style={styles.boxTopo}>
+                <View style={styles.boxTitulo}>
+                  <Text variant='titleSmall' numberOfLines={3} style={{color: colorScheme === 'dark' ? colors.cinza95: null}}> {nomeDisciplina.toUpperCase()} </Text>
+                  <Text style={{...styles.textoCodigo, color: colorScheme === 'dark' ? colors.cinza80: null}} variant='bodyMedium' > {codigoDisciplina ?? '-'} </Text>
                 </View>
                   <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
-                    size={28} iconColor={theme.colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
+                    size={28} iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
               </View>
-              <View style={cardDisciplinaStyle.boxDetalhes}>
+              <View style={styles.boxDetalhes}>
                 {abrirDetalhes? (
                   <>
                   <Alerta  detalhes={
-                      <Text onPress={abreWebViewSalas} variant='labelLarge' style={{color: theme.colors.vermelhoVivo}}>
+                      <Text onPress={abreWebViewSalas} variant='labelLarge' style={{color: colors.vermelhoVivo}}>
                         A sala pode não estar atualizada. Consulte aqui a versão mais recente.</Text> 
                   }
                   icone='launch'
                   />
                   {disciplinas.map((disciplina, i) => (
-                      <View style={cardDisciplinaStyle.detalhes} key={i}> 
-                          <Text variant='bodyMedium' style={cardDisciplinaStyle.textoDetalhes}> Turma: {disciplina.turma ?? '-'} </Text>
-                          <Text variant='bodyMedium' style={cardDisciplinaStyle.textoDetalhes}> Professor (a): {professor(disciplina)} </Text>
-                          <Text variant='bodyMedium' style={cardDisciplinaStyle.textoDetalhes}> Horário: {disciplina.horario ?? '-'} </Text>
-                          <Text variant='bodyMedium' style={cardDisciplinaStyle.textoDetalhes}> Sala: {disciplina.sala ?? '-'} </Text>
+                      <View style={{...styles.detalhes, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}> 
+                          <Text variant='bodyMedium' style={{...styles.textoDetalhes, color: colorScheme === 'dark' ? colors.branco : null}}> Turma: {disciplina.turma ?? '-'} </Text>
+                          <Text variant='bodyMedium' style={{...styles.textoDetalhes, color: colorScheme === 'dark' ? colors.branco : null}}> Professor (a): {professor(disciplina)} </Text>
+                          <Text variant='bodyMedium' style={{...styles.textoDetalhes, color: colorScheme === 'dark' ? colors.branco : null}}> Horário: {disciplina.horario ?? '-'} </Text>
+                          <Text variant='bodyMedium' style={{...styles.textoDetalhes, color: colorScheme === 'dark' ? colors.branco : null}}> Sala: {disciplina.sala ?? '-'} </Text>
                       </View>
                     ))}
                     </>

@@ -1,8 +1,8 @@
-import {  MD3LightTheme as DefaultTheme, configureFonts } from 'react-native-paper';
+import {  MD3LightTheme as LightTheme, MD3DarkTheme as DarkTheme, configureFonts } from 'react-native-paper';
 import { fontConfig } from './fontConfig';
 
 export const theme = {
-	...DefaultTheme,
+	...LightTheme,
 	fonts: configureFonts({ config: fontConfig }),
 	colors: {
 		primary: '#c90019',
@@ -22,7 +22,6 @@ export const theme = {
 		errorContainer: '#F7C0BF',
 		onErrorContainer: '#B30501',
 
-		background: '#FFFFFF',
 		onBackground: '#404040',
 		buttonOnHover: '#006B68',
 
@@ -33,6 +32,18 @@ export const theme = {
 		surfaceVariant: '#DAE5E3',
 		onSurfaceVariant: '#0668a8',
 		outline: '#6F7978',
+		elevation: {
+			level0: 'transparent',
+			level1: '#f1faf1',
+			level2: '#edf1ff',  //cor da bottom bar
+			level3: '#e6f4e4',
+			level4: '#e3f3e2',
+			level5: '#dff1de'
+		},
+		//cores dinamicas
+		accent: '#0668a8',
+		accentOpaco: 'rgba(6, 104, 168,0.2)',
+		accentOpacoDark: 'rgba(6, 114, 185, 0.2)',
 
 		//cinzas
 		preto: '#000000',
@@ -55,15 +66,16 @@ export const theme = {
 		cinza: '#a7a9ac',
 		cinzaComOpacidade: '#rgba(49, 49, 48,0.7)',
 		cinzaClaro: '#dfe1e3',
-		barraNavegacao: 'rgba(6, 104, 168,0.1)',
 		azulClaro: '#4c85aa',
 		branco: '#FFFFFF',
 		azulComOpacidade: 'rgba(6, 104, 168,0.3)',
 		azulOpacoMenuOportunidades: 'rgba(6, 104, 168,0.2)',
+		azulOpacoMenuOportunidadesDark: 'rgba(6, 104, 168,0.4)',
 		cinzaEscuro: '#555555',
 		quasePreto: '#2f2f2f',
 		azulOpacoSelecionado: 'rgba(6, 104, 168,0.1)',
 		vermelhoVivoOpaco: 'rgba(201, 0, 25, 0.1)',
+		vermelhoVivoOpacoDark: 'rgba(199, 13, 13, 0.2)',
 
 		//secundarias
 		verdeEscuro: '#034944',
@@ -71,21 +83,38 @@ export const theme = {
 		aquaClaro: '#9DE4D6',
 		azulEscuro: '#1c1c7a',
 		amareloClaro: '#FFDD99',
-		cerejaEscuro: '#991310',
+		cerejaEscuro: 'rgb(153, 19, 16)',
 		marrom: '#7e511d',
 		roxo: '#70076b',
 		laranja: '#d86a10',
 		amarelo: '#a1981a',
 		cinzaMedio: '#BCBEC0',
-
-		elevation: {
-			level0: 'transparent',
-			level1: '#f1faf1',
-			level2: '#edf1ff',  //cor da bottom bar
-			level3: '#e6f4e4',
-			level4: '#e3f3e2',
-			level5: '#dff1de'
-		},
 	}
  
+};
+
+export const temaLight = {
+		//cores dinamicas
+		background: '#FFFFFF',
+		barraNavegacao: '#edf1ff',
+		navegacaoAtiva: '#000000',
+		navegacaoInativa: '#777777',
+		iconeNavegacaoAtiva: '#000000',
+		iconeNavegacaoInativa: '#777777',
+		chipAtivado: '#0668a8',
+		chipDesativado: 'rgba(6, 104, 168,0.2)',
+};
+
+export const temaDark = {
+	//cores dinamicas
+	background: '#2f2f2f',
+	barraNavegacao: '#313131',
+	navegacaoAtiva: '#FFFFFF',
+	navegacaoInativa: '#ACACAC',
+	iconeNavegacaoAtiva: '#4c85aa',
+	iconeNavegacaoInativa: '#ACACAC',
+	chipAtivado: '#0668a8',
+	chipDesativado: '#555555',
+	
+
 };

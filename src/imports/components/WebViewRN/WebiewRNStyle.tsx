@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
-import { theme } from "../../paper/theme";
 
-export const webViewRNStyle = StyleSheet.create({
+export const webViewRNStyle = (colors:any) => StyleSheet.create({
   containerComponente: {
     flex: 1,
   },
   
   containerSuperior: {
-    backgroundColor: theme.colors.quasePreto,
+    backgroundColor: colors.quasePreto,
     flexDirection: 'row',
     paddingTop: 10,
   },
@@ -32,7 +31,7 @@ export const webViewRNStyle = StyleSheet.create({
   },
 
   texto: {
-    color: theme.colors.branco,
+    color: colors.background,
     flexShrink: 1,
   },
 

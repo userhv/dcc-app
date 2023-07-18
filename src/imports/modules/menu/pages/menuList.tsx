@@ -6,6 +6,7 @@ import { menuListStyle } from './style/menuListStyle';
 import { CardSecao } from '../../../components/Secao/SecaoExterna/CardSecao';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { useTheme } from 'react-native-paper';
 
 interface IMenuList {
   navigation: NativeStackNavigationProp<any>;
@@ -15,6 +16,11 @@ export const MenuList = (props: IMenuList) => {
   const {navigation } = props;
 
   const [rolagem, setRolagem] = useState<boolean>(true);
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = menuListStyle(colors);
+  
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -30,7 +36,7 @@ export const MenuList = (props: IMenuList) => {
   }
 
   return (
-    <SafeAreaView style={menuListStyle.container}>
+    <SafeAreaView style={styles.container}>
     <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={'Mais opções'} disableIcon/>
     <ScrollView style={{ flex: 1}} 
                    onScroll={Animated.event(

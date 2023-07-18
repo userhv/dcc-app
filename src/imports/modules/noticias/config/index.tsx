@@ -1,5 +1,4 @@
 import React from 'react';
-import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { NoticiasContainer } from '../pages/noticiasContainer';
 import { NoticiasSalvas } from '../pages/noticiasSalvas';
 
@@ -35,7 +34,7 @@ export const noticiasMenuItemList = [
 	{
 		navigatorName: 'noticiasRoute',
 		name: 'Notícias',
-		icon: bottomTabNavigatorIcon('newspaper-variant-outline')
+		icon: 'newspaper-variant-outline'
 	}
 ];
 

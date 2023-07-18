@@ -1,11 +1,10 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Pressable, ScrollView, View} from 'react-native';
-import {Button, IconButton, Text} from 'react-native-paper';
+import {Pressable, ScrollView, View, useColorScheme} from 'react-native';
+import {Button, IconButton, Text, useTheme} from 'react-native-paper';
 import { viewOfertasDisciplinasStyle } from './style/ViewOfertasDisciplinasStyle';
 import * as rssParser from 'react-native-rss-parser';
 import { TiposDisciplinas, rolesDisciplinas } from '../config/EnumDisciplinas';
 import { mediator } from '../../../mediator/mediator';
-import { theme } from '../../../paper/theme';
 import { useState } from 'react';
 
 interface IViewOfertasDisciplinas {
@@ -17,9 +16,16 @@ interface IViewOfertasDisciplinas {
 export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
 
     const { navigation, titulo, oferta } = props;
+
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = viewOfertasDisciplinasStyle(colors);
+    
     const tituloTratado = titulo.toLowerCase().split("oferta de disciplinas – ").pop();
 
     const [abrirDetalhes, setAbrirDetalhes] = useState<boolean>(false);
+
+    const colorScheme = useColorScheme();
 
     const filtraDados = (key:string) => {
         const data = mediator.converteTabelaGeral(oferta);
@@ -49,18 +55,18 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
 
     return (
         <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)} >
-            <View style={viewOfertasDisciplinasStyle.container}>
-                <View style={viewOfertasDisciplinasStyle.boxPrincipal}>
-                    <View style={viewOfertasDisciplinasStyle.boxTexto}>
+            <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
+                <View style={styles.boxPrincipal}>
+                    <View style={styles.boxTexto}>
                         <View style={{flex: 1}}>
-                            <Text variant='titleLarge' style={{paddingLeft: 10}}> {tituloTratado} </Text>
+                            <Text variant='titleLarge' style={{paddingLeft: 10, color: colorScheme === 'dark' ? colors.branco: null}}> {tituloTratado} </Text>
                         </View>
                         <View>
                             <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
-                                size={28} iconColor={theme.colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
+                                size={28} iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
                         </View>
                     </View>
-                    <View style={viewOfertasDisciplinasStyle.boxDetalhes}>
+                    <View style={styles.boxDetalhes}>
                     <ScrollView style={{flex: 1}}>
                         {oferta  && abrirDetalhes ? (
                                 Object.keys(rolesDisciplinas).map((key, i) => (
@@ -71,8 +77,8 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                                                 ofertas: filtraDados(key),
                                                 titulo: rolesDisciplinas[key]
                                             }
-                                        })} mode='contained' style={viewOfertasDisciplinasStyle.viewDetalhes} 
-                                             textColor={theme.colors.branco} labelStyle={{fontSize: 14}} buttonColor={theme.colors.azul}>
+                                        })} mode='contained' style={styles.viewDetalhes} 
+                                             textColor={colors.branco} labelStyle={{fontSize: 14}} buttonColor={colors.accent}>
                                         {rolesDisciplinas[key]}
                                      </Button>
                                 ))

@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const modalAreasStyle = StyleSheet.create({
+export const modalAreasStyle = (colors:any) => StyleSheet.create({
   container: {
     paddingBottom: 10,
     flexDirection: 'column',
@@ -17,7 +16,7 @@ export const modalAreasStyle = StyleSheet.create({
   },
 
   boxAreas: {
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     flex:1, 

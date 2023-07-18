@@ -1,4 +1,4 @@
-import { Divider } from "react-native-paper"
+import { Divider, useTheme } from "react-native-paper"
 import { divisorStyle } from "./DivisorStyle"
 
 interface IDivisor {
@@ -8,8 +8,12 @@ interface IDivisor {
 export const Divisor = (props: IDivisor) => {
     const {style} = props;
 
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const stylesDivisor = divisorStyle(colors);
+
     return(
-        <Divider style={{...divisorStyle.divisor, ...style}} />
+        <Divider style={{...stylesDivisor.divisor, ...style}} />
     )
 }
 

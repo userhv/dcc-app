@@ -1,9 +1,8 @@
-import { FlatList, Platform, View} from 'react-native';
-import { FAB, IconButton, Searchbar, Text} from 'react-native-paper';
+import { FlatList, Platform, View, useColorScheme} from 'react-native';
+import { FAB, IconButton, Searchbar, Text, useTheme} from 'react-native-paper';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import * as rssParser from 'react-native-rss-parser';
-import { theme } from '../../../../paper/theme';
 import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { Loading } from '../../../../components/Loading/Loading';
@@ -24,6 +23,11 @@ interface IProfessores {
 export const Professores = (props: IProfessores) => {
     
     const { navigation} = props;
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = subSecoesStyle(colors);
+    const stylesProfessores = cardProfessoresStyle(colors);
+    const colorScheme = useColorScheme();
 
     const [professores, setProfessores] = useState<rssParser.FeedItem[]>([]);
     const [todosProfessores, setTodosProfessores] = useState<rssParser.FeedItem[]>([]);
@@ -129,31 +133,32 @@ export const Professores = (props: IProfessores) => {
   const style = Platform.OS === 'ios' ? {...styleIOS, paddingBottom: 0} : null;
   
   return (    
-    <View style={{...subSecoesStyle.container, ...style}}>
+    <View style={{...styles.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Professores' ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
       {exibirBusca ? (
         <Searchbar
           placeholder="Pesquise pelo nome"
+          placeholderTextColor={colorScheme === 'dark' ? colors.branco : null}
           onChangeText={onChangeSearch}
           value={queryProfessores}
-          style={subSecoesStyle.barraPesquisa}
-          iconColor={theme.colors.azul}
+          style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
+          iconColor={colors.accent}
           onIconPress={() => encontraProfessor()}
           onClearIconPress={(e) => retornaProfessores()}
-          inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: theme.colors.preto}}
-          selectionColor={theme.colors.preto}
-          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={theme.colors.azul}/> : null}
+          inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.branco : colors.preto}}
+          selectionColor={colorScheme === 'dark' ? colors.branco : colors.preto}
+          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={colors.accent}/> : null}
           onTraileringIconPress={(e) => abreWModalAreas()}
-          traileringIconColor={theme.colors.azul}
+          traileringIconColor={colors.accent}
           />
       ): null}
         {area !== "" ? (
           <>
-            <View style={{...cardProfessoresStyle.boxArea, ...cardProfessoresStyle.boxFiltro}}>
-              <View style={cardProfessoresStyle.filtro}>
-                <Text variant='labelMedium'> Filtrado por:</Text>
-                <View style={{...cardProfessoresStyle.chipArea, flexDirection: 'row', alignItems: 'center'}}>
-                      <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
+            <View style={{...stylesProfessores.boxArea, ...stylesProfessores.boxFiltro}}>
+              <View style={stylesProfessores.filtro}>
+                <Text variant='labelMedium' style={{color: colorScheme === 'dark' ? colors.cinza90 : null}}> Filtrado por:</Text>
+                <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
+                      <Text style={{...stylesProfessores.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : null}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
                 </View>
               </View>
                 <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28}/>
@@ -180,17 +185,15 @@ export const Professores = (props: IProfessores) => {
               icon='arrow-up'
               size='small'
               mode='flat'
-              color={theme.colors.branco}
-              style={cardProfessoresStyle.fabRetornaTop} 
+              color={colors.branco}
+              style={stylesProfessores.fabRetornaTop} 
               onPress={() => {
                 listRef.current &&  listRef.current.scrollToOffset({ offset: 0, animated: true });
               }}/> 
           )}
         </>
       ): (
-        <View style={subSecoesStyle.loading}>
-          <Loading />
-        </View>
+        <Loading />
       )}
     </View>
   );
