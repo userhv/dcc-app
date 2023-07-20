@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView, View, useColorScheme} from 'react-native';
+import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
 import {Chip, useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
@@ -27,7 +27,6 @@ export const NoticiasList = (props: INoticiasList) => {
   const [isEventos, setIsEventos] = useState<boolean>(false);
   const [isPalestras, setIsPalestras] = useState<boolean>(false);
   const [rolagem, setRolagem] = useState<boolean>(true);
-  const colorScheme = useColorScheme();
 
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
@@ -75,15 +74,6 @@ export const NoticiasList = (props: INoticiasList) => {
     setIsEventos(false);
     setIsPalestras(true);
   }
-
-  const selecionarCorChip = (cond: boolean) => {
-    if(colorScheme === 'light')
-      return cond ? colors.branco : colors.azul
-    
-    else
-      return colors.branco 
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
@@ -94,17 +84,17 @@ export const NoticiasList = (props: INoticiasList) => {
                   name="bookmark-multiple-outline"          
                   size={25}
                   style={styles.icone}
-                  color={colorScheme === 'dark'? colors.branco : colors.accent}
+                  color={colors.accent}
                   onPress={() => 	navigation?.navigate('noticiasRoute', {
                     screen: 'NoticiasSalvas',})}/>
             </View>
-            <View style={{...styles.divisor, backgroundColor: colorScheme === 'dark' ? colors.cinza90 : colors.cinza40,}}/>
+            <View style={styles.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}
                     selected
                     style={{...styles.chipStyle, 
                         backgroundColor: isNoticias ? colors.chipAtivado : colors.chipDesativado}} 
-                    selectedColor={selecionarCorChip(isNoticias)}> 
+                    selectedColor={isNoticias ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                     Últimas notícias
               </Chip>
               <Chip onPress={async() => await renderizaEventos()} 
@@ -112,14 +102,14 @@ export const NoticiasList = (props: INoticiasList) => {
                     selected
                     style={{...styles.chipStyle, 
                       backgroundColor: isEventos ? colors.chipAtivado : colors.chipDesativado}} 
-                  selectedColor={selecionarCorChip(isEventos)}> 
+                    selectedColor={isEventos ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                   Eventos
                 </Chip>
               <Chip onPress={async() => await renderizaPalestras()} 
                   icon={() => null}
                   style={{...styles.chipStyle, 
                       backgroundColor: isPalestras ? colors.chipAtivado : colors.chipDesativado}} 
-                  selectedColor={selecionarCorChip(isPalestras)}> 
+                      selectedColor={isPalestras ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                   Palestras
               </Chip>
               <View style={{marginLeft: 10}}/>

@@ -18,7 +18,7 @@ export const Alerta = (props: IAlerta) => {
 return (
     <View style={{...styles.boxAlerta,  backgroundColor: colorScheme === 'dark' ? colors.vermelhoVivoOpacoDark : colors.vermelhoVivoOpaco}}>
         <View style={styles.iconeAlerta}>
-            <Icon name={icone ?? "alert-circle-outline"} size={30} color={colors.vermelhoVivo}/>
+            <Icon name={icone ?? "alert-circle-outline"} size={30} color={colorScheme === 'dark' ? colors.vermelhoVivoForte: colors.vermelhoVivo}/>
         </View>
         <View style={styles.descricao}>
             {detalhes}

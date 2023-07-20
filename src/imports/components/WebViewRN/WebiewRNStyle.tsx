@@ -31,7 +31,7 @@ export const webViewRNStyle = (colors:any) => StyleSheet.create({
   },
 
   texto: {
-    color: colors.background,
+    color: colors.branco,
     flexShrink: 1,
   },
 

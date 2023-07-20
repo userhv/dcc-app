@@ -138,7 +138,6 @@ export const Professores = (props: IProfessores) => {
       {exibirBusca ? (
         <Searchbar
           placeholder="Pesquise pelo nome"
-          placeholderTextColor={colorScheme === 'dark' ? colors.branco : null}
           onChangeText={onChangeSearch}
           value={queryProfessores}
           style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
@@ -156,12 +155,12 @@ export const Professores = (props: IProfessores) => {
           <>
             <View style={{...stylesProfessores.boxArea, ...stylesProfessores.boxFiltro}}>
               <View style={stylesProfessores.filtro}>
-                <Text variant='labelMedium' style={{color: colorScheme === 'dark' ? colors.cinza90 : null}}> Filtrado por:</Text>
+                <Text variant='labelMedium'> Filtrado por:</Text>
                 <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
-                      <Text style={{...stylesProfessores.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : null}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
+                      <Text style={{...stylesProfessores.textoChip}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
                 </View>
               </View>
-                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28}/>
+                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28} iconColor={colors.accent}/>
             </View>
             <Divisor style={{marginBottom: 5}} />
           </>

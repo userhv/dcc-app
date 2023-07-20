@@ -1,7 +1,7 @@
 import React from 'react';
 import { AlunoContainer } from '../pages/alunoContainer';
 import {  Professores } from '../pages/subsecoes/Professores';
-import { Disciplinas } from '../pages/subsecoes/Disciplinas';
+import { OfertasDisciplinas } from '../pages/subsecoes/OfertasDisciplinas';
 
 export const alunosRouterList = [
 	{
@@ -23,17 +23,17 @@ export const alunosRouterList = [
 	},
 	{
 		navigatorName: 'alunosRoute',
-		title: 'Disciplinas',
-		name: 'disciplinas',
-		path: 'disciplinas',
-		component: Disciplinas,
+		title: 'Ofertas de Disciplinas',
+		name: 'ofertas',
+		path: 'ofertas',
+		component: OfertasDisciplinas,
 		isProtected: true
 	},
 	{
 		navigatorName: 'alunosRoute',
 		title: 'Disciplinas por semestre',
 		name: 'disciplinasSemestre',
-		path: 'disciplinas/semestre',
+		path: 'ofertas/semestre',
 		component: AlunoContainer,
 		isProtected: true
 	},

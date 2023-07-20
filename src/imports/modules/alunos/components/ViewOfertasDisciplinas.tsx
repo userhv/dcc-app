@@ -59,11 +59,11 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                 <View style={styles.boxPrincipal}>
                     <View style={styles.boxTexto}>
                         <View style={{flex: 1}}>
-                            <Text variant='titleLarge' style={{paddingLeft: 10, color: colorScheme === 'dark' ? colors.branco: null}}> {tituloTratado} </Text>
+                            <Text variant='titleLarge' style={{paddingLeft: 10}}> {tituloTratado} </Text>
                         </View>
                         <View>
                             <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
-                                size={28} iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
+                                size={28}  iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>
                         </View>
                     </View>
                     <View style={styles.boxDetalhes}>
@@ -78,7 +78,8 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                                                 titulo: rolesDisciplinas[key]
                                             }
                                         })} mode='contained' style={styles.viewDetalhes} 
-                                             textColor={colors.branco} labelStyle={{fontSize: 14}} buttonColor={colors.accent}>
+                                            textColor={colorScheme === 'dark' ? colors.preto: colors.branco}
+                                            labelStyle={{fontSize: 14}} buttonColor={colorScheme === 'dark' ? colors.accentDark : colors.accent}>
                                         {rolesDisciplinas[key]}
                                      </Button>
                                 ))

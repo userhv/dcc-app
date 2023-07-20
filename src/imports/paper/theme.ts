@@ -1,9 +1,9 @@
-import {  MD3LightTheme as LightTheme, MD3DarkTheme as DarkTheme, configureFonts } from 'react-native-paper';
+import {  MD3LightTheme as LightTheme, configureFonts } from 'react-native-paper';
 import { fontConfig } from './fontConfig';
 
 export const theme = {
 	...LightTheme,
-	fonts: configureFonts({ config: fontConfig }),
+	fonts: configureFonts({ config: fontConfig, isV3: true}),
 	colors: {
 		primary: '#c90019',
 		onPrimary: '#FFFFFF',
@@ -13,7 +13,6 @@ export const theme = {
 
 		secondary: '#a7a9ac',
 		onSecondary: '#650000',
-		secondaryContainer: 'rgba(6, 104, 168,0.3)', //altera a cor da elipse da barra de navegação
 		onSecondaryContainer: '#650000',
 		secondaryOnHover: 'rgba(236, 177, 31, 0.2)',
 
@@ -40,10 +39,6 @@ export const theme = {
 			level4: '#e3f3e2',
 			level5: '#dff1de'
 		},
-		//cores dinamicas
-		accent: '#0668a8',
-		accentOpaco: 'rgba(6, 104, 168,0.2)',
-		accentOpacoDark: 'rgba(6, 114, 185, 0.2)',
 
 		//cinzas
 		preto: '#000000',
@@ -62,6 +57,7 @@ export const theme = {
 		//primarias
 		vermelhoEscuro: '#650000',
 		vermelhoVivo: '#c90019',
+		vermelhoVivoForte: 'rgb(255, 61, 58)',
 		azul: '#0668a8',
 		cinza: '#a7a9ac',
 		cinzaComOpacidade: '#rgba(49, 49, 48,0.7)',
@@ -83,7 +79,6 @@ export const theme = {
 		aquaClaro: '#9DE4D6',
 		azulEscuro: '#1c1c7a',
 		amareloClaro: '#FFDD99',
-		cerejaEscuro: 'rgb(153, 19, 16)',
 		marrom: '#7e511d',
 		roxo: '#70076b',
 		laranja: '#d86a10',
@@ -93,28 +88,45 @@ export const theme = {
  
 };
 
+export const accentColors = {
+	accent: '#0668a8',
+	accentOpaco: 'rgba(6, 104, 168,0.2)',
+	accentOpacoDark: 'rgba(6, 104, 168,0.5)',
+}
+
 export const temaLight = {
 		//cores dinamicas
 		background: '#FFFFFF',
 		barraNavegacao: '#edf1ff',
 		navegacaoAtiva: '#000000',
+		secondaryContainer: 'rgba(6, 104, 168,0.3)',
 		navegacaoInativa: '#777777',
 		iconeNavegacaoAtiva: '#000000',
 		iconeNavegacaoInativa: '#777777',
 		chipAtivado: '#0668a8',
 		chipDesativado: 'rgba(6, 104, 168,0.2)',
+		divisorVertical: '#555555',
+		corTextoChipAtivado: '#FFFFFF',
+		corTextoChipDesativado: accentColors.accent,
 };
 
 export const temaDark = {
 	//cores dinamicas
 	background: '#2f2f2f',
+	onSurface: theme.colors.cinza90, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
+	accent: '#079cff',
+	accentDark: '#90c6eb',
 	barraNavegacao: '#313131',
 	navegacaoAtiva: '#FFFFFF',
+	secondaryContainer: '#0668a8', //altera a cor da elipse da barra de navegação
 	navegacaoInativa: '#ACACAC',
-	iconeNavegacaoAtiva: '#4c85aa',
+	iconeNavegacaoAtiva: '#bee5ff',
 	iconeNavegacaoInativa: '#ACACAC',
 	chipAtivado: '#0668a8',
 	chipDesativado: '#555555',
-	
+	divisorVertical: '#E6E7E8',
+	corTextoChipAtivado: '#FFFFFF',
+	corTextoChipDesativado: '#FFFFFF',
+
 
 };

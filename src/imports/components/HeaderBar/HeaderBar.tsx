@@ -42,8 +42,7 @@ export const HeaderBar = (props: IHeaderBar) => {
             </View>
             <View style={styles.boxDescricao} accessible={true}>
               <View style={styles.titulo}>
-                <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"
-                  style={{color: colorScheme === 'dark' ? colors.branco : colors.cinza10}}> {titulo}</Text>
+                <Text variant="titleLarge" numberOfLines={3} ellipsizeMode="tail"> {titulo}</Text>
               </View>
             {ativarBusca ? (
               <View style={styles.icone}>

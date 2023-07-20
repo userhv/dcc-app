@@ -19,7 +19,7 @@ interface IDisciplinas {
     navigation: NativeStackNavigationProp<any>;
   }
 
-export const Disciplinas = (props: IDisciplinas) => {
+export const OfertasDisciplinas = (props: IDisciplinas) => {
     const { navigation } = props;
 
     const theme = useTheme<{[key:string]: any}>();

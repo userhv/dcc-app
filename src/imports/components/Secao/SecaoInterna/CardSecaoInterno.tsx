@@ -31,10 +31,8 @@ export const CardSecaoInterno = (props: ICardSecaoInterno) => {
                         <Card.Title
                             title={titulo}
                             titleVariant="titleSmall"
-                            titleStyle={{color: colorScheme === 'dark' ? colors.cinza90: colors.cinza20}}
                             subtitle={descricao ?? ""}
                             subtitleVariant="bodyMedium"
-                            subtitleStyle={{color: colorScheme === 'dark' ? colors.cinza80: colors.cinza30}}
                             titleNumberOfLines={2}
                             subtitleNumberOfLines={2}
                         />

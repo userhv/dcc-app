@@ -11,7 +11,7 @@ interface IAppProps {
 	user: any;
 }
 
-const bottomTabNavigatorIcon = (name: string, colors: any) => {
+const bottomTabNavigatorIcon = (name: string, colors: {[key:string]: any}) => {
 	const variante = varianteSemOutline(name);
 	return ({ focused }: { focused: boolean }) => <Icon name={focused ? variante : name} 
 			size={24} color={focused ? colors.iconeNavegacaoAtiva : colors.iconeNavegacaoInativa} />;

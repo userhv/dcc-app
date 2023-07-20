@@ -48,7 +48,7 @@ export const AlunosList = (props: IAlunosList) => {
     <CardSecao titulo="Ofertas de disciplinas" descricao='Veja todas as informações das disciplinas ofertadas no semestre.' 
               icone='cast-education'      
               onPress={() => 	navigation?.navigate('alunosRoute', {
-                screen: 'disciplinas'})}
+                screen: 'ofertas'})}
                 rolagem={rolagem}/>
 
     <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 

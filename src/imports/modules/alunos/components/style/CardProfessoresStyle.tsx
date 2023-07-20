@@ -17,11 +17,9 @@ export const cardProfessoresStyle = (colors:any) =>  StyleSheet.create({
     paddingLeft: 10,
   },
   chipArea: {
-    borderColor: colors.accent,
-    borderWidth: 1,
     margin: 5,
     borderRadius: 4,
-    padding: 2
+    padding: 3
   },
   textoChip: {
     margin: 1,

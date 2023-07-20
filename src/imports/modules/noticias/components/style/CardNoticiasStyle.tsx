@@ -45,8 +45,8 @@ export const cardNoticiasStyle = (colors:any) => StyleSheet.create({
 	},
 
 	imagem: {
-		width: 40, 
-		height: 40,
+		width: 30, 
+		height: 30,
 		backgroundColor: 'transparent',
 		borderRadius: 10
 	},

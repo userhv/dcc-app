@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Pressable, Share, View, useColorScheme} from 'react-native';
+import {Image, Pressable, Share, View} from 'react-native';
 import {Card, IconButton, Text, useTheme} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
 import { useContext, useEffect, useState } from 'react';
@@ -26,8 +26,6 @@ export const CardNoticias = (props: ICardNoticias) => {
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
   const styles = cardNoticiasStyle(colors);
-
-  const colorScheme = useColorScheme();
 
   const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
@@ -78,7 +76,7 @@ export const CardNoticias = (props: ICardNoticias) => {
   return (
     <>
         <Pressable onPress={() => 	abreWebViewNoticia()} 
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.azul } : {},]}
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}
             disabled={!rolagem}>
         <Card style={styles.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>
           {noticia.media[0] ? (
@@ -88,10 +86,9 @@ export const CardNoticias = (props: ICardNoticias) => {
           <Card.Title
             title={noticia.title}
             titleVariant="titleMedium"
-            titleStyle={{color: colorScheme === 'dark' ? colors.cinza90 : colors.cinza20}}
             subtitle={noticia.description}
-            subtitleStyle={{...styles.subtitulo, color: colorScheme === 'dark' ? colors.cinza80 : colors.cinza30}}
             subtitleVariant="bodyMedium"
+            subtitleStyle={styles.subtitulo}
             titleNumberOfLines={4}
             subtitleNumberOfLines={4}
           />
@@ -100,7 +97,7 @@ export const CardNoticias = (props: ICardNoticias) => {
               <View style={styles.boxImagemUrl}>
                 <Image source={require('../../../../img/icone_dcc.png')} style={styles.imagem} />
                 <View style={{flexShrink: 1}}>
-                  <Text style={{...styles.textoUrl, color: colorScheme === 'dark' ? colors.cinza70 : colors.cinza40}} 
+                  <Text style={styles.textoUrl} 
                     numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
                   </View>
               </View>

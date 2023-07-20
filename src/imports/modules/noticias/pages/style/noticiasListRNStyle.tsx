@@ -32,5 +32,6 @@ export const noticiasListRNStyle = (colors: any)=> StyleSheet.create({
   divisor: {
     width: 1, 
     marginLeft: 10,
+    backgroundColor: colors.divisorVertical
   },
 });

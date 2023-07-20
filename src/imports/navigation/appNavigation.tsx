@@ -6,6 +6,7 @@ import { IAsyncStorageUser } from '../context/UserContext';
 import { IUserProfile } from '../modules/userProfile/userProfileSch';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColorScheme } from 'react-native';
+import { theme } from '../paper/theme';
 
 interface IAppNavigation {
 	user: IUserProfile | IAsyncStorageUser | null;

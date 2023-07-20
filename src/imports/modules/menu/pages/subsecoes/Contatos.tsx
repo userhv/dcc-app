@@ -10,6 +10,7 @@ import qs from 'qs';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import { Alerta } from '../../../../components/Alerta/Alerta';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface IContatos {
     navigation: NativeStackNavigationProp<any>;
@@ -48,12 +49,12 @@ export const Contatos = (props: IContatos) => {
       <GestureHandlerRootView style={{flex: 1}}>
         <ScrollView>
           <Alerta detalhes={
-              <Text variant='labelLarge' style={{color: colors.vermelhoVivo}} numberOfLines={4}> 
+              <Text variant='labelLarge' style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}} numberOfLines={4}> 
               Ao enviar, você será redirecionado para o seu provedor de email padrão. </Text>
           } />
             <View style={styles.form}>
                 <View style={styles.labelForm}>
-                  <Text variant='labelLarge' style={{color: colorScheme === 'dark' ? colors.cinza90: null}}> Escreva o seu feedback  </Text>
+                  <Text variant='labelLarge'> Escreva o seu feedback  </Text>
                 </View>
               <TextInput
                   accessible={true}
@@ -77,9 +78,10 @@ export const Contatos = (props: IContatos) => {
                   accessibilityLabel='Toque para enviar o feedback'
                   accessibilityRole='button'
                   mode='contained'
-                  icon='send'
+                  icon={() => <Icon name='send' size={20} color={text== "" ? colors.cinza60 : colors.branco}/>}
                   disabled={text === ""}
-                  style={{backgroundColor: text== "" ? colors.cinza90: colors.accent, width: 120}}
+                  style={{backgroundColor: text== "" ? colorScheme === 'dark' ? colors.cinza40 : colors.cinza90 : colors.accent, width: 120}}
+                  textColor={text === "" ? colors.cinza60 : colors.branco}
                   onPress={async() => await enviarEmail()}>
                   Enviar
                 </Button>

@@ -72,7 +72,6 @@ useEffect(() => {
             <Card.Title
               title={professor.title}
               titleVariant="headlineSmall"
-              titleStyle={{color: colorScheme === 'dark' ? colors.cinza90: null}}
               titleNumberOfLines={3}
             />
             <View style={{flexDirection: 'row', marginBottom: 5}}>
@@ -80,7 +79,7 @@ useEffect(() => {
               <View style={{flex: 1, flexDirection: 'column'}}>
                 {areas.length > 0 ? (
                     <View style={styles.containerArea}>
-                        <Text variant='labelMedium' style={{color: colorScheme === 'dark' ? colors.cinza80 : null}}> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
+                        <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
                         <View style={styles.boxArea}>
                           {areas.map((area, i) => (
                             <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}>

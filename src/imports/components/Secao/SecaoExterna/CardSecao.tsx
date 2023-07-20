@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Pressable, View, useColorScheme} from 'react-native';
+import { Pressable, View} from 'react-native';
 import {Card, useTheme} from 'react-native-paper';
 import { cardSecaoStyle } from './CardSecaoStyle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,9 +21,6 @@ export const CardSecao = (props: ICardSecao) => {
     const { colors } = theme;
     const styles = cardSecaoStyle(colors);
 
-    const colorScheme = useColorScheme();
-
-
     return (
         <Pressable onPress={onPress} 
             disabled={!rolagem}
@@ -43,10 +40,8 @@ export const CardSecao = (props: ICardSecao) => {
                         <Card.Title
                             title={titulo}
                             titleVariant="titleMedium"
-                            titleStyle={{color: colorScheme === 'dark' ? colors.cinza90 : colors.cinza20}}
                             subtitle={descricao}
                             subtitleVariant="bodyMedium"
-                            subtitleStyle={{color: colorScheme === 'dark' ? colors.cinza80 : colors.cinza40}}
                             titleNumberOfLines={2}
                             subtitleNumberOfLines={2}
                         />

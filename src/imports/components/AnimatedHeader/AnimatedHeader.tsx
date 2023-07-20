@@ -61,7 +61,7 @@ export const AnimatedHeader = (props: IAnimatedHeader) => {
               ): null}
               </View>
               <View style={styles.texto}>
-                <Text variant='headlineMedium' numberOfLines={1} style={{color: colorScheme === 'dark' ? colors.branco : colors.preto}}> {mensagemTitulo} </Text>
+                <Text variant='headlineMedium' numberOfLines={1}> {mensagemTitulo} </Text>
               </View>
             </Animated.View>
           </>

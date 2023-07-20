@@ -1,4 +1,4 @@
-import {Platform, ScrollView, View, useColorScheme} from 'react-native';
+import {Platform, ScrollView, View} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
 import {theme} from '../../../paper/theme';
@@ -26,9 +26,6 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
     const styles = noticiasSalvasStyle(colors);
-
-    const colorScheme = useColorScheme();
-
 
     useEffect(() => {
         const retornaNoticias = async () => {
@@ -66,7 +63,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
                 size={150}
                 color={colors.vermelhoVivo}
             />
-            <Text style={{...styles.texto, color: colorScheme === 'dark' ? colors.branco : null}} variant='headlineSmall'> 
+            <Text style={{...styles.texto}} variant='headlineSmall'> 
                     Você não tem nenhuma notícia salva.
             </Text>
         </View>

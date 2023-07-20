@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dimensions, FlatList, View, useColorScheme } from 'react-native';
-import { Text, List, useTheme } from 'react-native-paper';
+import { Text, List, useTheme, IconButton } from 'react-native-paper';
 import { modalAreasStyle } from './style/ModalAreasStyle';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Divisor } from '../../../components/Divisor/Divisor';
@@ -26,8 +26,10 @@ export const ModalAreas = (props: IModalAreas) => {
                 <View style={{backgroundColor: 'transparent', height: height/2 }}/>
             </GestureHandlerRootView>
             <View style={{...styles.boxAreas,  height: height/2}}>
+                <View style={styles.indicadorToqueCentral} />
                 <View style={styles.containerTopo}>
-                    <Text variant='titleSmall' numberOfLines={2} style={{color: colorScheme === 'dark' ? colors.cinza90 : null}}> Selecione a área de interesse</Text>
+                    <IconButton icon='close' iconColor={colors.accent} onPress={handleClose}/>
+                    <Text variant='titleSmall' numberOfLines={2}> Selecione a área de interesse</Text>
                 </View>
                 <Divisor/>
                 <View style={{flex: 1}}>
@@ -40,7 +42,6 @@ export const ModalAreas = (props: IModalAreas) => {
                                     handleClose();
                                 }} 
                                     title={item}
-                                    titleStyle={{color: colorScheme === 'dark' ? colors.cinza80 : null}}
                                     rippleColor={colorScheme === 'dark' ? colors.accentOpacoDark: colors.accentOpaco}/>
                                 <Divisor/>
                             </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { temaDark, temaLight, theme } from './imports/paper/theme';
+import { accentColors, temaDark, temaLight, theme } from './imports/paper/theme';
 import { AppNavigation } from './imports/navigation/appNavigation';
 import { GeneralComponents } from './imports/components/GeneralComponents/GeneralComponents';
 import { deletarBancoInteiro, deletarBancoInteiroAgressivamente, inicializaRealmGlobal } from './InicializaRealm';
@@ -36,7 +36,7 @@ export const App = () => {
   const themeDefault = {
     ...theme,
     colors: 
-      colorScheme === 'dark' ? {...theme.colors, ...temaDark } : {...theme.colors, ...temaLight } 
+      colorScheme === 'dark' ? {...theme.colors, ...accentColors, ...temaDark} : {...theme.colors, ...accentColors , ...temaLight } 
   }
 
   
