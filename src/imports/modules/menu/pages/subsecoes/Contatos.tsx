@@ -29,7 +29,7 @@ export const Contatos = (props: IContatos) => {
     const [text, setText] = useState("");
 
     const enviarEmail = async () => {
-      let url = `mailto:dcc.ufmg@gmail.com`;
+      let url = `mailto:contato@dcc.ufmg.br`;
       const query = qs.stringify({
         subject: "Feedback do aplicativo",
         body: text,
