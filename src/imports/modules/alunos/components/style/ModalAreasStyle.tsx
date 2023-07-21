@@ -34,7 +34,7 @@ export const modalAreasStyle = (colors: any) =>
       height: 5,
       flexDirection: 'row',
       borderRadius: 20,
-      marginTop: 5,
+      marginTop: 15,
       width: 30,
       alignItems: 'center',
       alignSelf: 'center'
