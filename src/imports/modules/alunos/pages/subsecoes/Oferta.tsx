@@ -1,8 +1,7 @@
-import { FlatList, Platform, View} from 'react-native';
+import { FlatList, Platform, View, useColorScheme} from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
-import { FAB, Searchbar } from 'react-native-paper';
-import { theme } from '../../../../paper/theme';
+import { FAB, Searchbar, useTheme } from 'react-native-paper';
 import {useEffect, useRef, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { styleIOS } from '../../../../paper/stylesIOS';
@@ -21,6 +20,12 @@ interface IDisciplinas {
 export const Oferta = (props: IDisciplinas) => {
 
     const { navigation, ofertas, titulo } = props;
+
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = ofertaStyles(colors);
+
+    const colorScheme = useColorScheme();
 
     const [disciplinas, setDisciplinas] = useState<ITabelaDisciplinas[]>([]);
     const [disciplinasUnicasOrdenadas, setDisciplinasUnicasOrdenadas] = useState<string[]>([]);
@@ -72,20 +77,21 @@ export const Oferta = (props: IDisciplinas) => {
     const style = Platform.OS === 'ios' ? styleIOS : null;
 
   return (
-    <View style={{...ofertaStyles.container, ...style}}>
+    <View style={{...styles.container, ...style}}>
       <HeaderBar navigation={navigation} titulo={titulo ?? " - "} ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
         {exibirBusca ? (
           <>
             <Searchbar
               placeholder="Pesquise pela disciplina"
+              placeholderTextColor={colorScheme === 'dark' ? colors.branco : null}
               onChangeText={onChangeSearch}
               value={queryDisciplinas}
-              style={ofertaStyles.barraPesquisa}
-              iconColor={theme.colors.azul}
+              style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
+              iconColor={colors.accent}
               onIconPress={() => encontraDisciplina()}
               onClearIconPress={(e) => retornaOfertasIniciais()}
-              inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: theme.colors.preto}}
-              selectionColor={theme.colors.preto}
+              inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.branco : colors.preto}}
+              selectionColor={colorScheme === 'dark' ? colors.branco : colors.preto}
               />     
           </>
         ): null}
@@ -115,8 +121,8 @@ export const Oferta = (props: IDisciplinas) => {
                 icon='arrow-up'
                 size='small'
                 mode='flat'
-                color={theme.colors.branco}
-                style={ofertaStyles.fabRetornaTop} 
+                color={colors.branco}
+                style={styles.fabRetornaTop} 
                 onPress={() => {
                   listRef.current &&  listRef.current.scrollToOffset({ offset: 0, animated: true });
                 }}/> 

@@ -122,7 +122,7 @@ const variants = {
 };
 
 export const fontConfig = {
-	fontFamily: robotoRegular,
+	fontFamily: robotoRegular,titilliumWebSemibold,
 	...variants,
 	android: variants,
 	ios: variants

@@ -1,11 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const subSecoesStyle = StyleSheet.create({
+export const subSecoesStyle = (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
 
   boxIconeVazio: {
@@ -22,11 +21,11 @@ export const subSecoesStyle = StyleSheet.create({
   },
   
   divisor: {
-    backgroundColor: theme.colors.cinzaMedio
+    backgroundColor: colors.cinzaMedio
   },
 
   barraPesquisa: {
-    backgroundColor: theme.colors.azulOpacoMenuOportunidades,
+    backgroundColor: colors.azulOpacoMenuOportunidades,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 5
@@ -51,12 +50,12 @@ export const subSecoesStyle = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'flex-start',
     borderWidth:1,
-    borderColor: theme.colors.azul
+    borderColor: colors.azul
   },
 
   modal:{
     textAlign: 'auto', 
-    backgroundColor: theme.colors.preto,
+    backgroundColor: colors.preto,
     flex: 1,
     height:  150,
     width: '100%'

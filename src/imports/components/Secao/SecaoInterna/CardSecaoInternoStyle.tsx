@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
 
-export const cardSecaoInternoStyle = StyleSheet.create({
+export const cardSecaoInternoStyle = (colors: any) => StyleSheet.create({
 	container: {
 		justifyContent: 'space-between',
-		backgroundColor: theme.colors.branco,
+		backgroundColor: colors.background,
 		borderRadius: 0,
 	},
 	

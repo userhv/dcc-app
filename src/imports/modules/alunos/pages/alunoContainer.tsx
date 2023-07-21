@@ -2,7 +2,6 @@ import { WebViewRN } from "../../../components/WebViewRN/WebViewRN";
 import { AlunosList } from "./alunosList";
 import { Oferta } from "./subsecoes/Oferta";
 
-
 export const AlunoContainer = (props: any) => {
 	const {route} = props;
 	const {url} = route?.params ?? { url: undefined};

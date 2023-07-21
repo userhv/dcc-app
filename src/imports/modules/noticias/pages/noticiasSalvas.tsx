@@ -1,5 +1,5 @@
 import {Platform, ScrollView, View} from 'react-native';
-import {Text} from 'react-native-paper';
+import {Text, useTheme} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
 import {theme} from '../../../paper/theme';
 import { INoticias } from '../sch/noticiasSch';
@@ -23,6 +23,9 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
     const [noticias, setNoticias] = useState<INoticias[]>([]);
     const [rolagem, setRolagem] = useState<boolean>(true);
 
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = noticiasSalvasStyle(colors);
 
     useEffect(() => {
         const retornaNoticias = async () => {
@@ -36,7 +39,7 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
   const style = Platform.OS === 'ios' ? styleIOS : null;
 
   return (
-    <View style={{...noticiasSalvasStyle.container, ...style}}>
+    <View style={{...styles.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Suas notícias salvas' />
       {noticias.length > 0 ? (
         <ScrollView style={{flex: 1}}
@@ -54,13 +57,13 @@ export const NoticiasSalvas = (props: INoticiasSalvas) => {
             ))}
         </ScrollView>
       ) : (
-        <View style={noticiasSalvasStyle.boxIconeVazio} accessible={true}> 
+        <View style={styles.boxIconeVazio} accessible={true}> 
             <Icon 
                 name='bookmark-off-outline'
                 size={150}
-                color={theme.colors.vermelhoVivo}
+                color={colors.vermelhoVivo}
             />
-            <Text style={noticiasSalvasStyle.texto} variant='headlineSmall'> 
+            <Text style={{...styles.texto}} variant='headlineSmall'> 
                     Você não tem nenhuma notícia salva.
             </Text>
         </View>

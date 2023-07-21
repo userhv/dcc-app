@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
-import {Chip} from 'react-native-paper';
+import {Chip, useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
-import {theme} from '../../../paper/theme';
 import {EnumMediator} from '../../../mediator/EnumMediator';
 import {mediator} from '../../../mediator/mediator';
 import {Loading} from '../../../components/Loading/Loading';
@@ -28,6 +27,10 @@ export const NoticiasList = (props: INoticiasList) => {
   const [isEventos, setIsEventos] = useState<boolean>(false);
   const [isPalestras, setIsPalestras] = useState<boolean>(false);
   const [rolagem, setRolagem] = useState<boolean>(true);
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = noticiasListRNStyle(colors);
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -71,43 +74,42 @@ export const NoticiasList = (props: INoticiasList) => {
     setIsEventos(false);
     setIsPalestras(true);
   }
-
   return (
-    <SafeAreaView style={noticiasListRNStyle.container}>
+    <SafeAreaView style={styles.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
-        <View style={noticiasListRNStyle.boxLinhaChip}>
+        <View style={styles.boxLinhaChip}>
           <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
-            <View style={noticiasListRNStyle.boxIcone}>
+            <View style={styles.boxIcone}>
               <Icon
                   name="bookmark-multiple-outline"          
                   size={25}
-                  style={noticiasListRNStyle.icone}
-                  color={theme.colors.azul}
+                  style={styles.icone}
+                  color={colors.accent}
                   onPress={() => 	navigation?.navigate('noticiasRoute', {
                     screen: 'NoticiasSalvas',})}/>
             </View>
-              <View style={noticiasListRNStyle.divisor}/>
+            <View style={styles.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}
                     selected
-                    style={{...noticiasListRNStyle.chipStyle, 
-                        backgroundColor: isNoticias ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
-                    selectedColor={isNoticias ? theme.colors.branco : theme.colors.azul}> 
+                    style={{...styles.chipStyle, 
+                        backgroundColor: isNoticias ? colors.chipAtivado : colors.chipDesativado}} 
+                    selectedColor={isNoticias ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                     Últimas notícias
               </Chip>
               <Chip onPress={async() => await renderizaEventos()} 
                     icon={() => null}
                     selected
-                    style={{...noticiasListRNStyle.chipStyle, 
-                      backgroundColor: isEventos ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
-                  selectedColor={isEventos ? theme.colors.branco : theme.colors.azul}> 
+                    style={{...styles.chipStyle, 
+                      backgroundColor: isEventos ? colors.chipAtivado : colors.chipDesativado}} 
+                    selectedColor={isEventos ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                   Eventos
                 </Chip>
               <Chip onPress={async() => await renderizaPalestras()} 
                   icon={() => null}
-                  style={{...noticiasListRNStyle.chipStyle, 
-                      backgroundColor: isPalestras ? theme.colors.azul : theme.colors.azulOpacoMenuOportunidades}} 
-                  selectedColor={isPalestras ? theme.colors.branco : theme.colors.azul}> 
+                  style={{...styles.chipStyle, 
+                      backgroundColor: isPalestras ? colors.chipAtivado : colors.chipDesativado}} 
+                      selectedColor={isPalestras ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                   Palestras
               </Chip>
               <View style={{marginLeft: 10}}/>

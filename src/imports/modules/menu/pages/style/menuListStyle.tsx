@@ -1,11 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const menuListStyle = StyleSheet.create({
+export const menuListStyle = (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
-    margin: 1,
-    backgroundColor: theme.colors.branco,
+    padding: 1,
+    backgroundColor: colors.background,
   },
   loading: {
     justifyContent: 'center', 

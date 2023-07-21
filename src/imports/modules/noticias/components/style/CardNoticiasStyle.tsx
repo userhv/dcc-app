@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../../paper/theme';
 
-export const cardNoticiasStyle = StyleSheet.create({
+export const cardNoticiasStyle = (colors:any) => StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'space-between',
-		backgroundColor: theme.colors.branco,
+		backgroundColor: colors.background,
 		borderRadius: 0
 	},
 	subtitulo: {
@@ -31,7 +30,6 @@ export const cardNoticiasStyle = StyleSheet.create({
 		paddingLeft: 2,
 		paddingRight: 2,
 		overflow: 'hidden',
-		color: theme.colors.cinza50
 	},
 
 	boxBotoes: {
@@ -47,12 +45,10 @@ export const cardNoticiasStyle = StyleSheet.create({
 	},
 
 	imagem: {
-		width: 40, 
-		height: 40,
+		width: 30, 
+		height: 30,
 		backgroundColor: 'transparent',
-		borderRadius: 20
+		borderRadius: 10
 	},
-	divisor: {
-		backgroundColor: theme.colors.cinzaMedio
-	  },
+
 });

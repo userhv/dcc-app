@@ -12,15 +12,21 @@ import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { Loading } from '../../../../components/Loading/Loading';
 import { ViewOfertasDisciplinas } from '../../components/ViewOfertasDisciplinas';
 import { nanoid } from 'nanoid';
-import { Divider } from 'react-native-paper';
+import { Divisor } from '../../../../components/Divisor/Divisor';
+import { useTheme } from 'react-native-paper';
 
 interface IDisciplinas {
     navigation: NativeStackNavigationProp<any>;
   }
 
-export const Disciplinas = (props: IDisciplinas) => {
-
+export const OfertasDisciplinas = (props: IDisciplinas) => {
     const { navigation } = props;
+
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const stylesSubSecoes = subSecoesStyle(colors);
+
+
     const [anoAtual, setAnoAtual] = useState<rssParser.FeedItem[] | undefined>(undefined);
     const [anoAnterior, setAnoAnterior] = useState<rssParser.FeedItem[] | undefined>(undefined);
     
@@ -39,7 +45,7 @@ export const Disciplinas = (props: IDisciplinas) => {
   const style = Platform.OS === 'ios' ? styleIOS : null;
 
   return (
-    <View style={{...subSecoesStyle.container, ...style}}>
+    <View style={{...stylesSubSecoes.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Ofertas de disciplinas'/>
 
       {anoAtual || anoAnterior ? (
@@ -55,7 +61,7 @@ export const Disciplinas = (props: IDisciplinas) => {
                     />
                   ))
               ) : null}
-              <Divider style={{...subSecoesStyle.divisor, marginBottom: 10, marginTop: 10}}/>
+              <Divisor style={{marginBottom: 10, marginTop: 10}}/>
               {anoAnterior && anoAnterior.length > 0  ? (
                   anoAnterior.map((disciplinaAnoAnterior) => (
                     <ViewOfertasDisciplinas

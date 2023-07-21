@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const loadingStyle  = StyleSheet.create({
+export const loadingStyle = (colors:any) => StyleSheet.create({
 	container: {
 		backgroundColor: 'transparent',
 		alignItems: 'center',

@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Pressable, Share, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import { Pressable, Share, View, useColorScheme} from 'react-native';
+import {Card, IconButton, Text, useTheme} from 'react-native-paper';
 import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { memo, useContext, useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import React from 'react';
 import { Linking } from 'react-native';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
@@ -18,6 +19,12 @@ interface ICardProfessores {
 const CardProfessores = (props: ICardProfessores) => {
 
   const { navigation, professor } = props;
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = cardProfessoresStyle(colors);
+
+  const colorScheme = useColorScheme();
 
   const [areas, setAreas] = useState<string[]>([]);
 
@@ -60,26 +67,23 @@ useEffect(() => {
     return (
       <>
         <Pressable  onPress={abreWebViewProfessor} 
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: theme.colors.azul } : {},]}>
-        <Card style={cardProfessoresStyle.container} mode='contained'>
+            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}>
+        <Card style={styles.container} mode='contained'>
             <Card.Title
               title={professor.title}
               titleVariant="headlineSmall"
-              subtitle={professor.description}
-              subtitleVariant="bodyMedium"
               titleNumberOfLines={3}
-              subtitleNumberOfLines={4}
             />
             <View style={{flexDirection: 'row', marginBottom: 5}}>
-              <Card.Cover source={ require('../../../../img/avatar.png')} style={cardProfessoresStyle.imagemCover} />
+              <Card.Cover source={ require('../../../../img/avatar.png')} style={styles.imagemCover} />
               <View style={{flex: 1, flexDirection: 'column'}}>
                 {areas.length > 0 ? (
-                    <View style={cardProfessoresStyle.containerArea}>
+                    <View style={styles.containerArea}>
                         <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
-                        <View style={cardProfessoresStyle.boxArea}>
+                        <View style={styles.boxArea}>
                           {areas.map((area, i) => (
-                            <View style={cardProfessoresStyle.chipArea} key={i}>
-                                  <Text style={cardProfessoresStyle.textoChip} variant='bodyMedium'> {area} </Text>
+                            <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}>
+                                  <Text style={{...styles.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : colors.accent}} variant='bodyMedium'> {area} </Text>
                             </View>
                           ))}
                         </View>
@@ -88,24 +92,24 @@ useEffect(() => {
               </View>
             </View>
           <Card.Actions>
-            <View style={cardProfessoresStyle.boxActions}>
-              <View style={cardProfessoresStyle.boxIconeEmail}> 
+            <View style={styles.boxActions}>
+              <View style={styles.boxIconeEmail}> 
                 {/* <Button 
                   mode='contained'
                   icon='email-outline'
-                  buttonColor={theme.colors.azul}
+                  buttonColor={colors.azul}
                   onPress={() => enviarEmail()}>
                     Contato
                 </Button> */}
               </View>
-              <View style={cardProfessoresStyle.boxBotaoCompartilhar}>
+              <View style={styles.boxBotaoCompartilhar}>
                 <IconButton
                   accessible={true}
                   accessibilityLabel='Toque para compartilhar a notícia'
                   accessibilityRole='button'
                   icon='share-variant-outline'
-                  iconColor={theme.colors.azul}
-                  style={cardProfessoresStyle.botoes}
+                  iconColor={colors.accent}
+                  style={styles.botoes}
                   size={28}
                   onPress={async() => await compartilharPerfilProfessor()}
                   />
@@ -113,7 +117,7 @@ useEffect(() => {
             </View>
           </Card.Actions>
         </Card>
-        <Divider style={cardProfessoresStyle.divisor} />
+        <Divisor/>
       </Pressable>
     </>
     );

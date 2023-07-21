@@ -1,5 +1,4 @@
 import React from 'react';
-import { bottomTabNavigatorIcon } from '../../../navigation/bottonTabNavigatorIconStyle';
 import { MenuContainer } from '../pages/menuContainer';
 import { Sobre } from '../pages/subsecoes/Sobre';
 import { Contatos } from '../pages/subsecoes/Contatos';
@@ -36,7 +35,7 @@ export const menuMenuItemList = [
 	{
 		navigatorName: 'menuRoute',
 		name: 'Menu',
-		icon: bottomTabNavigatorIcon('menu')
+		icon: 'menu'
 	}
 ];
 

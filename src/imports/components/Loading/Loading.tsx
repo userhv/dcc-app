@@ -1,12 +1,17 @@
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, View, useColorScheme} from 'react-native';
 import {loadingStyle} from './LoadingStyle';
-import { theme } from '../../paper/theme';
+import { useTheme } from 'react-native-paper';
 
 export const Loading = (props: any) => {
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = loadingStyle(colors);
+  const colorScheme = useColorScheme();
+  
   return (
-    <View style={loadingStyle.container}>
+    <View style={styles.container}>
       <ActivityIndicator animating size={'large'} {...props} 
-        color={theme.colors.cinza10}/>
+        color={colorScheme === 'dark' ? colors.cinza90 : colors.cinza10}/>
     </View>
   );
 };

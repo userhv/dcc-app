@@ -1,9 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../paper/theme';
 
-export const alertaStyle = StyleSheet.create({
+export const alertaStyle = (colors:any) => StyleSheet.create({
   boxAlerta: {
-    backgroundColor: theme.colors.vermelhoVivoOpaco,
     margin: 10,
     padding: 10,
     borderRadius: 10,
