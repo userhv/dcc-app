@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,17 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DCC-ICONE" translatesAutoresizingMaskIntoConstraints="NO" id="rwp-kw-eON">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dcc_splash" translatesAutoresizingMaskIntoConstraints="NO" id="Vxp-vS-944">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rwp-kw-eON" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="67" id="HVY-P5-CGi"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="rwp-kw-eON" secondAttribute="bottom" constant="270" id="M0K-jn-59d"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="rwp-kw-eON" secondAttribute="trailing" constant="68" id="c6C-hY-cdT"/>
-                            <constraint firstItem="rwp-kw-eON" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="269" id="wRz-wr-NZH"/>
+                            <constraint firstItem="Vxp-vS-944" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="269" id="aVy-5J-i0s"/>
+                            <constraint firstItem="Vxp-vS-944" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="67" id="pfG-Jf-bIW"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Vxp-vS-944" secondAttribute="trailing" constant="68" id="pwH-nE-M6y"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="Vxp-vS-944" secondAttribute="bottom" constant="270" id="z4J-lm-2CT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +37,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DCC-ICONE" width="201" height="201"/>
+        <image name="dcc_splash" width="192" height="192"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
