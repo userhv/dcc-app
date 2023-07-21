@@ -1,11 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const noticiasSalvasStyle = StyleSheet.create({
+export const noticiasSalvasStyle =  (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
 
   boxIconeVazio: {
@@ -22,7 +21,7 @@ export const noticiasSalvasStyle = StyleSheet.create({
   },
   
   divisor: {
-    backgroundColor: theme.colors.cinzaMedio
+    backgroundColor: colors.cinzaMedio
   },
 
 });

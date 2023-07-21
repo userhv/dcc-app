@@ -8,7 +8,8 @@ import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../..
 import { useContext } from 'react';
 import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 import { styleIOS } from '../../../../paper/stylesIOS';
-import { ModalVersao } from '../../components/ModalVersao';
+import { ModalNotasVersao } from '../../components/ModalNotasVersao';
+import { useTheme } from 'react-native-paper';
 
 interface ISobre {
     navigation: NativeStackNavigationProp<any>;
@@ -17,6 +18,10 @@ interface ISobre {
 export const Sobre = (props: ISobre) => {
 
     const { navigation } = props;
+
+    const theme = useTheme<{[key:string]: any}>();
+    const { colors } = theme;
+    const styles = subSecoesStyle(colors);
 
     const { showModal, showSnackBar, showDialog } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
 
@@ -33,7 +38,7 @@ export const Sobre = (props: ISobre) => {
     const abreModalNotasVersao = () => {
       showModal({
         renderedComponent: (_props: any) => (
-          <ModalVersao handleClose={_props.onDismiss}
+          <ModalNotasVersao handleClose={_props.onDismiss}
           {...{ showSnackBar, showDialog }}
           />
         )
@@ -51,7 +56,7 @@ export const Sobre = (props: ISobre) => {
   const style = Platform.OS === 'ios' ? styleIOS : null;
   
   return (
-    <View style={{...subSecoesStyle.container, ...style}}>
+    <View style={{...styles.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Sobre o aplicativo'/>
         <CardSecaoInterno titulo='Política de privacidade'
                           onPress={() => abreWebViewPrivacidade()}/>

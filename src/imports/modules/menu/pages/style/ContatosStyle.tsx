@@ -1,8 +1,7 @@
 
 import {StyleSheet} from 'react-native';
-import { theme } from '../../../../paper/theme';
 
-export const contatosStyle = StyleSheet.create({
+export const contatosStyle = (colors: any)  => StyleSheet.create({
     form:{
         paddingTop: 10,
         paddingLeft: 10,
@@ -14,7 +13,7 @@ export const contatosStyle = StyleSheet.create({
         paddingBottom: 10
     },
     boxAlerta:{
-        backgroundColor: theme.colors.vermelhoVivoOpaco, 
+        backgroundColor: colors.vermelhoVivoOpaco, 
         padding: 10, 
         margin: 10, 
         borderRadius: 10,

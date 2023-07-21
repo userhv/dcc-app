@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const modalVersaoStyle = StyleSheet.create({
+export const modalNotasVersaoStyle = (colors: any) => StyleSheet.create({
   container: {
     margin: 10,
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
     borderRadius: 16,
   },
   boxTitulo: {

@@ -1,12 +1,11 @@
 import {StyleSheet} from 'react-native';
-import { theme } from '../../paper/theme';
 
-export const headerBarStyle = StyleSheet.create({
+export const headerBarStyle = (colors:any) => StyleSheet.create({
   containerTop: {
     paddingTop: 5,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.colors.branco,    
+    backgroundColor: colors.background,    
   },
 
   boxDescricao: {

@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
-export const noticiasListRNStyle = StyleSheet.create({
+export const noticiasListRNStyle = (colors: any)=> StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
   
   boxLinhaChip: {
@@ -17,8 +16,6 @@ export const noticiasListRNStyle = StyleSheet.create({
   chipStyle: {
     marginLeft: 10,
     justifyContent: 'flex-start',
-    borderWidth:1,
-    borderColor: theme.colors.azul
   },
 
   icone: {
@@ -26,24 +23,15 @@ export const noticiasListRNStyle = StyleSheet.create({
   },
 
   boxIcone: {
-    backgroundColor: theme.colors.azulOpacoMenuOportunidades, 
-    borderColor: theme.colors.azul,
-    borderWidth: 1,
+    backgroundColor: colors.chipDesativado, 
     justifyContent: 'center', 
     borderRadius: 8,
     marginLeft: 10
   },
   
   divisor: {
-    backgroundColor: theme.colors.cinza40,
     width: 1, 
     marginLeft: 10,
+    backgroundColor: colors.divisorVertical
   },
-
-  loading: {
-    justifyContent: 'center', 
-    flex: 1, 
-    paddingTop: 150, 
-    alignItems: 'center',
-  }
 });

@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../paper/theme';
 
-export const cardSecaoStyle = StyleSheet.create({
+export const cardSecaoStyle = (colors:any) => StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: theme.colors.branco,
+		backgroundColor: colors.background,
 		borderRadius: 0,
 	},
 	botoes: {

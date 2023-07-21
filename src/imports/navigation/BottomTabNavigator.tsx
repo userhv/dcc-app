@@ -2,21 +2,32 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import Modules from '../modules/index';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { bottomTabNavigatorIcon } from './bottonTabNavigatorIconStyle';
-import { theme } from '../paper/theme';
 import { IBottomTabParamList } from '../typings/NavigationTypings';
+import { useTheme } from 'react-native-paper';
+import { varianteSemOutline } from '../libs/removerVarianteOutline';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface IAppProps {
 	user: any;
 }
 
+const bottomTabNavigatorIcon = (name: string, colors: {[key:string]: any}) => {
+	const variante = varianteSemOutline(name);
+	return ({ focused }: { focused: boolean }) => <Icon name={focused ? variante : name} 
+			size={24} color={focused ? colors.iconeNavegacaoAtiva : colors.iconeNavegacaoInativa} />;
+};
+
+
 const BottomTab = createMaterialBottomTabNavigator<IBottomTabParamList>();
 
 export const BottomTabNavigator = (appProps: IAppProps) => {
 	const { user } = appProps;
+	const theme = useTheme<{[key:string]: any}>();
+	const { colors } = theme;
 
 	return (
-		<BottomTab.Navigator initialRouteName="Noticias"  activeColor={theme.colors.preto} inactiveColor={theme.colors.cinza50}>
+		<BottomTab.Navigator initialRouteName="Noticias"  activeColor={colors.navegacaoAtiva} inactiveColor={colors.navegacaoInativa}
+			barStyle={{backgroundColor: colors.barraNavegacao}}>
 			{Modules.getAppMenuItemList().map((menuData) => {
 				return (
 					<BottomTab.Screen
@@ -25,7 +36,7 @@ export const BottomTabNavigator = (appProps: IAppProps) => {
 						component={getModuleNavigator(menuData.navigatorName)}
 						options={{
 							tabBarLabel: menuData.name,
-							tabBarIcon: menuData.icon ?? bottomTabNavigatorIcon('folder-outline'),
+							tabBarIcon: bottomTabNavigatorIcon(menuData.icon, colors)
 						}}
 					/>
 

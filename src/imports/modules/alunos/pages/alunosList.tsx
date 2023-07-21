@@ -2,10 +2,11 @@ import React, {useContext, useRef, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
-import { menuListStyle } from './style/menuListStyle';
+import { alunosListStyle } from './style/alunoListStyle';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
 import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { CardSecao } from '../../../components/Secao/SecaoExterna/CardSecao';
+import { useTheme } from 'react-native-paper';
 
 interface IAlunosList {
   navigation: NativeStackNavigationProp<any>;
@@ -14,11 +15,15 @@ interface IAlunosList {
 export const AlunosList = (props: IAlunosList) => {
   const {navigation } = props;
 
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = alunosListStyle(colors);
+  
   const [rolagem, setRolagem] = useState<boolean>(true);
-
   const offset = useRef(new Animated.Value(0)).current;
 
   const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
+  
 
   const abrirWebView = (url: string) => {
 		showModal({
@@ -30,7 +35,7 @@ export const AlunosList = (props: IAlunosList) => {
   }
 
   return (
-    <SafeAreaView style={menuListStyle.container}>
+    <SafeAreaView style={styles.container}>
     <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={'Espaço do aluno'} disableIcon/>
     <ScrollView style={{ flex: 1}} 
                    onScroll={Animated.event(
@@ -43,7 +48,7 @@ export const AlunosList = (props: IAlunosList) => {
     <CardSecao titulo="Ofertas de disciplinas" descricao='Veja todas as informações das disciplinas ofertadas no semestre.' 
               icone='cast-education'      
               onPress={() => 	navigation?.navigate('alunosRoute', {
-                screen: 'disciplinas'})}
+                screen: 'ofertas'})}
                 rolagem={rolagem}/>
 
     <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
