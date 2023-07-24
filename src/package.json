@@ -39,7 +39,7 @@
     "realm": "^11.10.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.20.0",
     "@babel/preset-typescript": "^7.21.4",
     "@babel/runtime": "^7.22.5",
