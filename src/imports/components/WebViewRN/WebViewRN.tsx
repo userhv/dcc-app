@@ -1,19 +1,15 @@
 import {Dimensions, Platform, Share, StatusBar, View} from 'react-native';
 import WebView from 'react-native-webview';
 import {webViewRNStyle} from './WebiewRNStyle';
-import { IconButton, Text, useTheme } from 'react-native-paper';
+import { IconButton, ProgressBar, Text, useTheme } from 'react-native-paper';
 import React, { useState } from 'react';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Loading } from '../Loading/Loading';
 
-interface IWebViewRN {
-  url: string;
-  navigation?: NativeStackNavigationProp<any> | null;
-  handleClose?: () => void;
-}
+export const WebViewRN = (propsNavegacao: any) => {
 
-export const WebViewRN = (props: IWebViewRN) => {
-  const {url, navigation, handleClose} = props;
+  const url = propsNavegacao.route.params.url;
+  const handleClose =  propsNavegacao.navigation.goBack;
   const {width, height} = Dimensions.get('window');
   const [urlWebView, setUrlWebView] = useState<string>("");
 
@@ -32,9 +28,18 @@ export const WebViewRN = (props: IWebViewRN) => {
     }
   }
 
+  const carregamento = () => {
+    return(
+      <View style={styles.loading}>
+        <Loading  color={colors.cinza10}/>
+      </View>
+    )
+  }
+
 
   const style = Platform.OS === 'ios' ? {paddingTop: 100, backgroundColor: colors.quasePreto} : styles.container;
-  
+
+
   return (
     <SafeAreaView style={{...style}}>
         <View >
@@ -62,7 +67,9 @@ export const WebViewRN = (props: IWebViewRN) => {
                 </View>
           </View>
           <View style={{height, width}}>
-          <WebView source={{uri: url}} style={styles.container} 
+          <WebView source={{uri: url}} style={styles.container}
+                  startInLoadingState={true}
+                  renderLoading={carregamento}
                   onNavigationStateChange={(e) => {
                         setUrlWebView(e.url)
             }}/>

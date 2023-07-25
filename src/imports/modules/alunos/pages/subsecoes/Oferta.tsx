@@ -1,5 +1,4 @@
 import { FlatList, Platform, View, useColorScheme} from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import { FAB, Searchbar, useTheme } from 'react-native-paper';
 import {useEffect, useRef, useState } from 'react';
@@ -11,15 +10,11 @@ import { Loading } from '../../../../components/Loading/Loading';
 import { ofertaStyles } from '../style/OfertaStyles';
 import { disciplinasUnicas } from '../../api/utils';
 
-interface IDisciplinas {
-    ofertas: ITabelaDisciplinas[];
-    titulo:string;
-    navigation: NativeStackNavigationProp<any>;
-  }
+export const Oferta = (props: any) => {
 
-export const Oferta = (props: IDisciplinas) => {
+    const { navigation, route} = props;
 
-    const { navigation, ofertas, titulo } = props;
+    const {ofertas, titulo} = route.params;
 
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
@@ -50,7 +45,7 @@ export const Oferta = (props: IDisciplinas) => {
     }, [queryDisciplinas])
 
     const encontraDisciplina = () => {
-      const disciplinasPesquisa = ofertas.filter((d)=> 
+      const disciplinasPesquisa = ofertas.filter((d: ITabelaDisciplinas)=> 
           d.disciplina?.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
           .includes(queryDisciplinas.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")));
       defineOfertasParaConsulta(disciplinasPesquisa);
@@ -70,7 +65,7 @@ export const Oferta = (props: IDisciplinas) => {
     }
 
     const encontraCodigoDisciplina = (item:string) => {
-      const codigoDisciplina = ofertas.filter((d)=> d.disciplina?.toLowerCase() === item.toLowerCase());
+      const codigoDisciplina = ofertas.filter((d: ITabelaDisciplinas)=> d.disciplina?.toLowerCase() === item.toLowerCase());
       return codigoDisciplina[0].codigo ?? codigoDisciplina[0].cod;
     }  
 

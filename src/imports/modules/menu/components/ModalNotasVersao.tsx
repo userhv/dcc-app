@@ -27,9 +27,8 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                             accessibilityRole='button'/>
             </View>
             <View style={styles.boxTexto}>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte ao modo escuro [Wallace] </Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Alteração do filtro de área de pesquisa. </Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do indicador de sem internet. </Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Correção do bug do WebView [Wallace] </Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do status de loading no WebView </Text>
             </View>
         </View>
     )

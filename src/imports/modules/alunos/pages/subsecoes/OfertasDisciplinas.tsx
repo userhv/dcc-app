@@ -1,5 +1,4 @@
 import {Platform, View} from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import { useCallback, useState } from 'react';
@@ -15,12 +14,9 @@ import { nanoid } from 'nanoid';
 import { Divisor } from '../../../../components/Divisor/Divisor';
 import { useTheme } from 'react-native-paper';
 
-interface IDisciplinas {
-    navigation: NativeStackNavigationProp<any>;
-  }
 
-export const OfertasDisciplinas = (props: IDisciplinas) => {
-    const { navigation } = props;
+export const OfertasDisciplinas = (props: any) => {
+    const { navigation, route } = props;
 
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;

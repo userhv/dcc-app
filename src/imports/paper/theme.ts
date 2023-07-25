@@ -113,7 +113,7 @@ export const temaLight = {
 export const temaDark = {
 	//cores dinamicas
 	background: '#2f2f2f',
-	onSurface: theme.colors.cinza90, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
+	onSurface: theme.colors.cinza95, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
 	accent: '#079cff',
 	accentDark: '#90c6eb',
 	barraNavegacao: '#313131',

@@ -11,7 +11,7 @@ export type IHomeParamList = {
 };
 
 export type IBottomTabParamList = {
-	Noticias: Object;
-	Alunos: Object;
-	Menu: Object;
+	NoticiasTab: Object;
+	AlunosTab: Object;
+	MenuTab: Object;
 };

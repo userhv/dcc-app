@@ -1,12 +1,15 @@
-import { WebViewRN } from "../../../components/WebViewRN/WebViewRN";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NoticiasList } from "./noticiasList";
+import { NoticiasSalvas } from "./noticiasSalvas";
 
-export const NoticiasContainer = (props: any) => {
-	const {route} = props;
-	const {url} = route?.params ?? { url: ""};
+const { Navigator, Screen } = createNativeStackNavigator();
 
-	if(url)
-		return <WebViewRN url={url} {...props} />
-	
-	return <NoticiasList {...props} />;
+export const NoticiasContainer = () => {
+
+	return(
+		<Navigator initialRouteName={'Noticias'} screenOptions={{ headerShown: false }}>
+			<Screen key={'Noticias'} name={'Noticias'} component={NoticiasList}/>
+			<Screen key={'NoticiasSalvas'} name={'NoticiasSalvas'} component={NoticiasSalvas}/>
+		</Navigator>
+	)
 };
