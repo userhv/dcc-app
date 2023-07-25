@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { ScreenTabRoot } from './BottomTabNavigator';
+import { ScreenTabRoot } from './TabNavigation';
 import { adaptNavigationTheme } from 'react-native-paper';
 import { IAsyncStorageUser } from '../context/UserContext';
 import { IUserProfile } from '../modules/userProfile/userProfileSch';
