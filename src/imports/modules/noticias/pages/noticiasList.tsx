@@ -85,8 +85,8 @@ export const NoticiasList = (props: INoticiasList) => {
                   size={25}
                   style={styles.icone}
                   color={colors.accent}
-                  onPress={() => 	navigation?.navigate('noticiasRoute', {
-                    screen: 'NoticiasSalvas',})}/>
+                  onPress={() => 	navigation?.navigate('NoticiasTab', {
+                    screen: 'NoticiasSalvas'})}/>
             </View>
             <View style={styles.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 

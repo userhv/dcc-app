@@ -63,19 +63,12 @@ export const CardNoticias = (props: ICardNoticias) => {
     }
   }
 
-  const abreWebViewNoticia = () => {
-		showModal({
-      isFullScreen: true,
-			renderedComponent: (_props: any) => (
-				<WebViewRN url={url} handleClose={_props.onDismiss} navigation={navigation ?? null}/>
-			)
-		});
-
-  }
-
   return (
     <>
-        <Pressable onPress={() => 	abreWebViewNoticia()} 
+        <Pressable  onPress={() => 	navigation?.navigate('Root', {
+                screen: 'WebView', params: {
+                  url: url
+                }})}
             style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}
             disabled={!rolagem}>
         <Card style={styles.container} mode="contained" testID='url' accessible={true} accessibilityLabel='Toque para ler a notícia'>

@@ -1,10 +1,8 @@
 import {Platform, ScrollView, View} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
 import {CardNoticias} from '../components/CardNoticias';
-import {theme} from '../../../paper/theme';
 import { INoticias } from '../sch/noticiasSch';
 import { useEffect, useState } from 'react';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,13 +10,10 @@ import { noticiasSalvasStyle } from './style/noticiasSalvasStyle';
 import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 import { styleIOS } from '../../../paper/stylesIOS';
 
-interface INoticiasSalvas {
-    navigation: NativeStackNavigationProp<any>;
-  }
 
-export const NoticiasSalvas = (props: INoticiasSalvas) => {
+export const NoticiasSalvas = (props: any) => {
 
-    const { navigation } = props;
+    const { navigation, route } = props;
 
     const [noticias, setNoticias] = useState<INoticias[]>([]);
     const [rolagem, setRolagem] = useState<boolean>(true);

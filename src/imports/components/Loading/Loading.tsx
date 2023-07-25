@@ -10,8 +10,8 @@ export const Loading = (props: any) => {
   
   return (
     <View style={styles.container}>
-      <ActivityIndicator animating size={'large'} {...props} 
-        color={colorScheme === 'dark' ? colors.cinza90 : colors.cinza10}/>
+      <ActivityIndicator animating size={'large'} 
+        color={colorScheme === 'dark' ? colors.cinza90 : colors.cinza10} {...props} />
     </View>
   );
 };

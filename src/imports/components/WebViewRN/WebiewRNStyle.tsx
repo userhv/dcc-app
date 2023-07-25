@@ -44,8 +44,13 @@ export const webViewRNStyle = (colors:any) => StyleSheet.create({
   },
 
   loading: {
-    justifyContent: 'center', 
-    flex: 1, 
     alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backgroundColor: 'transparent',
+    height: '100%',
+    width: '100%'
   }
   });
