@@ -6,7 +6,6 @@ import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
 import { useContext } from 'react';
-import { WebViewRN } from '../../../../components/WebViewRN/WebViewRN';
 import { styleIOS } from '../../../../paper/stylesIOS';
 import { ModalNotasVersao } from '../../components/ModalNotasVersao';
 import { useTheme } from 'react-native-paper';
@@ -24,16 +23,6 @@ export const Sobre = (props: ISobre) => {
     const styles = subSecoesStyle(colors);
 
     const { showModal, showSnackBar, showDialog } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
-
-    const abreWebViewPrivacidade = () => {
-      showModal({
-        isFullScreen: true,
-        renderedComponent: (_props: any) => (
-          <WebViewRN url={'https://dcc.ufmg.br/politica-de-privacidade/'} handleClose={_props.onDismiss} navigation={navigation}/>
-        )
-      });
-    }
-    
 
     const abreModalNotasVersao = () => {
       showModal({
@@ -58,10 +47,16 @@ export const Sobre = (props: ISobre) => {
   return (
     <View style={{...styles.container, ...style}}>
       <HeaderBar navigation={navigation} titulo='Sobre o aplicativo'/>
+
         <CardSecaoInterno titulo='Política de privacidade'
-                          onPress={() => abreWebViewPrivacidade()}/>
+                          onPress={() => navigation?.navigate('Root', {
+                            screen: 'WebView', params:{
+                            url:'https://dcc.ufmg.br/politica-de-privacidade/'
+                          }})}/>
+
         <CardSecaoInterno titulo='Notas da versão'
                           onPress={() => abreModalNotasVersao()}/>
+                          
         <CardSecaoInterno titulo='Versão do aplicativo' descricao={getVersion()} 
                           onPress={async () => abrirLoja()}/>
     </View>

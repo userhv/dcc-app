@@ -1,12 +1,10 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, View, useColorScheme} from 'react-native';
 import { IconButton, Text, useTheme} from 'react-native-paper';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { cardDisciplinaStyle } from './style/CardDisciplinaStyle';
 import React from 'react';
 import { ITabelaDisciplinas } from '../../../mediator/mediator';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { Alerta } from '../../../components/Alerta/Alerta';
 import { Divisor } from '../../../components/Divisor/Divisor';
 
@@ -39,17 +37,6 @@ export const CardDisciplina = (props: ICardDisciplina) => {
       return '-'
   }
 
-  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
-
-  const abreWebViewSalas = () => {
-    showModal({
-      isFullScreen: true,
-      renderedComponent: (_props: any) => (
-        <WebViewRN url={'https://www.icex.ufmg.br/icex_novo/minha-salas/'} handleClose={_props.onDismiss} navigation={navigation}/>
-      )
-      });
-    }
-
   return (
       <>
       <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)}
@@ -68,7 +55,11 @@ export const CardDisciplina = (props: ICardDisciplina) => {
                 {abrirDetalhes? (
                   <>
                   <Alerta  detalhes={
-                      <Text onPress={abreWebViewSalas} variant='labelLarge' style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}}>
+                      <Text onPress={() => navigation?.navigate('Root',
+                      {screen: 'WebView', params:{
+                        url: 'https://www.icex.ufmg.br/icex_novo/minha-salas/'
+                        }})} 
+                        variant='labelLarge' style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}}>
                         A sala pode não estar atualizada. Consulte aqui a versão mais recente.</Text> 
                   }
                   icone='launch'

@@ -1,13 +1,16 @@
-import { WebViewRN } from "../../../components/WebViewRN/WebViewRN";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MenuList } from "./menuList";
-
+import { Sobre } from "./subsecoes/Sobre";
+import { Contatos } from "./subsecoes/Contatos";
+const { Navigator, Screen } = createNativeStackNavigator();
 
 export const MenuContainer = (props: any) => {
-	const {route} = props;
-	const {url} = route?.params ?? { url: ""};
 
-	if(url)
-		return <WebViewRN url={url} {...props} />
-	
-	return <MenuList {...props} />;
+	return(
+		<Navigator initialRouteName={'Alunos'} screenOptions={{ headerShown: false }}>
+			<Screen key={'Menu'} name={'Menu'} component={MenuList}/>
+			<Screen key={'Feedback'} name={'Feedback'} component={Contatos}/>
+			<Screen key={'Sobre'} name={'Sobre'} component={Sobre}/>
+		</Navigator>
+	)
 };

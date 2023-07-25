@@ -1,14 +1,11 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, Share, View, useColorScheme} from 'react-native';
 import {Card, IconButton, Text, useTheme} from 'react-native-paper';
-import { theme } from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
-import { memo, useContext, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { cardProfessoresStyle } from './style/CardProfessoresStyle';
 import React from 'react';
 import { Linking } from 'react-native';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardProfessores {
@@ -28,8 +25,6 @@ const CardProfessores = (props: ICardProfessores) => {
 
   const [areas, setAreas] = useState<string[]>([]);
 
-  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
-
   const enviarEmail = () => {
     let url = `mailto:dcc.ufmg@gmail.com`;
     return Linking.openURL(url);
@@ -45,28 +40,22 @@ const CardProfessores = (props: ICardProfessores) => {
     }
   }
 
-  const abreWebViewProfessor = () => {
-    showModal({
-      isFullScreen: true,
-      renderedComponent: (_props: any) => (
-        <WebViewRN url={professor.links[0].url} handleClose={_props.onDismiss} navigation={navigation}/>
-      )
-      });
-    }
+  useEffect(() => {
+      let areas: string[] = [];
+      professor.categories.forEach((area, i) => {
+        if (area && area?.name !== 'Ativo')
+              areas.push(area.name)
+      })
+      setAreas(areas);
 
-useEffect(() => {
-    let areas: string[] = [];
-    professor.categories.forEach((area, i) => {
-       if (area && area?.name !== 'Ativo')
-            areas.push(area.name)
-    })
-    setAreas(areas);
-
-},[professor])
+  },[professor])
 
     return (
       <>
-        <Pressable  onPress={abreWebViewProfessor} 
+        <Pressable  onPress={() => 	navigation?.navigate('Root', {
+                  screen: 'WebView', params: {
+                  url: professor.links[0].url
+                }})}
             style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}>
         <Card style={styles.container} mode='contained'>
             <Card.Title

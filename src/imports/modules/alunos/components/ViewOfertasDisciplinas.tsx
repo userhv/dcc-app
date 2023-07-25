@@ -71,8 +71,8 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                         {oferta  && abrirDetalhes ? (
                                 Object.keys(rolesDisciplinas).map((key, i) => (
                                     <Button key={i} onPress={() => 
-                                        navigation?.navigate('alunosRoute', {
-                                            screen: 'disciplinasSemestre',
+                                        navigation?.navigate('AlunosTab', {
+                                            screen: 'Ofertas',
                                             params: {
                                                 ofertas: filtraDados(key),
                                                 titulo: rolesDisciplinas[key]

@@ -48,24 +48,30 @@ export const MenuList = (props: IMenuList) => {
 
     <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
               icone='account-question-outline'   
-              onPress={() => 	abrirWebView('https://dcc.ufmg.br/perguntas-frequentes/')}  
+              onPress={() => 	navigation?.navigate('Root', {screen: 'WebView', 
+                    params:{
+                      url: 'https://dcc.ufmg.br/perguntas-frequentes/'
+                    }})}  
               rolagem={rolagem}/>
 
     <CardSecao titulo="Fale conosco" descricao='Contato do departamento, colegiados, pós-graduação, especialização ou graduação.' 
-                      icone='contacts-outline'     
-                      onPress={() => 	abrirWebView('https://dcc.ufmg.br/contatos/')}  
+              icone='contacts-outline'     
+              onPress={() => 	navigation?.navigate('Root',{screen: 'WebView', 
+                    params:{
+                      url: 'https://dcc.ufmg.br/contatos/'
+                    }})}  
                         rolagem={rolagem}/>    
 
     <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='message-question-outline'      
-              onPress={() => 	navigation?.navigate('menuRoute', {
-                screen: 'feedback'})}
+              onPress={() => 	navigation?.navigate('MenuTab', {
+                screen: 'Feedback'})}
                 rolagem={rolagem}/>       
 
     <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, notas da versão e política de privacidade." icone='information-outline'
-      onPress={() => 	navigation?.navigate('menuRoute', {
-        screen: 'sobre'})}
-        rolagem={rolagem}/>
+            onPress={() => 	navigation?.navigate('MenuTab', {
+              screen: 'Sobre'})}
+              rolagem={rolagem}/>
     
     </ScrollView>
   </SafeAreaView>
