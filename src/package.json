@@ -35,7 +35,7 @@
     "react-native-screens": "^3.23.0",
     "react-native-select-dropdown": "^3.3.2",
     "react-native-vector-icons": "^10.0.0",
-    "react-native-webview": "^13.2.2",
+    "react-native-webview": "^13.3.1",
     "realm": "^11.10.1"
   },
   "devDependencies": {
