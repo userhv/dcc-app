@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 export const subSecoesStyle = (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
-    padding: 1,
     backgroundColor: colors.background,
   },
 

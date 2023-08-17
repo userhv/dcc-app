@@ -37,8 +37,7 @@ export const WebViewRN = (propsNavegacao: any) => {
   }
 
 
-  const style = Platform.OS === 'ios' ? {paddingTop: 100, backgroundColor: colors.quasePreto} : styles.container;
-
+  const style = Platform.OS === 'ios' ? { backgroundColor: colors.quasePreto} : styles.container;
 
   return (
     <SafeAreaView style={{...style}}>
