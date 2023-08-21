@@ -13,6 +13,7 @@ import { ViewOfertasDisciplinas } from '../../components/ViewOfertasDisciplinas'
 import { nanoid } from 'nanoid';
 import { Divisor } from '../../../../components/Divisor/Divisor';
 import { useTheme } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export const OfertasDisciplinas = (props: any) => {
@@ -38,11 +39,12 @@ export const OfertasDisciplinas = (props: any) => {
     );
 
 
-  const style = Platform.OS === 'ios' ? styleIOS : null;
+  const style = Platform.OS === 'ios' ? {...styleIOS, paddingBottom: 0} : null;
 
   return (
-    <View style={{...stylesSubSecoes.container, ...style}}>
-      <HeaderBar navigation={navigation} titulo='Ofertas de disciplinas'/>
+
+    <View style={{ ...stylesSubSecoes.container, ...style}}>
+    <HeaderBar navigation={navigation} titulo='Ofertas de disciplinas'/>
 
       {anoAtual || anoAnterior ? (
           <GestureHandlerRootView style={{flex: 1}}>
