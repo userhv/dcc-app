@@ -112,18 +112,18 @@ export const temaLight = {
 
 export const temaDark = {
 	//cores dinamicas
-	background: '#2f2f2f',
+	background: '#131314',
 	onSurface: theme.colors.cinza95, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
 	accent: '#079cff',
 	accentDark: '#90c6eb',
-	barraNavegacao: '#313131',
+	barraNavegacao: '#1f1f1f',
 	navegacaoAtiva: '#FFFFFF',
 	secondaryContainer: '#0668a8', //altera a cor da elipse da barra de navegação
 	navegacaoInativa: '#ACACAC',
 	iconeNavegacaoAtiva: '#bee5ff',
 	iconeNavegacaoInativa: '#ACACAC',
 	chipAtivado: '#0668a8',
-	chipDesativado: '#555555',
+	chipDesativado: '#464646',
 	divisorVertical: '#E6E7E8',
 	corTextoChipAtivado: '#FFFFFF',
 	corTextoChipDesativado: '#FFFFFF',
