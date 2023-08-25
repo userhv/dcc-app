@@ -19,3 +19,4 @@ Aqui descreveremos o roteiro de cada passo do desenvolvimento até que o produto
 * [Sprint 0](docs/sprint_0.md)
 * [Sprint 1](docs/sprint_1.md)
 * [Sprint 2](docs/sprint_2.md)
+* [Sprint 3](docs/sprint_3.md)

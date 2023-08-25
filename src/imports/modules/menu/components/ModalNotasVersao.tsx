@@ -18,7 +18,9 @@ export const ModalNotasVersao = (props: IModalVersao) => {
     return (
         <View style={styles.container}>
             <View style={styles.boxTitulo}>
-                <Text style={styles.texto} variant='titleMedium'> Notas da versão: {getVersion()}</Text>
+                <View style={{flex: 1}}>
+                    <Text style={styles.texto} variant='titleMedium' numberOfLines={3}> Notas da versão: {getVersion()}</Text>
+                </View>
                 <IconButton icon='close' onPress={handleClose} 
                             size={28}
                             iconColor={colors.accent}
@@ -27,8 +29,9 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                             accessibilityRole='button'/>
             </View>
             <View style={styles.boxTexto}>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Correção do bug do WebView [Wallace] </Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do status de loading no WebView </Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Ajuste do modo escuro para suporte ao MD3.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Melhorias de desempenho. </Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - EXPERIMENTAL: Nova arquitetura habilitada. </Text>
             </View>
         </View>
     )
