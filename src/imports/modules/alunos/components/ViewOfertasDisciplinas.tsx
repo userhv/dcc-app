@@ -55,7 +55,7 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
 
     return (
         <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)} >
-            <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
+            <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.cardDisciplinasTemaLight}}>
                 <View style={styles.boxPrincipal}>
                     <View style={styles.boxTexto}>
                         <View style={{flex: 1}}>
@@ -78,8 +78,9 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                                                 titulo: rolesDisciplinas[key]
                                             }
                                         })} mode='contained' style={styles.viewDetalhes} 
-                                            textColor={colorScheme === 'dark' ? colors.preto: colors.branco}
-                                            labelStyle={{fontSize: 14}} buttonColor={colorScheme === 'dark' ? colors.accentDark : colors.accent}>
+                                            textColor={colors.branco}
+                                            labelStyle={{fontSize: 14}} 
+                                            buttonColor={colorScheme === 'dark' ? colors.accentOpacoDark : colors.accent}>
                                         {rolesDisciplinas[key]}
                                      </Button>
                                 ))

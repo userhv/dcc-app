@@ -7,7 +7,7 @@ export const theme = {
 	colors: {
 		primary: '#c90019',
 		onPrimary: '#FFFFFF',
-		primaryContainer: '#0668a8',
+		primaryContainer: 'rgb(101, 0, 0)',
 		onPrimaryContainer: '#650000',
 		primaryOnHover: 'rgba(0, 126, 122, 0.1)',
 
@@ -29,7 +29,7 @@ export const theme = {
 		surface: '#FFFFFF',
 		onSurface: '#404040',
 		surfaceVariant: '#DAE5E3',
-		onSurfaceVariant: '#0668a8',
+		onSurfaceVariant: 'rgb(101, 0, 0)',
 		outline: '#6F7978',
 		elevation: {
 			level0: 'transparent',
@@ -37,7 +37,7 @@ export const theme = {
 			level2: '#edf1ff',  //cor da bottom bar
 			level3: '#e6f4e4',
 			level4: '#e3f3e2',
-			level5: '#dff1de'
+			level5: '#ebebeb'
 		},
 
 		//cinzas
@@ -55,8 +55,8 @@ export const theme = {
 		cinza98: '#F7FBF9',
 
 		//primarias
-		vermelhoEscuro: '#650000',
-		vermelhoVivo: '#c90019',
+		vermelhoEscuro: 'rgb(101, 0, 0)',
+		vermelhoVivo: 'rgb(201, 0, 25)',
 		vermelhoVivoForte: 'rgb(255, 61, 58)',
 		azul: '#0668a8',
 		cinza: '#a7a9ac',
@@ -84,46 +84,48 @@ export const theme = {
 		laranja: '#d86a10',
 		amarelo: '#a1981a',
 		cinzaMedio: '#BCBEC0',
-	}
+		quaseBranco: '#f3f3f3'
+	},
  
 };
 
 export const accentColors = {
-	accent: '#0668a8',
-	accentOpaco: 'rgba(6, 104, 168,0.2)',
-	accentOpacoDark: 'rgba(6, 104, 168,0.5)',
+	accent: 'rgb(101, 0, 0)',
+	accentOpaco: 'rgba(201, 0, 25, 0.2)',
+	accentOpacoDark: 'rgba(201, 0, 25,0.5)',
 }
 
 export const temaLight = {
 		//cores dinamicas
 		background: '#FFFFFF',
-		barraNavegacao: '#edf1ff',
+		barraNavegacao: '#FFFFFE',
 		navegacaoAtiva: '#000000',
-		secondaryContainer: 'rgba(6, 104, 168,0.3)',
+		secondaryContainer: 'rgba(201, 0, 25, 0.3)',
 		navegacaoInativa: '#777777',
 		iconeNavegacaoAtiva: '#000000',
 		iconeNavegacaoInativa: '#777777',
-		chipAtivado: '#0668a8',
-		chipDesativado: 'rgba(6, 104, 168,0.2)',
+		chipAtivado: 'rgb(101, 0, 0)',
+		chipDesativado: 'rgba(201, 0, 25, 0.1)',
 		divisorVertical: '#555555',
+		cardDisciplinasTemaLight: 'rgba(201, 0, 0, 0.1)',
 		corTextoChipAtivado: '#FFFFFF',
-		corTextoChipDesativado: accentColors.accent,
+		corTextoChipDesativado: '#000000',
 };
 
 export const temaDark = {
 	//cores dinamicas
 	background: '#131314',
 	onSurface: theme.colors.cinza95, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
-	accent: '#079cff',
-	accentDark: '#90c6eb',
+	accent: 'rgb(201, 0, 25)',
+	accentDark: 'rgba(101, 0, 0, 0.9)',
 	barraNavegacao: '#1f1f1f',
-	navegacaoAtiva: '#FFFFFF',
-	secondaryContainer: '#0668a8', //altera a cor da elipse da barra de navegação
-	navegacaoInativa: '#ACACAC',
-	iconeNavegacaoAtiva: '#bee5ff',
-	iconeNavegacaoInativa: '#ACACAC',
-	chipAtivado: '#0668a8',
-	chipDesativado: '#464646',
+	navegacaoAtiva: 'rgb(255, 255, 255)',
+	secondaryContainer: 'rgba(201, 0, 25, 0.4)', //altera a cor da elipse da barra de navegação
+	navegacaoInativa: 'rgb(172, 172, 172)',
+	iconeNavegacaoAtiva: 'rgb(214, 214, 214)',
+	iconeNavegacaoInativa: 'rgb(172, 172, 172)',
+	chipAtivado: 'rgb(101, 0, 0)',
+	chipDesativado: 'rgb(70, 70, 70)',
 	divisorVertical: '#E6E7E8',
 	corTextoChipAtivado: '#FFFFFF',
 	corTextoChipDesativado: '#FFFFFF',

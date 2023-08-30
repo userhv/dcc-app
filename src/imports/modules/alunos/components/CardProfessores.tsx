@@ -71,8 +71,8 @@ const CardProfessores = (props: ICardProfessores) => {
                         <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
                         <View style={styles.boxArea}>
                           {areas.map((area, i) => (
-                            <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}>
-                                  <Text style={{...styles.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : colors.accent}} variant='bodyMedium'> {area} </Text>
+                            <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.cinza95}} key={i}>
+                                  <Text style={{...styles.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : colors.cinza10}} variant='bodyMedium'> {area} </Text>
                             </View>
                           ))}
                         </View>
@@ -86,7 +86,7 @@ const CardProfessores = (props: ICardProfessores) => {
                 {/* <Button 
                   mode='contained'
                   icon='email-outline'
-                  buttonColor={colors.azul}
+                  buttonColor={colors.accent}
                   onPress={() => enviarEmail()}>
                     Contato
                 </Button> */}
@@ -97,7 +97,7 @@ const CardProfessores = (props: ICardProfessores) => {
                   accessibilityLabel='Toque para compartilhar a notícia'
                   accessibilityRole='button'
                   icon='share-variant-outline'
-                  iconColor={colors.accent}
+                  iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
                   style={styles.botoes}
                   size={28}
                   onPress={async() => await compartilharPerfilProfessor()}

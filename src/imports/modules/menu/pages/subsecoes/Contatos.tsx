@@ -67,7 +67,7 @@ export const Contatos = (props: IContatos) => {
                   selectionColor={colorScheme === 'dark' ? colors.branco: colors.preto}
                   underlineColor="transparent"
                   activeUnderlineColor="transparent"
-                  activeOutlineColor={colors.accent}
+                  activeOutlineColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
                   numberOfLines={10}
                   textColor={colorScheme === 'dark' ? colors.branco: colors.preto}
                   contentStyle={{borderRadius: 8, padding: 5, minHeight: Platform.OS === `ios`? 250 : null}}
@@ -78,12 +78,14 @@ export const Contatos = (props: IContatos) => {
                   accessibilityLabel='Toque para enviar o feedback'
                   accessibilityRole='button'
                   mode='contained'
-                  icon={() => <Icon name='send' size={20} color={text== "" ? colors.cinza60 : colors.branco}/>}
+                  icon={() => <Icon name='send' size={20} color={text === "" ? colors.cinza60 : colors.branco}/>}
                   disabled={text === ""}
-                  style={{backgroundColor: text== "" ? colorScheme === 'dark' ? colors.cinza40 : colors.cinza90 : colors.accent, width: 120}}
-                  textColor={text === "" ? colors.cinza60 : colors.branco}
+                  style={{backgroundColor: text == "" ? (colorScheme === 'dark' ? colors.cinza40 : colors.cinza90) : colorScheme === 'dark' ? colors.accentOpacoDark: colors.accent, width: 120}}
+                  compact
                   onPress={async() => await enviarEmail()}>
-                  Enviar
+                    <Text style={{color: text === "" ? colors.cinza60 : colors.branco}}>
+                        Enviar
+                    </Text>
                 </Button>
               </View>
             </View>

@@ -54,7 +54,7 @@ const variants = {
 		fontStyle: 'normal',
 		fontWeight: '600',
 		fontSize: 20,
-		lineHeight: 24
+		lineHeight: 24,
 	},
 	titleMedium: {
 		fontFamily: titilliumWebSemibold,

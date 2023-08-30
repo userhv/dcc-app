@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
+import {Animated, SafeAreaView, ScrollView, View, useColorScheme} from 'react-native';
 import {Chip, useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
@@ -26,11 +26,13 @@ export const NoticiasList = (props: INoticiasList) => {
   const [isNoticias, setIsNoticias] = useState<boolean>(true);
   const [isEventos, setIsEventos] = useState<boolean>(false);
   const [isPalestras, setIsPalestras] = useState<boolean>(false);
+  const [isNoticiaSalva, setIsNoticiaSalva] = useState<boolean>(false);
   const [rolagem, setRolagem] = useState<boolean>(true);
 
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
   const styles = noticiasListRNStyle(colors);
+  const colorScheme = useColorScheme();
 
   const offset = useRef(new Animated.Value(0)).current;
 
@@ -79,15 +81,14 @@ export const NoticiasList = (props: INoticiasList) => {
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
         <View style={styles.boxLinhaChip}>
           <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
-            <View style={styles.boxIcone}>
-              <Icon
-                  name="bookmark-multiple-outline"          
-                  size={25}
-                  style={styles.icone}
-                  color={colors.accent}
-                  onPress={() => 	navigation?.navigate('NoticiasTab', {
-                    screen: 'NoticiasSalvas'})}/>
-            </View>
+            <Chip
+                icon={() => 
+                <Icon name='bookmark-multiple-outline' color={colorScheme === 'dark' ? colors.cinza95 : colors.preto} size={25} 
+                  style={{position: 'relative', left: 6}}/>}
+                style={{ backgroundColor: colors.chipDesativado, marginLeft: 10 }}
+                onPress={() => navigation?.navigate('NoticiasTab', {
+                  screen: 'NoticiasSalvas'
+            })} children={undefined} compact/>
             <View style={styles.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}
