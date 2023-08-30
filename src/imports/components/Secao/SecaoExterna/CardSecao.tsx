@@ -1,5 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { Pressable, View} from 'react-native';
+import { Pressable, View, useColorScheme} from 'react-native';
 import {Card, useTheme} from 'react-native-paper';
 import { cardSecaoStyle } from './CardSecaoStyle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,6 +20,7 @@ export const CardSecao = (props: ICardSecao) => {
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
     const styles = cardSecaoStyle(colors);
+    const colorScheme = useColorScheme();
 
     return (
         <Pressable onPress={onPress} 
@@ -30,7 +31,7 @@ export const CardSecao = (props: ICardSecao) => {
                     <View style={styles.boxBotao}>
                         <Icon
                             name={icone}
-                            color={colors.accent}
+                            color={colorScheme === 'dark' ? colors.cinza95: colors.preto}
                             style={styles.botoes}
                             size={30}
                             onPress={() => {}}

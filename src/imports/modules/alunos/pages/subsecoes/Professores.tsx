@@ -137,18 +137,19 @@ export const Professores = (props: IProfessores) => {
       <HeaderBar navigation={navigation} titulo='Professores' ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
       {exibirBusca ? (
         <Searchbar
-          placeholder="Pesquise pelo nome"
+          placeholder="Pesquise o nome do professor(a)"
           onChangeText={onChangeSearch}
           value={queryProfessores}
-          style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
-          iconColor={colors.accent}
+          style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.quaseBranco}}
+          iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
           onIconPress={() => encontraProfessor()}
           onClearIconPress={(e) => retornaProfessores()}
           inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.branco : colors.preto}}
-          selectionColor={colorScheme === 'dark' ? colors.branco : colors.preto}
-          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={colors.accent}/> : null}
+          selectionColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
+          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} 
+                color={colorScheme === 'dark' ? colors.cinza95 : colors.preto}/> : null}
           onTraileringIconPress={(e) => abreWModalAreas()}
-          traileringIconColor={colors.accent}
+          traileringIconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
           />
       ): null}
         {area !== "" ? (
@@ -156,11 +157,11 @@ export const Professores = (props: IProfessores) => {
             <View style={{...stylesProfessores.boxArea, ...stylesProfessores.boxFiltro}}>
               <View style={stylesProfessores.filtro}>
                 <Text variant='labelMedium'> Filtrado por:</Text>
-                <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
-                      <Text style={{...stylesProfessores.textoChip}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
+                <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accent}}>
+                      <Text style={{...stylesProfessores.textoChip, color: colors.branco}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
                 </View>
               </View>
-                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28} iconColor={colors.accent}/>
+                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28} iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}/>
             </View>
             <Divisor style={{marginBottom: 5}} />
           </>

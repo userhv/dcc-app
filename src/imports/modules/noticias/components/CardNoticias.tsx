@@ -1,13 +1,11 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Pressable, Share, View} from 'react-native';
+import {Image, Pressable, Share, View, useColorScheme} from 'react-native';
 import {Card, IconButton, Text, useTheme} from 'react-native-paper';
 import {cardNoticiasStyle} from './style/CardNoticiasStyle';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { noticiasOff } from '../api/noticiasOff';
 import * as rssParser from 'react-native-rss-parser';
 import { INoticias } from '../sch/noticiasSch';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { WebViewRN } from '../../../components/WebViewRN/WebViewRN';
 import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardNoticias {
@@ -26,9 +24,7 @@ export const CardNoticias = (props: ICardNoticias) => {
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
   const styles = cardNoticiasStyle(colors);
-
-  const { showModal } = useContext(GeneralComponentsContext) as IGeneralComponentsContext;
-
+  const colorScheme = useColorScheme();
   
   useEffect(() => {
     const noticiaEstaSalva = async () => {
@@ -100,7 +96,7 @@ export const CardNoticias = (props: ICardNoticias) => {
                 accessibilityLabel='Toque uma vez para salvar a notícia, toque duas vezes para remover a notícia salva'
                 accessibilityRole='button'
                 icon={noticiaSalva ? 'bookmark-remove' :'bookmark-outline'}
-                iconColor={colors.accent}
+                iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
                 style={styles.botoes}
                 size={28}
                 onPress={async() => await salvarOuRemoverNoticia()}
@@ -110,7 +106,7 @@ export const CardNoticias = (props: ICardNoticias) => {
                 accessibilityLabel='Toque para compartilhar a notícia'
                 accessibilityRole='button'
                 icon={'share-variant-outline'}
-                iconColor={colors.accent}
+                iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
                 style={styles.botoes}
                 size={28}
                 onPress={async() => await compartilharNoticia()}

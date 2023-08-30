@@ -31,7 +31,7 @@ export const AlunosList = (props: IAlunosList) => {
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
     
-    <CardSecao titulo="Ofertas de disciplinas" descricao='Veja todas as informações das disciplinas ofertadas no semestre.' 
+    <CardSecao titulo="Ofertas de disciplinas" descricao='Veja as informações das disciplinas ofertadas nos semestres.' 
               icone='cast-education'      
               onPress={() => 	navigation?.navigate('AlunosTab', {
                 screen: 'OfertasDisciplinas'})}
@@ -43,7 +43,7 @@ export const AlunosList = (props: IAlunosList) => {
                 screen: 'Professores'})}
                 rolagem={rolagem}/>
 
-    <CardSecao titulo="Laboratórios" descricao='Explore todos os laboratórios ativos.' 
+    <CardSecao titulo="Laboratórios" descricao='Explore os laboratórios ativos.' 
                       icone='book-search-outline'      
                       onPress={() => 	navigation?.navigate('Root',{
                         screen: 'WebView',

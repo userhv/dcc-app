@@ -56,7 +56,7 @@ const CardProfessores = (props: ICardProfessores) => {
                   screen: 'WebView', params: {
                   url: professor.links[0].url
                 }})}
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]}>
+            style={({ pressed }) => [pressed ? { opacity: 0.99, backgroundColor: colors.accent } : {},]}>
         <Card style={styles.container} mode='contained'>
             <Card.Title
               title={professor.title}
@@ -71,8 +71,8 @@ const CardProfessores = (props: ICardProfessores) => {
                         <Text variant='labelMedium'> {areas.length > 1 ? 'Áreas de pesquisa' : 'Área de pesquisa'} </Text>
                         <View style={styles.boxArea}>
                           {areas.map((area, i) => (
-                            <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}>
-                                  <Text style={{...styles.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : colors.accent}} variant='bodyMedium'> {area} </Text>
+                            <View style={{...styles.chipArea, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.quaseBranco}} key={i}>
+                                  <Text style={{...styles.textoChip, color: colorScheme === 'dark' ? colors.cinza90 : colors.preto}} variant='bodyMedium'> {area} </Text>
                             </View>
                           ))}
                         </View>
@@ -86,7 +86,7 @@ const CardProfessores = (props: ICardProfessores) => {
                 {/* <Button 
                   mode='contained'
                   icon='email-outline'
-                  buttonColor={colors.azul}
+                  buttonColor={colors.accent}
                   onPress={() => enviarEmail()}>
                     Contato
                 </Button> */}
@@ -97,7 +97,7 @@ const CardProfessores = (props: ICardProfessores) => {
                   accessibilityLabel='Toque para compartilhar a notícia'
                   accessibilityRole='button'
                   icon='share-variant-outline'
-                  iconColor={colors.accent}
+                  iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
                   style={styles.botoes}
                   size={28}
                   onPress={async() => await compartilharPerfilProfessor()}
