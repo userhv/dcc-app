@@ -55,7 +55,7 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
 
     return (
         <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)} >
-            <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.cardDisciplinasTemaLight}}>
+            <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco, elevation: 1}}>
                 <View style={styles.boxPrincipal}>
                     <View style={styles.boxTexto}>
                         <View style={{flex: 1}}>

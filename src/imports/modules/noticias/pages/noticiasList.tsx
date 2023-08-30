@@ -80,15 +80,17 @@ export const NoticiasList = (props: INoticiasList) => {
     <SafeAreaView style={styles.container}>
       <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
         <View style={styles.boxLinhaChip}>
-          <ScrollView horizontal style={{marginBottom: 5, marginTop:5}} showsHorizontalScrollIndicator={false}>
-            <Chip
-                icon={() => 
-                <Icon name='bookmark-multiple-outline' color={colorScheme === 'dark' ? colors.cinza95 : colors.preto} size={25} 
-                  style={{position: 'relative', left: 6}}/>}
+          <ScrollView horizontal style={{marginBottom: 5, flex: 1}} showsHorizontalScrollIndicator={false}>
+          <Chip
+                icon={() => null}
+                selected
+                selectedColor={colors.corTextoChipDesativado}
                 style={{ backgroundColor: colors.chipDesativado, marginLeft: 10 }}
                 onPress={() => navigation?.navigate('NoticiasTab', {
                   screen: 'NoticiasSalvas'
-            })} children={undefined} compact/>
+                })}>
+              Notícias salvas
+              </Chip>
             <View style={styles.divisor}/>
             <Chip onPress={async() => await renderizaNoticias()} 
                     icon={() => null}

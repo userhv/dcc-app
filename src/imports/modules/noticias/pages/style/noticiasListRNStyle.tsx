@@ -7,7 +7,6 @@ export const noticiasListRNStyle = (colors: any)=> StyleSheet.create({
   },
   
   boxLinhaChip: {
-    marginTop: 5,
     marginBottom: 5,
     flexDirection: 'row',
   },

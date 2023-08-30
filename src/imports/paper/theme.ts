@@ -105,7 +105,7 @@ export const temaLight = {
 		iconeNavegacaoAtiva: '#000000',
 		iconeNavegacaoInativa: '#777777',
 		chipAtivado: 'rgb(101, 0, 0)',
-		chipDesativado: 'rgba(201, 0, 25, 0.1)',
+		chipDesativado: 'rgba(153, 153, 153, 0.2)',
 		divisorVertical: '#555555',
 		cardDisciplinasTemaLight: 'rgba(201, 0, 0, 0.1)',
 		corTextoChipAtivado: '#FFFFFF',
