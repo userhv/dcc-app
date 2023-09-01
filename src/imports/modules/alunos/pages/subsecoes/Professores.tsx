@@ -119,16 +119,15 @@ export const Professores = (props: IProfessores) => {
 
     const retornaTodosProfessores = async () => {
       let data: rssParser.FeedItem[] | undefined = [];
-      let aux;
+      let fotos: rssParser.FeedItem[] = [];
       let professoresFoto: rssParser.FeedItem[] | undefined = [];
       
       let arrayProfessores: rssParser.FeedItem[] | undefined = [];
       for(let i = 1; ;i++){
         data = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES, i) as rssParser.FeedItem[];
-        aux = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES_FOTO, i) as rssParser.FeedItem[];
-        // console.log(professoresFoto[0].media)
-        if(aux) professoresFoto.push(...aux);
-        if(data?.length === 0 && aux.length === 0) break;
+        fotos = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES_FOTO, i) as rssParser.FeedItem[];
+        if(fotos) professoresFoto.push(...fotos);
+        if(data?.length === 0 && fotos.length === 0) break;
         else if(data) arrayProfessores.push(...data)
       }
       organizaFotosProfessores(professoresFoto);
