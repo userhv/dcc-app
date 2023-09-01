@@ -5,4 +5,5 @@ export enum EnumMediator  {
 	PROFESSORES = 'professores',
 	DESTAQUE = 'destaque',
 	DISCIPLINAS = 'disciplinas',
+	PROFESSORES_FOTO = 'professores_foto',
 };

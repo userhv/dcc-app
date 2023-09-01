@@ -101,8 +101,8 @@ android {
         applicationId "com.dcc.android"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode 8
-        versionName "1.0.0-preview.12.2"
+        versionCode 9
+        versionName "1.0.0-alpha.13"
     }
 
     splits {

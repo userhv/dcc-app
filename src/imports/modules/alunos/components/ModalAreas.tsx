@@ -28,7 +28,7 @@ export const ModalAreas = (props: IModalAreas) => {
             <View style={{...styles.boxAreas,  height: height/2}}>
                 <View style={styles.indicadorToqueCentral} />
                 <View style={styles.containerTopo}>
-                    <IconButton icon='close' iconColor={colors.accent} onPress={handleClose}/>
+                    <IconButton icon='close' iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto} onPress={handleClose}/>
                     <Text variant='titleSmall' numberOfLines={2}> Selecione a área de interesse</Text>
                 </View>
                 <Divisor/>

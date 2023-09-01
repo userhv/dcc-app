@@ -81,12 +81,12 @@ export const Oferta = (props: any) => {
               placeholderTextColor={colorScheme === 'dark' ? colors.branco : null}
               onChangeText={onChangeSearch}
               value={queryDisciplinas}
-              style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
-              iconColor={colors.accent}
+              style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.cinza98}}
+              iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
               onIconPress={() => encontraDisciplina()}
               onClearIconPress={(e) => retornaOfertasIniciais()}
-              inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.branco : colors.preto}}
-              selectionColor={colorScheme === 'dark' ? colors.branco : colors.preto}
+              inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.cinza95 : colors.preto}}
+              selectionColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
               />     
           </>
         ): null}
