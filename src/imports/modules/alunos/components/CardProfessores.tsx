@@ -1,6 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { Pressable, Share, View, useColorScheme} from 'react-native';
-import {Card, IconButton, Text, useTheme} from 'react-native-paper';
+import {Button, Card, IconButton, Text, useTheme} from 'react-native-paper';
 import * as rssParser from 'react-native-rss-parser';
 import { memo, useEffect, useState } from 'react';
 import { cardProfessoresStyle } from './style/CardProfessoresStyle';
@@ -10,12 +10,13 @@ import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
+    foto: string;
     navigation: NativeStackNavigationProp<any>;
 }
 
 const CardProfessores = (props: ICardProfessores) => {
 
-  const { navigation, professor } = props;
+  const { navigation, professor, foto } = props;
 
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
@@ -64,7 +65,7 @@ const CardProfessores = (props: ICardProfessores) => {
               titleNumberOfLines={3}
             />
             <View style={{flexDirection: 'row', marginBottom: 5}}>
-              <Card.Cover source={ require('../../../../img/avatar.png')} style={styles.imagemCover} />
+              <Card.Cover source={ {uri:foto} ?? require('../../../../img/avatar.png') } style={styles.imagemCover}/>
               <View style={{flex: 1, flexDirection: 'column'}}>
                 {areas.length > 0 ? (
                     <View style={styles.containerArea}>

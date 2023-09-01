@@ -44,11 +44,9 @@ export const cardProfessoresStyle = (colors:any) =>  StyleSheet.create({
     backgroundColor: 'transparent',
   },
   imagemCover: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'transparent',
+    width: 120,
     marginLeft: 10,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   boxBotaoCompartilhar: {
     alignItems: 'flex-end',
