@@ -15,6 +15,7 @@ import { styleIOS } from '../../../../paper/stylesIOS';
 import CardProfessores from '../../components/CardProfessores';
 import { cardProfessoresStyle } from '../../components/style/CardProfessoresStyle';
 import { Divisor } from '../../../../components/Divisor/Divisor';
+import { rolesAreasIgnoradas } from '../../config/EnumAreasIgnoradas';
 
 interface IProfessores {
     navigation: NativeStackNavigationProp<any>;
@@ -69,7 +70,7 @@ export const Professores = (props: IProfessores) => {
       let areasEncontradas: any = new Set();
       professoresArray.forEach((professor) => {
         professor.categories.forEach((area, i) => {
-          if (area && area?.name !== 'Ativo')
+          if (area && area?.name !== rolesAreasIgnoradas[area?.name])
             areasEncontradas.add(area.name);
           })
       })
@@ -125,7 +126,9 @@ export const Professores = (props: IProfessores) => {
       let arrayProfessores: rssParser.FeedItem[] | undefined = [];
       for(let i = 1; ;i++){
         data = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES, i) as rssParser.FeedItem[];
+        // console.log("data",data)
         fotos = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES_FOTO, i) as rssParser.FeedItem[];
+        // console.log("fotos",fotos)
         if(fotos) professoresFoto.push(...fotos);
         if(data?.length === 0 && fotos.length === 0) break;
         else if(data) arrayProfessores.push(...data)

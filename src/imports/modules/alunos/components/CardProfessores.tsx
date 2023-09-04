@@ -7,6 +7,7 @@ import { cardProfessoresStyle } from './style/CardProfessoresStyle';
 import React from 'react';
 import { Linking } from 'react-native';
 import { Divisor } from '../../../components/Divisor/Divisor';
+import { rolesAreasIgnoradas } from '../config/EnumAreasIgnoradas';
 
 interface ICardProfessores {
     professor: rssParser.FeedItem;
@@ -25,6 +26,7 @@ const CardProfessores = (props: ICardProfessores) => {
   const colorScheme = useColorScheme();
 
   const [areas, setAreas] = useState<string[]>([]);
+  const [isVoluntario, setIsVoluntario] = useState<boolean>(false);
 
   const enviarEmail = () => {
     let url = `mailto:dcc.ufmg@gmail.com`;
@@ -44,7 +46,8 @@ const CardProfessores = (props: ICardProfessores) => {
   useEffect(() => {
       let areas: string[] = [];
       professor.categories.forEach((area, i) => {
-        if (area && area?.name !== 'Ativo')
+        if(area && area.name === 'Voluntário') setIsVoluntario(true);
+        if (area && area?.name !== rolesAreasIgnoradas[area?.name])
               areas.push(area.name)
       })
       setAreas(areas);
@@ -53,17 +56,18 @@ const CardProfessores = (props: ICardProfessores) => {
 
     return (
       <>
-        <Pressable  onPress={() => 	navigation?.navigate('Root', {
-                  screen: 'WebView', params: {
-                  url: professor.links[0].url
-                }})}
-            style={({ pressed }) => [pressed ? { opacity: 0.99, backgroundColor: colors.accent } : {},]}>
         <Card style={styles.container} mode='contained'>
             <Card.Title
               title={professor.title}
               titleVariant="headlineSmall"
               titleNumberOfLines={3}
             />
+            {isVoluntario ?
+            (<View style={{...styles.boxArea, paddingLeft: 10,  paddingBottom: 10}}>
+                <View style={{ ...styles.chipArea, backgroundColor:  colors.accentClaro}}>
+                      <Text style={{...styles.textoChip, color: colors.branco}} variant='bodyMedium'> Professor(a) voluntário(a) </Text>
+                </View>
+            </View>): null}
             <View style={{flexDirection: 'row', marginBottom: 5}}>
               <Card.Cover source={ {uri:foto} ?? require('../../../../img/avatar.png') } style={styles.imagemCover}/>
               <View style={{flex: 1, flexDirection: 'column'}}>
@@ -94,21 +98,33 @@ const CardProfessores = (props: ICardProfessores) => {
               </View>
               <View style={styles.boxBotaoCompartilhar}>
                 <IconButton
-                  accessible={true}
-                  accessibilityLabel='Toque para compartilhar a notícia'
-                  accessibilityRole='button'
-                  icon='share-variant-outline'
-                  iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
-                  style={styles.botoes}
-                  size={28}
-                  onPress={async() => await compartilharPerfilProfessor()}
-                  />
+                    accessible={true}
+                    accessibilityLabel='Toque para abrir a página'
+                    accessibilityRole='button'
+                    icon='launch'
+                    iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
+                    style={styles.botoes}
+                    size={28}
+                    onPress={() => 	navigation?.navigate('Root', {
+                      screen: 'WebView', params: {
+                      url: professor.links[0].url
+                    }})}
+                    />
+                  <IconButton
+                    accessible={true}
+                    accessibilityLabel='Toque para compartilhar a notícia'
+                    accessibilityRole='button'
+                    icon='share-variant-outline'
+                    iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
+                    style={styles.botoes}
+                    size={28}
+                    onPress={async() => await compartilharPerfilProfessor()}
+                    />
               </View>
             </View>
           </Card.Actions>
         </Card>
         <Divisor/>
-      </Pressable>
     </>
     );
 };

@@ -51,7 +51,8 @@ export const cardProfessoresStyle = (colors:any) =>  StyleSheet.create({
   boxBotaoCompartilhar: {
     alignItems: 'flex-end',
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    flexDirection: 'row'
   },
   boxIconeEmail: {
     flexDirection: 'row',
