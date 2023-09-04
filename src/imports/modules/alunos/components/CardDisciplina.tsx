@@ -65,7 +65,7 @@ export const CardDisciplina = (props: ICardDisciplina) => {
                   icone='launch'
                   />
                   {disciplinas.map((disciplina, i) => (
-                      <View style={{...styles.detalhes, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}} key={i}> 
+                      <View style={{...styles.detalhes, backgroundColor:  colorScheme === 'dark'  ? colors.quasePreto : colors.chipDesativado}} key={i}> 
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Turma: {disciplina.turma ?? '-'} </Text>
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Professor (a): {professor(disciplina)} </Text>
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Horário: {disciplina.horario ?? '-'} </Text>

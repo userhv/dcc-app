@@ -1,4 +1,4 @@
-import {Platform, View} from 'react-native';
+import {Platform, View, useColorScheme} from 'react-native';
 import { subSecoesStyle } from '../style/SubSecoesStyle';
 import { HeaderBar } from '../../../../components/HeaderBar/HeaderBar';
 import { useCallback, useState } from 'react';
@@ -22,6 +22,7 @@ export const OfertasDisciplinas = (props: any) => {
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
     const stylesSubSecoes = subSecoesStyle(colors);
+    const colorScheme = useColorScheme();
 
 
     const [anoAtual, setAnoAtual] = useState<rssParser.FeedItem[] | undefined>(undefined);
@@ -59,7 +60,7 @@ export const OfertasDisciplinas = (props: any) => {
                     />
                   ))
               ) : null}
-              <Divisor style={{marginBottom: 10, marginTop: 10}}/>
+              <Divisor style={{marginBottom: 10, marginTop: 10, backgroundColor: colorScheme === 'dark' ? colors.branco : colors.cinza10, height: 0.5}}/>
               {anoAnterior && anoAnterior.length > 0  ? (
                   anoAnterior.map((disciplinaAnoAnterior) => (
                     <ViewOfertasDisciplinas

@@ -30,6 +30,7 @@ export const Professores = (props: IProfessores) => {
     const colorScheme = useColorScheme();
 
     const [professores, setProfessores] = useState<rssParser.FeedItem[]>([]);
+    const [professoresFoto, setProfessoresFoto] = useState<{[key:string]: string}>({});
     const [todosProfessores, setTodosProfessores] = useState<rssParser.FeedItem[]>([]);
     const [queryProfessores, setQueryProfessores] = useState<string>('');
     const [areas, setAreas] = useState<string[]>([]);
@@ -111,14 +112,25 @@ export const Professores = (props: IProfessores) => {
       })
     }
 
+    const organizaFotosProfessores = (professores: rssParser.FeedItem[]) => {
+      const objetoProfessoresFoto = professores.reduce((obj, item) => ({...obj, [item.title]: item.media[0].url}) ,{});
+      setProfessoresFoto(objetoProfessoresFoto);
+    }
+
     const retornaTodosProfessores = async () => {
       let data: rssParser.FeedItem[] | undefined = [];
+      let fotos: rssParser.FeedItem[] = [];
+      let professoresFoto: rssParser.FeedItem[] | undefined = [];
+      
       let arrayProfessores: rssParser.FeedItem[] | undefined = [];
       for(let i = 1; ;i++){
         data = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES, i) as rssParser.FeedItem[];
-        if(data?.length === 0) break;
+        fotos = await mediator.selecionaRequisicao(EnumMediator.PROFESSORES_FOTO, i) as rssParser.FeedItem[];
+        if(fotos) professoresFoto.push(...fotos);
+        if(data?.length === 0 && fotos.length === 0) break;
         else if(data) arrayProfessores.push(...data)
       }
+      organizaFotosProfessores(professoresFoto);
       return arrayProfessores;
     }
 
@@ -137,18 +149,19 @@ export const Professores = (props: IProfessores) => {
       <HeaderBar navigation={navigation} titulo='Professores' ativarBusca onPressBusca={() => setExibirBusca(!exibirBusca)}/>
       {exibirBusca ? (
         <Searchbar
-          placeholder="Pesquise pelo nome"
+          placeholder="Pesquise o nome do professor"
           onChangeText={onChangeSearch}
           value={queryProfessores}
-          style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}
-          iconColor={colors.accent}
+          style={{...styles.barraPesquisa, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.quaseBranco}}
+          iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
           onIconPress={() => encontraProfessor()}
           onClearIconPress={(e) => retornaProfessores()}
           inputStyle={{textDecorationLine: 'none', overflow: 'hidden', color: colorScheme === 'dark' ? colors.branco : colors.preto}}
-          selectionColor={colorScheme === 'dark' ? colors.branco : colors.preto}
-          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} color={colors.accent}/> : null}
+          selectionColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
+          traileringIcon={() => areas.length > 0 ? <Icon name="filter-outline" size={25} 
+          color={colorScheme === 'dark' ? colors.cinza95 : colors.preto}/> : null}
           onTraileringIconPress={(e) => abreWModalAreas()}
-          traileringIconColor={colors.accent}
+          traileringIconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
           />
       ): null}
         {area !== "" ? (
@@ -156,11 +169,11 @@ export const Professores = (props: IProfessores) => {
             <View style={{...stylesProfessores.boxArea, ...stylesProfessores.boxFiltro}}>
               <View style={stylesProfessores.filtro}>
                 <Text variant='labelMedium'> Filtrado por:</Text>
-                <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accentOpaco}}>
-                      <Text style={{...stylesProfessores.textoChip}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
+                <View style={{...stylesProfessores.chipArea, flexDirection: 'row', alignItems: 'center', backgroundColor: colorScheme === 'dark' ? colors.accentOpacoDark : colors.accent}}>
+                      <Text style={{...stylesProfessores.textoChip, color: colors.branco}} variant='bodyMedium' onPress={() => setArea("")}> {area} </Text>
                 </View>
               </View>
-                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28} iconColor={colors.accent}/>
+                <IconButton icon='filter-remove-outline' onPress={()=> setArea("")} style={{marginRight: 10}} size={28} iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}/>
             </View>
             <Divisor style={{marginBottom: 5}} />
           </>
@@ -171,7 +184,7 @@ export const Professores = (props: IProfessores) => {
         <FlatList 
           ref={listRef}
           data={professores}
-          renderItem={({item}) => <CardProfessores key={item.title} professor={item} navigation={navigation}/>}
+          renderItem={({item}) => <CardProfessores key={item.title} professor={item} navigation={navigation} foto={professoresFoto[item.title]}/>}
           keyExtractor={(item) => item.title}
           removeClippedSubviews
           initialNumToRender={8}
