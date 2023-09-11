@@ -1,18 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {theme} from '../../../../paper/theme';
 
-export const oportunidadesListRNStyle = StyleSheet.create({
+export const oportunidadesListStyle = (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
     margin: 1,
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
 
   containerTop: {
     margin: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: theme.colors.branco,
+    backgroundColor: colors.background,
   },
 
   detailTitulo: {

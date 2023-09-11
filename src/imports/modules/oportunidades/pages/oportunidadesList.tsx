@@ -1,34 +1,30 @@
-import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
-import {Text} from 'react-native-paper';
+import React, {useCallback,  useRef, useState} from 'react';
+import {Animated, SafeAreaView, ScrollView, useColorScheme } from 'react-native';
+import { useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {theme} from '../../../paper/theme';
 import {EnumMediator} from '../../../mediator/EnumMediator';
 import * as rssParser from 'react-native-rss-parser';
-import {oportunidadesListRNStyle} from './style/oportunidadesListRNStyle';
+import {oportunidadesListStyle} from './style/oportunidadesListStyle';
 import { useFocusEffect } from '@react-navigation/native';
 import { mediator } from '../../../mediator/mediator';
-import { Loading } from '../../../components/Loading/Loading';
 import { CardOportunidades } from '../components/CardOportunidades';
 import { nanoid } from 'nanoid';
-import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../components/GeneralComponents/GeneralComponents';
-import { OportunidadeEvento } from './subpages/OportundadeEvento';
-import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
+import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 
 interface IOportunidadesList {
-  navigation?: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const OportunidadesList = (props: IOportunidadesList) => {
   const {navigation} = props;
 
   const offset = useRef(new Animated.Value(0)).current;
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = oportunidadesListStyle(colors);
 
-  const [eventos, setEventos] = useState<rssParser.FeedItem[]>([]);
   const [estagios, setEstagios] = useState<rssParser.FeedItem[]>([]);
   const [ics, setIcs] = useState<rssParser.FeedItem[]>([]);
-  const [palestras, setPalestras] = useState<rssParser.FeedItem[]>([]);
-
 
   useFocusEffect(
     useCallback(() => {
@@ -38,40 +34,20 @@ export const OportunidadesList = (props: IOportunidadesList) => {
   );
 
   const rssOportunidades = async () => {
-    const dataEstagios: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.OPORTUNIDADES);
-    const dataIcs: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.OPORTUNIDADES);
-    const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS);
-    const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS);
+    const dataEstagios: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.ESTAGIOS) as rssParser.FeedItem[];
+    const dataIcs: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.IC) as rssParser.FeedItem[];
     dataEstagios && setEstagios(dataEstagios);
     dataIcs && setIcs(dataIcs);
-    dataEventos && setEventos(dataEventos);
-    dataPalestras && setPalestras(dataPalestras);
   };
 
   return (
-    <SafeAreaView style={oportunidadesListRNStyle.container}>
-      <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Painel de Oportunidades"} disableIcon/>
+    <SafeAreaView style={styles.container}>
+     <HeaderBar navigation={navigation} titulo='Painel de Oportunidades'/>
         <ScrollView style={{flex: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
                   )} scrollEventThrottle={16}>
-          {eventos.length > 0 ? (
-            <CardOportunidades
-              key={nanoid()}
-              oportunidade={eventos[0]}
-              oportunidades={eventos}
-              navigation={navigation}
-              url={eventos[0].links[0].url}
-              cor={theme.colors.laranja}
-              onPress={() => {
-                navigation?.navigate('oportunidadesRoute', {
-                  screen: 'OportunidadesEventos',
-                  params: { screenState: 'view', type: EnumMediator.EVENTOS }})
-              }}
-              texto='Eventos do seu interesse'
-              />
-          ): null}
           {estagios.length > 0 ? (
             <CardOportunidades
               key={nanoid()}
@@ -79,12 +55,12 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={estagios}
               navigation={navigation}
               url={estagios[0].links[0].url}
-              cor={theme.colors.roxo}
-              onPress={() => {
-                navigation?.navigate('oportunidadesRoute', {
-                  screen: 'OportunidadesEstagios',
-                  params: { screenState: 'view', type: EnumMediator.ESTAGIOS }})
-              }}
+              cor={colors.corCardOportunidadeEstagio}
+              // onPress={() => {
+              //   navigation?.navigate('oportunidadesRoute', {
+              //     screen: 'OportunidadesEstagios',
+              //     params: { screenState: 'view', type: EnumMediator.ESTAGIOS }})
+              // }}
               texto='Oportunidades de estágio'
               />
           ): null}
@@ -95,30 +71,14 @@ export const OportunidadesList = (props: IOportunidadesList) => {
               oportunidades={ics}
               navigation={navigation}
               url={ics[0].links[0].url}
-              cor={theme.colors.marrom}
-              onPress={() => {
-                navigation?.navigate('oportunidadesRoute', {
-                  screen: 'OportunidadesIcs',
-                  params: { screenState: 'view', type: EnumMediator.IC }})
-              }}
+              cor={colors.corCardOportunidadeIC}
+              // onPress={() => {
+              //   navigation?.navigate('oportunidadesRoute', {
+              //     screen: 'OportunidadesIcs',
+              //     params: { screenState: 'view', type: EnumMediator.IC }})
+              // }}
               texto='Iniciações Científicas'
               />
-          ): null}
-          {palestras.length > 0 ? (
-            <CardOportunidades
-              key={nanoid()}
-              oportunidade={palestras[0]}
-              oportunidades={palestras}
-              navigation={navigation}
-              url={palestras[0].links[0].url}
-              cor={theme.colors.verde}
-              onPress={() => {
-                navigation?.navigate('oportunidadesRoute', {
-                  screen: 'OportunidadesPalestras',
-                  params: { screenState: 'view', type: EnumMediator.PALESTRAS }})
-              }}
-              texto='Palestras'
-              />           
           ): null}
         </ScrollView>
     </SafeAreaView>

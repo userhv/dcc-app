@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { AnimatedHeader } from '../../../../components/AnimatedHeader/AnimatedHeader';
-import { oportunidadesListRNStyle } from '../style/oportunidadesListRNStyle';
+import { oportunidadesListRNStyle } from '../style/oportunidadesListStyle';
 
 interface IOportunidadeEvento {
     screenState: string;

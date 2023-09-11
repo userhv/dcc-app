@@ -30,18 +30,6 @@ export const AlunosList = (props: IAlunosList) => {
                   )} scrollEventThrottle={16}
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
-    
-    <CardSecao titulo="Ofertas de disciplinas" descricao='Veja as informações das disciplinas ofertadas nos semestres.' 
-              icone='cast-education'      
-              onPress={() => 	navigation?.navigate('AlunosTab', {
-                screen: 'OfertasDisciplinas'})}
-                rolagem={rolagem}/>
-
-    <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
-              icone='account-group-outline'      
-              onPress={() => 	navigation?.navigate('AlunosTab', {
-                screen: 'Professores'})}
-                rolagem={rolagem}/>
 
     <CardSecao titulo="Laboratórios" descricao='Explore os laboratórios ativos.' 
                       icone='book-search-outline'      
@@ -51,7 +39,26 @@ export const AlunosList = (props: IAlunosList) => {
                           url: 'https://dcc.ufmg.br/nossos-laboratorios/'
                         }
                       })}
-                      rolagem={rolagem}/>        
+                      rolagem={rolagem}/>    
+    
+    <CardSecao titulo="Ofertas de disciplinas" descricao='Veja as informações das disciplinas ofertadas nos semestres.' 
+              icone='cast-education'      
+              onPress={() => 	navigation?.navigate('AlunosTab', {
+                screen: 'OfertasDisciplinas'})}
+                rolagem={rolagem}/>
+    
+    <CardSecao titulo="Oportunidades" descricao='Veja as bolsas de ICs e estágios disponível.' 
+              icone='lightbulb-on-outline'      
+              onPress={() => 	navigation?.navigate('AlunosTab', {
+                screen: 'Oportunidades'})}
+                rolagem={rolagem}/>
+
+    <CardSecao titulo="Professores" descricao='Professores ativos e voluntários do departamento.' 
+              icone='account-group-outline'      
+              onPress={() => 	navigation?.navigate('AlunosTab', {
+                screen: 'Professores'})}
+                rolagem={rolagem}/>
+    
     </ScrollView>
   </SafeAreaView>
   )

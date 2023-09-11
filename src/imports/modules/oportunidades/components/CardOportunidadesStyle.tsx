@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../../paper/theme';
 
-export const cardOportunidadesStyle = StyleSheet.create({
+export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'space-between',
-		backgroundColor: theme.colors.branco,
+		backgroundColor: colors.background,
 		margin: 1,
 		height: 'auto',
 		borderRadius: 0,
@@ -15,7 +15,7 @@ export const cardOportunidadesStyle = StyleSheet.create({
 		fontSize: 17, 
 		justifyContent: 'center', 
 		paddingTop: 10, 
-		color: theme.colors.cinza10
+		color: colors.cinza10
 	},
 	subtitulo: {
 		fontSize: 14, justifyContent: 'center', paddingTop: 10
@@ -40,8 +40,15 @@ export const cardOportunidadesStyle = StyleSheet.create({
 		paddingLeft: 2,
 		paddingRight: 2,
 		overflow: 'hidden',
-		color: theme.colors.cinza50
 	},
+
+	boxHeader: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		paddingLeft: 5,
+		paddingRight: 5,    
+	  },
 
 	boxBotoes: {
 		flexDirection: 'row',
@@ -56,11 +63,12 @@ export const cardOportunidadesStyle = StyleSheet.create({
 	},
 
 	imagem: {
-		width: 40, 
-		height: 40,
-		backgroundColor: 'transparent'
+		width: 30, 
+		height: 30,
+		backgroundColor: 'transparent',
+		borderRadius: 10
 	},
 	divisor: {
-		backgroundColor: theme.colors.cinzaMedio,
+		backgroundColor: colors.cinzaMedio,
 	  },
 });

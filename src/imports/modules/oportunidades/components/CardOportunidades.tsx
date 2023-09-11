@@ -1,11 +1,11 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Image, Share, View} from 'react-native';
-import {Card, Divider, IconButton, Text} from 'react-native-paper';
+import {Image, Share, View, useColorScheme} from 'react-native';
+import {Card, Divider, IconButton, Text, useTheme} from 'react-native-paper';
 import {cardOportunidadesStyle} from './CardOportunidadesStyle';
 import {theme} from '../../../paper/theme';
 import * as rssParser from 'react-native-rss-parser';
 import { oportunidadesOff } from '../api/oportunidadesOff';
-import { oportunidadesListRNStyle } from '../pages/style/oportunidadesListRNStyle';
+import { Divisor } from '../../../components/Divisor/Divisor';
 
 interface ICardOportunidades {
   oportunidade: rssParser.FeedItem;
@@ -21,6 +21,11 @@ interface ICardOportunidades {
 export const CardOportunidades = (props: ICardOportunidades) => {
   const {oportunidade, url, navigation, texto, cor, oportunidades, onPress, removerDivider} = props;
   const idOportunidade = oportunidade.id.substring(oportunidade.id.indexOf('=') + 1);
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = cardOportunidadesStyle(colors);
+  const colorScheme = useColorScheme();
 
 
   const compartilharOportunidade = async () => {
@@ -42,17 +47,16 @@ export const CardOportunidades = (props: ICardOportunidades) => {
 
   return (
     <>
-        <Card style={cardOportunidadesStyle.container} mode='contained' testID='url'
+        <Card style={styles.container} mode='contained' testID='url'
                     onPress={ async () => { 
-                      await insereOportunidadeRealm(oportunidade);
+                      // await insereOportunidadeRealm(oportunidade);
                       navigation?.navigate('oportunidadesRoute', {
                         screen: 'OportunidadesDetail',
                         params: { screenState: 'view', id: idOportunidade }})          
         }
-          
         }>
           {texto ? (
-            <View style={oportunidadesListRNStyle.boxHeader}>
+            <View style={styles.boxHeader}>
               <Text variant='titleLarge' style={{color: cor ?? undefined}}> {texto} </Text>
               <IconButton icon='chevron-right-circle' size={30} 
                   iconColor={cor}
@@ -60,32 +64,30 @@ export const CardOportunidades = (props: ICardOportunidades) => {
           </View>
           ): null}
         {oportunidade.media && oportunidade.media[0] ? (
-            <Card.Cover source={{uri: oportunidade.media[0].url}} style={cardOportunidadesStyle.imagemCover} resizeMode='center'/>
+            <Card.Cover source={{uri: oportunidade.media[0].url}} style={styles.imagemCover} resizeMode='center'/>
           ): null
           }
           <Card.Title
             title={oportunidade.title}
             titleVariant="titleMedium"
-            titleStyle={cardOportunidadesStyle.titulo}
             subtitle={oportunidade.description}
-            subtitleStyle={cardOportunidadesStyle.subtitulo}
             subtitleVariant="bodyMedium"
             titleNumberOfLines={4}
             subtitleNumberOfLines={4}
           />
           <Card.Actions>
-          <View style={cardOportunidadesStyle.boxActions}>
-            <View style={cardOportunidadesStyle.boxImagemUrl}>
-              <Image source={require('../../../../img/icone_dcc.png')} style={cardOportunidadesStyle.imagem} />
+          <View style={styles.boxActions}>
+            <View style={styles.boxImagemUrl}>
+              <Image source={require('../../../../img/icone_dcc.png')} style={styles.imagem} />
               <View style={{flexShrink: 1}}>
-                <Text style={cardOportunidadesStyle.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
+                <Text style={styles.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
               </View>
             </View>
-            <View style={cardOportunidadesStyle.boxBotoes}>
+            <View style={styles.boxBotoes}>
               <IconButton
                 icon={'share-variant-outline'}
-                iconColor={theme.colors.azul}
-                style={cardOportunidadesStyle.botoes}
+                iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
+                style={styles.botoes}
                 size={25}
                 onPress={async() => await compartilharOportunidade()}
               />
@@ -94,7 +96,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
           </Card.Actions>
         </Card>
         {!removerDivider ? (
-          <Divider style={cardOportunidadesStyle.divisor} />
+        <Divisor />
         ): null}
     </>
   );

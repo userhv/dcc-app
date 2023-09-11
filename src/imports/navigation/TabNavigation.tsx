@@ -9,6 +9,7 @@ import { NoticiasContainer } from '../modules/noticias/pages/noticiasContainer';
 import { WebViewRN } from '../components/WebViewRN/WebViewRN';
 import { AlunoContainer } from '../modules/alunos/pages/alunoContainer';
 import { MenuContainer } from '../modules/menu/pages/menuContainer';
+import { OportunidadesContainer } from '../modules/oportunidades/pages/oportunidadesContainer';
 
 interface IAppProps {
 	user: any;
