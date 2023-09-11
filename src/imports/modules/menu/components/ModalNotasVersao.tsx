@@ -30,10 +30,8 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                             accessibilityRole='button'/>
             </View>
             <View style={styles.boxTexto}>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Alteração da paleta de cores do aplicativo.</Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Ajustes de design para corresponder ao guia de identidade do DCC.</Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Remoção do suporte a nova arquitetura.</Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Inclusão das fotos dos professores.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição dos professores voluntários.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do icone de navegar até a pagina do professor.</Text>
             </View>
         </View>
     )

@@ -36,9 +36,13 @@ class  Mediator {
             case EnumMediator.PALESTRAS:
                 return await rssApi('https://dcc.ufmg.br/category/palestra/feed/');
             case EnumMediator.PROFESSORES:
-                return await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`)
+                const professores = await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`);
+                const professores_voluntarios = await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=161&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`);
+                return professores?.concat(professores_voluntarios ?? [])
             case EnumMediator.PROFESSORES_FOTO:
-                return await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=rss`)
+                const professores_foto =  await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=rss`);
+                const professores_voluntarios_foto = await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=161&filter_action=Filtrar&paged=${row}&action2=-1&feed=rss`);
+                return professores_foto?.concat(professores_voluntarios_foto ?? [])
             case EnumMediator.DESTAQUE:
                 return await rssApi('https://dcc.ufmg.br/category/destaque/feed');
             case EnumMediator.DISCIPLINAS:

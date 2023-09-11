@@ -91,6 +91,7 @@ export const theme = {
 
 export const accentColors = {
 	accent: 'rgb(101, 0, 0)',
+	accentClaro: 'rgb(201, 0, 25)',
 	accentOpaco: 'rgba(201, 0, 25, 0.2)',
 	accentOpacoDark: 'rgba(201, 0, 25,0.5)',
 }
@@ -116,8 +117,7 @@ export const temaDark = {
 	//cores dinamicas
 	background: '#131314',
 	onSurface: theme.colors.cinza95, //usa a fonte titleMedium, bodyMedium, labelMedium, headlineSmall
-	accent: 'rgb(201, 0, 25)',
-	accentDark: 'rgba(101, 0, 0, 0.9)',
+	accent: 'rgba(101, 0, 0, 0.9)',
 	barraNavegacao: '#1f1f1f',
 	navegacaoAtiva: 'rgb(255, 255, 255)',
 	secondaryContainer: 'rgba(201, 0, 25, 0.4)', //altera a cor da elipse da barra de navegação
