@@ -3,72 +3,52 @@ import { theme } from '../../../paper/theme';
 
 export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 	container: {
+		justifyContent: 'space-between',
+		borderRadius: 8,
+		margin: 5,
+	  },
+	  boxPrincipal: {
+		flexDirection: 'column',
 		flex: 1,
 		justifyContent: 'space-between',
-		backgroundColor: colors.background,
-		margin: 1,
-		height: 'auto',
-		borderRadius: 0,
-		marginBottom: 10
-	},
-	titulo: {
-		fontSize: 17, 
-		justifyContent: 'center', 
-		paddingTop: 10, 
-		color: colors.cinza10
-	},
-	subtitulo: {
-		fontSize: 14, justifyContent: 'center', paddingTop: 10
-	},
-	botoes: {
-		borderColor: 'transparent',
-		backgroundColor: 'transparent'
-	},
-
-	boxActions: {
+	  },
+	  boxTexto: {
+		// alignItems: 'center',
+		// justifyContent: 'space-between',
 		flexDirection: 'row',
-	},
-
-	boxImagemUrl: {
-		flex:1,
-		alignItems: 'center',
-		flexDirection: 'row',
-	},
-
-
-	textoUrl: {
-		paddingLeft: 2,
-		paddingRight: 2,
-		overflow: 'hidden',
-	},
-
-	boxHeader: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		paddingLeft: 5,
-		paddingRight: 5,    
+		// flex: 1,
+		marginTop: 10
+	  },
+	  boxDetalhes: {
+		borderBottomEndRadius: 8,
+		borderBottomStartRadius: 8,
+		flexDirection: 'column'
+	  },
+	  viewDetalhes: {
+		flexDirection: 'column',
+		flex: 1,
+		margin: 5,
 	  },
 
-	boxBotoes: {
-		flexDirection: 'row',
-		marginLeft: 3,
-		marginRight: 3,
-	},
-
-	imagemCover: {
-		width: 'auto',
-		backgroundColor: 'transparent',
-		margin: 10,
-	},
-
-	imagem: {
-		width: 30, 
-		height: 30,
-		backgroundColor: 'transparent',
-		borderRadius: 10
+	scrollView: {
+		flex: 1, 
+		marginLeft: 10,
+		marginBottom: 10,
+		marginRight: 10,
+	  },
+	baseRender: {
+		fontSize: 15, 
+		paddingLeft:10, 
+		paddingRight: 10,
+		color: colors.onSurface
 	},
 	divisor: {
 		backgroundColor: colors.cinzaMedio,
 	  },
+	  imagem: {
+		width: 300, 
+		height: 100,
+		backgroundColor: colors.branco,
+		borderRadius: 10
+	},
 });

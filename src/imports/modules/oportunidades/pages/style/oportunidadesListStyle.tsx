@@ -1,10 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../../../paper/theme';
 
 export const oportunidadesListStyle = (colors:any) => StyleSheet.create({
   container: {
     flex: 1,
-    margin: 1,
     backgroundColor: colors.background,
   },
 
@@ -13,6 +11,10 @@ export const oportunidadesListStyle = (colors:any) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.background,
+  },
+  boxLinhaChip: {
+    marginBottom: 5,
+    flexDirection: 'row',
   },
 
   detailTitulo: {
@@ -65,9 +67,8 @@ export const oportunidadesListStyle = (colors:any) => StyleSheet.create({
   },
 
   chipStyle: {
-    marginRight: 10,
+    marginLeft: 10,
     justifyContent: 'flex-start',
-    borderWidth:1,
   },
 
 
