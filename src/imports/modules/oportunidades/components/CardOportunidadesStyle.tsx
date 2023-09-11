@@ -13,10 +13,7 @@ export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 		justifyContent: 'space-between',
 	  },
 	  boxTexto: {
-		// alignItems: 'center',
-		// justifyContent: 'space-between',
 		flexDirection: 'row',
-		// flex: 1,
 		marginTop: 10
 	  },
 	  boxDetalhes: {
@@ -48,7 +45,5 @@ export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 	  imagem: {
 		width: 300, 
 		height: 100,
-		backgroundColor: colors.branco,
-		borderRadius: 10
 	},
 });

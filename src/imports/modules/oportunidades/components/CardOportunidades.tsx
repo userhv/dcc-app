@@ -49,7 +49,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
           <View style={styles.boxPrincipal}>
             <View style={{flexDirection: 'row'}}>
               <View style={{flexDirection: 'column', margin: 10}}>
-                <Image source={require('../../../../img/DCC-Oficial.png')} style={styles.imagem} resizeMode='cover'/>
+                <Image source={colorScheme === 'dark' ? require( '../../../../img/DCC-Oficial-Dark.png') : require('../../../../img/DCC-Oficial-Light.png')} style={styles.imagem} resizeMode='cover'/>
                 <View style={styles.boxTexto}>
                     <Text variant='titleMedium' style={{ flex: 1}}> {oportunidade.title} </Text>
                 </View>
