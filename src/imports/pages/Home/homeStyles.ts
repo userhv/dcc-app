@@ -5,7 +5,7 @@ export const homeStyle = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		backgroundColor: theme.colors.branco,
+		backgroundColor: theme.colors.background,
 	},
 
 	divisor: {
@@ -15,5 +15,5 @@ export const homeStyle = StyleSheet.create({
 	blocoInterno: {
 		width: '100%',
 		height: '100%',
-	}
+	},
 });

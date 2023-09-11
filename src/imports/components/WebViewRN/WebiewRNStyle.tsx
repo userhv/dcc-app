@@ -1,41 +1,56 @@
 import { StyleSheet } from "react-native";
-import { theme } from "../../paper/theme";
 
-export const webViewRNStyle = StyleSheet.create({
+export const webViewRNStyle = (colors:any) => StyleSheet.create({
   containerComponente: {
     flex: 1,
   },
   
   containerSuperior: {
-    backgroundColor: theme.colors.cinzaEscuro,
+    backgroundColor: colors.quasePreto,
     flexDirection: 'row',
-    paddingTop: 10
+    paddingTop: 10,
   },
 
   containerBotaoFechar: {
     alignItems: 'center',
-    justifyContent: 'center',
   },
 
   containerTitulo: {
-    width: 360,
     flexDirection: 'row',
     alignItems: 'center',
-    height: 'auto',
-    flexShrink: 1
+    position: 'relative',
+    maxWidth: 320,
+    flex: 1,
+    flexShrink: 1,
   },
-  
+  containerCompartilhar: {
+    justifyContent: 'flex-end', 
+    flexDirection: 'row',
+    position: 'relative',
+    alignItems: 'center',
+  },
+
   texto: {
-    color: theme.colors.branco,
+    color: colors.branco,
     flexShrink: 1,
   },
 
   botaoFechar: {
     justifyContent: 'center',
-    margin: 10,
   },
 
-    container: {
-      flex: 1,  
-    },
+  container: {
+    flex: 1,  
+  },
+
+  loading: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    backgroundColor: 'transparent',
+    height: '100%',
+    width: '100%'
+  }
   });

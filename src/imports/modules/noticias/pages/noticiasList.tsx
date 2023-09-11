@@ -1,135 +1,142 @@
-import React, {useCallback, useRef, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
-import {Chip, IconButton, Text} from 'react-native-paper';
+import React, { useCallback, useEffect, useRef, useState} from 'react';
+import {Animated, SafeAreaView, ScrollView, View, useColorScheme} from 'react-native';
+import {Chip, useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {noticiasListRNStyle} from './style/noticiasListRNStyle';
 import {CardNoticias} from '../components/CardNoticias';
-import {theme} from '../../../paper/theme';
 import {EnumMediator} from '../../../mediator/EnumMediator';
 import {mediator} from '../../../mediator/mediator';
 import {Loading} from '../../../components/Loading/Loading';
-import {useFocusEffect} from '@react-navigation/native';
 import * as rssParser from 'react-native-rss-parser';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
-import { noticiasOff } from '../api/noticiasOff';
-import { INoticias } from '../sch/noticiasSch';
+import { useFocusEffect } from '@react-navigation/native';
 
 interface INoticiasList {
-  navigation?: NativeStackNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 export const NoticiasList = (props: INoticiasList) => {
   const {navigation} = props;
 
+  const [dados, setDados] = useState<rssParser.FeedItem[]>([]);
   const [noticias, setNoticias] = useState<rssParser.FeedItem[]>([]);
-  const [noticiasSalvas, setNoticiasSalvas] = useState<INoticias[]>([]);
-  const [mensagem, setMensagem] = useState<string>("Últimas notícias do DCC");
-  const [isUltimasNoticias, setIsUltimasNoticias] = useState<boolean>(true);
-  const [isNoticiaSalva, setIsNoticiasSalva] = useState<boolean>(false);
+  const [eventos, setEventos] = useState<rssParser.FeedItem[]>([]);
+  const [palestras, setPalestras] = useState<rssParser.FeedItem[]>([]);
+  const [isNoticias, setIsNoticias] = useState<boolean>(true);
+  const [isEventos, setIsEventos] = useState<boolean>(false);
+  const [isPalestras, setIsPalestras] = useState<boolean>(false);
+  const [isNoticiaSalva, setIsNoticiaSalva] = useState<boolean>(false);
+  const [rolagem, setRolagem] = useState<boolean>(true);
+
+  const theme = useTheme<{[key:string]: any}>();
+  const { colors } = theme;
+  const styles = noticiasListRNStyle(colors);
+  const colorScheme = useColorScheme();
+
   const offset = useRef(new Animated.Value(0)).current;
-
-
-  const rssNoticias = async () => {
-    const data: rssParser.FeedItem[] | undefined =
-      await mediator.selecionaRequisicao(EnumMediator.NOTICIAS);
-    data && setNoticias(data);
-    setNoticiasSalvas([])
-  };
-
-  const feedNoticiasSalvas = async () => {
-    const data = await noticiasOff.retornaNoticiasSalvas();
-    data && setNoticiasSalvas(data as INoticias[]);
-    // setNoticias([]);
-  }
-
 
   useFocusEffect(
     useCallback(() => {
-      const _rsssNoticias = async () => {
-        await rssNoticias()
-        await renderizaUltimasNoticias();
+      const _renderizaTodosDados = async () => {
+        const dataNoticias: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.NOTICIAS) as rssParser.FeedItem[];
+        dataNoticias && setNoticias(dataNoticias);
+        const dataEventos: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.EVENTOS) as rssParser.FeedItem[];
+        dataEventos && setEventos(dataEventos);
+        const dataPalestras: rssParser.FeedItem[] | undefined = await mediator.selecionaRequisicao(EnumMediator.PALESTRAS) as rssParser.FeedItem[];
+        dataPalestras && setPalestras(dataPalestras);
       }
-      _rsssNoticias();
+      _renderizaTodosDados();
     }, []),
   );
 
-  const renderizaUltimasNoticias = async () => {
-    setIsUltimasNoticias(true);
-    setIsNoticiasSalva(false);
-    setMensagem("Últimas notícias do DCC");
-    // if(noticias.length == 0) await rssNoticias();
+  useEffect(() => {
+    const _rsssNoticias = async () => await renderizaNoticias();
+    _rsssNoticias();
+  },[noticias])
+
+  const renderizaNoticias = async () => {
+    setDados(noticias);
+    setIsNoticias(true);
+    setIsEventos(false);
+    setIsPalestras(false);
+
   }
 
-  const renderizaNoticiasSalvas = async () => {
-    setIsUltimasNoticias(false);
-    setIsNoticiasSalva(true);
-    setMensagem("Suas notícias salvas");
-    await feedNoticiasSalvas();
+  const renderizaEventos = async () => {
+    setDados(eventos);
+    setIsNoticias(false);
+    setIsEventos(true);
+    setIsPalestras(false);
   }
 
+  const renderizaPalestras = async () => {
+    setDados(palestras)
+    setIsNoticias(false);
+    setIsEventos(false);
+    setIsPalestras(true);
+  }
   return (
-    <SafeAreaView style={noticiasListRNStyle.container}>
-      <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={mensagem} disableIcon/>
-      <View style={noticiasListRNStyle.boxChip}>
-      <Chip  onPress={async () => await renderizaUltimasNoticias()} 
-              icon={() => null}
-              selected={isUltimasNoticias}
-              style={{...noticiasListRNStyle.chipStyle, 
-                  backgroundColor: isUltimasNoticias ? theme.colors.azul : theme.colors.azulOpacoSelecionado,
-                  borderColor: isUltimasNoticias ? theme.colors.azulEscuro : theme.colors.azul}} 
-              selectedColor={isUltimasNoticias ? theme.colors.branco : theme.colors.azul}
-              > Últimas notícias </Chip>
-        <Chip  onPress={async () => await renderizaNoticiasSalvas()} 
-              icon={() => null}
-              selected={isNoticiaSalva}
-              style={{...noticiasListRNStyle.chipStyle, 
-                backgroundColor: isNoticiaSalva ? theme.colors.azul : theme.colors.azulOpacoSelecionado,
-                borderColor: isNoticiaSalva ? theme.colors.azulEscuro : theme.colors.azul}} 
-            selectedColor={isNoticiaSalva ? theme.colors.branco : theme.colors.azul}
-              > Notícias salvas</Chip>
-  
-      </View>
+    <SafeAreaView style={styles.container}>
+      <AnimatedHeader animatedValue={offset} navigation={navigation} mensagemTitulo={"Notícias do DCC"} disableIcon/>
+        <View style={styles.boxLinhaChip}>
+          <ScrollView horizontal style={{marginBottom: 5, flex: 1}} showsHorizontalScrollIndicator={false}>
+          <Chip
+                icon={() => null}
+                selected
+                selectedColor={colors.corTextoChipDesativado}
+                style={{ backgroundColor: colors.chipDesativado, marginLeft: 10 }}
+                onPress={() => navigation?.navigate('NoticiasTab', {
+                  screen: 'NoticiasSalvas'
+                })}>
+              Notícias salvas
+              </Chip>
+            <View style={styles.divisor}/>
+            <Chip onPress={async() => await renderizaNoticias()} 
+                    icon={() => null}
+                    selected
+                    style={{...styles.chipStyle, 
+                        backgroundColor: isNoticias ? colors.chipAtivado : colors.chipDesativado}} 
+                    selectedColor={isNoticias ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
+                    Últimas notícias
+              </Chip>
+              <Chip onPress={async() => await renderizaEventos()} 
+                    icon={() => null}
+                    selected
+                    style={{...styles.chipStyle, 
+                      backgroundColor: isEventos ? colors.chipAtivado : colors.chipDesativado}} 
+                    selectedColor={isEventos ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
+                  Eventos
+                </Chip>
+              <Chip onPress={async() => await renderizaPalestras()} 
+                  icon={() => null}
+                  style={{...styles.chipStyle, 
+                      backgroundColor: isPalestras ? colors.chipAtivado : colors.chipDesativado}} 
+                      selectedColor={isPalestras ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
+                  Palestras
+              </Chip>
+              <View style={{marginLeft: 10}}/>
+          </ScrollView>
+        </View>
         <ScrollView style={{ flex: 1}} 
                    onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: offset } } }],
                     { useNativeDriver: false }
-                  )} scrollEventThrottle={16}>
-      {noticias.length > 0 && isUltimasNoticias ? (
-          noticias.map((noticia, i) => (
+                  )} scrollEventThrottle={16}
+                  onMomentumScrollBegin={() => setRolagem(false)}
+                  onMomentumScrollEnd={() => setRolagem(true)}>
+      {dados.length > 0 ? (
+          dados.map((noticia, i) => (
             <CardNoticias
               key={i}
               noticia={noticia}
               navigation={navigation}
+              rolagem={rolagem}
               url={noticia.links[0].url}
             />
           ))
-      ): isNoticiaSalva ? (
-        noticiasSalvas.length > 0 ? (
-          noticiasSalvas.map((noticia, i) => (
-            <CardNoticias
-              key={i}
-              noticia={noticia as unknown as rssParser.FeedItem}
-              navigation={navigation}
-              url={noticia.url}
-            />
-            ))
-        ) : (
-          <View style={noticiasListRNStyle.boxIconeVazio} accessible={true}> 
-          <Icon 
-              name='bookmark-off-outline'
-              size={150}
-              color={theme.colors.vermelhoVivo}
-          />
-          <Text style={noticiasListRNStyle.texto} variant='headlineSmall'> 
-                  Você não tem nenhuma notícia salva.
-          </Text>
-      </View>
-        )
-      ):
-      <View style={noticiasListRNStyle.loading}>
-        <Loading />
-      </View>
+      ) :
+        <Loading style={{paddingTop: 150}}/>
       }
     </ScrollView>
     </SafeAreaView>

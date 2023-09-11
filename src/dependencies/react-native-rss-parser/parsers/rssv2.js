@@ -72,7 +72,6 @@ const getItemTitle = (node) => utils.getElementTextContent(node, 'title');
 
 const getItemLinks = (node) => {
   const links = utils.getChildElements(node, 'link');
-  // console.log("oiii", links[0])
 
   return links.map((link) => ({
     url: link.textContent,

@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {theme} from '../../paper/theme';
 
-export const animatedHeaderStyle = StyleSheet.create({
+export const animatedHeaderStyle = (colors: any) => StyleSheet.create({
   header: {
     flexDirection: 'row',
     left: 0,
