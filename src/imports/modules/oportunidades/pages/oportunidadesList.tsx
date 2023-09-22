@@ -115,12 +115,6 @@ export const OportunidadesList = (props: IOportunidadesList) => {
                   oportunidade={oportunidade}
                   navigation={navigation}
                   url={oportunidade.links[0].url}
-                  // onPress={() => {
-                  //   navigation?.navigate('oportunidadesRoute', {
-                  //     screen: 'OportunidadesEstagios',
-                  //     params: { screenState: 'view', type: EnumMediator.ESTAGIOS }})
-                  // }}
-                  // texto='Oportunidades de estágio'
                   />
               ))
           ) :

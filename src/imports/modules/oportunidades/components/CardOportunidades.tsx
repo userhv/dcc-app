@@ -47,22 +47,16 @@ export const CardOportunidades = (props: ICardOportunidades) => {
     <Pressable onPress={() => setAbrirDetalhes(!abrirDetalhes)}>
       <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco, elevation: 1}}>
           <View style={styles.boxPrincipal}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={{flexDirection: 'column', margin: 10}}>
-                <Image source={colorScheme === 'dark' ? require( '../../../../img/DCC-Oficial-Dark.png') : require('../../../../img/DCC-Oficial-Light.png')} style={styles.imagem} resizeMode='cover'/>
-                <View style={styles.boxTexto}>
-                    <Text variant='titleMedium' style={{ flex: 1}}> {oportunidade.title} </Text>
-                </View>
-              </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1}}>
+            <View style={{flexDirection: 'row', padding: 10}}>
+                 <Text variant='titleMedium' style={{ flex: 1}}> {oportunidade.title} </Text>
                 <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
                     size={25}  iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>    
-              </View>
             </View>
             <View style={styles.boxDetalhes}>
             {abrirDetalhes? 
             (oportunidade?.content ? (
-                <>
+              <>
+                <Image source={colorScheme === 'dark' ? require( '../../../../img/DCC-Oficial-Dark.png') : require('../../../../img/DCC-Oficial-Light.png')} style={styles.imagem} resizeMode='cover'/>
                   <RenderHTML contentWidth={width} source={{ html: oportunidade?.content }} 
                     baseStyle={styles.baseRender}/>
                     <View style={{flex: 1,  alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
@@ -71,7 +65,12 @@ export const CardOportunidades = (props: ICardOportunidades) => {
                         mode='contained'
                         buttonColor={colors.accent}
                         style={{marginBottom: 10, marginTop: 10}}
-                        onPress={() => console.log('oiii')}>
+                        onPress={() => 	navigation?.navigate('AlunosTab',{
+                          screen: 'OportunidadesCadastro', 
+                          params: {
+                            oportunidade: oportunidade
+                          }
+                        })}>
                         Quero me candidatar
                       </Button>
                     </View>
@@ -82,82 +81,5 @@ export const CardOportunidades = (props: ICardOportunidades) => {
           </View>
       </View>
     </Pressable>
-
-
-
-
-
-
-
-
-
-
-
-
-//     <>
-//         <Card style={styles.container} mode='contained' testID='url'
-//                     onPress={ async () => { 
-//                       // await insereOportunidadeRealm(oportunidade);
-//                       navigation?.navigate('oportunidadesRoute', {
-//                         screen: 'OportunidadesDetail',
-//                         params: { screenState: 'view', id: idOportunidade }})          
-//         }
-//         }>
-//           {texto ? (
-//             <View style={styles.boxHeader}>
-//               <Text variant='titleLarge' style={{color: cor ?? undefined}}> {texto} </Text>
-//               <IconButton icon='chevron-right-circle' size={30} 
-//                   iconColor={cor}
-//                   onPress={onPress}/>
-//           </View>
-//           ): null}
-//         {oportunidade.media && oportunidade.media[0] ? (
-//             <Card.Cover source={{uri: oportunidade.media[0].url}} style={styles.imagemCover} resizeMode='center'/>
-//           ): null
-//           }
-//           <Card.Title
-//             title={oportunidade.title}
-//             titleVariant="titleMedium"
-//             subtitle={oportunidade.description}
-//             subtitleVariant="bodyMedium"
-//             titleNumberOfLines={4}
-//             subtitleNumberOfLines={4}
-//           />
-//           <Card.Actions>
-//           <View style={styles.boxActions}>
-
-
-// {/* 
-//             <View style={styles.boxImagemUrl}>
-//               <Image source={require('../../../../img/icone_dcc.png')} style={styles.imagem} />
-//               <View style={{flexShrink: 1}}>
-//                 <Text style={styles.textoUrl} numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>
-//               </View>
-//             </View> */}
-            
-            
-//             {/* <View style={styles.boxBotoes}>
-//               <IconButton
-//                 icon={'share-variant-outline'}
-//                 iconColor={colorScheme === 'dark' ? colors.cinza95 : colors.preto}
-//                 style={styles.botoes}
-//                 size={25}
-//                 onPress={async() => await compartilharOportunidade()}
-//               />
-//             </View> */}
-  
-//             </View>
-//           </Card.Actions>
-//         </Card>
-//           <Divisor />
-//     </>
   );
 };
-
-
-// <View style={{ flexDirection: 'column'}}>
-// <View style={{flex: 1, marginLeft: 50,}}>
-
-// </View>
-
-// </View>

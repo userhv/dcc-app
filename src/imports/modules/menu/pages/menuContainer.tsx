@@ -7,7 +7,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export const MenuContainer = (props: any) => {
 
 	return(
-		<Navigator initialRouteName={'Alunos'} screenOptions={{ headerShown: false }}>
+		<Navigator initialRouteName={'Menu'} screenOptions={{ headerShown: false }}>
 			<Screen key={'Menu'} name={'Menu'} component={MenuList}/>
 			<Screen key={'Feedback'} name={'Feedback'} component={Contatos}/>
 			<Screen key={'Sobre'} name={'Sobre'} component={Sobre}/>
