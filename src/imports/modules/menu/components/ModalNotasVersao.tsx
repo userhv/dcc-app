@@ -17,7 +17,7 @@ export const ModalNotasVersao = (props: IModalVersao) => {
     const colorScheme = useColorScheme();
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
             <View style={styles.boxTitulo}>
                 <View style={{flex: 1}}>
                     <Text style={styles.texto} variant='titleMedium' numberOfLines={3}> Notas da versão: {getVersion()}</Text>

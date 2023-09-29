@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const modalNotasVersaoStyle = (colors: any) => StyleSheet.create({
+export const modalConfirmacaoStyle = (colors: any) => StyleSheet.create({
   container: {
     margin: 10,
     borderRadius: 16,
@@ -13,7 +13,8 @@ export const modalNotasVersaoStyle = (colors: any) => StyleSheet.create({
   },
   texto: {
     paddingTop: 10, 
-    paddingLeft: 10
+    paddingLeft: 10,
+    paddingBottom: 10
   },
   boxTexto:{
     justifyContent: 'center',
@@ -22,5 +23,10 @@ export const modalNotasVersaoStyle = (colors: any) => StyleSheet.create({
     paddingBottom: 20,
     textAlign: 'auto',
     flexWrap: 'nowrap'
+  },
+  boxBotoes:{
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    paddingBottom: 10
   }
 });

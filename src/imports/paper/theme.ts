@@ -92,6 +92,7 @@ export const accentColors = {
 	accentClaro: 'rgb(201, 0, 25)',
 	accentOpaco: 'rgba(201, 0, 25, 0.2)',
 	accentOpacoDark: 'rgba(201, 0, 25,0.5)',
+	accentOpacoSecao: 'rgba(201, 0, 25, 0.05)',
 }
 
 export const temaLight = {

@@ -4,7 +4,6 @@ import { Oferta } from "./subsecoes/Oferta";
 import { Professores } from "./subsecoes/Professores";
 import { OfertasDisciplinas } from "./subsecoes/OfertasDisciplinas";
 import { OportunidadesList } from "../../oportunidades/pages/oportunidadesList";
-import { OportunidadesCadastro } from "../../oportunidades/pages/oportunidadeCadastro";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -17,7 +16,6 @@ export const AlunoContainer = (propsNavegacao: any) => {
 			<Screen key={'Professores'} name={'Professores'} component={Professores}/>
 			<Screen key={'Ofertas'} name={'Ofertas'} component={Oferta}/>
 			<Screen key={'Oportunidades'} name={'Oportunidades'} component={OportunidadesList}/>
-			<Screen key={'Cadastro'} name={'OportunidadesCadastro'} component={OportunidadesCadastro}/>
 		</Navigator>
 	)
 };

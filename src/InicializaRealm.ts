@@ -1,12 +1,13 @@
 import Realm from 'realm';
-import { noticiasOff as noticias } from './imports/modules/noticias/api/noticiasOff';
-import { oportunidadesOff as oportunidades } from './imports/modules/oportunidades/api/oportunidadesOff';
-
 import { requestRealm } from './imports/libs/requestRealm';
+import { noticiasOff as noticias } from './imports/modules/noticias/api/noticiasOff';
+import { cadastroOff as cadastro } from './imports/modules/usuario/api/cadastroOff';
+import { anexoOff as anexo } from './imports/modules/anexos/anexoOff';
 
 const realmSchemas = [
 	noticias.getSchema(),
-	oportunidades.getSchema(),
+	cadastro.getSchema(),
+	anexo.getSchema(),
 ];
 
 const realmSchemaNames = [ 'noticias'];

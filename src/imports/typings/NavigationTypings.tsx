@@ -14,5 +14,4 @@ export type IBottomTabParamList = {
 	NoticiasTab: Object;
 	AlunosTab: Object;
 	MenuTab: Object;
-	OportunidadesTab: Object;
 };

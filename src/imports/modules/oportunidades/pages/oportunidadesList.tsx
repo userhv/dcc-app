@@ -1,4 +1,4 @@
-import React, {useCallback,  useEffect,  useRef, useState} from 'react';
+import React, {useCallback,  useContext,  useEffect, useState} from 'react';
 import {Animated, SafeAreaView, ScrollView, View, useColorScheme } from 'react-native';
 import { Chip, useTheme} from 'react-native-paper';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -7,19 +7,16 @@ import * as rssParser from 'react-native-rss-parser';
 import {oportunidadesListStyle} from './style/oportunidadesListStyle';
 import { useFocusEffect } from '@react-navigation/native';
 import { mediator } from '../../../mediator/mediator';
-import { CardOportunidades } from '../components/CardOportunidades';
 import { nanoid } from 'nanoid';
 import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 import { Loading } from '../../../components/Loading/Loading';
+import { IUserContext, UserContext } from '../../../context/UserContext';
+import { CardOportunidades } from '../components/CardOportunidades/CardOportunidades';
 
-interface IOportunidadesList {
-  navigation: NativeStackNavigationProp<any>;
-}
+export const OportunidadesList = (props: any) => {
+  const {navigation, route} = props;
+  const { asyncStorageUser } = useContext(UserContext) as IUserContext;
 
-export const OportunidadesList = (props: IOportunidadesList) => {
-  const {navigation} = props;
-
-  const offset = useRef(new Animated.Value(0)).current;
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
   const styles = oportunidadesListStyle(colors);
@@ -31,7 +28,8 @@ export const OportunidadesList = (props: IOportunidadesList) => {
   const [isOportunidades, setIsOportunidades] = useState<boolean>(true);
   const [isEstagio, setIsEstagio] = useState<boolean>(false);
   const [isIc, setIsIC] = useState<boolean>(false);
-  const [rolagem, setRolagem] = useState<boolean>(true);
+
+  const user = route.params.user;
 
   useFocusEffect(
     useCallback(() => {
@@ -115,6 +113,7 @@ export const OportunidadesList = (props: IOportunidadesList) => {
                   oportunidade={oportunidade}
                   navigation={navigation}
                   url={oportunidade.links[0].url}
+                  user={user}
                   />
               ))
           ) :
