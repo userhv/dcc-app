@@ -1,7 +1,6 @@
 import React, {useCallback,  useContext,  useEffect, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView, View, useColorScheme } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import { Chip, useTheme} from 'react-native-paper';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {EnumMediator} from '../../../mediator/EnumMediator';
 import * as rssParser from 'react-native-rss-parser';
 import {oportunidadesListStyle} from './style/oportunidadesListStyle';
@@ -12,11 +11,12 @@ import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 import { Loading } from '../../../components/Loading/Loading';
 import { IUserContext, UserContext } from '../../../context/UserContext';
 import { CardOportunidades } from '../components/CardOportunidades/CardOportunidades';
+import { IAnexo } from '../../anexos/IAnexo';
+import { anexoOff } from '../../anexos/anexoOff';
+import { EnumAnexo } from '../../anexos/EnumAnexo';
 
 export const OportunidadesList = (props: any) => {
   const {navigation, route} = props;
-  const { asyncStorageUser } = useContext(UserContext) as IUserContext;
-
   const theme = useTheme<{[key:string]: any}>();
   const { colors } = theme;
   const styles = oportunidadesListStyle(colors);
@@ -28,7 +28,8 @@ export const OportunidadesList = (props: any) => {
   const [isOportunidades, setIsOportunidades] = useState<boolean>(true);
   const [isEstagio, setIsEstagio] = useState<boolean>(false);
   const [isIc, setIsIC] = useState<boolean>(false);
-
+  const [curriculo, setCurriculo] = useState<IAnexo | undefined>( undefined);
+  const [historico, setHistorico] = useState<IAnexo | undefined>(undefined);
   const user = route.params.user;
 
   useFocusEffect(
@@ -37,6 +38,16 @@ export const OportunidadesList = (props: any) => {
       _rsssNoticias();
     }, []),
   );
+
+	useEffect(() => {
+		const retornaArquivos = async() => {
+			const curriculo = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.CURRICULO) as IAnexo[];
+			const historico = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.HISTORICO) as IAnexo[];
+			setCurriculo(curriculo.length > 0 ? curriculo[0] : undefined);
+			setHistorico(historico.length > 0 ? historico[0] : undefined);
+		}
+		retornaArquivos();
+	},[])
 
   useEffect(() => {
     const _rsssNoticias = async () => await renderizaOportunidades();
@@ -109,6 +120,8 @@ export const OportunidadesList = (props: any) => {
           {dados.length > 0 ? (
               dados.map((oportunidade, i) => (
                 <CardOportunidades
+                  curriculo={curriculo}
+                  historico={historico}
                   key={nanoid()}
                   oportunidade={oportunidade}
                   navigation={navigation}

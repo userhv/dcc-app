@@ -4,16 +4,17 @@ import { Text, useTheme, Button } from 'react-native-paper';
 import { modalConfirmacaoStyle } from './ModalConfirmacaoStyle';
 
 interface IModalConfirmacao {
-    handleConfirma: () => void;
+    handleConfirma: () => Promise<void>;
     handleCancela: () => void;
     texto: string;
     titulo: string;
     labelConfirmar?: string;
     labelCancelar?: string;
+    navigation: any;
 }
 
 export const ModalConfirmacao = (props: IModalConfirmacao) => {
-    const { handleConfirma, handleCancela, texto, titulo, labelConfirmar, labelCancelar } = props;
+    const { handleConfirma, handleCancela, texto, titulo, labelConfirmar, labelCancelar, navigation } = props;
 
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
@@ -41,10 +42,9 @@ export const ModalConfirmacao = (props: IModalConfirmacao) => {
                 </Button>
                 <Button
                     icon='check'
-                    onPress={() => {
-                        handleConfirma();
-                        handleCancela();
-                    }}
+                    onPress={async () => {
+                        await handleConfirma();
+                        handleCancela()}}
                     buttonColor={colors.accent}
                     mode='contained'>
                     {labelConfirmar ?? 'Confirmar'}

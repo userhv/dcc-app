@@ -11,7 +11,6 @@ import { IAsyncStorageUser, UserContext } from './imports/context/UserContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { USER_ASYNC_COLLECTION } from './imports/config/storageConfig';
 
-
 const getData = async (callback: any) => {
 	try {
 		const asyncStorageUser = await AsyncStorage.getItem(USER_ASYNC_COLLECTION);
@@ -41,12 +40,7 @@ export const App = () => {
 			setIsInternetConnected(state.isConnected);
 		}
 	});
-
-  useEffect(() => {
-		
-	}, []);
-
-
+  
   useEffect(() => {
 		const inicializaRealm = async () => {
 			await inicializaRealmGlobal();

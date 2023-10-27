@@ -1,6 +1,5 @@
 
 import { BaseOffline } from '../../../bd/baseOffline';
-import { requestRealm } from '../../libs/requestRealm';
 import { IAnexo } from './IAnexo';
 import { anexoRealmSch } from './anexoRealmSch';
 import { anexoSch } from './anexoSch';
@@ -16,7 +15,7 @@ class AnexoOff extends BaseOffline<IAnexo> {
 		return this.find('email == $0 && tipo == $1', email, tipo);
 	}
 	salvaCadastro = async (arquivo: IAnexo) => {
-		await this.upsert(arquivo)
+		await this.upsert(arquivo);
 	}
 }
 

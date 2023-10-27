@@ -4,7 +4,7 @@ import { EnumAnexo } from "./EnumAnexo";
 export interface IAnexo extends IDoc {
 	email: string | undefined;
 	nome: string | undefined;
-	base64: string;
+	link: string;
 	tipo: EnumAnexo;
 
 }

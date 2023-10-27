@@ -1,6 +1,7 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
 
 export interface IAsyncStorageUser {
+	_id: string;
 	name?: string;
 	email: string;
 }
