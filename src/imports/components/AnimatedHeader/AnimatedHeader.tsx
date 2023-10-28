@@ -67,3 +67,4 @@ export const AnimatedHeader = (props: IAnimatedHeader) => {
           </>
       );
 };
+

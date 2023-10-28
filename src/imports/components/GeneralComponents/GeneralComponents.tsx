@@ -23,8 +23,10 @@ export interface IGeneralComponentsContext {
 
 export interface ISnackBarOptions {
 	texto: string;
+	actionLabel?: string;
 	visible?: boolean;
 	onDismiss?: () => void;
+	onPress?: () => void;
 	duration?: number;
 }
 

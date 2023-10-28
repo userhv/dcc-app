@@ -39,8 +39,7 @@ export class BaseOffline<Doc extends IDoc> {
 		this._typeDate = this._typeDate.bind(this);
 		this._convertTypeDate = this._convertTypeDate.bind(this);
 		this._deleteSchema = this._deleteSchema.bind(this);
-		this._deleteAllObjects = this._deleteAllObjects.bind(this);
-		this._userIdAsyncStorage = this._userIdAsyncStorage.bind(this);
+		this.removeAll = this.removeAll.bind(this);
 		this._addLogInformation = this._addLogInformation.bind(this);
 		this.insert = this.insert.bind(this);
 		this.upsert = this.upsert.bind(this);
@@ -69,14 +68,9 @@ export class BaseOffline<Doc extends IDoc> {
 		});
 	};
 
-	private _userIdAsyncStorage = async () => {
-		const userAsyncStorage = await AsyncStorage.getItem(USER_ASYNC_COLLECTION);
-		const asyncData = userAsyncStorage && JSON.parse(userAsyncStorage);
-		return asyncData._id;
-	};
 
-	private _objParse = (docObj: Realm.Results<{ [key: string]: any } & Realm.Object<unknown>>) => {
-		const parsedData = docObj.map((doc) => JSON.parse(doc.data));
+	private _objParse = (docObj: any) => {
+		const parsedData = docObj.map((doc: {[key:string]: any}) => JSON.parse(doc.data));
 		return parsedData;
 	};
 
@@ -99,19 +93,10 @@ export class BaseOffline<Doc extends IDoc> {
 		});
 	};
 
-	// Apagar os dados
-	private _deleteAllObjects = async () => {
-		const realm = requestRealm();
-		realm.write(() => {
-			realm.deleteAll();
-		});
-	};
-
 	private _addLogInformation = async (docObj: Doc, type: string) => {
-		// const userId = await this._userIdAsyncStorage();
-		const updateInfo = { lastupdate: new Date(), updatedby: 'admin' };
+		const updateInfo = { lastupdate: new Date()};
 		if (type === 'insert') {
-			const insertLogs = { createdby: 'admin', createdat: new Date(), idAparelho: getIdAparelho() };
+			const insertLogs = { createdat: new Date(), idAparelho: getIdAparelho() };
 			return { ...docObj, ...insertLogs, ...updateInfo };
 		} else {
 			return { ...docObj, ...updateInfo };
@@ -163,9 +148,20 @@ export class BaseOffline<Doc extends IDoc> {
 	upsert = async (docObj: Doc) => {
 		return await new Promise((resolve, reject) => {
 			(async () => {
-				const realm = requestRealm();
-				const filtered = realm.objects<{ [key: string]: any }>(this.schemaName).filtered('_id == $0', docObj._id);
-				filtered.length === 0 ? await this.insert(docObj) : await this.update(docObj);
+				try{
+					const realm = requestRealm();
+					const filtered = realm.objects<{ [key: string]: any }>(this.schemaName).filtered('_id == $0', docObj._id);
+					filtered.length === 0 ? await this.insert(docObj) : await this.update(docObj);
+					resolve(docObj._id);
+				}catch (error: any){
+					reject(
+						new ErrorOffline(
+							this.schemaName + ' - BaseOffline.upsert',
+							`Não foi possivel gravar este documento: ${error.message}`
+						)
+					);
+				}
+
 			})();
 		});
 	};
@@ -183,10 +179,10 @@ export class BaseOffline<Doc extends IDoc> {
 					const _docObj = await this._addLogInformation(docObj, 'update');
 					const docAtualizado = await this._prepareDataForRealmInsertion(_docObj);
 					if (realm.isInTransaction) {
-						realm.create<{ [key: string]: any }>(this.schemaName, docAtualizado, 'modified' as UpdateMode.Modified);
+						realm.create<{ [key: string]: any }>(this.schemaName, docAtualizado, 'modified' as UpdateMode);
 					} else {
 						realm.write(() => {
-							realm.create<{ [key: string]: any }>(this.schemaName, docAtualizado, 'modified' as UpdateMode.Modified);
+							realm.create<{ [key: string]: any }>(this.schemaName, docAtualizado, 'modified' as UpdateMode);
 						});
 					}
 					resolve(docAtualizado._id);
@@ -235,6 +231,14 @@ export class BaseOffline<Doc extends IDoc> {
 		});
 	};
 
+
+	// Apagar os dados
+	removeAll = async () => {
+		const realm = requestRealm();
+		realm.write(() => {
+			realm.deleteAll();
+		});
+	};
 	/**
 	 * getCollection
 	 * @returns {T[]}
@@ -245,7 +249,7 @@ export class BaseOffline<Doc extends IDoc> {
 		if (data.length === 0) {
 			return [];
 		} else {
-			const parsedData = this._objParse(data) as T[];
+			const parsedData = this._objParse(data);
 			return parsedData;
 		}
 	};
@@ -281,29 +285,9 @@ export class BaseOffline<Doc extends IDoc> {
 			return [];
 		} else {
 			const parsedData = this._objParse(realmData);
-			parsedData.forEach((parsedDoc) => this._convertTypeDate(parsedDoc));
+			parsedData.forEach((parsedDoc: any) => this._convertTypeDate(parsedDoc));
 			return parsedData;
 		}
 	};
 
-	setSyncDate = async (dados: Doc[]) => {
-		return await new Promise((resolve, reject) => {
-			const realm = requestRealm();
-			(async () => {
-				realm.beginTransaction();
-				try {
-					await Promise.all(
-						dados.map(async (doc) => {
-							await this.update(doc as Doc);
-						})
-					);
-					realm.commitTransaction();
-					resolve('Data da sincronização atualizada com sucesso!');
-				} catch (e) {
-					realm.cancelTransaction();
-					reject(e);
-				}
-			})();
-		});
-	};
 }

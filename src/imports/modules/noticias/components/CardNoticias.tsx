@@ -25,7 +25,7 @@ export const CardNoticias = (props: ICardNoticias) => {
   const { colors } = theme;
   const styles = cardNoticiasStyle(colors);
   const colorScheme = useColorScheme();
-  
+    
   useEffect(() => {
     const noticiaEstaSalva = async () => {
       const data = await noticiasOff.find("url == $0", url);
@@ -84,7 +84,7 @@ export const CardNoticias = (props: ICardNoticias) => {
           <Card.Actions>
             <View style={styles.boxActions}>
               <View style={styles.boxImagemUrl}>
-                <Image source={require('../../../../img/icone_dcc.png')} style={styles.imagem} />
+                <Image source={colorScheme === 'dark' ? require('../../../../img/icone_dcc_branco.png') : require('../../../../img/icone_dcc_light.png')} style={styles.imagem} />
                 <View style={{flexShrink: 1}}>
                   <Text style={styles.textoUrl} 
                     numberOfLines={1} variant='labelMedium' ellipsizeMode='tail'> {url} </Text>

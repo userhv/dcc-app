@@ -36,10 +36,9 @@ export const ScreenTabRoot = (appProps: IAppProps) =>{
 
 const ScreensTab = (propsNavegacao: any) => {
 	const user = propsNavegacao.route.params.user;
-
 	return(
 		<ScreensTabNative.Navigator screenOptions={{ headerShown: false }} initialRouteName='BottomTab'>
-			<ScreensTabNative.Screen name='BottomTab' component={BottomTabNavigator} /> 
+			<ScreensTabNative.Screen name='BottomTab' component={BottomTabNavigator}/> 
 			<ScreensTabNative.Screen name='WebView' component={WebViewBottom}/>
 		</ScreensTabNative.Navigator>
 	)
@@ -48,6 +47,7 @@ const ScreensTab = (propsNavegacao: any) => {
 const BottomTabNavigator = (propsNavegacao: any) => {
 	const theme = useTheme<{[key:string]: any}>();
 	const { colors } = theme;
+
 
 	return (
 			<BottomTab.Navigator initialRouteName="NoticiasTab" activeColor={colors.navegacaoAtiva} inactiveColor={colors.navegacaoInativa}
@@ -68,8 +68,8 @@ const BottomTabNavigator = (propsNavegacao: any) => {
 						name={'AlunosTab'}
 						component={AlunoContainer}
 						options={{
-							tabBarLabel: 'Para o aluno',
-							tabBarIcon: bottomTabNavigatorIcon('book-education-outline', colors)
+							tabBarLabel: 'Para você',
+							tabBarIcon: bottomTabNavigatorIcon('star-four-points-outline', colors)
 						}}
 					/>
 
@@ -78,7 +78,7 @@ const BottomTabNavigator = (propsNavegacao: any) => {
 						name={'MenuTab'}
 						component={MenuContainer}
 						options={{
-							tabBarLabel: 'Menu',
+							tabBarLabel: 'Mais',
 							tabBarIcon: bottomTabNavigatorIcon('menu', colors)
 						}}
 					/>

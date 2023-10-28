@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 export const modalNotasVersaoStyle = (colors: any) => StyleSheet.create({
   container: {
     margin: 10,
-    backgroundColor: colors.background,
     borderRadius: 16,
   },
   boxTitulo: {

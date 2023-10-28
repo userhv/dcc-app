@@ -3,10 +3,11 @@ import { AlunosList } from "./alunosList";
 import { Oferta } from "./subsecoes/Oferta";
 import { Professores } from "./subsecoes/Professores";
 import { OfertasDisciplinas } from "./subsecoes/OfertasDisciplinas";
+import { OportunidadesList } from "../../oportunidades/pages/oportunidadesList";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-export const AlunoContainer = () => {
+export const AlunoContainer = (propsNavegacao: any) => {
 
 	return(
 		<Navigator initialRouteName={'Alunos'} screenOptions={{ headerShown: false }}>
@@ -14,6 +15,7 @@ export const AlunoContainer = () => {
 			<Screen key={'OfertasDisciplinas'} name={'OfertasDisciplinas'} component={OfertasDisciplinas}/>
 			<Screen key={'Professores'} name={'Professores'} component={Professores}/>
 			<Screen key={'Ofertas'} name={'Ofertas'} component={Oferta}/>
+			<Screen key={'Oportunidades'} name={'Oportunidades'} component={OportunidadesList}/>
 		</Navigator>
 	)
 };

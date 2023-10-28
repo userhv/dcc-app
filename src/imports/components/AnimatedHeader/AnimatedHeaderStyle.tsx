@@ -1,4 +1,3 @@
-
 import {StyleSheet} from 'react-native';
 
 export const animatedHeaderStyle = (colors: any) => StyleSheet.create({
@@ -12,8 +11,8 @@ export const animatedHeaderStyle = (colors: any) => StyleSheet.create({
   texto: {
     overflow: 'hidden',
     flexWrap: 'nowrap',
+    flex: 1,
     justifyContent: 'flex-end', 
-    flex: 1, 
     alignItems: 'baseline',
     padding: 10
   },
