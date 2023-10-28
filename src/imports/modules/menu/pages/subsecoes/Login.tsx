@@ -141,7 +141,8 @@ export const Login = (props: any) => {
                       params:{ 
                         user: user, 
                         nomeHistorico: nomeHistorico, 
-                        nomeCurriculo: nomeCurriculo}
+                        nomeCurriculo: nomeCurriculo
+                      }
                       })}  
                   rolagem={rolagem}
               />
@@ -171,18 +172,20 @@ export const Login = (props: any) => {
                   onPress={login}>
                   Login com Google
               </Button> 
-              <Button 
-                  mode='elevated'
-                  icon={() => <Image source={require( '../../../../../img/minhaufmg.png')}  style={{width: 25, height: 25}} />}
-                  buttonColor={colors.branco}
-                  disabled={true}
-                  textColor={colors.cinza30}
-                  style={{borderRadius: 6, backgroundColor: colors.cinza20}}
-                  onPress={() => null}>
-                    <Text style={{color: colors.cinza60}}>
-                        Login com minhaUFMG
-                    </Text>
-              </Button> 
+              
+              <View style={{marginTop: 10}}>
+                <Button 
+                    mode='elevated'
+                    icon={() => <Image source={require( '../../../../../img/minhaufmg.png')}  style={{width: 25, height: 25}} />}
+                    buttonColor={colors.branco}
+                    textColor={colors.cinza30}
+                    style={{borderRadius: 6, backgroundColor: colors.cinza20}}
+                    onPress={() => showSnackBar({texto: 'Suporte ao login com minhaUFMG estará disponível em breve.'})}>
+                      <Text style={{color: colors.cinza60}}>
+                          Login com minhaUFMG
+                      </Text>
+                </Button> 
+              </View>
             </View>
         </View> 
       )}

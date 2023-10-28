@@ -91,7 +91,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
                         buttonColor={colors.accent}
                         style={{marginBottom: 10, marginTop: 10}}
                         onPress={async () => 	
-                          user? (
+                          historico && curriculo ? (
                               modalSalvarDados()
                           ): (
                             navigation?.navigate('MenuTab',{
@@ -100,7 +100,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
                             })
                           )
                         }>
-                        {user ? 'Quero me candidatar' : 'Cadastrar meus dados'}
+                        {historico && curriculo ? 'Candidatar a vaga': 'Cadastrar meus documentos'}
                       </Button>
                     </View>
                   </>

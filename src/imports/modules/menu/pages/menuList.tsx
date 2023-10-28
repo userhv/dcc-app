@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, SafeAreaView, ScrollView} from 'react-native';
+import {Animated, SafeAreaView, ScrollView, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { AnimatedHeader } from '../../../components/AnimatedHeader/AnimatedHeader';
 import { menuListStyle } from './style/menuListStyle';
@@ -48,7 +48,7 @@ export const MenuList = (props: IMenuList) => {
                   onMomentumScrollBegin={() => setRolagem(false)}
                   onMomentumScrollEnd={() => setRolagem(true)}>
 
-    <CardSecao titulo="Minha conta" descricao='Veja ou edite seus dados e documentos ou delete sua conta.' 
+    <CardSecao titulo="Minha conta" descricao='Veja e edite seus documentos, remova seus dados.' 
               icone='account-circle-outline'   
               onPress={() => 	navigation?.navigate('MenuTab', {screen: 'Login', params: {user: user}})}  
               rolagem={rolagem}/>
@@ -82,6 +82,12 @@ export const MenuList = (props: IMenuList) => {
             onPress={() => 	navigation?.navigate('MenuTab', {
               screen: 'Sobre'})}
               rolagem={rolagem}/>
+
+        <View style={styles.infosDCC}>
+              <Text variant='labelSmall'>
+                  © {new Date().getFullYear()} DCC/UFMG | Sistemas de Informação e Comunicação
+              </Text>
+          </View>
     
     </ScrollView>
   </SafeAreaView>

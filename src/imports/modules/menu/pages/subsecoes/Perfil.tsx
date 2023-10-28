@@ -9,13 +9,13 @@ import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler
 import DocumentPicker from 'react-native-document-picker';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
 import { ModalConfirmacao } from '../../../../components/ModalConfirmacao/ModalConfirmacao';
-import RNFS from 'react-native-fs';
 import { anexoOff } from '../../../anexos/anexoOff';
 import { IAnexo } from '../../../anexos/IAnexo';
 import { Divisor } from '../../../../components/Divisor/Divisor';
 import { BoxUpload } from '../../../usuario/pages/BoxUpload/BoxUpload';
 import { EnumAnexo } from '../../../anexos/EnumAnexo';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import storage from '@react-native-firebase/storage';
 
 export const Perfil = (props: any) => {
 	const theme = useTheme<{[key:string]: any}>();
@@ -25,13 +25,12 @@ export const Perfil = (props: any) => {
 
 	const {navigation, route} = props;
 
-	const user = route.params.user;
-	
-	const [curriculo, setCurriculo] = useState<IAnexo | undefined>(undefined);
+	const user = route.params.user;	
+	const [curriculo, setCurriculo] = useState<IAnexo | undefined>( undefined);
 	const [historico, setHistorico] = useState<IAnexo | undefined>(undefined);
 
-	const [nomeCurriculo, setNomeCurriculo] = useState<string | undefined>(undefined);
-	const [nomeHistorico, setNomeHistorico] = useState<string | undefined>(undefined);
+	const [nomeCurriculo, setNomeCurriculo] = useState<string | undefined>(route.params.nomeCurriculo ?? undefined) ;
+	const [nomeHistorico, setNomeHistorico] = useState<string | undefined>(route.params.nomeHistorico ?? undefined);
 	const [uriCurriculo, setUriCurriculo] = useState<string | undefined>(undefined);
 	const [uriHistorico, setUriHistorico] = useState<string | undefined>(undefined);
 
@@ -44,9 +43,7 @@ export const Perfil = (props: any) => {
 			const curriculo = await anexoOff.retornaAnexo(user.email, EnumAnexo.CURRICULO) as IAnexo[];
 			const historico = await anexoOff.retornaAnexo(user.email, EnumAnexo.HISTORICO) as IAnexo[];
 			setCurriculo(curriculo.length > 0 ? curriculo[0] : undefined);
-			setNomeCurriculo(curriculo.length > 0 ? curriculo[0].nome : '');
 			setHistorico(historico.length > 0 ? historico[0] : undefined);
-			setNomeHistorico(historico.length > 0 ? historico[0].nome : '');
 		}
 		retornaArquivos();
 	},[])
@@ -56,9 +53,11 @@ export const Perfil = (props: any) => {
 		try {
 		const res = await DocumentPicker.pickSingle({
 			type: [DocumentPicker.types.pdf],
+			copyTo: 'documentDirectory',
 		});
+		
 		setNomeCurriculo(res.name ?? '');
-		setUriCurriculo(res.uri);
+		setUriCurriculo(res.fileCopyUri ?? undefined);
 		} catch (err) {
 			if (DocumentPicker.isInProgress(err)) 
 				console.log('User progress')
@@ -75,9 +74,10 @@ export const Perfil = (props: any) => {
 		try {
 		const res = await DocumentPicker.pickSingle({
 			type: [DocumentPicker.types.pdf],
+			copyTo: 'documentDirectory',
 		});
 		setNomeHistorico(res.name ?? '');
-		setUriHistorico(res.uri);
+		setUriHistorico(res.fileCopyUri ?? undefined);
 		} catch (err) {
 
 			if (DocumentPicker.isInProgress(err)) 
@@ -90,71 +90,52 @@ export const Perfil = (props: any) => {
 		}
 	}
 
-	const converteBase = async(path: string | undefined) => {
-		if(path)
-			return await RNFS.readFile(path, 'base64');
-		else
-			return undefined;
-	}
-
-	const montarCurriculoParaSalvar = async () => {
-		const base64Curriculo = await converteBase(uriCurriculo as string);
-		if(base64Curriculo){
-			const curriculoNovo = {
-				...curriculo,
-				email: user?.email,
-				nome:  nomeCurriculo,
-				base64: base64Curriculo,
-				tipo: EnumAnexo.CURRICULO,
-			}
-			return curriculoNovo;
+	const montarDocumentoParaSalvar = (doc: IAnexo | undefined, nomeDoc: string | undefined, url:string, tipo: EnumAnexo) =>{
+		const documento = {
+			...doc,
+			email: user?.email,
+			nome: nomeDoc,
+			link: url,
+			tipo: tipo,
 		}
-		else
-			undefined;
-	}
+		return documento;
 
-	const montarHistoricoParaSalvar = async () => {
-		const base64Historico = await converteBase(uriHistorico as string);
-		if(base64Historico){
-			const historicoNovo = {
-				...historico,
-				email: user?.email,
-				nome: nomeHistorico,
-				base64: base64Historico,
-				tipo: EnumAnexo.HISTORICO,
-			}
-			return historicoNovo;
-		}
-		else
-			undefined;
 	}
-
+	const modalSalvarDados = () => {
+		showModal({
+		   renderedComponent: (_props: any) => (
+			 <ModalConfirmacao
+				 navigation={navigation}
+			   handleCancela={_props.onDismiss}
+			   handleConfirma={async() => {
+					await salvaCadastro() 
+					navigation.goBack();
+				}}
+			   texto='Todos os seus documentos serão salvos localmente.'
+			   titulo='Salvar documentos?'
+			   labelConfirmar='Salvar'
+				 {...{ showSnackBar, showDialog }}/>
+		   )
+		   });
+   }
 
 	const salvaCadastro = async () => {
-		try {
-			const curriculo = await montarCurriculoParaSalvar();
-			curriculo ? await anexoOff.salvaCadastro(curriculo) : undefined;
-			const historico = await montarHistoricoParaSalvar();
-			historico ? await anexoOff.salvaCadastro(historico) : undefined;
-		} catch (error) {
-			console.log(error);
+		const referenciaCurriculo = storage().ref(`curriculo_${user._id}_${user.name}.pdf`);
+		const referenciaHistorico = storage().ref(`historico_${user._id}_${user.name}.pdf`);
+		if(uriCurriculo){
+			await referenciaCurriculo.putFile(uriCurriculo);
+			const urlCurriculo = await referenciaCurriculo.getDownloadURL();
+			const curriculoDoc =  montarDocumentoParaSalvar(curriculo, nomeCurriculo, urlCurriculo, EnumAnexo.CURRICULO);
+			await anexoOff.salvaCadastro(curriculoDoc);
+			
 		}
+		if(uriHistorico){
+			await referenciaHistorico.putFile(uriHistorico);
+			const urlHistorico = await referenciaHistorico.getDownloadURL();
+			const historicoDoc =  montarDocumentoParaSalvar(historico, nomeHistorico, urlHistorico, EnumAnexo.HISTORICO);
+			await anexoOff.salvaCadastro(historicoDoc);
+		}	
 	}
-
-	const modalSalvarDados = async () => {
-		showModal({
-			renderedComponent: (_props: any) => (
-			  <ModalConfirmacao
-				handleCancela={_props.onDismiss}
-				handleConfirma={async() => await salvaCadastro()}
-				texto='Todos os seus documentos serão salvos localmente.'
-				titulo='Salvar documentos?'
-				labelConfirmar='Salvar'
-			  	{...{ showSnackBar, showDialog }}/>
-			)
-			});
-	}
-
 
 	return (
 		<View style={{...styles.container, ...style}}>
@@ -191,8 +172,9 @@ export const Perfil = (props: any) => {
 				style={{backgroundColor: !nomeCurriculo || !nomeHistorico ? (colorScheme === 'dark' ? colors.cinza40 : colors.cinza90) : colorScheme === 'dark' ? colors.accentOpacoDark: colors.accent}}
 				disabled={!nomeCurriculo || !nomeHistorico}
 				icon={() => <Icon name='file-check-outline' size={20} color={!nomeCurriculo || !nomeHistorico ? colors.cinza60 : colors.branco}/>}
-				onPress={async() => {
-					await modalSalvarDados()}}> 
+				onPress={() => {
+					  modalSalvarDados();
+					 }}> 
 				<Text style={{color: !nomeCurriculo || !nomeHistorico ?  colors.cinza60 : colors.branco}}> Salvar documentos</Text>
 			</Button>
 		</View>

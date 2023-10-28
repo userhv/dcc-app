@@ -33,20 +33,17 @@ export const ModalConfirmacao = (props: IModalConfirmacao) => {
             </View>
             <View style={styles.boxBotoes}>
                 <Button
-                    icon='cancel'
-                    style={{marginRight: 10}}
-                    buttonColor={colors.accent}
                     onPress={handleCancela}
-                    mode='contained'>
+                    textColor={colors.accentClaro}
+                    mode='text'>
                     {labelCancelar ?? 'Cancelar'}
                 </Button>
                 <Button
-                    icon='check'
                     onPress={async () => {
                         await handleConfirma();
                         handleCancela()}}
-                    buttonColor={colors.accent}
-                    mode='contained'>
+                    textColor={colors.accentClaro}
+                    mode='text'>
                     {labelConfirmar ?? 'Confirmar'}
                 </Button>
             </View>

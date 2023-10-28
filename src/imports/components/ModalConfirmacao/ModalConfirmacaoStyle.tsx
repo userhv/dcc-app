@@ -26,7 +26,7 @@ export const modalConfirmacaoStyle = (colors: any) => StyleSheet.create({
   },
   boxBotoes:{
     flexDirection: 'row', 
-    justifyContent: 'space-around', 
+    justifyContent: 'space-evenly', 
     paddingBottom: 10
   }
 });

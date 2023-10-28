@@ -27,33 +27,33 @@ export const ModalOportunidade = (props: IModalOportunidade) => {
         <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
             <View style={styles.boxTitulo}>
                 <View style={{flex: 1, paddingBottom: 5}}>
-                    <Text style={styles.texto} variant='titleLarge' numberOfLines={3}> Deseja se candidatar em {oportunidadeTitulo} ?</Text>
+                    <Text style={styles.texto} variant='titleMedium' numberOfLines={3}> Deseja se candidatar em {oportunidadeTitulo} ?</Text>
                 </View>
             </View>
-            <View style={{...styles.boxTexto, borderTopLeftRadius: 20, borderTopRightRadius: 20, marginBottom: 5}}>
+            <View style={{...styles.boxTexto, borderTopLeftRadius: 16, borderTopRightRadius: 16, marginBottom: 5, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.chipDesativado}}>
                     <View style={styles.boxInputDados}>
-                    <Text variant='labelSmall'> Nome</Text>
+                    <Text variant='labelMedium'> Nome do candidato</Text>
                         <View style={styles.inputDados}>
                             <Text  numberOfLines={2}> {user?.name}</Text>
                         </View>
                     </View>
                 <View style={styles.boxInputDados}>
-                    <Text variant='labelSmall'> Email</Text>
+                    <Text variant='labelMedium'> Email para contato</Text>
                     <View style={styles.inputDados}>
                         <Text  numberOfLines={2}> {user?.email}</Text>
                     </View>
                 </View>
                  </View>
 
-                 <View style={{...styles.boxTexto, borderBottomLeftRadius: 20, borderBottomRightRadius: 20, marginBottom: 20}}>
+                 <View style={{...styles.boxTexto, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 10, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.chipDesativado}}>
                 <View style={styles.boxInputDados}>
-                    <Text variant='labelSmall'> Curriculo</Text>
+                    <Text variant='labelMedium'> Curriculo</Text>
                     <View style={styles.inputDados}>
                         <Text  numberOfLines={2}> {curriculoNome}</Text>
                     </View>
                 </View>
                 <View style={styles.boxInputDados}>
-                    <Text variant='labelSmall'> Histórico Escolar</Text>
+                    <Text variant='labelMedium'> Histórico Escolar</Text>
                     <View style={styles.inputDados}>
                         <Text  numberOfLines={2}> {historicoNome}</Text>
                     </View>
@@ -62,20 +62,18 @@ export const ModalOportunidade = (props: IModalOportunidade) => {
 
             <View style={styles.boxBotoes}>
                 <Button
-                    icon='cancel'
                     style={{marginRight: 10}}
-                    buttonColor={colors.accent}
+                    textColor={colors.accentClaro}
                     onPress={handleCancela}
-                    mode='contained'>
+                    mode='text'>
                     Cancelar
                 </Button>
                 <Button
-                    icon='check'
                     onPress={async () => {
                         await handleConfirma();
                         handleCancela()}}
-                    buttonColor={colors.accent}
-                    mode='contained'>
+                    textColor={colors.accentClaro}
+                    mode='text'>
                     Candidatar
                 </Button>
             </View>

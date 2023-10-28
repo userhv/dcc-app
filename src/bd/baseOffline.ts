@@ -148,9 +148,20 @@ export class BaseOffline<Doc extends IDoc> {
 	upsert = async (docObj: Doc) => {
 		return await new Promise((resolve, reject) => {
 			(async () => {
-				const realm = requestRealm();
-				const filtered = realm.objects<{ [key: string]: any }>(this.schemaName).filtered('_id == $0', docObj._id);
-				filtered.length === 0 ? await this.insert(docObj) : await this.update(docObj);
+				try{
+					const realm = requestRealm();
+					const filtered = realm.objects<{ [key: string]: any }>(this.schemaName).filtered('_id == $0', docObj._id);
+					filtered.length === 0 ? await this.insert(docObj) : await this.update(docObj);
+					resolve(docObj._id);
+				}catch (error: any){
+					reject(
+						new ErrorOffline(
+							this.schemaName + ' - BaseOffline.upsert',
+							`Não foi possivel gravar este documento: ${error.message}`
+						)
+					);
+				}
+
 			})();
 		});
 	};

@@ -17,7 +17,6 @@ export const modalOportunidadeStyle = (colors: any) => StyleSheet.create({
     paddingBottom: 10
   },
   boxTexto:{
-    backgroundColor: colors.cinza40,
     marginRight: 10,
     marginLeft: 10,
     justifyContent: 'center',
@@ -27,7 +26,7 @@ export const modalOportunidadeStyle = (colors: any) => StyleSheet.create({
   },
   boxBotoes:{
     flexDirection: 'row', 
-    justifyContent: 'space-around', 
+    justifyContent: 'space-evenly', 
     paddingBottom: 10
   },
   boxInputDados: {

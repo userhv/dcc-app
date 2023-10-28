@@ -35,19 +35,16 @@ export const OportunidadesList = (props: any) => {
   useFocusEffect(
     useCallback(() => {
       const _rsssNoticias = async () => rssOportunidades();
+      const retornaArquivos = async() => {
+        const curriculo = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.CURRICULO) as IAnexo[];
+        const historico = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.HISTORICO) as IAnexo[];
+        setCurriculo(curriculo.length > 0 ? curriculo[0] : undefined);
+        setHistorico(historico.length > 0 ? historico[0] : undefined);
+      }
       _rsssNoticias();
+      retornaArquivos();
     }, []),
   );
-
-	useEffect(() => {
-		const retornaArquivos = async() => {
-			const curriculo = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.CURRICULO) as IAnexo[];
-			const historico = await anexoOff.retornaAnexo(user?.email!, EnumAnexo.HISTORICO) as IAnexo[];
-			setCurriculo(curriculo.length > 0 ? curriculo[0] : undefined);
-			setHistorico(historico.length > 0 ? historico[0] : undefined);
-		}
-		retornaArquivos();
-	},[])
 
   useEffect(() => {
     const _rsssNoticias = async () => await renderizaOportunidades();
@@ -96,9 +93,9 @@ export const OportunidadesList = (props: any) => {
                     style={{...styles.chipStyle, 
                         backgroundColor: isOportunidades ? colors.chipAtivado : colors.chipDesativado}} 
                     selectedColor={isOportunidades ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
-                    Ver tudo
+                    Todas as oportunidades
               </Chip>
-              <Chip onPress={async() => await renderizaEstagios()} 
+              {/* <Chip onPress={async() => await renderizaEstagios()} 
                     icon={() => null}
                     selected
                     style={{...styles.chipStyle, 
@@ -112,7 +109,7 @@ export const OportunidadesList = (props: any) => {
                       backgroundColor: isIc ? colors.chipAtivado : colors.chipDesativado}} 
                       selectedColor={isIc ? colors.corTextoChipAtivado : colors.corTextoChipDesativado}> 
                   Iniciação Científica
-              </Chip>
+              </Chip> */}
               <View style={{marginLeft: 10}}/>
           </ScrollView>
         </View>

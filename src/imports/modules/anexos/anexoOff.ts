@@ -15,7 +15,8 @@ class AnexoOff extends BaseOffline<IAnexo> {
 		return this.find('email == $0 && tipo == $1', email, tipo);
 	}
 	salvaCadastro = async (arquivo: IAnexo) => {
-		await this.upsert(arquivo);
+		const id = await this.upsert(arquivo);
+		return id;
 	}
 }
 
