@@ -20,5 +20,6 @@ export const menuListStyle = (colors: any) =>
       display: 'flex',
       flex: 1,
       marginTop: 20,
+      marginBottom: 20
     },
   });
