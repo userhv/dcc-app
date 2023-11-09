@@ -19,7 +19,7 @@ export const menuListStyle = (colors: any) =>
       justifyContent: 'center',
       display: 'flex',
       flex: 1,
-      marginTop: 20,
-      marginBottom: 20
+      marginTop: 50,
+      marginBottom: 50
     },
   });

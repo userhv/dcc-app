@@ -56,13 +56,6 @@ export const MenuList = (props: IMenuList) => {
     <Divisor />
 
     <Text style={{padding: 10}} variant='titleLarge'> Mais opções </Text>
-    <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
-              icone='message-question-outline'   
-              onPress={() => 	navigation?.navigate('Root', {screen: 'WebView', 
-                    params:{
-                      url: 'https://dcc.ufmg.br/perguntas-frequentes/'
-                    }})}  
-              rolagem={rolagem}/>
 
     <CardSecao titulo="Contatos" descricao='Contato do departamento, colegiados, pós-graduação, especialização ou graduação.' 
               icone='contacts-outline'     
@@ -70,13 +63,25 @@ export const MenuList = (props: IMenuList) => {
                     params:{
                       url: 'https://dcc.ufmg.br/contatos/'
                     }})}  
-                        rolagem={rolagem}/>    
+              rolagem={rolagem}/>   
 
     <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
-              icone='comment-alert-outline'      
-              onPress={() => 	navigation?.navigate('MenuTab', {
-                screen: 'Feedback'})}
-                rolagem={rolagem}/>       
+              icone='alert-circle-outline'      
+              onPress={() => 	
+                user ? (
+                  navigation?.navigate('MenuTab', {screen: 'Feedback'})
+                ) : (
+                  navigation?.navigate('MenuTab', {screen: 'Login', params: {user: user}})
+                )}
+                rolagem={rolagem}/>  
+
+    <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
+              icone='help-circle-outline'   
+              onPress={() => 	navigation?.navigate('Root', {screen: 'WebView', 
+                    params:{
+                      url: 'https://dcc.ufmg.br/perguntas-frequentes/'
+                    }})}  
+              rolagem={rolagem}/> 
 
     <CardSecao titulo='Sobre o aplicativo' descricao="Versão do app, notas da versão e política de privacidade." icone='information-outline'
             onPress={() => 	navigation?.navigate('MenuTab', {
@@ -84,8 +89,9 @@ export const MenuList = (props: IMenuList) => {
               rolagem={rolagem}/>
 
         <View style={styles.infosDCC}>
-              <Text variant='labelSmall'>
-                  © {new Date().getFullYear()} DCC/UFMG | Sistemas de Informação e Comunicação
+              <Text variant='labelSmall' style={{textAlign: 'center'}}>
+                  © {new Date().getFullYear()} DCC/UFMG {"\n"}
+                  Sistemas de Informação e Comunicação
               </Text>
           </View>
     

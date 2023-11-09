@@ -34,7 +34,7 @@ export const ModalOportunidade = (props: IModalOportunidade) => {
                     <View style={styles.boxInputDados}>
                     <Text variant='labelMedium'> Nome do candidato</Text>
                         <View style={styles.inputDados}>
-                            <Text  numberOfLines={2}> {user?.name}</Text>
+                            <Text  numberOfLines={2}> {user?.nome}</Text>
                         </View>
                     </View>
                 <View style={styles.boxInputDados}>

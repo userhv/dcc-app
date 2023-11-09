@@ -38,7 +38,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
     .collection('default')
     .add({
       oportunidade: idOportunidade,
-      nome: user?.name,
+      nome: user?.nome,
       email: user?.email,
       curriculo: curriculo?.link,
       historico: historico?.link,
@@ -86,7 +86,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
                     baseStyle={styles.baseRender}/>
                     <View style={{flex: 1,  alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
                       <Button
-                        icon='check-circle-outline'
+                        icon={historico && curriculo  ? 'briefcase-outline': 'check-circle-outline'}
                         mode='contained'
                         buttonColor={colors.accent}
                         style={{marginBottom: 10, marginTop: 10}}

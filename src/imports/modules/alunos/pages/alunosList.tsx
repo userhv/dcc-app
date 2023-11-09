@@ -59,8 +59,8 @@ export const AlunosList = (props: IAlunosList) => {
                 screen: 'OfertasDisciplinas'})}
                 rolagem={rolagem}/>
     
-    <CardSecao titulo="Oportunidades" descricao='Veja as bolsas de ICs e estágios disponível.' 
-              icone='lightbulb-on-outline'      
+    <CardSecao titulo="Oportunidades" descricao='Encontre bolsas de ICs, estágios e empregos disponível.' 
+              icone='briefcase-search-outline'      
               onPress={() => 	navigation?.navigate('AlunosTab', {
                 screen: 'Oportunidades', params: {user: user}})}
                 rolagem={rolagem}/>

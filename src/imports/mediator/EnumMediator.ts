@@ -5,6 +5,8 @@ export enum EnumMediator  {
 	PALESTRAS = 'palestras',
 	IC = 'ics',
 	ESTAGIOS = 'estagios',
+	EMPREGO = 'emprego',
+	BOLSA_OUTROS = 'bolsa_outros',
 	PROFESSORES = 'professores',
 	DESTAQUE = 'destaque',
 	DISCIPLINAS = 'disciplinas',

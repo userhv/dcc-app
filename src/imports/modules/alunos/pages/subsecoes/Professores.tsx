@@ -114,7 +114,7 @@ export const Professores = (props: IProfessores) => {
     }
 
     const organizaFotosProfessores = (professores: rssParser.FeedItem[]) => {
-      const objetoProfessoresFoto = professores.reduce((obj, item) => ({...obj, [item.title]: item.media[0].url}) ,{});
+      const objetoProfessoresFoto = professores.reduce((obj, item) => ({...obj, [item.title]:item.media[0]?.url}) ,{});
       setProfessoresFoto(objetoProfessoresFoto);
     }
 
@@ -206,7 +206,9 @@ export const Professores = (props: IProfessores) => {
           )}
         </>
       ): (
-        <Loading />
+        <Loading 
+          texto='Carregando professores...'
+        />
       )}
     </View>
   );

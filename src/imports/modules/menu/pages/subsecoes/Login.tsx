@@ -1,7 +1,7 @@
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { View, Image, Platform, ScrollView, useColorScheme } from "react-native"
-import { Button, useTheme,Text } from "react-native-paper"
+import { Button, useTheme,Text, TextInput } from "react-native-paper"
 import { IAsyncStorageUser } from "../../../../context/UserContext";
 import { GeneralComponentsContext, IGeneralComponentsContext } from "../../../../components/GeneralComponents/GeneralComponents";
 import { USER_ASYNC_COLLECTION } from "../../../../config/storageConfig";
@@ -19,6 +19,9 @@ import { anexoOff } from "../../../anexos/anexoOff";
 import { EnumAnexo } from "../../../anexos/EnumAnexo";
 import { useFocusEffect } from "@react-navigation/native";
 import auth from '@react-native-firebase/auth';
+import { nanoid } from "nanoid";
+import { ModalAutenticacao } from "../../../../components/Autenticacao/Autenticacao";
+import { getUser } from "../../../../libs/getUser";
 
 export const Login = (props: any) => {
 	GoogleSignin.configure({
@@ -35,6 +38,7 @@ export const Login = (props: any) => {
   const [nomeCurriculo, setNomeCurriculo] = useState<string | undefined>(undefined);
 	const [nomeHistorico, setNomeHistorico] = useState<string | undefined>(undefined);
   const colorScheme = useColorScheme();
+ 
 
   useFocusEffect(
     useCallback(() => {
@@ -51,41 +55,43 @@ export const Login = (props: any) => {
   );
 
 
-  
-	const configuraUsuarioAsyncStorage = async (user: IAsyncStorageUser) => {
-		try {
-			const userJsonString = JSON.stringify(user);
-			await AsyncStorage.clear();
-			await AsyncStorage.setItem(USER_ASYNC_COLLECTION, userJsonString);
-		} catch (e: any) {
-			showSnackBar({ texto: `Erro ao definir dados do usuário: ${e.message}`, duration: 2000 });
-		}
-	};
+	const modalAutenticacao = () => {
+		showModal({
+		   renderedComponent: (_props: any) => (
+			 <ModalAutenticacao
+				 navigation={navigation}
+			   handleCancela={_props.onDismiss}
+         handleLogin={async() => await login()}
+         setUser={setUser}
+				 {...{ showSnackBar, showDialog }}/>
+		   )
+		   });
+   }
+
 
 	const login = async () => {
 		try {
-		  await GoogleSignin.hasPlayServices();
-		  const userInfo = await GoogleSignin.signIn();
-      const {accessToken, idToken} = await GoogleSignin.getTokens();
-      const credential = auth.GoogleAuthProvider.credential(
-        idToken,
-        accessToken,
-      );
+      auth()
+      .signInAnonymously()
+      .then(() => {
+       
+      })
+      .catch(error => {
+        if (error.code === 'auth/operation-not-allowed') {
+          console.log('Enable anonymous in your firebase console.');
+        }
+    
+        console.error(error);
+      });
 
-      await auth().signInWithCredential(credential);
-		  const {id, name, email} = userInfo.user;
-      setUser(name ? {_id: id, name, email} : {_id: id, email});    
-      configuraUsuarioAsyncStorage(name ? {_id: id, name, email} : {_id: id,email});
-      await cadastroOff.insert({_id: userInfo.user.id, idToken: userInfo.idToken ?? undefined ,nome: name ?? undefined, email: email});
+      
 		} catch (error: any) {
 			console.log(error)
 		  if (error.code === statusCodes.SIGN_IN_CANCELLED) {
 			showSnackBar({ texto: "Login cancelado"});
 		  } else if (error.code === statusCodes.IN_PROGRESS) {
 			showSnackBar({ texto: "Autenticando usuário..."});
-		  } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-			showSnackBar({ texto: "Não é possível autenticar, play services indisponível."});
-		  }
+		  } 
 		}
 	};
 
@@ -109,7 +115,6 @@ export const Login = (props: any) => {
       await cadastroOff.removeCadastro();
 			await AsyncStorage.clear();
 			setUser(undefined);
-			await GoogleSignin.revokeAccess();
       await auth().signOut();
 		} catch (error) {
 		  	console.error(error);
@@ -122,7 +127,7 @@ export const Login = (props: any) => {
 
   return(
       <View style={{...styles.container, ...style}}>
-      <HeaderBar navigation={navigation} titulo={user? 'Minha conta' : 'Autenticar conta'}/>
+      <HeaderBar navigation={navigation} titulo={user ? 'Minha conta' : 'Autenticar conta'}/>
       {user ? (
         <ScrollView style={{flex: 1}}  
             onMomentumScrollBegin={() => setRolagem(false)}
@@ -161,19 +166,20 @@ export const Login = (props: any) => {
             </View>
           </ScrollView>
       ): (
+
           <View style={styles.boxCentral}>
             <View>
               <Button 
                   mode='elevated'
-                  icon={() => <Image source={require( '../../../../../img/icon_google.png')}  style={{width: 25, height: 25}} />}
+                  icon={() => <Image source={require( '../../../../../img/DCC-ICONE.png')}  style={{width: 30, height: 30}} />}
                   buttonColor={colors.branco}
                   textColor={colors.cinza30}
                   style={{borderRadius: 6, marginBottom: 10}}
-                  onPress={login}>
-                  Login com Google
+                  onPress={modalAutenticacao}>
+                  Login com DCC
               </Button> 
               
-              <View style={{marginTop: 10}}>
+              {/* <View style={{marginTop: 10}}>
                 <Button 
                     mode='elevated'
                     icon={() => <Image source={require( '../../../../../img/minhaufmg.png')}  style={{width: 25, height: 25}} />}
@@ -185,9 +191,9 @@ export const Login = (props: any) => {
                           Login com minhaUFMG
                       </Text>
                 </Button> 
-              </View>
+              </View> */}
             </View>
-        </View> 
+          </View>
       )}
       </View>
   )

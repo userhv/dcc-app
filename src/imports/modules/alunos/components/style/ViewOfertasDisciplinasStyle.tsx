@@ -28,5 +28,6 @@ export const viewOfertasDisciplinasStyle = (colors:any) => StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
     margin: 5,
+    borderRadius: 8
   }
 });
