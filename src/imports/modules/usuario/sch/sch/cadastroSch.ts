@@ -1,12 +1,6 @@
 import { IDoc } from '../../../../typings/IDoc';
 
 export const cadastroSch = {
-	idToken: {
-		type: String,
-		label: 'Token',
-		defaultValue: '',
-		optional: false
-	},
 	nome: {
 		type: String,
 		label: 'Nome',
@@ -19,11 +13,25 @@ export const cadastroSch = {
 		defaultValue: '',
 		optional: false
 	},
+	uid: {
+		type: String,
+		label: 'UID',
+		defaultValue: '',
+		optional: false
+	},
+	titulo: {
+		type: String,
+		label: 'Titulo',
+		defaultValue: '',
+		optional: false
+	},
+	
 
 };
 
 export interface ICadastro extends IDoc {
-	idToken: string | undefined;
-	nome: string | undefined;
-	email: string | undefined;
+	nome: string;
+	email: string;
+	uid: string;
+	titulo: string;
 }

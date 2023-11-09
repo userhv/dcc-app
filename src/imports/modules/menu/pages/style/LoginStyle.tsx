@@ -4,6 +4,7 @@ export const loginStyle = (colors: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      padding: 1,
       backgroundColor: colors.background,
     },
     textoAnexo: {
@@ -26,5 +27,5 @@ export const loginStyle = (colors: any) =>
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 30
-      },
+      }
   });

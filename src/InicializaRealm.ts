@@ -10,13 +10,13 @@ const realmSchemas = [
 	anexo.getSchema(),
 ];
 
-const realmSchemaNames = [ 'noticias'];
+const realmSchemaNames = [ 'noticias', 'cadastro', 'anexo'];
 
 export const inicializaRealmGlobal = async () => {
 	const realm = await Realm.open({
 		schema: realmSchemas,
-		deleteRealmIfMigrationNeeded: true,
-		schemaVersion: 1
+		// deleteRealmIfMigrationNeeded: true,
+		schemaVersion: 2
 	});
 	globalThis.realm = realm;
 };

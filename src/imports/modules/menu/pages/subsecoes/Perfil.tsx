@@ -120,8 +120,8 @@ export const Perfil = (props: any) => {
    }
 
 	const salvaCadastro = async () => {
-		const referenciaCurriculo = storage().ref(`curriculo_${user._id}_${user.name}.pdf`);
-		const referenciaHistorico = storage().ref(`historico_${user._id}_${user.name}.pdf`);
+		const referenciaCurriculo = storage().ref(`curriculo_${user._id}_${user.nome.replaceAll(' ', '_')}.pdf`);
+		const referenciaHistorico = storage().ref(`historico_${user._id}_${user.nome.replaceAll(' ', '_')}.pdf`);
 		if(uriCurriculo){
 			await referenciaCurriculo.putFile(uriCurriculo);
 			const urlCurriculo = await referenciaCurriculo.getDownloadURL();
