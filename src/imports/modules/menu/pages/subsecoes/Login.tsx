@@ -1,10 +1,8 @@
-import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { View, Image, Platform, ScrollView, useColorScheme } from "react-native"
-import { Button, useTheme,Text, TextInput } from "react-native-paper"
+import { Button, useTheme,Text } from "react-native-paper"
 import { IAsyncStorageUser } from "../../../../context/UserContext";
 import { GeneralComponentsContext, IGeneralComponentsContext } from "../../../../components/GeneralComponents/GeneralComponents";
-import { USER_ASYNC_COLLECTION } from "../../../../config/storageConfig";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { HeaderBar } from "../../../../components/HeaderBar/HeaderBar";
 import { styleIOS } from "../../../../paper/stylesIOS";
@@ -19,14 +17,10 @@ import { anexoOff } from "../../../anexos/anexoOff";
 import { EnumAnexo } from "../../../anexos/EnumAnexo";
 import { useFocusEffect } from "@react-navigation/native";
 import auth from '@react-native-firebase/auth';
-import { nanoid } from "nanoid";
 import { ModalAutenticacao } from "../../../../components/Autenticacao/Autenticacao";
-import { getUser } from "../../../../libs/getUser";
 
 export const Login = (props: any) => {
-	GoogleSignin.configure({
-    webClientId: '604420909114-sp4m7gl21f6q0lsa97m2ihs2tmjrt6sq.apps.googleusercontent.com'
-  });
+
 
   const {navigation, route} = props;
 	const theme = useTheme<{[key:string]: any}>();
@@ -70,29 +64,18 @@ export const Login = (props: any) => {
 
 
 	const login = async () => {
-		try {
-      auth()
-      .signInAnonymously()
-      .then(() => {
-       
-      })
-      .catch(error => {
-        if (error.code === 'auth/operation-not-allowed') {
-          console.log('Enable anonymous in your firebase console.');
-        }
-    
-        console.error(error);
-      });
-
-      
-		} catch (error: any) {
-			console.log(error)
-		  if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-			showSnackBar({ texto: "Login cancelado"});
-		  } else if (error.code === statusCodes.IN_PROGRESS) {
-			showSnackBar({ texto: "Autenticando usuário..."});
-		  } 
-		}
+    auth()
+    .signInAnonymously()
+    .then(() => {
+     
+    })
+    .catch(error => {
+      if (error.code === 'auth/operation-not-allowed') {
+        console.log('Enable anonymous in your firebase console.');
+      }
+  
+      console.error(error);
+    });
 	};
 
 	const confirmacaoExcluirDados = () => {
