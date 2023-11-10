@@ -31,10 +31,22 @@ class  Mediator {
         switch (key) {
             case EnumMediator.NOTICIAS:
                 return await rssApi('https://dcc.ufmg.br/feed');
+            case EnumMediator.OPORTUNIDADES:
+                return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&feed=atom');
             case EnumMediator.EVENTOS:
                 return await rssApi('https://dcc.ufmg.br/category/evento/feed/');
             case EnumMediator.PALESTRAS:
                 return await rssApi('https://dcc.ufmg.br/category/palestra/feed/');
+            case EnumMediator.IC:
+                return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&cat=568&feed=atom');
+            case EnumMediator.ESTAGIOS:
+                return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&cat=570&feed=atom');
+            case EnumMediator.EMPREGO:
+                return await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&cat=572&feed=atom');
+            case EnumMediator.BOLSA_OUTROS:
+                const mestrado = await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&cat=574&feed=atom');
+                const doutorado = await rssApi('https://dcc.ufmg.br/?s&post_type=oportunidade&cat=153&cat=576&feed=atom');
+                return mestrado?.concat(doutorado ?? []);
             case EnumMediator.PROFESSORES:
                 const professores = await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=153&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`);
                 const professores_voluntarios = await rssApi(`https://dcc.ufmg.br/?s&post_type=professor&action=-1&m=0&cat=161&filter_action=Filtrar&paged=${row}&action2=-1&feed=atom`);
@@ -77,28 +89,28 @@ class  Mediator {
 
         const objParsed: ITabelaDisciplinas[] = []
         for(let i = 1; i < parsed.length; i++){
-        let childBody = parsed[i].firstChild;
-        const arrBody = [];
-        while(childBody) {
-            arrBody.push(childBody.textContent)
-            childBody = childBody?.nextSibling;
-        }
-        let obj: {[key:string]: any} = {}
-        if(arrBody.length === arrHeader.length){
-            for(let i = 0; i < arrHeader.length; i++){
-                obj[arrHeader[i]] = arrBody[i];
+            let childBody = parsed[i].firstChild;
+            const arrBody = [];
+            while(childBody) {
+                arrBody.push(childBody.textContent)
+                childBody = childBody?.nextSibling;
             }
-        }else if(arrBody.length === arrHeader.length + 1){
-            for(let i = 0; i < arrHeader.length; i++){
-                if(arrHeader[i] === 'horario'){
-                    obj[arrHeader[i]] = `${arrBody[i]} - ${arrBody[i+1]}`
-                }else if(arrHeader[i] === 'professor'){
-                    obj[arrHeader[i]] = arrBody[i+1];
-                }else
+            let obj: {[key:string]: any} = {}
+            if(arrBody.length === arrHeader.length){
+                for(let i = 0; i < arrHeader.length; i++){
                     obj[arrHeader[i]] = arrBody[i];
+                }
+            }else if(arrBody.length === arrHeader.length + 1){
+                for(let i = 0; i < arrHeader.length; i++){
+                    if(arrHeader[i] === 'horario'){
+                        obj[arrHeader[i]] = `${arrBody[i]} - ${arrBody[i+1]}`
+                    }else if(arrHeader[i] === 'professor'){
+                        obj[arrHeader[i]] = arrBody[i+1];
+                    }else
+                        obj[arrHeader[i]] = arrBody[i];
+                }
             }
-        }
-        objParsed.push(obj as ITabelaDisciplinas);
+            objParsed.push(obj as ITabelaDisciplinas);
         }
         return objParsed;
      }

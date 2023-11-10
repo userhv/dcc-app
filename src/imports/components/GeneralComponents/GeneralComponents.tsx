@@ -23,8 +23,10 @@ export interface IGeneralComponentsContext {
 
 export interface ISnackBarOptions {
 	texto: string;
+	actionLabel?: string;
 	visible?: boolean;
 	onDismiss?: () => void;
+	onPress?: () => void;
 	duration?: number;
 }
 
@@ -34,6 +36,8 @@ interface IDialogOptions {
 	visible?: boolean;
 	onDismiss?: () => void;
 	onConfirm?: () => void;
+	labelConfirmar?: string;
+	labelCancelar?: string;
 }
 
 export type RenderableComponent = React.ReactElement | React.ElementType | React.ReactNode | Element;

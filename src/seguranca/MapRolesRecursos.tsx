@@ -30,11 +30,5 @@ export const mapRolesRecursos: MapRolesRecursos = {
 		Noticias.NOTICIA_UPDATE,
 		Noticias.NOTICIA_VIEW
 	],
-	[RoleType.USUARIO]: [
-		Noticias.NOTICIA_CREATE,
-		Noticias.NOTICIA_REMOVE,
-		Noticias.NOTICIA_UPDATE,
-		Noticias.NOTICIA_VIEW
-	],
 	[RoleType.PUBLICO]: []
 };

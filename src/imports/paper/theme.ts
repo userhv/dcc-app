@@ -79,8 +79,6 @@ export const theme = {
 		aquaClaro: '#9DE4D6',
 		azulEscuro: '#1c1c7a',
 		amareloClaro: '#FFDD99',
-		marrom: '#7e511d',
-		roxo: '#70076b',
 		laranja: '#d86a10',
 		amarelo: '#a1981a',
 		cinzaMedio: '#BCBEC0',
@@ -94,6 +92,7 @@ export const accentColors = {
 	accentClaro: 'rgb(201, 0, 25)',
 	accentOpaco: 'rgba(201, 0, 25, 0.2)',
 	accentOpacoDark: 'rgba(201, 0, 25,0.5)',
+	accentOpacoSecao: 'rgba(201, 0, 25, 0.05)',
 }
 
 export const temaLight = {
@@ -111,6 +110,8 @@ export const temaLight = {
 		cardDisciplinasTemaLight: 'rgba(201, 0, 0, 0.1)',
 		corTextoChipAtivado: '#FFFFFF',
 		corTextoChipDesativado: '#000000',
+		corCardOportunidadeEstagio: '#d86a10',
+		corCardOportunidadeIC: '#22851e',
 };
 
 export const temaDark = {
@@ -129,6 +130,8 @@ export const temaDark = {
 	divisorVertical: '#E6E7E8',
 	corTextoChipAtivado: '#FFFFFF',
 	corTextoChipDesativado: '#FFFFFF',
+	corCardOportunidadeEstagio: '#d86a10',
+	corCardOportunidadeIC: '#22851e',
 
 
 };

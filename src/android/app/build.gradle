@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
@@ -100,8 +101,8 @@ android {
         applicationId "com.dcc.android"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode 10
-        versionName "1.0.0-alpha.13.1"
+        versionCode 12
+        versionName "1.0.0-alpha.14.1"
     }
 
     splits {
@@ -155,6 +156,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation "androidx.core:core-splashscreen:1.0.1"
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    implementation project(':react-native-fs')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {

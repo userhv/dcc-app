@@ -8,7 +8,7 @@ interface ICardSecao {
     titulo: string;
     descricao: string;
     icone: string;
-    rolagem: boolean;
+    rolagem?: boolean;
     onPress?: () => void;
     navigation?: NativeStackNavigationProp<any>;
 }
@@ -43,8 +43,8 @@ export const CardSecao = (props: ICardSecao) => {
                             titleVariant="titleMedium"
                             subtitle={descricao}
                             subtitleVariant="bodyMedium"
-                            titleNumberOfLines={2}
-                            subtitleNumberOfLines={2}
+                            titleNumberOfLines={3}
+                            subtitleNumberOfLines={3}
                         />
                     </View>
                 </View>

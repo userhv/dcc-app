@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "604420909114",
+    "project_id": "aplicativo-dcc",
+    "storage_bucket": "aplicativo-dcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604420909114:android:c68a5c8242f7544aa66d03",
+        "android_client_info": {
+          "package_name": "com.dcc.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604420909114-rioom987d5v8ltfmptvqdr91bqudqlnh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dcc.android",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "604420909114-1pt26a6v1232emo1r7eh71p1emrqmf1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVV1GHmLch6HvwnhqrSz8JROa2PVw3iKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604420909114-1pt26a6v1232emo1r7eh71p1emrqmf1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

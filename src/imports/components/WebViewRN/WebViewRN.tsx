@@ -31,7 +31,7 @@ export const WebViewRN = (propsNavegacao: any) => {
   const carregamento = () => {
     return(
       <View style={styles.loading}>
-        <Loading  color={colors.cinza10}/>
+        <Loading color={colors.cinza10}/>
       </View>
     )
   }

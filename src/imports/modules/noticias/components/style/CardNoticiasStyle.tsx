@@ -30,6 +30,8 @@ export const cardNoticiasStyle = (colors:any) => StyleSheet.create({
 		paddingLeft: 2,
 		paddingRight: 2,
 		overflow: 'hidden',
+		alignItems: 'center',
+		flexDirection: 'row'
 	},
 
 	boxBotoes: {
@@ -45,10 +47,9 @@ export const cardNoticiasStyle = (colors:any) => StyleSheet.create({
 	},
 
 	imagem: {
-		width: 30, 
-		height: 30,
+		width: 33, 
+		height: 33,
 		backgroundColor: 'transparent',
-		borderRadius: 10
 	},
 
 });

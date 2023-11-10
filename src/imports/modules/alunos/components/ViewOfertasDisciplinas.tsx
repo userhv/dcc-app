@@ -70,7 +70,9 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                     <ScrollView style={{flex: 1}}>
                         {oferta  && abrirDetalhes ? (
                                 Object.keys(rolesDisciplinas).map((key, i) => (
-                                    <Button key={i} onPress={() => 
+                                    <Button 
+                                        key={i} 
+                                        onPress={() => 
                                         navigation?.navigate('AlunosTab', {
                                             screen: 'Ofertas',
                                             params: {
@@ -78,9 +80,9 @@ export const ViewOfertasDisciplinas = (props: IViewOfertasDisciplinas) => {
                                                 titulo: rolesDisciplinas[key]
                                             }
                                         })} mode='contained' style={styles.viewDetalhes} 
-                                            textColor={colors.branco}
+                                            textColor={colorScheme === 'dark' ?colors.branco : colors.preto}
                                             labelStyle={{fontSize: 14}} 
-                                            buttonColor={colorScheme === 'dark' ? colors.accentOpacoDark : colors.accent}>
+                                            buttonColor={colorScheme === 'dark' ? colors.cinza30 : colors.cinzaClaro}>
                                         {rolesDisciplinas[key]}
                                      </Button>
                                 ))

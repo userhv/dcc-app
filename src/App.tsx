@@ -7,10 +7,32 @@ import { deletarBancoInteiro, deletarBancoInteiroAgressivamente, inicializaRealm
 import NetInfo from '@react-native-community/netinfo';
 import { NetInfoContext } from './imports/context/NetInfoContext';
 import { useColorScheme } from 'react-native';
+import { IAsyncStorageUser, UserContext } from './imports/context/UserContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { USER_ASYNC_COLLECTION } from './imports/config/storageConfig';
+
+const getData = async (callback: any) => {
+	try {
+		const asyncStorageUser = await AsyncStorage.getItem(USER_ASYNC_COLLECTION);
+		!!asyncStorageUser && callback(null, JSON.parse(asyncStorageUser));
+	} catch (err) {
+		callback(err, null);
+	}
+};
+
+const clearAll = async (callback: any) => {
+	try {
+		await AsyncStorage.clear();
+		callback(null, null);
+	} catch (err) {
+		console.log('error.clearUser', err);
+	}
+};
 
 export const App = () => {
 
   const [isInternetConnected, setIsInternetConnected] = useState<boolean | null>(null);
+  const [user, setUser] = useState<IAsyncStorageUser | null>(null);
   const colorScheme = useColorScheme();
 
 	const unsubscribe = NetInfo.addEventListener((state) => {
@@ -18,14 +40,14 @@ export const App = () => {
 			setIsInternetConnected(state.isConnected);
 		}
 	});
-
-
+  
   useEffect(() => {
 		const inicializaRealm = async () => {
 			await inicializaRealmGlobal();
 			// await deletarBancoInteiro();
 			// await deletarBancoInteiroAgressivamente();
 		};
+    getData((e: any, r: any) => setUser(r));
 		inicializaRealm();
     return () => {
       unsubscribe();
@@ -41,13 +63,15 @@ export const App = () => {
 
   
   return (
-    <NetInfoContext.Provider value={isInternetConnected}>
-      <PaperProvider theme={themeDefault}>
-        <GeneralComponents>
-            <AppNavigation user={null}/>
-        </GeneralComponents>
-    </PaperProvider>
-  </NetInfoContext.Provider>
+    <UserContext.Provider value={{ asyncStorageUser: user, setAsyncStorageUser: setUser }}>
+      <NetInfoContext.Provider value={isInternetConnected}>
+        <PaperProvider theme={themeDefault}>
+          <GeneralComponents>
+              <AppNavigation user={user}/>
+          </GeneralComponents>
+      </PaperProvider>
+    </NetInfoContext.Provider>
+   </UserContext.Provider>
 
   );
 }

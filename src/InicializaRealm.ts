@@ -1,19 +1,22 @@
 import Realm from 'realm';
-import { noticiasOff as noticias } from './imports/modules/noticias/api/noticiasOff';
-
 import { requestRealm } from './imports/libs/requestRealm';
+import { noticiasOff as noticias } from './imports/modules/noticias/api/noticiasOff';
+import { cadastroOff as cadastro } from './imports/modules/usuario/api/cadastroOff';
+import { anexoOff as anexo } from './imports/modules/anexos/anexoOff';
 
 const realmSchemas = [
 	noticias.getSchema(),
+	cadastro.getSchema(),
+	anexo.getSchema(),
 ];
 
-const realmSchemaNames = [ 'noticias'];
+const realmSchemaNames = [ 'noticias', 'cadastro', 'anexo'];
 
 export const inicializaRealmGlobal = async () => {
 	const realm = await Realm.open({
 		schema: realmSchemas,
-		deleteRealmIfMigrationNeeded: true,
-		schemaVersion: 1
+		// deleteRealmIfMigrationNeeded: true,
+		schemaVersion: 2
 	});
 	globalThis.realm = realm;
 };

@@ -85,7 +85,7 @@ export const NoticiasList = (props: INoticiasList) => {
                 icon={() => null}
                 selected
                 selectedColor={colors.corTextoChipDesativado}
-                style={{ backgroundColor: colors.chipDesativado, marginLeft: 10 }}
+                style={{ backgroundColor: colors.chipDesativado, marginLeft: 10, justifyContent: 'center' }}
                 onPress={() => navigation?.navigate('NoticiasTab', {
                   screen: 'NoticiasSalvas'
                 })}>

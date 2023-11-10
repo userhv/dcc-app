@@ -17,7 +17,7 @@ export const ModalNotasVersao = (props: IModalVersao) => {
     const colorScheme = useColorScheme();
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
             <View style={styles.boxTitulo}>
                 <View style={{flex: 1}}>
                     <Text style={styles.texto} variant='titleMedium' numberOfLines={3}> Notas da versão: {getVersion()}</Text>
@@ -30,8 +30,18 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                             accessibilityRole='button'/>
             </View>
             <View style={styles.boxTexto}>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição dos professores voluntários.</Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Adição do icone de navegar até a pagina do professor.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - App DCC News agora chama DCC.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Aba de Para o aluno renomeada em Para você.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Aba de Menu renomeada em Mais.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Novos ícones nas abas Para você e Mais.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Nova tela minha conta na aba Mais.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Alteração do design da aba Mais.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Nova tela de oportunidades na aba Para você.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte para autenticação na conta do DCC.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte para inscrição em oportunidades do DCC pelo aplicativo.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Novos ícones na aba Mais.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Redesign dos botões no card de disciplinas.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Opção de feedback desativada.</Text>
             </View>
         </View>
     )
