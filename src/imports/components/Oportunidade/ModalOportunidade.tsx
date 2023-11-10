@@ -27,10 +27,10 @@ export const ModalOportunidade = (props: IModalOportunidade) => {
         <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
             <View style={styles.boxTitulo}>
                 <View style={{flex: 1, paddingBottom: 5}}>
-                    <Text style={styles.texto} variant='titleMedium' numberOfLines={3}> Deseja se candidatar em {oportunidadeTitulo} ?</Text>
+                    <Text style={styles.texto} variant='titleLarge' numberOfLines={3}> Deseja se candidatar em {oportunidadeTitulo} ?</Text>
                 </View>
             </View>
-            <View style={{...styles.boxTexto, borderTopLeftRadius: 16, borderTopRightRadius: 16, marginBottom: 5, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.chipDesativado}}>
+            <View style={{...styles.boxTexto, borderTopLeftRadius: 16, borderTopRightRadius: 16, marginBottom: 5, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.branco, elevation: 1}}>
                     <View style={styles.boxInputDados}>
                     <Text variant='labelMedium'> Nome do candidato</Text>
                         <View style={styles.inputDados}>
@@ -45,7 +45,7 @@ export const ModalOportunidade = (props: IModalOportunidade) => {
                 </View>
                  </View>
 
-                 <View style={{...styles.boxTexto, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 10, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.chipDesativado}}>
+                 <View style={{...styles.boxTexto, borderBottomLeftRadius: 16, borderBottomRightRadius: 16, marginBottom: 10, backgroundColor: colorScheme === 'dark' ? colors.cinza30 : colors.branco, elevation: 1}}>
                 <View style={styles.boxInputDados}>
                     <Text variant='labelMedium'> Curriculo</Text>
                     <View style={styles.inputDados}>

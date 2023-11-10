@@ -12,7 +12,7 @@ interface IModalAutenticacao {
     handleLogin:() => Promise<any>;
     handleCancela: () => void;
     navigation: any;
-    setUser: React.Dispatch<React.SetStateAction<IAsyncStorageUser | undefined>>
+    setUser: React.Dispatch<React.SetStateAction<IAsyncStorageUser | undefined>>;
 }
 
 interface User {
@@ -46,10 +46,10 @@ export const ModalAutenticacao = (props: IModalAutenticacao) => {
             setError(data.data);
           }
           else if(username !== '' && pwd !== '')
-            await formataUsuario(data.data)
+            await formataUsuario(data.data);
         })
         .catch(error => {
-          console.log(error)
+          console.log(error);
         });
     }
     
@@ -128,7 +128,8 @@ export const ModalAutenticacao = (props: IModalAutenticacao) => {
              <TextInput
                 mode="outlined"
                 accessible={true}
-                accessibilityLabel='Digite o feedback'
+                autoCapitalize='none'
+                accessibilityLabel='Digite seu usuário'
                 accessibilityRole='text'
                 selectionColor={colorScheme === 'dark' ? colors.branco: colors.preto}
                 underlineColor="transparent"
@@ -147,9 +148,10 @@ export const ModalAutenticacao = (props: IModalAutenticacao) => {
 
             <TextInput
               mode="outlined"
+              autoCapitalize='none'
               secureTextEntry={true}
               accessible={true}
-              accessibilityLabel='Digite o feedback'
+              accessibilityLabel='Digite sua senha'
               accessibilityRole='text'
               selectionColor={colorScheme === 'dark' ? colors.branco: colors.preto}
               underlineColor="transparent"
@@ -161,18 +163,22 @@ export const ModalAutenticacao = (props: IModalAutenticacao) => {
               value={pwd}
               onChangeText={pwd => setPwd(pwd)}
               />
-            <View style={{paddingTop: 20,flexDirection: 'row', justifyContent: 'space-around', paddingBottom: 20}}>
+            <View style={{paddingTop: 20,flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 20}}>
             <Button
                 buttonColor={colors.accent}
                 onPress={handleCancela}
+                accessible={true}
+                accessibilityLabel='Cancelar'
                 mode='contained'>
                     Cancelar
               </Button>
               <Button 
                   mode='contained'
+                  accessible={true}
+                  accessibilityLabel='Autenticar'
                   buttonColor={colors.accent}
                   onPress={autenticaUsuario}>
-                  Autenticar conta
+                  Autenticar
               </Button> 
               </View>
         </View>

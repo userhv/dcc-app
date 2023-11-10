@@ -65,7 +65,7 @@ export const MenuList = (props: IMenuList) => {
                     }})}  
               rolagem={rolagem}/>   
 
-    <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
+    {/* <CardSecao titulo="Feedback" descricao='Envie o seu feedback, com sugestões, críticas ou elogios sobre o aplicativo.' 
               icone='alert-circle-outline'      
               onPress={() => 	
                 user ? (
@@ -73,7 +73,7 @@ export const MenuList = (props: IMenuList) => {
                 ) : (
                   navigation?.navigate('MenuTab', {screen: 'Login', params: {user: user}})
                 )}
-                rolagem={rolagem}/>  
+                rolagem={rolagem}/>   */}
 
     <CardSecao titulo="Perguntas frequentes" descricao='Documentos, quero estudar no DCC, cursos, divulgação de bolsas, estágio, emprego.' 
               icone='help-circle-outline'   

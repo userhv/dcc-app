@@ -41,6 +41,7 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte para inscrição em oportunidades do DCC pelo aplicativo.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Novos ícones na aba Mais.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Redesign dos botões no card de disciplinas.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Opção de feedback desativada.</Text>
             </View>
         </View>
     )

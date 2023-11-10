@@ -26,22 +26,32 @@ export const UsuarioAutenticado = (props: IUsuarioAutenticado) => {
             style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}} numberOfLines={4}> 
                 Autenticado pela conta do DCC. Seus dados são salvos apenas localmente. </Text>
             } />
-        <View style={styles.boxInputDados}>
-            <Text variant='labelMedium'> Nome</Text>
-            <View style={styles.inputDados}>
-                <Text variant='bodyLarge' numberOfLines={2}> {user.nome}</Text>
+            <View style={styles.boxInputDados}>
+                <Text variant='labelMedium' accessible={true}> Nome</Text>
+                <View style={styles.inputDados}>
+                    <Text variant='bodyLarge' numberOfLines={2}
+                        accessible={true}
+                        accessibilityLabel={user.nome}
+                    > {user.nome}</Text>
+                </View>
             </View>
-        </View>
-        <View style={styles.boxInputDados}>
-            <Text variant='labelMedium'> Email</Text>
-            <View style={styles.inputDados}>
-                <Text variant='bodyLarge' numberOfLines={2}> {user.email}</Text>
+            <View style={styles.boxInputDados}>
+                <Text variant='labelMedium' accessible={true}> Email</Text>
+                <View style={styles.inputDados}>
+                    <Text variant='bodyLarge' numberOfLines={2}
+                        accessible={true}
+                        accessibilityLabel={user.email}> {user.email}</Text>
+                </View>
             </View>
-            <Text variant='labelMedium'> Vínculo</Text>
-            <View style={styles.inputDados}>
-                <Text variant='bodyLarge' numberOfLines={2}> {user.titulo}</Text>
+            <View style={styles.boxInputDados}>
+                <Text variant='labelMedium' accessible={true}> Vínculo</Text>
+                <View style={styles.inputDados}>
+                    <Text variant='bodyLarge' numberOfLines={2}
+                        accessible={true}
+                        accessibilityLabel={user.titulo}
+                    > {user.titulo}</Text>
+                </View>
             </View>
-        </View>
         </View>	  	
 	);
 };
