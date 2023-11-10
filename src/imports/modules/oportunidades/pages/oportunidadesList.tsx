@@ -9,7 +9,6 @@ import { mediator } from '../../../mediator/mediator';
 import { nanoid } from 'nanoid';
 import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 import { Loading } from '../../../components/Loading/Loading';
-import { IUserContext, UserContext } from '../../../context/UserContext';
 import { CardOportunidades } from '../components/CardOportunidades/CardOportunidades';
 import { IAnexo } from '../../anexos/IAnexo';
 import { anexoOff } from '../../anexos/anexoOff';
@@ -76,7 +75,6 @@ export const OportunidadesList = (props: any) => {
   }
 
   const renderizaOportunidades = async () => {
-    // verificaSemOportunidades(oportunidades);
     setDados(oportunidades);
     setIsOportunidades(true);
     setIsEstagio(false);

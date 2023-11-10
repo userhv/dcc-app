@@ -11,7 +11,6 @@ import { UsuarioAutenticado } from "../../../usuario/pages/UsuarioAutenticado/Us
 import { Divisor } from "../../../../components/Divisor/Divisor";
 import { cadastroOff } from "../../../usuario/api/cadastroOff";
 import { loginStyle } from "../style/LoginStyle";
-import { ModalConfirmacao } from "../../../../components/ModalConfirmacao/ModalConfirmacao";
 import { IAnexo } from "../../../anexos/IAnexo";
 import { anexoOff } from "../../../anexos/anexoOff";
 import { EnumAnexo } from "../../../anexos/EnumAnexo";
@@ -79,25 +78,23 @@ export const Login = (props: any) => {
 	};
 
 	const confirmacaoExcluirDados = () => {
-		showModal({
-			renderedComponent: (_props: any) => (
-			  <ModalConfirmacao
-          navigation={navigation}
-          handleCancela={_props.onDismiss}
-          handleConfirma={async() => await excluirDados()}
-          texto='Remover seus dados implica em revogar a autenticação com sua conta. Será necessário autenticar novamente caso queira se cadastrar em alguma oportunidade.'
-          titulo='Remover seus dados?'
-          labelConfirmar='Remover dados'
-            {...{ showSnackBar, showDialog }}/>
-			)
-			});
+
+		showDialog({
+			textoCorpo: 'Remover seus dados implica em revogar a autenticação com sua conta. Para enviar novas oportunidades será necessário se conectar novamente.',
+			textoHeader: 'Remover seus dados?',
+			onConfirm: async() => await excluirDados(),
+      labelConfirmar: 'Remover dados'
+		})
 	}
 	
 	const excluirDados = async () => {
 		try {
       await cadastroOff.removeCadastro();
 			await AsyncStorage.clear();
+      setNomeCurriculo(undefined);
+      setNomeHistorico(undefined);
 			setUser(undefined);
+      showSnackBar({texto: 'Seus dados foram removidos.'})
       await auth().signOut();
 		} catch (error) {
 		  	console.error(error);
@@ -140,7 +137,8 @@ export const Login = (props: any) => {
             <View style={styles.boxRemoverConta}>
               <Button mode='contained' 
                   style={{backgroundColor: colorScheme === 'dark' ? colors.accent: colors.accent}}
-                  icon='account-remove-outline'
+                  accessible={true}
+                  accessibilityLabel='Remova seus dados'
                   onPress={() => confirmacaoExcluirDados()}> 
                   <Text style={{color: colors.branco}}>
                       Remover meus dados
@@ -156,6 +154,8 @@ export const Login = (props: any) => {
                   mode='elevated'
                   icon={() => <Image source={require( '../../../../../img/DCC-ICONE.png')}  style={{width: 30, height: 30}} />}
                   buttonColor={colors.branco}
+                  accessible={true}
+                  accessibilityLabel='Conecte com sua conta do DCC.'
                   textColor={colors.cinza30}
                   style={{borderRadius: 6, marginBottom: 10}}
                   onPress={modalAutenticacao}>

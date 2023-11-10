@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../../../paper/theme';
 
 export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 	container: {

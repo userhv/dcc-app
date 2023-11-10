@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 export const modalOportunidadeStyle = (colors: any) => StyleSheet.create({
   container: {
     margin: 10,
+    padding: 5,
     borderRadius: 16,
   },
   boxTitulo: {

@@ -8,7 +8,6 @@ import { Alerta } from '../../../../components/Alerta/Alerta';
 import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
 import DocumentPicker from 'react-native-document-picker';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
-import { ModalConfirmacao } from '../../../../components/ModalConfirmacao/ModalConfirmacao';
 import { anexoOff } from '../../../anexos/anexoOff';
 import { IAnexo } from '../../../anexos/IAnexo';
 import { Divisor } from '../../../../components/Divisor/Divisor';
@@ -102,21 +101,11 @@ export const Perfil = (props: any) => {
 
 	}
 	const modalSalvarDados = () => {
-		showModal({
-		   renderedComponent: (_props: any) => (
-			 <ModalConfirmacao
-				 navigation={navigation}
-			   handleCancela={_props.onDismiss}
-			   handleConfirma={async() => {
-					await salvaCadastro() 
-					navigation.goBack();
-				}}
-			   texto='Todos os seus documentos serão salvos localmente.'
-			   titulo='Salvar documentos?'
-			   labelConfirmar='Salvar'
-				 {...{ showSnackBar, showDialog }}/>
-		   )
-		   });
+		showDialog({
+			textoCorpo: 'Todos os seus documentos serão salvos localmente.',
+			textoHeader: 'Salvar documentos?',
+			onConfirm: async() => await salvaCadastro()
+		})
    }
 
 	const salvaCadastro = async () => {
@@ -135,54 +124,55 @@ export const Perfil = (props: any) => {
 			const historicoDoc =  montarDocumentoParaSalvar(historico, nomeHistorico, urlHistorico, EnumAnexo.HISTORICO);
 			await anexoOff.salvaCadastro(historicoDoc);
 		}	
+		showSnackBar({texto: 'Seus documentos foram salvos.'})
+		navigation.goBack();
 	}
 
 	return (
 		<View style={{...styles.container, ...style}}>
 		<HeaderBar navigation={navigation} titulo='Meus documentos'/>
 		<GestureHandlerRootView style={{flex: 1}}>
-		<ScrollView style={{flex: 1}}>		
-			<Alerta detalhes={
-				<Text 	variant='labelLarge' 
-						style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}} 
-						numberOfLines={4}> 
-					Anexe arquivos em formato PDF para serem utilizados no cadastro da oportunidade. </Text>
-            } />
-			<View  style={{...styles.areaUpload, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
+			<ScrollView style={{flex: 1}}>		
+				<Alerta detalhes={
+					<Text 	variant='labelLarge' 
+							style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}} 
+							numberOfLines={4}> 
+						Anexe arquivos em formato PDF para serem utilizados no cadastro da oportunidade. </Text>
+				} />
+				<View  style={{...styles.areaUpload, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
 
-				<BoxUpload 
-					labelBotaoAcao='Upload do currículo'
-					acao={setNomeCurriculo}
-					selecionaAcao={selecionaCurriculo}
-					tipoUpload={nomeCurriculo}
-					tituloUpload='Meu currículo'
-				/>
-				<Divisor style={{marginBottom: 10}}/>
+					<BoxUpload 
+						labelBotaoAcao='Upload do currículo'
+						acao={setNomeCurriculo}
+						selecionaAcao={selecionaCurriculo}
+						tipoUpload={nomeCurriculo}
+						tituloUpload='Meu currículo'
+					/>
+					<Divisor style={{marginBottom: 10}}/>
 
-				<BoxUpload 
-					labelBotaoAcao='Upload do histórico'
-					acao={setNomeHistorico}
-					selecionaAcao={selecionaHistorico}
-					tipoUpload={nomeHistorico}
-					tituloUpload='Histórico escolar'
-				/>
+					<BoxUpload 
+						labelBotaoAcao='Upload do histórico'
+						acao={setNomeHistorico}
+						selecionaAcao={selecionaHistorico}
+						tipoUpload={nomeHistorico}
+						tituloUpload='Histórico escolar'
+					/>
+				</View>
+				<View style={{...styles.boxBotoesSalvar, justifyContent: 'center'}}>
+				<Button mode='contained' 
+					style={{backgroundColor: !nomeCurriculo || !nomeHistorico ? (colorScheme === 'dark' ? colors.cinza40 : colors.cinza90) : colorScheme === 'dark' ? colors.accentOpacoDark: colors.accent}}
+					disabled={!nomeCurriculo || !nomeHistorico}
+					accessible={true}
+					accessibilityLabel='Salvar documentos'
+					onPress={() => {
+						modalSalvarDados();
+						}}> 
+					<Text style={{color: !nomeCurriculo || !nomeHistorico ?  colors.cinza60 : colors.branco}}> Salvar documentos</Text>
+				</Button>
 			</View>
-			<View style={{...styles.boxBotoesSalvar, justifyContent: 'center'}}>
-			<Button mode='contained' 
-				style={{backgroundColor: !nomeCurriculo || !nomeHistorico ? (colorScheme === 'dark' ? colors.cinza40 : colors.cinza90) : colorScheme === 'dark' ? colors.accentOpacoDark: colors.accent}}
-				disabled={!nomeCurriculo || !nomeHistorico}
-				icon={() => <Icon name='file-check-outline' size={20} color={!nomeCurriculo || !nomeHistorico ? colors.cinza60 : colors.branco}/>}
-				onPress={() => {
-					  modalSalvarDados();
-					 }}> 
-				<Text style={{color: !nomeCurriculo || !nomeHistorico ?  colors.cinza60 : colors.branco}}> Salvar documentos</Text>
-			</Button>
-		</View>
-		
-	</ScrollView>
-	</GestureHandlerRootView>
 			
-			
+			</ScrollView>
+		</GestureHandlerRootView>
 	  	</View>
 	);
 };

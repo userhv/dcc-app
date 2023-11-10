@@ -18,7 +18,7 @@ export const perfilStyle = (colors: any) =>
     areaUpload: {
       marginLeft: 10,
       marginRight: 10,
-      marginBottom: 10,
+      marginBottom: 50,
       paddingTop: 10,
       paddingLeft: 10,
       paddingRight: 10,
