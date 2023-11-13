@@ -19,7 +19,7 @@
     "@realm/react": "^0.6.0",
     "@xmldom/xmldom": "^0.8.10",
     "html-entities": "^2.4.0",
-    "nanoid": "^4.0.2",
+    "nanoid": "^5.0.3",
     "qs": "^6.11.2",
     "react": "18.2.0",
     "react-native": "^0.72.5",
