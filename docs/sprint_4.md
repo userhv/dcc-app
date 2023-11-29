@@ -13,24 +13,23 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
 ```mermaid
     sequenceDiagram
     activate APP
-    APP->>ESTA_AUTENTICADO: verifica se o usuário está autenticado
-    activate ESTA_AUTENTICADO
-    ESTA_AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
-    activate DOCUMENTOS
-    TEM_DOCUMENTO->>INSCREVER: se os documentos existem, podem se inscrever nas oportunidades
-    activate TEM_DOCUMENTO
-    activate INSCREVER
-    deactivate TEM_DOCUMENTO
-    deactivate INSCREVER
-    deactivate DOCUMENTOS
-    ESTA_AUTENTICADO->>AUTENTICAÇÃO: solicita autenticação do usuário
-    activate AUTENTICAÇÃO
-    deactivate ESTA_AUTENTICADO
-    AUTENTICAÇÃO->>SERVIDOR: envia os dados para autenticar o usuário
+    APP->>AUTENTICACAO: autentica o usuário
+    activate AUTENTICACAO
+    AUTENTICACAO->>SERVIDOR: envia os dados para autenticar o usuário
     activate SERVIDOR
-    SERVIDOR-->>AUTENTICAÇÃO: resposta da requisição
-    deactivate AUTENTICADO
+    SERVIDOR-->>AUTENTICACAO: resposta da requisição
     deactivate SERVIDOR
+    AUTENTICACAO-->>APP: retorna o usuário autenticado
+    deactivate AUTENTICACAO
+    activate AUTENTICADO
+    AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
+    activate DOCUMENTOS
+    deactivate AUTENTICADO
+    DOCUMENTOS->>INSCREVER: se os documentos existem, podem se inscrever nas oportunidades
+    activate INSCREVER
+    deactivate DOCUMENTOS
+    INSCREVER-->>APP: inscrição feita com sucesso
+    deactivate INSCREVER
 	deactivate APP
 ```
 
