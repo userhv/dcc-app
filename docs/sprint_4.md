@@ -18,6 +18,7 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
     ESTA_AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
     activate DOCUMENTOS
     TEM_DOCUMENTO->>INSCREVER: se os documentos existem, podem se inscrever nas oportunidades
+    activate INSCREVER
     deactivate TEM_DOCUMENTO
     deactivate INSCREVER
     deactivate DOCUMENTOS
@@ -31,3 +32,4 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
     deactivate SERVIDOR
 	deactivate APP
 ```
+
