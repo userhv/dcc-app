@@ -38,7 +38,11 @@ Com isso, temos a implementação do servidor de autenticação que é usado pra
 
 Abaixo temos algumas imagens da nova tela de oportunidades
 
-![oportunidades](imgs/oportunidades.png) ![conta](imgs/conta.png)
+| Oportunidades                            | Conta                                    |
+| ---------------------------------------- | ---------------------------------------- |
+| ![oportunidades](imgs/oportunidades.png) | ![conta](imgs/conta.png)                 |
+
+
 
 ## Ajustes de design e mudança de nome
 
