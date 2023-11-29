@@ -13,16 +13,16 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
 ```mermaid
     sequenceDiagram
     activate APP
-    APP->>AUTENTICACAO: autentica o usuário
-    activate AUTENTICACAO
-    AUTENTICACAO->>SERVIDOR: envia os dados para autenticar o usuário
+    APP->>AUTENTICAÇÃO: autentica o usuário
+    activate AUTENTICAÇÃO
+    AUTENTICAÇÃO->>SERVIDOR: envia os dados para autenticar o usuário
     activate SERVIDOR
-    SERVIDOR-->>AUTENTICACAO: resposta da requisição
+    SERVIDOR-->>AUTENTICAÇÃO: resposta da requisição
     deactivate SERVIDOR
-    AUTENTICACAO-->>APP: retorna o usuário autenticado
-    deactivate AUTENTICACAO
-    activate AUTENTICADO
+    AUTENTICAÇÃO-->>APP: retorna o usuário autenticado
+    deactivate AUTENTICAÇÃO
     APP->>AUTENTICADO: valida o usuário
+    activate AUTENTICADO
     AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
     activate DOCUMENTOS
     deactivate AUTENTICADO
