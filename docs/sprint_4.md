@@ -12,8 +12,8 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
 
 ```mermaid
     sequenceDiagram
-    activate APP
     APP->>AUTENTICAÇÃO: autentica o usuário
+    activate APP
     activate AUTENTICAÇÃO
     AUTENTICAÇÃO->>SERVIDOR: envia os dados para autenticar o usuário
     activate SERVIDOR
