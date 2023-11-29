@@ -13,16 +13,17 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
 ```mermaid
     sequenceDiagram
     activate APP
-    APP->>AUTENTICADO?: verifica se o usuário está autenticado
-    activate AUTENTICADO?
-    AUTENTICADO?->>DOCUMENTOS: se autenticado, usuário cadastra documentos
+    APP->>ESTA_AUTENTICADO: verifica se o usuário está autenticado
+    activate ESTA_AUTENTICADO
+    ESTA_AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
     activate DOCUMENTOS
-    DOCUMENTOS?->>PODE INSCREVER: se os documentos existem, podem se inscrever nas oportunidades
-    deactivate DOCUMENTOS?
+    TEM_DOCUMENTO->>INSCREVER: se os documentos existem, podem se inscrever nas oportunidades
+    deactivate TEM_DOCUMENTO
+    deactivate INSCREVER
     deactivate DOCUMENTOS
-    AUTENTICADO?->>AUTENTICAÇÃO: solicita autenticação do usuário
+    ESTA_AUTENTICADO->>AUTENTICAÇÃO: solicita autenticação do usuário
     activate AUTENTICAÇÃO
-    deactivate AUTENTICADO?
+    deactivate ESTA_AUTENTICADO
     AUTENTICAÇÃO->>SERVIDOR: envia os dados para autenticar o usuário
     activate SERVIDOR
     SERVIDOR-->>AUTENTICAÇÃO: resposta da requisição
