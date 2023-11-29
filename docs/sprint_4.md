@@ -34,3 +34,12 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
 	deactivate APP
 ```
 
+Com isso, temos a implementação do servidor de autenticação que é usado pra validar  o perfil de quem está se cadastrando na oportunidade. Em complementar a isso, estamos utilizando o [firebase](https://firebase.google.com/?hl=pt-br) como um banco para gerenciar os documentos anexados pelos alunos para as inscrições.
+
+Abaixo temos algumas imagens da nova tela de oportunidades
+
+![oportunidades](imgs/oportunidades.png) ![conta](imgs/conta.png)
+
+## Ajustes de design e mudança de nome
+
+Por fim, fizemos diversos ajustes de design, seja com alteração de iconografia e reordanação da abas do aplicativo visando uma melhor experiência. Também alteramos o nome da aplicação que agora chama DCC App ao invés de DCC News, já que com a evolução do projeto novas funcionalidades foram emabarcadas alterando a funcionalidade principal que antes era somente o fedd de notícias.
