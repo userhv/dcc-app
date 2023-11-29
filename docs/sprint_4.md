@@ -22,6 +22,7 @@ A modelagem pensada para essa funcionalidade pode ser apresentada abaixo.
     AUTENTICACAO-->>APP: retorna o usuário autenticado
     deactivate AUTENTICACAO
     activate AUTENTICADO
+    APP->>AUTENTICADO: valida o usuário
     AUTENTICADO->>DOCUMENTOS: se autenticado, usuário cadastra documentos
     activate DOCUMENTOS
     deactivate AUTENTICADO
