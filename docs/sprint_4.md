@@ -46,4 +46,4 @@ Abaixo temos algumas imagens da nova tela de oportunidades
 
 ## Ajustes de design e mudança de nome
 
-Por fim, fizemos diversos ajustes de design, seja com alteração de iconografia e reordanação da abas do aplicativo visando uma melhor experiência. Também alteramos o nome da aplicação que agora chama DCC App ao invés de DCC News, já que com a evolução do projeto novas funcionalidades foram emabarcadas alterando a funcionalidade principal que antes era somente o fedd de notícias.
+Por fim, fizemos diversos ajustes de design, seja com alteração de iconografia e reordanação da abas do aplicativo visando uma melhor experiência. Também alteramos o nome da aplicação que agora chama DCC App ao invés de DCC News, já que com a evolução do projeto novas funcionalidades foram emabarcadas alterando a funcionalidade principal que antes era somente o feed de notícias.
