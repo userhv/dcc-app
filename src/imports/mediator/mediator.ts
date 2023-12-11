@@ -66,7 +66,8 @@ class  Mediator {
     }
 
     tratamentoDados = (ofertasGerais: rssParser.FeedItem[]) => {
-        const anoAtualData = new Date().getFullYear();
+        const ultimoAnoEncontrado = ofertasGerais[0].title.split(' ')[ofertasGerais[0].title.split(' ').length-1]
+        const anoAtualData = +ultimoAnoEncontrado;
         const anotAnterior = anoAtualData - 1;
         const ofertaDisciplinasDisplay = 'Oferta de disciplinas'.toLowerCase();        
         const ofertasGeraisAtual = ofertasGerais.filter((oferta)=> (oferta.title.toLowerCase().includes(anoAtualData.toString().toLowerCase()) 

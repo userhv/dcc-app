@@ -45,9 +45,9 @@ export const App = () => {
 	});
   
 
-messaging().onMessage(async remoteMessage => {
-  console.log('Message received!', remoteMessage);
-});
+  messaging().onMessage(async remoteMessage => {
+    console.log('Message received!', remoteMessage);
+  });
   
   useEffect(() => {
 		const inicializaRealm = async () => {
@@ -55,7 +55,7 @@ messaging().onMessage(async remoteMessage => {
 		};
     const registerForPushNotifications = async()=> {
       const token = await messaging().getToken();
-      console.log('Push notification token:', token);
+      // console.log('Push notification token:', token);
     }
     registerForPushNotifications();
 
