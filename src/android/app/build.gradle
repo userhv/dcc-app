@@ -105,11 +105,11 @@ android {
         versionCode 17
         versionName "1.0.0-beta.2.1"
     }
-    bundle {
-        language {
-            enableSplit = false
-        }
-    }
+    // bundle {
+    //     language {
+    //         enableSplit = false
+    //     }
+    // }
 
     splits {
         abi {
