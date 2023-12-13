@@ -3,8 +3,7 @@ import { StyleSheet } from 'react-native';
 export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 	container: {
 		justifyContent: 'space-between',
-		borderRadius: 8,
-		margin: 5,
+		backgroundColor: colors.background,
 	  },
 	  boxPrincipal: {
 		flexDirection: 'column',
@@ -16,9 +15,11 @@ export const cardOportunidadesStyle  = (colors:any) => StyleSheet.create({
 		marginTop: 10
 	  },
 	  boxDetalhes: {
-		borderBottomEndRadius: 8,
-		borderBottomStartRadius: 8,
-		flexDirection: 'column'
+		borderRadius: 16,
+		marginLeft: 5,
+		marginRight: 5,
+		marginBottom: 5,
+		flexDirection: 'column',
 	  },
 	  viewDetalhes: {
 		flexDirection: 'column',
