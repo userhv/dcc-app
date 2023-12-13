@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export const cardDisciplinaStyle = (colors:any) => StyleSheet.create({
   container: {
     justifyContent: 'space-between',
-    backgroundColor: colors.background,
+    backgroundColor:  colors.background,
   },
   boxPrincipal: {
     flexDirection: 'column',
@@ -40,7 +40,6 @@ export const cardDisciplinaStyle = (colors:any) => StyleSheet.create({
     marginBottom: 5,
     marginLeft: 10,
     marginRight: 10,
-    borderRadius: 16,
     padding: 10,
   },
 });

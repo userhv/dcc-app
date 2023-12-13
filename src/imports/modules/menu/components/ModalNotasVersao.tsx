@@ -33,8 +33,10 @@ export const ModalNotasVersao = (props: IModalVersao) => {
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte para o Android 14.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Suporte para receber notificações.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Tela do filtro de áreas de interesse alterado.</Text>
-                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Interface da tela Minha conta alterado.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Interface da aba minha conta alterado.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Interface alterado do prompt de loading.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Interface da aba de oportunidades foi alterado.</Text>
+                <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Interface da aba de ofertas de disciplinas foi alterado.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> - Correções de bugs.</Text>
                 <Text variant='bodyMedium' style={{paddingBottom: 5}}> [PROBLEMA CONHECIDO] - Lentidão na tela de professores</Text>
             </View>

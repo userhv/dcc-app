@@ -39,8 +39,7 @@ export const CardDisciplina = (props: ICardDisciplina) => {
 
   return (
       <>
-      <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)}
-            style={({ pressed }) => [pressed ? { opacity: 0.95, backgroundColor: colors.accent } : {},]} >
+      <Pressable  onPress={() => setAbrirDetalhes(!abrirDetalhes)}>
         <View style={styles.container}>
           <View style={styles.boxPrincipal}>
               <View style={styles.boxTopo}>
@@ -65,7 +64,13 @@ export const CardDisciplina = (props: ICardDisciplina) => {
                   icone='launch'
                   />
                   {disciplinas.map((disciplina, i) => (
-                      <View style={{...styles.detalhes, backgroundColor:  colorScheme === 'dark'  ? colors.quasePreto : colors.chipDesativado}} key={i}> 
+                      <View style={{...styles.detalhes, backgroundColor:  colorScheme === 'dark'  ? colors.quasePreto : colors.chipDesativado,
+                        borderTopRightRadius: i == 0 ? 16: 3,
+                        borderTopLeftRadius: i == 0 ? 16: 3,
+                        borderBottomLeftRadius: disciplinas.length - 1=== i ? 16: 3,
+                        borderBottomRightRadius: disciplinas.length - 1 === i ? 16: 3,
+                      
+                      }} key={i}> 
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Turma: {disciplina.turma ?? '-'} </Text>
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Professor (a): {professor(disciplina)} </Text>
                           <Text variant='bodyMedium' style={{...styles.textoDetalhes}}> Horário: {disciplina.horario ?? '-'} </Text>
@@ -77,7 +82,6 @@ export const CardDisciplina = (props: ICardDisciplina) => {
               </View>
           </View>
       </View>
-      <Divisor />
       </Pressable>
     </> 
     );

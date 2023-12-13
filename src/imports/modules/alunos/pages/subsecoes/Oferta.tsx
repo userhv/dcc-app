@@ -106,7 +106,7 @@ export const Oferta = (props: any) => {
                           nomeDisciplina={item} 
                           codigoDisciplina={encontraCodigoDisciplina(item)}
                           />}
-                  keyExtractor={(item) => item}
+                  keyExtractor={(item, index) => 'key'+index}
                   removeClippedSubviews
                   initialNumToRender={8}
                   />

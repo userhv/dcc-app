@@ -76,7 +76,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
 
   return (
     <>
-      <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco, elevation: 1}}>
+      <View style={styles.container}>
           <View style={styles.boxPrincipal}>
             <View style={{flexDirection: 'row', padding: 10}}>
                  <Text variant='titleMedium' style={{ flex: 1}}> {oportunidade.title} </Text>
@@ -84,7 +84,7 @@ export const CardOportunidades = (props: ICardOportunidades) => {
                     size={25}  iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => 
                     expandirDados()}/>    
             </View>
-            <View style={styles.boxDetalhes}>
+            <View style={{...styles.boxDetalhes, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.chipDesativado}}>
               {abrirDetalhes? 
               (oportunidade?.content ? (
                 <>
