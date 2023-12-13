@@ -100,7 +100,7 @@ export const Professores = (props: IProfessores) => {
     const abreWModalAreas = () => {
       showModal({
         renderedComponent: (_props: any) => (
-          <ModalAreas handleClose={_props.onDismiss} areas={areas} setArea={setArea}/>
+          <ModalAreas handleClose={_props.onDismiss} areas={areas} setArea={setArea} area={area}/>
         )
         });
       }
@@ -206,9 +206,7 @@ export const Professores = (props: IProfessores) => {
           )}
         </>
       ): (
-        <Loading 
-          texto='Carregando professores...'
-        />
+        <Loading />
       )}
     </View>
   );

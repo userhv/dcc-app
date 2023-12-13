@@ -102,8 +102,8 @@ android {
         applicationId "com.dcc.android"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "1.0.0-beta.2"
+        versionCode 17
+        versionName "1.0.0-beta.2.1"
     }
     bundle {
         language {

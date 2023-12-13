@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dimensions, FlatList, View, useColorScheme } from 'react-native';
-import { Text, List, useTheme, IconButton } from 'react-native-paper';
+import { Text, List, useTheme, IconButton, RadioButton } from 'react-native-paper';
 import { modalAreasStyle } from './style/ModalAreasStyle';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Divisor } from '../../../components/Divisor/Divisor';
@@ -8,12 +8,14 @@ import { Divisor } from '../../../components/Divisor/Divisor';
 interface IModalAreas {
     handleClose: () => void;
     areas: string[];
+    area: string;
     setArea: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ModalAreas = (props: IModalAreas) => {
-    const { handleClose, areas, setArea } = props;
+    const { handleClose, areas, setArea, area } = props;
     const {width, height} = Dimensions.get('window');
+    const [checked, setChecked] = React.useState(area ?? '');
     
     const theme = useTheme<{[key:string]: any}>();
     const { colors } = theme;
@@ -36,15 +38,20 @@ export const ModalAreas = (props: IModalAreas) => {
                     <FlatList 
                         data={areas} 
                         renderItem={({item}) => 
-                            <>
-                                <List.Item onPress={() => {
-                                    setArea(item);
-                                    handleClose();
-                                }} 
-                                    title={item}
-                                    rippleColor={colorScheme === 'dark' ? colors.accentOpacoDark: colors.accentOpaco}/>
-                                <Divisor/>
-                            </>
+                            <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', marginLeft: 10}}>
+                                  <RadioButton
+                                        value={item}
+                                        status={ checked === item ? 'checked' : 'unchecked' }
+                                        onPress={() => {
+                                            setChecked(item)
+                                            setArea(item)
+                                            handleClose()}}
+                                        color={colors.accentClaro}
+                                        uncheckedColor={colors.accentClaro}
+                                    />
+                                <List.Item  
+                                    title={item}/>
+                            </View>
                         }
                         keyExtractor={(item) => item}
                         removeClippedSubviews

@@ -10,11 +10,8 @@ import { ISemestres, mediator } from '../../../../mediator/mediator';
 import { EnumMediator } from '../../../../mediator/EnumMediator';
 import { Loading } from '../../../../components/Loading/Loading';
 import { ViewOfertasDisciplinas } from '../../components/ViewOfertasDisciplinas';
-import { nanoid } from 'nanoid';
 import { Divisor } from '../../../../components/Divisor/Divisor';
 import { useTheme } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
 
 export const OfertasDisciplinas = (props: any) => {
     const { navigation, route } = props;
@@ -51,9 +48,9 @@ export const OfertasDisciplinas = (props: any) => {
           <GestureHandlerRootView style={{flex: 1}}>
             <ScrollView>
               {anoAtual && anoAtual.length > 0 ? (
-                  anoAtual.map((disciplinaAtual) => (
+                  anoAtual.map((disciplinaAtual, i) => (
                     <ViewOfertasDisciplinas
-                      key={nanoid()}
+                      key={i}
                       titulo={disciplinaAtual.title}
                       oferta={disciplinaAtual}
                       navigation={navigation}
@@ -62,9 +59,9 @@ export const OfertasDisciplinas = (props: any) => {
               ) : null}
               <Divisor style={{marginBottom: 10, marginTop: 10, backgroundColor: colorScheme === 'dark' ? colors.branco : colors.cinza10, height: 0.5}}/>
               {anoAnterior && anoAnterior.length > 0  ? (
-                  anoAnterior.map((disciplinaAnoAnterior) => (
+                  anoAnterior.map((disciplinaAnoAnterior, i) => (
                     <ViewOfertasDisciplinas
-                      key={nanoid()}
+                      key={i}
                       titulo={disciplinaAnoAnterior.title}
                       oferta={disciplinaAnoAnterior}
                       navigation={navigation}
