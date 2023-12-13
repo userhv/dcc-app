@@ -78,8 +78,11 @@ class  Mediator {
     }
 
     converteTabelaGeral = (items: rssParser.FeedItem): ITabelaDisciplinas[] => {
-        let data =  items.content && items.content.split("<table>").pop().slice(0, -10);
+        let data =  items.content && items.content.split("<table>").pop();
         data = "<table>" + data;
+        const posicaoInicial = data.indexOf("</table>");
+        data = data.slice(0, posicaoInicial);
+        data = data + "</table>";
         const parsed  = new DOMParser().parseFromString(data, 'text/html').getElementsByTagName('tr');
         let childHeader = parsed[0].firstChild;
         const arrHeader: any[] = [];

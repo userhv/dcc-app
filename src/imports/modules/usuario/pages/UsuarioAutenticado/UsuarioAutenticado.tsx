@@ -20,12 +20,13 @@ export const UsuarioAutenticado = (props: IUsuarioAutenticado) => {
 	const colorScheme = useColorScheme();
     const style = Platform.OS === 'ios' ? styleIOS : null;
 	return (
-        <View style={{...styles.areaLogin, ...style, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
+        <>
         <Alerta detalhes={
         <Text variant='labelLarge' 
             style={{color: colorScheme === 'dark' ? colors.vermelhoVivoForte : colors.vermelhoVivo}} numberOfLines={4}> 
                 Autenticado pela conta do DCC. Seus dados são salvos apenas localmente. </Text>
             } />
+        <View style={{...styles.areaLogin, ...style, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco}}>
             <View style={styles.boxInputDados}>
                 <Text variant='labelMedium' accessible={true}> Nome</Text>
                 <View style={styles.inputDados}>
@@ -52,6 +53,7 @@ export const UsuarioAutenticado = (props: IUsuarioAutenticado) => {
                     > {user.titulo}</Text>
                 </View>
             </View>
-        </View>	  	
+        </View>	 
+        </> 	
 	);
 };

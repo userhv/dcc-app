@@ -6,7 +6,6 @@ import * as rssParser from 'react-native-rss-parser';
 import {oportunidadesListStyle} from './style/oportunidadesListStyle';
 import { useFocusEffect } from '@react-navigation/native';
 import { mediator } from '../../../mediator/mediator';
-import { nanoid } from 'nanoid';
 import { HeaderBar } from '../../../components/HeaderBar/HeaderBar';
 import { Loading } from '../../../components/Loading/Loading';
 import { CardOportunidades } from '../components/CardOportunidades/CardOportunidades';
@@ -171,7 +170,7 @@ export const OportunidadesList = (props: any) => {
                 <CardOportunidades
                   curriculo={curriculo}
                   historico={historico}
-                  key={nanoid()}
+                  key={i}
                   oportunidade={oportunidade}
                   navigation={navigation}
                   url={oportunidade.links[0].url}

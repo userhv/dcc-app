@@ -4,7 +4,7 @@ import { IconButton, Text, useTheme, Button} from 'react-native-paper';
 import {cardOportunidadesStyle} from './CardOportunidadesStyle';
 import * as rssParser from 'react-native-rss-parser';
 import RenderHTML from 'react-native-render-html';
-import {  useContext, useState } from 'react';
+import {  useContext, useEffect, useState } from 'react';
 import { IAsyncStorageUser } from '../../../../context/UserContext';
 import { GeneralComponentsContext, IGeneralComponentsContext } from '../../../../components/GeneralComponents/GeneralComponents';
 import { ModalOportunidade } from '../../../../components/Oportunidade/ModalOportunidade';
@@ -50,7 +50,13 @@ export const CardOportunidades = (props: ICardOportunidades) => {
       console.log(error)
     })
 
+
   }
+
+  const expandirDados = () => {
+    setAbrirDetalhes(!abrirDetalhes)
+  }
+
 
   const modalSalvarDados = () => {
     showModal({
@@ -69,46 +75,47 @@ export const CardOportunidades = (props: ICardOportunidades) => {
  }
 
   return (
-    <Pressable onPress={() => setAbrirDetalhes(!abrirDetalhes)}>
+    <>
       <View style={{...styles.container, backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco, elevation: 1}}>
           <View style={styles.boxPrincipal}>
             <View style={{flexDirection: 'row', padding: 10}}>
                  <Text variant='titleMedium' style={{ flex: 1}}> {oportunidade.title} </Text>
                 <IconButton icon={abrirDetalhes? 'chevron-up' : 'chevron-down'}
-                    size={25}  iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => setAbrirDetalhes(!abrirDetalhes)}/>    
+                    size={25}  iconColor={colorScheme === 'dark' ? colors.branco : colors.preto} onPress={() => 
+                    expandirDados()}/>    
             </View>
             <View style={styles.boxDetalhes}>
-            {abrirDetalhes? 
-            (oportunidade?.content ? (
-              <>
-                <Image source={colorScheme === 'dark' ? require( '../../../../../img/DCC-Oficial-Dark.png') : require('../../../../../img/DCC-Oficial-Light.png')} style={styles.imagem} resizeMode='cover'/>
-                  <RenderHTML contentWidth={width} source={{ html: oportunidade?.content }} 
-                    baseStyle={styles.baseRender}/>
-                    <View style={{flex: 1,  alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
-                      <Button
-                        icon={historico && curriculo  ? 'briefcase-outline': 'check-circle-outline'}
-                        mode='contained'
-                        buttonColor={colors.accent}
-                        style={{marginBottom: 10, marginTop: 10}}
-                        onPress={async () => 	
-                          historico && curriculo ? (
-                              modalSalvarDados()
-                          ): (
-                            navigation?.navigate('MenuTab',{
-                              screen: 'Login', 
-                              params:{ user: user} 
-                            })
-                          )
-                        }>
-                        {historico && curriculo ? 'Candidatar a vaga': 'Cadastrar meus documentos'}
-                      </Button>
-                    </View>
-                  </>
-                ): null
-            ): null}
+              {abrirDetalhes? 
+              (oportunidade?.content ? (
+                <>
+                  <Image source={colorScheme === 'dark' ? require( '../../../../../img/DCC-Oficial-Dark.png') : require('../../../../../img/DCC-Oficial-Light.png')} style={styles.imagem} resizeMode='cover'/>
+                    <RenderHTML contentWidth={width} source={{ html: oportunidade?.content }} 
+                      baseStyle={styles.baseRender}/>
+                      <View style={{flex: 1,  alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
+                        <Button
+                          icon={historico && curriculo  ? 'briefcase-outline': 'check-circle-outline'}
+                          mode='contained'
+                          buttonColor={colors.accent}
+                          style={{marginBottom: 10, marginTop: 10}}
+                          onPress={async () => 	
+                            historico && curriculo ? (
+                                modalSalvarDados()
+                            ): (
+                              navigation?.navigate('MenuTab',{
+                                screen: 'Login', 
+                                params:{ user: user} 
+                              })
+                            )
+                          }>
+                          {historico && curriculo ? 'Candidatar a vaga': 'Cadastrar meus documentos'}
+                        </Button>
+                      </View>
+                    </>
+                  ): null
+              ): null}
             </View>
           </View>
       </View>
-    </Pressable>
+    </>
   );
 };
