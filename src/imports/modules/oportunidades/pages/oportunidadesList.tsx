@@ -190,7 +190,7 @@ export const OportunidadesList = (props: any) => {
                 </Text>
               </View>
             ) : (
-              <Loading style={{paddingTop: 150}}/>
+              <Loading style={{marginTop: 150}}/>
             )
           )}
         </ScrollView>       

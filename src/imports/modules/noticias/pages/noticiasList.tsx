@@ -136,7 +136,7 @@ export const NoticiasList = (props: INoticiasList) => {
             />
           ))
       ) :
-        <Loading style={{paddingTop: 150}}/>
+        <Loading style={{marginTop: 150}}/>
       }
     </ScrollView>
     </SafeAreaView>
