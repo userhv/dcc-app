@@ -16,8 +16,8 @@ export const Loading = (props: ILoading & any) => {
     <View style={styles.container}>
       <ActivityIndicator animating size={30}
         style={{backgroundColor: colorScheme === 'dark' ? colors.quasePreto : colors.branco, borderRadius: 100, padding: 7,
-                elevation: 3}}
-        color={colors.accentClaro} {...props} />
+                elevation: 3, ...props.style}}
+        color={colors.accentClaro}/>
         {props.texto? (
           <Text variant='labelLarge' style={{marginTop: 5}}> {props.texto}</Text>
         ): null}
