@@ -38,6 +38,10 @@ jobs:
       - name: Executando gradlew
         run: cd android && chmod +x ./gradlew
 
+      - name: Clean App Android
+        run: |
+          cd android && ./gradlew clean
+
       - name: Build App Android
         run: |
           cd android && ./gradlew bundleRelease --no-daemon
