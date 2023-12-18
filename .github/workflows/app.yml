@@ -27,6 +27,14 @@ jobs:
       - name: Run Tests
         run: npm test
 
+      - uses: actions/checkout@v3
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: gradle
+
       - name: Executando gradlew
         run: cd android && chmod +x ./gradlew
 
